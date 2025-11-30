@@ -124,26 +124,60 @@
                 </div>
             </div>
 
-            <div class="feature-row reveal" style="margin-top: 80px;">
-                <div class="feature-text">
-                    <h3>Use-Case Driven Development</h3>
-                    <p>
-                        Jedes Feature basierte auf klar definierten Use-Cases. Vom "Spiel starten" bis zum "Firewall Bonus aktivieren". 
-                        Dies garantierte einen klaren Fokus und verhinderte Feature-Creep.
-                    </p>
-                    <ul class="tech-list">
-                        <li><strong>UC 4:</strong> Level Spielen (Core Loop)</li>
-                        <li><strong>UC 8:</strong> Firewall Bonus (Gamification)</li>
-                        <li><strong>UC 9:</strong> Highscore System (Persistence)</li>
-                    </ul>
-                </div>
-                <div class="feature-visual">
-                    <div class="image-frame-cyber">
-                        <img src="../images/sequenzdiagramm-phishing_defender.png" alt="Sequence Diagram" class="zoomable-img" onerror="this.src='https://placehold.co/600x400/222/555?text=Sequence+Diagram'">
-                        <span class="img-caption">Sequenzdiagramm: Der komplexe Ablauf eines Levels</span>
-                    </div>
+<div class="feature-row reveal" style="margin-top: 80px; align-items: start;">
+    <div class="feature-text">
+        <h3>Use-Case Driven Development</h3>
+        <p>
+            Jedes Feature basierte auf klar definierten Use-Cases. Vom "Spiel starten" bis zum "Firewall Bonus aktivieren". 
+            Dies garantierte einen klaren Fokus und verhinderte Feature-Creep.
+        </p>
+        
+        <div class="use-case-grid">
+            <div class="uc-card">
+                <span class="uc-id">UC 04</span>
+                <div class="uc-content">
+                    <h4>Core Loop</h4>
+                    <p>Level spielen & E-Mails analysieren</p>
                 </div>
             </div>
+
+            <div class="uc-card">
+                <span class="uc-id">UC 08</span>
+                <div class="uc-content">
+                    <h4>Gamification</h4>
+                    <p>Firewall-Bonus System aktivieren</p>
+                </div>
+            </div>
+
+            <div class="uc-card">
+                <span class="uc-id">UC 09</span>
+                <div class="uc-content">
+                    <h4>Persistence</h4>
+                    <p>Highscore & Daten-Speicherung</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="feature-visual">
+        <div class="blueprint-frame">
+            <div class="blueprint-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="blueprint-title">System_Architecture_v1.0.png</span>
+            </div>
+            <div class="blueprint-body">
+                <img src="../images/sequenzdiagramm-phishing_defender.png" alt="Sequence Diagram" class="zoomable-img" onerror="this.src='https://placehold.co/600x400/222/555?text=Sequence+Diagram'">
+                <div class="grid-overlay"></div>
+            </div>
+            <div class="blueprint-footer">
+                <span>STATUS: APPROVED</span>
+                <span>DOC-ID: 8842-X</span>
+            </div>
+        </div>
+    </div>
+</div>
         </div>
     </section>
 
