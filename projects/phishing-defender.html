@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Defender | Case Study</title>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body class="project-deep-dive">
+
+    <nav class="project-nav">
+        <a href="../index.html" class="back-link">
+            <span>←</span> Zurück zum Portfolio
+        </a>
+        <div class="project-logo-container">
+            <img src="../images/game_logo.png" alt="Phishing Defender Logo" class="nav-game-logo">
+        </div>
+    </nav>
+
+    <header class="project-hero">
+        <div class="video-container">
+            <video autoplay muted loop playsinline poster="../images/phishing_project.jpg">
+                <source src="../images/phishing_gameplay.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+
+        <div class="hero-content container">
+            <div class="hero-badges fade-in-up">
+                <span class="hero-badge">Semesterprojekt (1.0)</span>
+                <span class="hero-badge outline">Java Swing</span>
+            </div>
+            
+            <h1 class="hero-title fade-in-up" style="animation-delay: 0.2s;">
+                Phishing<span class="text-stroke">Defender</span>
+            </h1>
+            
+            <p class="hero-subtitle fade-in-up" style="animation-delay: 0.4s;">
+                Ein Serious Game zur Cybersicherheit.<br>
+                Keine Engine. <span class="highlight-text">100% Pure Java.</span>
+            </p>
+        </div>
+
+        <div class="scroll-indicator fade-in" style="animation-delay: 1s;">
+            <span>Explore Case</span>
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
+    </header>
+
+
+    <section class="project-section dark-bg">
+        <div class="container">
+            <div class="mission-grid">
+                <div class="mission-content reveal">
+                    <span class="section-tag">Das Projekt</span>
+                    <h2 class="section-heading">Werde zum <br><span class="highlight-text">Cyber-Detektiv</span></h2>
+                    <p class="text-lg">
+                        "Phishing Defender" ist mehr als nur ein Spiel. Es ist eine Mission. 
+                        In einer Welt voller digitaler Gefahren lernen Kinder und Jugendliche (6–14 Jahre), 
+                        die Tricks der Hacker zu durchschauen.
+                    </p>
+                    <p class="text-muted">
+                        Entwickelt als Semesterprojekt an der Hochschule Hannover. <br>
+                        Das Ziel: Trockene Theorie in adrenalingeladenes Gameplay verwandeln.
+                    </p>
+                    
+                    <div class="stats-row">
+                        <div class="stat-box">
+                            <span class="stat-val">3</span>
+                            <span class="stat-label">Levels</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-val">100%</span>
+                            <span class="stat-label">Java Swing</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-val">12</span>
+                            <span class="stat-label">Wochen Dev</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mission-image reveal delay-200">
+                    <div class="image-frame-cyber">
+                        <img src="../images/game_menu.png" alt="Main Menu" class="zoomable-img" onerror="this.src='https://placehold.co/600x400/000/red?text=Main+Menu'">
+                        <div class="scan-line"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <h2 class="section-heading center-text reveal">Strategic <span class="highlight-text">Planning</span></h2>
+            <p class="section-subtitle center-text reveal">Ein Spiel entsteht nicht durch Zufall. Es entsteht durch Planung.</p>
+
+            <div class="timeline-steps reveal">
+                <div class="timeline-step">
+                    <div class="t-circle">01</div>
+                    <h4 class="t-title">Analyse</h4>
+                    <p class="t-desc">Zielgruppe (6-14J) & Lernziele definiert.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="t-circle">02</div>
+                    <h4 class="t-title">Design</h4>
+                    <p class="t-desc">UML, Use-Cases & Paper Prototypes.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="t-circle">03</div>
+                    <h4 class="t-title">Core Impl.</h4>
+                    <p class="t-desc">Game Loop, Swing UI & Logic.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="t-circle">04</div>
+                    <h4 class="t-title">Features</h4>
+                    <p class="t-desc">Highscores, Save-System & Audio.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="t-circle">05</div>
+                    <h4 class="t-title">Polish</h4>
+                    <p class="t-desc">Animationen, Testing & Release.</p>
+                </div>
+            </div>
+
+            <div class="feature-row reveal" style="margin-top: 80px;">
+                <div class="feature-text">
+                    <h3>Use-Case Driven Development</h3>
+                    <p>
+                        Jedes Feature basierte auf klar definierten Use-Cases. Vom "Spiel starten" bis zum "Firewall Bonus aktivieren". 
+                        Dies garantierte einen klaren Fokus und verhinderte Feature-Creep.
+                    </p>
+                    <ul class="tech-list">
+                        <li><strong>UC 4:</strong> Level Spielen (Core Loop)</li>
+                        <li><strong>UC 8:</strong> Firewall Bonus (Gamification)</li>
+                        <li><strong>UC 9:</strong> Highscore System (Persistence)</li>
+                    </ul>
+                </div>
+                <div class="feature-visual">
+                    <div class="image-frame-cyber">
+                        <img src="../images/sequenzdiagramm-phishing_defender.png" alt="Sequence Diagram" class="zoomable-img" onerror="this.src='https://placehold.co/600x400/222/555?text=Sequence+Diagram'">
+                        <span class="img-caption">Sequenzdiagramm: Der komplexe Ablauf eines Levels</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section dark-bg">
+        <div class="container">
+            <h2 class="section-heading center-text reveal">The <span class="highlight-text">Evolution</span></h2>
+            
+            <div class="evolution-grid">
+                <div class="evo-step reveal">
+                    <div class="evo-header">
+                        <span class="step-num">01</span>
+                        <h4>Paper Prototype</h4>
+                    </div>
+                    <div class="evo-visual">
+                        <img src="../images/prototype_sketch.png" alt="Papier Prototyp" class="zoomable-img" onerror="this.src='https://placehold.co/400x300/222/555?text=Sketch'">
+                    </div>
+                    <p class="evo-desc">Erste Ideenvalidierung auf Papier. Fokus auf Layout und User-Flow.</p>
+                </div>
+
+                <div class="evo-arrow reveal">→</div>
+
+                <div class="evo-step reveal delay-200">
+                    <div class="evo-header">
+                        <span class="step-num">02</span>
+                        <h4>Final Release</h4>
+                    </div>
+                    <div class="evo-visual">
+                        <img src="../images/gameplay_scan.png" alt="Final Game UI" class="zoomable-img" onerror="this.src='https://placehold.co/400x300/111/red?text=Final+UI'">
+                    </div>
+                    <p class="evo-desc">Umsetzung in Java Swing mit Custom-Rendering und Animationen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+<section class="project-section">
+        <div class="container">
+            <h2 class="section-heading center-text reveal">Challenges & <span class="highlight-text">Solutions</span></h2>
+            <p class="section-subtitle center-text reveal">
+                Echte Projekte laufen nie perfekt. Hier ist, wie ich Risiken gemanagt habe.
+                <br><span style="font-size: 0.9rem; color: #666;">(Basierend auf der Risiko-Analyse im Projektplan)</span>
+            </p>
+
+            <div class="challenge-grid reveal">
+                <div class="challenge-card">
+                    <div class="challenge-header">
+                        <div class="icon-box icon-danger">⚠️</div>
+                        <h4 class="challenge-title">Risiko: Zeitüberschreitung</h4>
+                    </div>
+                    <p class="challenge-desc">
+                        12 Wochen sind kurz. Die Gefahr bestand, sich in Details zu verlieren ("Feature Creep") und die Deadline zu verpassen.
+                    </p>
+                    <div class="solution-block">
+                        <div class="icon-box icon-success">🛡️</div>
+                        <div class="solution-text">
+                            <span class="solution-label">Gegenmaßnahme</span>
+                            Anwendung des <strong>MVP-Prinzips</strong> (Minimum Viable Product). Kern-Features (Gameplay) hatten absolute Priorität vor "Nice-to-Have" Features.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-header">
+                        <div class="icon-box icon-danger">⚡</div>
+                        <h4 class="challenge-title">Risiko: Swing Limitations</h4>
+                    </div>
+                    <p class="challenge-desc">
+                        Java Swing ist alt. HTML-Rendering und Layout-Manager verhielten sich oft unvorhersehbar (z.B. falsche Scrollbalken).
+                    </p>
+                    <div class="solution-block">
+                        <div class="icon-box icon-success">🛡️</div>
+                        <div class="solution-text">
+                            <span class="solution-label">Lösung</span>
+                            Implementierung eigener <strong>Custom Panels</strong> (Scrollable Interface) und Nutzung von "Buffering" für flüssige Animationen.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-header">
+                        <div class="icon-box icon-danger">💾</div>
+                        <h4 class="challenge-title">Risiko: Datenverlust</h4>
+                    </div>
+                    <p class="challenge-desc">
+                        Gefahr von Code-Verlust oder kaputten Builds während der heißen Entwicklungsphase.
+                    </p>
+                    <div class="solution-block">
+                        <div class="icon-box icon-success">🛡️</div>
+                        <div class="solution-text">
+                            <span class="solution-label">Strategie</span>
+                            Strikte <strong>Git-Strategie</strong> mit regelmäßigen Commits und Backups auf GitHub. OS-unabhängige Speicherpfade.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section dark-bg">
+        <div class="container">
+            <h2 class="section-heading center-text reveal">Project <span class="highlight-text">Files</span></h2>
+            
+            <p class="section-subtitle center-text reveal">
+                Transparenz ist alles. Sieh dir meine Planung an.
+                <br><span style="font-size: 0.95rem; color: #888;">(Dokumentation erstellt mit <strong style="color:var(--primary-color)">LaTeX</strong>)</span>
+            </p>
+
+            <div class="docs-grid reveal">
+                <a href="../docs/Phishing_Defender_UseCases_YusefBachK.pdf" target="_blank" class="doc-card">
+                    <div class="doc-info">
+                        <h4>Use-Case Spezifikation</h4>
+                        <p>PDF • 20 Seiten • Architektur & GUI Skizzen</p>
+                    </div>
+                    <div class="doc-icon">⬇</div>
+                </a>
+
+                <a href="../docs/Zeitplanung_Phishing_Defender.pdf" target="_blank" class="doc-card">
+                    <div class="doc-info">
+                        <h4>Projekt Zeitplan (12 Wochen)</h4>
+                        <p>PDF • 12 Seiten • Meilensteine & Risiko-Analyse</p>
+                    </div>
+                    <div class="doc-icon">⬇</div>
+                </a>
+                
+                <a href="https://github.com/yusef03/PhishingDefender" target="_blank" class="doc-card">
+                    <div class="doc-info">
+                        <h4>GitHub Repository</h4>
+                        <p>Source Code • Assets • Releases</p>
+                    </div>
+                    <div class="doc-icon">🔗</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <h2 class="section-heading center-text reveal">Under the <span class="highlight-text">Hood</span></h2>
+            <p class="section-subtitle center-text reveal">Saubere Software-Architektur statt Spaghetti-Code.</p>
+            
+            <div class="architecture-grid">
+                <div class="arch-text reveal">
+                    <h3>MVC & Manager Pattern</h3>
+                    <p>
+                        Das Spiel basiert auf einer strikten Trennung von Daten (Model), Logik (Controller) und Anzeige (View).
+                        Zentrale Manager-Klassen steuern die Sub-Systeme.
+                    </p>
+                    <ul class="tech-list">
+                        <li><strong>PhishingDefender (Main):</strong> Der zentrale Controller.</li>
+                        <li><strong>SettingsManager:</strong> Kapselt Einstellungen & JSON-Speicherung.</li>
+                        <li><strong>AudioEngine:</strong> Pufferung im RAM für latenzfreien Sound.</li>
+                        <li><strong>IntegrityShield:</strong> Visuelles Feedback-System für Leben.</li>
+                    </ul>
+                    <div class="arch-badges">
+                        <span class="tech-badge">UML</span>
+                        <span class="tech-badge">OOP</span>
+                        <span class="tech-badge">JSON</span>
+                        <span class="tech-badge">SwingWorker</span>
+                    </div>
+                </div>
+
+                <div class="arch-image reveal delay-200">
+                    <div class="image-frame-cyber">
+                        <img src="../images/class-diagramm-phishing_defender.png" alt="UML Class Diagram" class="zoomable-img" onerror="this.src='https://placehold.co/600x400/222/green?text=Class+Diagram'">
+                        <span class="img-caption">Klassendiagramm (Auszug der Architektur)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section dark-bg">
+        <div class="container">
+            <h2 class="section-heading center-text reveal">Mission <span class="highlight-text">Gallery</span></h2>
+            <p class="section-subtitle center-text reveal">Einblicke in das Spielgeschehen.</p>
+
+            <div class="gallery-grid reveal">
+                <div class="gallery-item">
+                    <img src="../images/gallery1.png" alt="Gameplay Action" class="zoomable-img" onerror="this.src='https://placehold.co/400x300/111/333?text=Screenshot+1'">
+                    <div class="gallery-overlay"><span>🔍</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/gallery2.png" alt="Settings Menu" class="zoomable-img" onerror="this.src='https://placehold.co/400x300/111/333?text=Screenshot+2'">
+                    <div class="gallery-overlay"><span>🔍</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/gallery3.png" alt="Game Over Screen" class="zoomable-img" onerror="this.src='https://placehold.co/400x300/111/333?text=Screenshot+3'">
+                    <div class="gallery-overlay"><span>🔍</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/gallery4.png" alt="Level Selection" class="zoomable-img" onerror="this.src='https://placehold.co/400x300/111/333?text=Screenshot+4'">
+                    <div class="gallery-overlay"><span>🔍</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section footer-section center-text">
+        <div class="container reveal">
+            <h2>Bereit, das Netz zu sichern?</h2>
+            <p class="lead-text">Der komplette Source Code und die Dokumentation sind verfügbar.</p>
+            
+            <div class="action-buttons">
+                <a href="https://github.com/yusef03/PhishingDefender" target="_blank" class="cta-button">GitHub Repository</a>
+                <a href="https://github.com/yusef03/PhishingDefender/releases" target="_blank" class="cta-button cta-button-outline">Download Game (.jar)</a>
+            </div>
+            
+            <div class="footer-note">
+                <p style="margin-top: 50px; color: #666; font-size: 0.8rem;">© 2025 Yusef Bach | Hochschule Hannover Project</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img src="" alt="Enlarged Image" class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script>
+        // 1. Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal, .fade-in-up, .fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 2. Lightbox Logic (Zoom Fix)
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.querySelector('.lightbox-close');
+        
+        // Alle Bilder mit Klasse 'zoomable-img' klickbar machen
+        document.querySelectorAll('.zoomable-img').forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src; // Bild-Quelle übernehmen
+                lightbox.classList.add('active'); // Lightbox zeigen
+                document.body.style.overflow = 'hidden'; // Scrollen verhindern
+            });
+        });
+
+        // Schließen beim Klick auf X
+        closeBtn.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Schließen beim Klick neben das Bild
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>
