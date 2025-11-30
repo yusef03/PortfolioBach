@@ -2206,3 +2206,53 @@
     transform: scale(1.1) rotate(-5deg); /* Cooler Effekt beim Drüberfahren */
 }
 
+/* =========================================
+   NEU: FOOTER SOCIAL ICONS 
+   ========================================= */
+
+.footer-social {
+    display: flex;
+    gap: 15px; /* Abstand zwischen den Icons */
+    margin-top: 25px;
+}
+
+.social-icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; /* Kreisrund */
+    
+    /* Standard-Look: Dezent dunkel */
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #888; /* Icon Farbe normal */
+    
+    transition: all 0.3s ease; /* Weicher Übergang */
+    position: relative;
+}
+
+.social-icon-btn svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+/* HOVER EFFECT - Der "krasse" Teil */
+.social-icon-btn:hover {
+    /* Hintergrund wird zur Brand-Color */
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    /* Icon wird weiß */
+    color: white;
+    /* Der Neon-Glow Effekt */
+    box-shadow: 0 0 15px var(--primary-color), 0 0 30px rgba(227, 0, 0, 0.4);
+    /* Leichtes Anheben */
+    transform: translateY(-3px);
+}
+
+.social-icon-btn:hover svg {
+    /* Icon wächst leicht */
+    transform: scale(1.1);
+}
