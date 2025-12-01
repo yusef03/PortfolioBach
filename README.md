@@ -2,7 +2,7 @@
 
 Willkommen in meinem digitalen Portfolio. Hier dokumentiere ich meine Reise als Informatik-Student und Software-Entwickler.
 
-🌐 **Live Demo:** [Hier klicken um die Webseite zu sehen](https://yusef03.github.io/PortfolioBach/)
+🌐 **Live Portfolio:** [www.yusefbach.de](https://yusefbach.de)
 
 ## Über das Projekt
 Dieses Portfolio wurde von Grund auf mit **HTML5, CSS3 und Vanilla JavaScript** entwickelt. Es verzichtet bewusst auf schwere Frameworks, um maximale Performance und sauberen Code zu gewährleisten.
