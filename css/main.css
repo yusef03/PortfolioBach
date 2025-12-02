@@ -1,9 +1,9 @@
 /*  CONFIG & VARIABLES */
 
 :root {
-  --primary-color: #9d00ff; /* Knalliges Lila */
-  --primary-dark: #6200a3; /* Dunkles Lila für Hover */
-  --primary-light: #ce80ff; /* Helles Lila */
+  --primary-color: #9d00ff;
+  --primary-dark: #6200a3;
+  --primary-light: #ce80ff;
 
   --dark-bg: #121212;
   --darker-bg: #0a0a0a;
