@@ -95,74 +95,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 /* --------------------------------------------------------------------------
-       CONTACT FORM HANDLING (AJAX)
-       -------------------------------------------------------------------------- */
-    const contactForm = document.querySelector('.contact-form');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(event) {
-            // 1. Standard-Absenden verhindern (sonst leitet Formspree weiter)
-            event.preventDefault();
+   CONTACT FORM HANDLING (EmailJS Integration)
+   -------------------------------------------------------------------------- */
+const contactForm = document.querySelector('.contact-form'); // Stelle sicher, dass dein Formular diese Klasse hat
 
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const message = document.getElementById('message').value.trim();
-            const submitBtn = contactForm.querySelector('.submit-btn');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Verhindert das normale Neuladen der Seite
 
-            // 2. Validierung
-            if (!name || !email || !message) {
-                alert('Bitte füllen Sie alle erforderlichen Felder aus.');
-                return;
-            }
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.innerText;
 
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
-                return;
-            }
+        // 1. Visuelles Feedback: Button ändern ("Wird gesendet...")
+        submitBtn.innerText = "Wird gesendet...";
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = "0.7";
+        submitBtn.style.cursor = "not-allowed";
 
-            // 3. Button Feedback geben (Lade-Status)
-            const originalBtnText = submitBtn.textContent;
-            submitBtn.textContent = "Wird gesendet...";
-            submitBtn.disabled = true;
-            submitBtn.style.opacity = "0.7";
+        // 2. Deine EmailJS IDs (Automatisch eingetragen)
+        const serviceID = 'service_y8c0s0c';
+        const templateID = 'template_k23slsm';
 
-            // 4. Daten im Hintergrund senden (AJAX / Fetch)
-            const formData = new FormData(contactForm);
-
-            fetch(contactForm.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    // ERFOLG: Weiterleitung auf DEINE eigene Danke-Seite
-                    window.location.href = "thanks.html"; 
-                } else {
-                    // Fehler von Formspree
-                    response.json().then(data => {
-                        if (Object.hasOwn(data, 'errors')) {
-                            alert(data["errors"].map(error => error["message"]).join(", "));
-                        } else {
-                            alert("Oops! Beim Senden ist ein Fehler aufgetreten.");
-                        }
-                    });
-                    // Button zurücksetzen
-                    submitBtn.textContent = originalBtnText;
-                    submitBtn.disabled = false;
-                    submitBtn.style.opacity = "1";
-                }
-            })
-            .catch(error => {
-                // Netzwerkfehler
-                alert("Oops! Es gab ein Netzwerkproblem. Bitte versuche es später noch einmal.");
-                submitBtn.textContent = originalBtnText;
+        // 3. Senden an EmailJS
+        emailjs.sendForm(serviceID, templateID, this)
+            .then(() => {
+                // ERFOLG: Weiterleitung zur Danke-Seite
+                console.log('SUCCESS!');
+                window.location.href = "thanks.html"; 
+            }, (error) => {
+                // FEHLER: Nachricht an Nutzer
+                console.log('FAILED...', error);
+                alert("Hoppla, da ist etwas schiefgelaufen. Bitte versuche es später noch einmal oder schreibe mir direkt per Mail.");
+                
+                // Button zurücksetzen
+                submitBtn.innerText = originalBtnText;
                 submitBtn.disabled = false;
                 submitBtn.style.opacity = "1";
+                submitBtn.style.cursor = "pointer";
             });
-        });
-    }
+    });
+}
 });
