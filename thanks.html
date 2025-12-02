@@ -1,107 +1,121 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Danke! | Yusef Bach</title>
-    <link rel="icon" type="image/png" href="images/bach_it_logo.png">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="icon" type="image/png" href="images/bach_it_logo.png" />
+    <link rel="stylesheet" href="css/main.css" />
     <style>
-        /* Damit der Footer immer unten klebt */
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh; 
-            margin: 0;
-        }
+      /* Damit der Footer immer unten klebt */
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+      }
 
-        
-        .thanks-content {
-            flex: 1; 
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-        }
+      .thanks-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 20px;
+      }
 
-        
-        .check-icon {
-            font-size: 5rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-shadow: 0 0 30px rgba(227, 0, 0, 0.4); /* Neon Glow */
-        }
+      .check-icon {
+        font-size: 5rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+        animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        text-shadow: 0 0 30px rgba(227, 0, 0, 0.4); /* Neon Glow */
+      }
 
-        @keyframes popIn {
-            0% { transform: scale(0); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+      @keyframes popIn {
+        0% {
+          transform: scale(0);
+          opacity: 0;
         }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
 
-        /* Footer Anpassung */
-        footer {
-            margin-top: auto; /* Drückt Footer nach ganz unten */
-            background-color: transparent; /* Passt sich besser an */
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding: 20px 0;
-        }
+      /* Footer Anpassung */
+      footer {
+        margin-top: auto; /* Drückt Footer nach ganz unten */
+        background-color: transparent; /* Passt sich besser an */
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 20px 0;
+      }
 
-        .nav-link-clean {
-            color: #888;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .nav-link-clean:hover {
-            color: white;
-        }
+      .nav-link-clean {
+        color: #888;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .nav-link-clean:hover {
+        color: white;
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <header>
-        <div class="container">
-            <nav class="navbar">
-                <a href="index.html" class="logo">
-                    <img src="images/bach_it_logo.png" alt="Bach IT Logo" style="height: 40px; margin-right: 10px;">
-                    <span>Yusef Bach</span>
-                </a>
-                <div class="nav-links" style="display: flex;">
-                    <a href="index.html" class="nav-link-clean">
-                        <span>←</span> Zurück zur Startseite
-                    </a>
-                </div>
-            </nav>
-        </div>
+      <div class="container">
+        <nav class="navbar">
+          <a href="index.html" class="logo">
+            <img
+              src="images/bach_it_logo.png"
+              alt="Bach IT Logo"
+              style="height: 40px; margin-right: 10px"
+            />
+            <span>Yusef Bach</span>
+          </a>
+          <div class="nav-links" style="display: flex">
+            <a href="index.html" class="nav-link-clean">
+              <span>←</span> Zurück zur Startseite
+            </a>
+          </div>
+        </nav>
+      </div>
     </header>
 
     <section class="thanks-content">
-        <div class="container">
-            <div class="check-icon">✓</div>
-            <h1 class="hero-title" style="font-size: 3rem; margin-bottom: 10px;">Nachricht <br><span style="color:var(--primary-color);">Empfangen</span></h1>
-            <p class="section-subtitle" style="margin-top: 10px; max-width: 500px;">
-                Danke für deine Anfrage. Die Daten wurden sicher verschlüsselt und übertragen. Ich melde mich in Kürze bei dir.
-            </p>
-            
-            <div class="hero-buttons" style="justify-content: center; margin-top: 30px;">
-                <a href="index.html" class="cta-button">Zurück zum Portfolio</a>
-            </div>
+      <div class="container">
+        <div class="check-icon">✓</div>
+        <h1 class="hero-title" style="font-size: 3rem; margin-bottom: 10px">
+          Nachricht <br /><span style="color: var(--primary-color)"
+            >Empfangen</span
+          >
+        </h1>
+        <p class="section-subtitle" style="margin-top: 10px; max-width: 500px">
+          Danke für deine Anfrage. Die Daten wurden sicher verschlüsselt und
+          übertragen. Ich melde mich in Kürze bei dir.
+        </p>
+
+        <div
+          class="hero-buttons"
+          style="justify-content: center; margin-top: 30px"
+        >
+          <a href="index.html" class="cta-button">Zurück zum Portfolio</a>
         </div>
+      </div>
     </section>
 
     <footer>
-        <div class="container">
-            <div class="footer-copy" style="border:none; padding:0;">
-                <p>&copy; 2025 Yusef Bach.</p>
-            </div>
+      <div class="container">
+        <div class="footer-copy" style="border: none; padding: 0">
+          <p>&copy; 2025 Yusef Bach.</p>
         </div>
+      </div>
     </footer>
-
-</body>
+  </body>
 </html>
