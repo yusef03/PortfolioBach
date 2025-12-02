@@ -94,33 +94,75 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    /* --------------------------------------------------------------------------
-       CONTACT FORM VALIDATION
+/* --------------------------------------------------------------------------
+       CONTACT FORM HANDLING (AJAX)
        -------------------------------------------------------------------------- */
     const contactForm = document.querySelector('.contact-form');
     
     if (contactForm) {
         contactForm.addEventListener('submit', function(event) {
+            // 1. Standard-Absenden verhindern (sonst leitet Formspree weiter)
+            event.preventDefault();
+
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const message = document.getElementById('message').value.trim();
+            const submitBtn = contactForm.querySelector('.submit-btn');
 
-            // Einfache Prüfung auf leere Felder
+            // 2. Validierung
             if (!name || !email || !message) {
-                event.preventDefault();
                 alert('Bitte füllen Sie alle erforderlichen Felder aus.');
-                return false;
+                return;
             }
 
-            // E-Mail Format Prüfung
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
-                event.preventDefault();
                 alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
-                return false;
+                return;
             }
-            
-            // Wenn alles okay ist, sendet Formspree das Formular
+
+            // 3. Button Feedback geben (Lade-Status)
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.textContent = "Wird gesendet...";
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = "0.7";
+
+            // 4. Daten im Hintergrund senden (AJAX / Fetch)
+            const formData = new FormData(contactForm);
+
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // ERFOLG: Weiterleitung auf DEINE eigene Danke-Seite
+                    window.location.href = "thanks.html"; 
+                } else {
+                    // Fehler von Formspree
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            alert(data["errors"].map(error => error["message"]).join(", "));
+                        } else {
+                            alert("Oops! Beim Senden ist ein Fehler aufgetreten.");
+                        }
+                    });
+                    // Button zurücksetzen
+                    submitBtn.textContent = originalBtnText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = "1";
+                }
+            })
+            .catch(error => {
+                // Netzwerkfehler
+                alert("Oops! Es gab ein Netzwerkproblem. Bitte versuche es später noch einmal.");
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = "1";
+            });
         });
     }
 });
