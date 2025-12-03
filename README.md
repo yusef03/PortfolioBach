@@ -1,25 +1,38 @@
-# Yusef Bach - Portfolio & Projects 🚀
+# Yusef Bach - Portfolio 🚀
 
-Willkommen in meinem digitalen Portfolio. Hier dokumentiere ich meine Reise als Informatik-Student und Software-Entwickler.
+Moin! Das ist das Repository für meine persönliche Portfolio-Website [yusefbach.de](https://yusefbach.de).
 
-🌐 **Live Portfolio:** [www.yusefbach.de](https://yusefbach.de)
+Hier zeige ich meine Projekte (wie den Phishing Defender), meinen Tech-Stack und wer ich bin. Das Ganze ist mein "Spielplatz", um Web-Technologien, DNS-Configs und Server-Kommunikation in der Praxis zu lernen.
 
-## Über das Projekt
-Dieses Portfolio wurde von Grund auf mit **HTML5, CSS3 und Vanilla JavaScript** entwickelt. Es verzichtet bewusst auf schwere Frameworks, um maximale Performance und sauberen Code zu gewährleisten.
+## 🛠 Tech Stack
 
-### Features
-* **Case Studies:** Detaillierte Projekt-Dokumentation (z.B. PhishingDefender).
-* **Responsive Design:** Optimiert für Desktop und Mobile.
-* **Performance:** High-End Animationen und Video-Integration.
-* **Clean Code:** Strukturierte Architektur und modernes CSS (Variables, Flexbox, Grid).
+Bewusst "Old School" gehalten, um die Basics zu meistern. Keine schweren Frameworks, pure Performance.
 
-## Tech Stack
-* HTML5 / CSS3
-* JavaScript (ES6+)
-* Git & GitHub Pages
+- **Frontend:** HTML5, CSS3 (Custom Properties, Flexbox, Grid), Vanilla JavaScript (ES6+).
+- **Backend / Services:**
+  - **EmailJS:** Für das Kontaktformular (Serverless, sicher eingebunden).
+  - **GitHub Pages:** Hosting.
+  - **Zoho Mail:** Custom Domain E-Mail Routing.
 
-## Kontakt
-Ich bin offen für Werkstudenten-Tätigkeiten und spannende Projekte im Bereich Java Development, Web Engineering und IT-Security.
+## ✨ Features & Highlights
+
+- **Performance:** High-End Scores in Lighthouse (da kein Framework-Overhead).
+- **Phishing Defender Case Study:** Eine detaillierte Deep-Dive Seite für mein Semesterprojekt mit Video-Integration und Architektur-Diagrammen.
+- **Datenschutz First:** CV als Web-Version (zensiert), Impressum und Datenschutz DSGVO-konform, keine Tracking-Cookies.
+- **UI/UX:** Dark Mode Design, Glassmorphism-Header, Custom Scroll-Animationen und eine interaktive Bilder-Galerie (Lightbox).
+
+## 📂 Struktur
+
+- `/css`: Main Stylesheet (Variablen-basiert).
+- `/js`: Zentrale Logik (Navigation, Scroll-Observer, Email-Handling).
+- `/docs`: PDFs (Lebenslauf, Projekt-Doku).
+- `/projects`: Detailseiten für Projekte.
+
+## 📞 Kontakt
+
+Ich suche aktuell nach einer **Werkstudentenstelle** im Bereich Softwareentwicklung / IT-Security.
+Schreib mir gerne über das Formular auf der Seite oder direkt an `kontakt@yusefbach.de`.
 
 ---
+
 © 2025 Yusef Bach
