@@ -561,12 +561,12 @@
           observer.observe(el);
         });
 
-      // 2. Lightbox Logic (Zoom Fix)
+      // 2. Lightbox Logic
       const lightbox = document.getElementById("lightbox");
       const lightboxImg = document.getElementById("lightbox-img");
       const closeBtn = document.querySelector(".lightbox-close");
 
-      // Alle Bilder mit Klasse 'zoomable-img' klickbar machen
+      // Alle Bilder - Zoom
       document.querySelectorAll(".zoomable-img").forEach((img) => {
         img.addEventListener("click", () => {
           lightboxImg.src = img.src; // Bild-Quelle übernehmen
@@ -575,13 +575,13 @@
         });
       });
 
-      // Schließen beim Klick auf X
+      // Schließen
       closeBtn.addEventListener("click", () => {
         lightbox.classList.remove("active");
         document.body.style.overflow = "auto";
       });
 
-      // Schließen beim Klick neben das Bild
+      // Schließen beiKlick neben  Bild
       lightbox.addEventListener("click", (e) => {
         if (e.target === lightbox) {
           lightbox.classList.remove("active");
