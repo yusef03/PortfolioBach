@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Seite nicht gefunden | Yusef Bach</title>
+    <link rel="icon" type="image/png" href="images/bach_it_logo.png" />
+    <link rel="stylesheet" href="css/main.css" />
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        text-align: center;
+      }
+      .error-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+      .glitch-text {
+        font-size: 6rem;
+        font-weight: 900;
+        color: var(--primary-color);
+        text-shadow: 2px 2px #ff0000;
+        position: relative;
+      }
+      .sub-text {
+        font-size: 1.5rem;
+        color: var(--text-secondary);
+        margin-bottom: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <header style="position: relative; background: transparent; padding: 20px">
+      <a href="index.html" class="logo" style="justify-content: center"
+        >Yusef<span> Bach</span></a
+      >
+    </header>
+
+    <section class="error-container">
+      <h1 class="glitch-text">404</h1>
+      <h2>Seite existiert nicht</h2>
+      <p class="sub-text">
+        Diese Seite wurde entweder gelöscht, verschoben oder hat nie existiert.
+      </p>
+
+      <a href="index.html" class="cta-button">Zurück zur Sicherheit (Home)</a>
+    </section>
+
+    <footer>
+      <div class="container"><p>&copy; 2025 Yusef Bach</p></div>
+    </footer>
+  </body>
+</html>
