@@ -67,8 +67,7 @@ body {
   text-align: center;
 }
 
-/* 
-   COMPONENTS (Buttons, Forms, Badges)
+/* COMPONENTS (Buttons, Forms, Badges)
     */
 
 /* --- Buttons --- */
@@ -101,6 +100,34 @@ body {
 .cta-button-outline:hover {
   background-color: var(--primary-color);
   color: var(--text-color);
+}
+
+.nav-links .cta-button {
+  background: linear-gradient(135deg, #7f00ff, #e100ff) !important;
+
+  color: #ffffff !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 13px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50px;
+  padding: 12px 28px;
+
+  box-shadow: 0 4px 15px rgba(189, 0, 255, 0.4);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.nav-links .cta-button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #8f24ff, #e945ff) !important;
+  box-shadow: 0 8px 25px rgba(189, 0, 255, 0.6);
+  border-color: #ffffff;
 }
 
 /* --- Forms --- */
