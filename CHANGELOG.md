@@ -23,7 +23,7 @@ Wir haben ordentlich unter der Haube aufgeräumt. Der Fokus lag auf Sicherheit, 
 
 - **Inline-JS entfernt:** Die Skripte aus den Unterseiten (Lightbox-Logik) wurden sauber in die `script.js` ausgelagert. Clean Code!
 - **Caching-Problem:** Favicon wird jetzt durch `?v=2` zuverlässig neu geladen.
-- **404 Seite:** Endlich eine eigene Fehlerseite ("Hier haben die Hacker zugeschlagen") statt der GitHub-Standardseite.
+- **404 Seite:** Endlich eine eigene Fehlerseite ("Seite existiert nicht") statt der GitHub-Standardseite.
 
 ---
 
