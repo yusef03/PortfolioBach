@@ -8,19 +8,23 @@
   </head>
   <body class="project-deep-dive">
     <nav class="project-nav">
-      <a href="../index.html" class="back-link">
-        <span>←</span> Zurück zum Portfolio
-      </a>
-      <div class="project-logo-container">
-        <img
-          src="../images/game_logo.png"
-          alt="Phishing Defender Logo"
-          class="nav-game-logo"
-        />
+      <div class="nav-container">
+        <a href="../index.html" class="back-link"> <span>←</span> Portfolio </a>
+
+        <div class="internal-links">
+          <a href="#mission">Mission</a>
+          <a href="#process">Prozess</a>
+          <a href="#architecture">Architektur</a>
+          <a href="#gallery">Galerie</a>
+        </div>
+
+        <div class="nav-right">
+          <a href="#downloads" class="nav-download-btn">Download</a>
+        </div>
       </div>
     </nav>
 
-    <header class="project-hero">
+    <header class="project-hero" id="home">
       <div class="video-container">
         <video
           autoplay
@@ -58,7 +62,7 @@
       </div>
     </header>
 
-    <section class="project-section dark-bg">
+    <section class="project-section dark-bg" id="mission">
       <div class="container">
         <div class="mission-grid">
           <div class="mission-content reveal">
@@ -107,7 +111,7 @@
       </div>
     </section>
 
-    <section class="project-section">
+    <section class="project-section" id="process">
       <div class="container">
         <h2 class="section-heading center-text reveal">
           Strategic <span class="highlight-text">Planning</span>
@@ -390,7 +394,7 @@
       </div>
     </section>
 
-    <section class="project-section">
+    <section class="project-section" id="architecture">
       <div class="container">
         <h2 class="section-heading center-text reveal">
           Under the <span class="highlight-text">Hood</span>
@@ -450,7 +454,7 @@
       </div>
     </section>
 
-    <section class="project-section dark-bg">
+    <section class="project-section dark-bg" id="gallery">
       <div class="container">
         <h2 class="section-heading center-text reveal">
           Mission <span class="highlight-text">Gallery</span>
@@ -500,32 +504,99 @@
       </div>
     </section>
 
-    <section class="project-section footer-section center-text">
-      <div class="container reveal">
-        <h2>Bereit, das Netz zu sichern?</h2>
-        <p class="lead-text">
-          Der komplette Source Code und die Dokumentation sind verfügbar.
+    <section class="project-section download-section" id="downloads">
+      <div class="container">
+        <h2 class="section-heading center-text reveal">
+          Get the <span class="highlight-text">Defender</span>
+        </h2>
+        <p class="section-subtitle center-text reveal">
+          Wähle deine Version und starte die Mission.
         </p>
 
-        <div class="action-buttons">
-          <a
-            href="https://github.com/yusef03/PhishingDefender"
-            target="_blank"
-            class="cta-button"
-            >GitHub Repository</a
-          >
-          <a
-            href="https://github.com/yusef03/PhishingDefender/releases"
-            target="_blank"
-            class="cta-button cta-button-outline"
-            >Download Game (.jar)</a
-          >
+        <div class="download-grid reveal">
+          <div class="download-card primary-card">
+            <div class="card-badge">Empfohlen</div>
+            <div class="card-icon">☕</div>
+            <h3>Java Edition</h3>
+            <p class="version-info">v1.0.2 • Universal .jar</p>
+            <ul class="card-specs">
+              <li>Windows, Mac & Linux</li>
+              <li>Benötigt Java 17+</li>
+            </ul>
+            <a
+              href="https://github.com/yusef03/PortfolioBach/releases/download/v2.1.0/PhishingDefender.jar"
+              class="dl-button"
+            >
+              Download .jar
+            </a>
+            <div class="checksum">SHA-256: 8a7b...c3f1</div>
+          </div>
+
+          <div class="download-card">
+            <div class="card-icon">🪟</div>
+            <h3>Windows Edition</h3>
+            <p class="version-info">Native .exe</p>
+            <ul class="card-specs">
+              <li>Keine Installation nötig</li>
+              <li>Startet ohne Java-Setup</li>
+            </ul>
+            <a
+              href="https://github.com/yusef03/PortfolioBach/releases/download/v2.1.0/PhishingDefender.exe"
+              class="dl-button"
+            >
+              Download .exe
+            </a>
+            <div class="checksum">Verified Publisher</div>
+          </div>
+
+          <div class="download-card">
+            <div class="card-icon">🐱</div>
+            <h3>Source Code</h3>
+            <p class="version-info">GitHub Repository</p>
+            <ul class="card-specs">
+              <li>Full Access</li>
+              <li>Assets & Documentation</li>
+            </ul>
+            <a
+              href="https://github.com/yusef03/PhishingDefender"
+              target="_blank"
+              class="dl-button outline"
+            >
+              View Repository
+            </a>
+            <div class="checksum">License: MIT</div>
+          </div>
         </div>
 
-        <div class="footer-note">
-          <p style="margin-top: 50px; color: #666; font-size: 0.8rem">
-            © 2025 Yusef Bach | Hochschule Hannover Project
-          </p>
+        <div class="terminal-wrapper reveal fade-in-up">
+          <div class="terminal-header-bar">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="term-title">Terminal - How to run</span>
+          </div>
+          <div class="terminal-body">
+            <p class="comment"># Option A: Doppelklick auf die .jar Datei</p>
+            <p class="comment">
+              # Option B: Start über Terminal (für Debugging)
+            </p>
+            <div class="code-line">
+              <span class="prompt">yusef@home:~$</span> java -jar
+              PhishingDefender.jar
+            </div>
+            <div class="code-output">
+              [INFO] GameEngine initialized...<br />
+              [INFO] Loading Assets...<br />
+              [SUCCESS] Phishing Defender v1.0.2 started.
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="footer-note"
+          style="margin-top: 60px; text-align: center; color: #666"
+        >
+          <p>© 2025 Yusef Bach | Hochschule Hannover Project</p>
         </div>
       </div>
     </section>
