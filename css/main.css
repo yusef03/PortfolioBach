@@ -373,77 +373,72 @@ header {
   z-index: -1;
 }
 
-/* --- Services / Tech Stack --- */
-.section {
-  padding: var(--spacing) 0;
-}
+/* ========================
+   TECH STACK: SINGLE SVGs 
+   ======================== */
 
-.services {
-  background-color: var(--darker-bg);
-  position: relative;
-  overflow: hidden;
-}
-
-.services-pattern {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(
-      135deg,
-      rgba(157, 0, 255, 0.05) 25%,
-      transparent 25%
-    ),
-    linear-gradient(225deg, rgba(157, 0, 255, 0.05) 25%, transparent 25%);
-  background-size: 60px 60px;
-  z-index: 0;
-  opacity: 0.3;
-}
-
-.services-grid {
+.tech-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 30px;
-  position: relative;
-  z-index: 1;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 20px;
+
+  margin-top: 40px;
+  margin-bottom: 100px;
 }
 
-.service-card {
-  background-color: var(--card-bg);
-  border-radius: var(--border-radius);
-  padding: 40px 30px;
-  transition: var(--transition);
+.tech-card {
+  background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  height: 100%;
+  border-radius: 16px;
+  padding: 25px 15px;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.service-card:hover {
-  transform: translateY(-10px);
-  border-color: rgba(157, 0, 255, 0.3);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+/* Hover Effekt */
+.tech-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(157, 0, 255, 0.4); /* Lila Rand */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
-.service-icon {
-  width: 60px;
-  height: 60px;
-  background-color: rgba(157, 0, 255, 0.1);
-  border-radius: 50%;
+/* Tech Icon Container */
+.tech-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 24px;
-  color: var(--primary-color);
-  font-size: 28px;
 }
 
-.service-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 16px;
+/* SVG BILDER STYLING */
+.tech-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.1)); /* Leichter Glow */
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.service-card p {
-  color: var(--text-secondary);
-  margin-bottom: 24px;
+
+/* Hover Effekt */
+.tech-card:hover .tech-icon img {
+  transform: scale(1.2);
+  filter: drop-shadow(
+    0 0 15px rgba(157, 0, 255, 0.4)
+  ); /* Lila Glow beim Hover */
+}
+
+.tech-card h4 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ddd;
+  margin: 0;
 }
 
 /* --- Projects Showcase (Home) --- */
@@ -2000,4 +1995,29 @@ html {
   font-size: 0.85rem;
   line-height: 1.4;
   opacity: 0.8;
+}
+/* --- TYPING EFFECT STYLES --- */
+.typing-text {
+  color: var(--primary-color); /* Dein Lila */
+  font-weight: 800; /* Schön fett, wie vorher */
+}
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: var(--primary-color);
+  animation: blink 1s step-end infinite;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }

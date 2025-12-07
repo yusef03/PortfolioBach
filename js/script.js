@@ -126,4 +126,55 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     });
   }
+  /* --------------------------------------------------------------------------
+     TYPING EFFECT (Hero Section)
+     -------------------------------------------------------------------------- */
+  const typingElement = document.querySelector(".typing-text");
+
+  if (typingElement) {
+    const words = [
+      "IT-Student",
+      "Java Developer",
+      "Tech Enthusiast",
+      "Problem Solver",
+    ];
+
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typeSpeed = 200; // Tipp-Geschwindigkeit
+
+    function type() {
+      const currentWord = words[wordIndex];
+
+      if (isDeleting) {
+        // Löschen
+        typingElement.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+        typeSpeed = 100; // Schnelleres Löschen
+      } else {
+        // Tippen
+        typingElement.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+        typeSpeed = 200; // Normales Tippen
+      }
+
+      // Logik für Wechsel
+      if (!isDeleting && charIndex === currentWord.length) {
+        // Wort fertig -> Kurz warten, dann löschen
+        isDeleting = true;
+        typeSpeed = 2000; // 2 Sekunden Pause zum Lesen
+      } else if (isDeleting && charIndex === 0) {
+        // Wort gelöscht -> Nächstes Wort
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        typeSpeed = 500; // Kurze Pause vor dem neuen Wort
+      }
+
+      setTimeout(type, typeSpeed);
+    }
+
+    // Effekt starten
+    type();
+  }
 });
