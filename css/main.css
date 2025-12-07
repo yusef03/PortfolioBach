@@ -374,71 +374,103 @@ header {
 }
 
 /* ========================
-   TECH STACK: SINGLE SVGs 
+   TECH STACK: INFINITE MARQUEE
    ======================== */
 
-.tech-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 20px;
+.tech-marquee {
+  position: relative;
+  width: 100%;
+  max-width: 1200px; /* Limit width on huge screens */
+  margin: 60px auto 120px;
+  overflow: hidden;
+  /* Gradient masks for seamless L/R fade */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
 
-  margin-top: 40px;
-  margin-bottom: 100px;
+.tech-track {
+  display: flex;
+  gap: 30px; /* Spacing between cards */
+  width: max-content;
+  /* Hardware accelerated animation */
+  animation: scroll-left 35s linear infinite;
+}
+
+/* Pause on hover for interaction */
+.tech-track:hover {
+  animation-play-state: paused;
 }
 
 .tech-card {
-  background: rgba(255, 255, 255, 0.03);
+  width: 120px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 16px;
-  padding: 25px 15px;
-  text-align: center;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  /* Prevent flex shrinking */
+  flex-shrink: 0;
 }
 
-/* Hover Effekt */
 .tech-card:hover {
   transform: translateY(-5px);
   background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(157, 0, 255, 0.4); /* Lila Rand */
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  border-color: rgba(157, 0, 255, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-/* Tech Icon Container */
 .tech-icon {
-  width: 50px;
-  height: 50px;
-  margin-bottom: 15px;
+  width: 45px;
+  height: 45px;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* SVG BILDER STYLING */
 .tech-icon img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.1)); /* Leichter Glow */
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* Hover Effekt */
-.tech-card:hover .tech-icon img {
-  transform: scale(1.2);
-  filter: drop-shadow(
-    0 0 15px rgba(157, 0, 255, 0.4)
-  ); /* Lila Glow beim Hover */
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.05));
 }
 
 .tech-card h4 {
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  color: #ddd;
+  color: #888;
   margin: 0;
+  transition: color 0.3s;
+}
+
+.tech-card:hover h4 {
+  color: white;
+}
+
+/* The Loop Logic */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  } /* Moves exactly half (the original set) */
 }
 
 /* --- Projects Showcase (Home) --- */
@@ -1692,15 +1724,7 @@ footer {
   background-size: 20px 20px;
   pointer-events: none;
 }
-/* =========================================
-   PROJECT PAGE STYLES (Phishing Defender)
-   ========================================= */
-
-html {
-  scroll-behavior: smooth;
-}
-
-/* --- 1. Navigation --- */
+/* --- 1. Navigation (Edel & Symmetrisch) --- */
 .project-nav {
   position: fixed;
   top: 0;
@@ -1708,51 +1732,66 @@ html {
   width: 100%;
   height: 80px;
   z-index: 1000;
+
+  /* Glas-Effekt Hintergrund */
   background: rgba(10, 10, 10, 0.85);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
   display: flex;
   align-items: center;
 }
 
 .nav-container {
   width: 100%;
-  max-width: 1300px;
+  max-width: 1400px; /* Breiter, damit nichts quetscht */
   margin: 0 auto;
-  padding: 0 30px;
+  padding: 0 40px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+/* LINKS: Zurück Button */
 .back-link {
   display: flex;
   align-items: center;
-  gap: 10px;
-  color: white;
+  gap: 12px;
+  color: #aaa;
   text-decoration: none;
-  font-weight: 700;
-  font-size: 1.1rem;
+  font-weight: 600;
+  font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  flex: 1;
+  flex: 1; /* Nimmt links Platz ein */
+  z-index: 1002;
 }
 
-.back-link span {
-  color: var(--primary-color);
+.back-link span:first-child {
   font-size: 1.2rem;
-  transition: transform 0.3s;
+  color: var(--primary-color);
 }
 
-.back-link:hover span {
-  transform: translateX(-5px);
+.back-link:hover {
+  color: white;
 }
 
+/* WRAPPER für Desktop-Layout */
+.nav-content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 3;
+}
+
+/* MITTE: Navigation Links */
 .internal-links {
   display: flex;
   gap: 40px;
   justify-content: center;
-  flex: 2;
+  flex: 1;
 }
 
 .internal-links a {
@@ -1760,57 +1799,158 @@ html {
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 500;
+  padding: 8px 0;
   position: relative;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
 }
 
 .internal-links a:hover {
   color: white;
-  text-shadow: 0 0 10px rgba(157, 0, 255, 0.5);
+  text-shadow: 0 0 12px rgba(157, 0, 255, 0.5);
 }
 
 .internal-links a::after {
   content: "";
   position: absolute;
-  bottom: -5px;
-  left: 0;
+  bottom: 0;
+  left: 50%;
   width: 0;
   height: 2px;
   background: var(--primary-color);
-  transition: width 0.3s;
+
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  transform: translateX(-50%);
+  /box-shadow: 0 0 10px var(--primary-color);
+  border-radius: 2px;
 }
 
 .internal-links a:hover::after {
   width: 100%;
 }
 
+/* RECHTS: Button Gruppe */
 .nav-right {
-  flex: 1;
   display: flex;
+  align-items: center;
+  gap: 15px; /* Abstand zwischen Download & Sprache */
   justify-content: flex-end;
+  flex: 1;
 }
 
+/* Der Download Button (Edler, transparenter Look) */
 .nav-download-btn {
-  background: linear-gradient(135deg, #8e2de2, #4a00e0);
-  color: white;
-  padding: 10px 25px;
+  background: rgba(157, 0, 255, 0.1);
+  color: #ce80ff;
+  border: 1px solid rgba(157, 0, 255, 0.3);
+  padding: 8px 24px;
   border-radius: 50px;
   text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 700;
-  box-shadow: 0 4px 15px rgba(142, 45, 226, 0.3);
-  transition: all 0.3s;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
 .nav-download-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 20px rgba(157, 0, 255, 0.3);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(142, 45, 226, 0.5);
 }
 
-@media (max-width: 992px) {
+/* Der Sprach-Umschalter (Minimalistisch) */
+.lang-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #aaa;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s;
+}
+
+.lang-btn svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.lang-btn:hover {
+  border-color: white;
+  color: white;
+}
+
+/* HAMBURGER (Für Mobile) */
+.hamburger {
+  display: none; /* Auf Desktop weg */
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 1002;
+}
+.hamburger span {
+  width: 25px;
+  height: 2px;
+  background-color: white;
+  transition: 0.3s;
+}
+
+/* === MOBILE STYLES === */
+@media (max-width: 1100px) {
+  .hamburger {
+    display: flex;
+  } /* Burger zeigen */
+
+  .nav-content-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(5, 5, 5, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 1001;
+  }
+
+  .nav-content-wrapper.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
   .internal-links {
-    display: none !important;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .internal-links a {
+    font-size: 1.5rem;
+  }
+
+  .nav-right {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  /* Burger Animation */
+  .hamburger span.active:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+  }
+  .hamburger span.active:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger span.active:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
   }
 }
 
@@ -2019,5 +2159,75 @@ html {
   }
   50% {
     opacity: 0;
+  }
+}
+
+/* ========================
+   LANGUAGE SWITCHER & ANIMATION
+   ======================== */
+
+/* 1. Die Fade-Animation (Weicher Übergang) */
+body {
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+}
+
+body.fade-out {
+  opacity: 0; /* Seite wird kurz unsichtbar */
+  pointer-events: none; /* Klicks verhindern während Wechsel */
+}
+
+/* 2. Der neue "Globe" Button (Edel & Minimalistisch) */
+.lang-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #bbb;
+  padding: 8px 16px;
+  border-radius: 30px; /* Pill Shape */
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Abstand Icon zu Text */
+  transition: all 0.3s ease;
+  margin-left: 15px;
+}
+
+.lang-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  transition: transform 0.5s ease;
+}
+
+.lang-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 15px rgba(157, 0, 255, 0.2);
+}
+
+.lang-btn:hover svg {
+  transform: rotate(180deg); /* Kleine Drehung beim Hover */
+  fill: var(--primary-color);
+}
+
+/* 3. Layout Fix für die Nav-Rechts (Damit nichts klebt) */
+.nav-right {
+  display: flex;
+  align-items: center; /* Vertikal zentrieren */
+  justify-content: flex-end;
+  gap: 10px; /* Sicherer Abstand zwischen Download & Lang */
+}
+
+/* Mobile Anpassung */
+@media (max-width: 992px) {
+  .lang-btn {
+    margin-left: 0;
+    margin-top: 20px;
+    width: 100%;
+    justify-content: center;
+    border-color: rgba(255, 255, 255, 0.2);
   }
 }

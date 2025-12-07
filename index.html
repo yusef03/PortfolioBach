@@ -60,10 +60,18 @@
           </div>
 
           <div class="nav-links" id="navLinks">
-            <a href="#projects">Projekte</a>
-            <a href="#skills">Tech Stack</a>
-            <a href="#about">Über mich</a>
-            <a href="#contact" class="cta-button">Kontakt</a>
+            <a href="#projects" data-i18n="nav_projects">Projekte</a>
+            <a href="#skills" data-i18n="nav_stack">Tech Stack</a>
+            <a href="#about" data-i18n="nav_about">Über mich</a>
+            <a href="#contact" class="cta-button" data-i18n="nav_contact"
+              >Kontakt</a
+            >
+
+            <button
+              id="lang-switch"
+              class="lang-btn"
+              aria-label="Switch Language"
+            ></button>
           </div>
         </nav>
       </div>
@@ -78,7 +86,7 @@
               <span class="typing-text"></span><span class="cursor"></span>
             </h1>
 
-            <p>
+            <p data-i18n="hero_text">
               Hi, ich bin Yusef. Ich studiere Angewandte Informatik an der
               Hochschule Hannover (3. Semester). <br /><br />
 
@@ -93,10 +101,16 @@
               genau diese Denkweise in ein echtes Team einzubringen.
             </p>
             <div class="hero-buttons">
-              <a href="#projects" class="cta-button"
+              <a
+                href="#projects"
+                class="cta-button"
+                data-i18n="hero_btn_primary"
                 >Mein Hauptprojekt ansehen</a
               >
-              <a href="#contact" class="cta-button cta-button-outline"
+              <a
+                href="#contact"
+                class="cta-button cta-button-outline"
+                data-i18n="hero_btn_contact"
                 >Kontakt aufnehmen</a
               >
             </div>
@@ -123,73 +137,127 @@
 
     <section class="services section" id="skills">
       <div class="container">
-        <h2 class="section-title">Mein <span>Tech Stack</span></h2>
-        <p class="section-subtitle">
+        <h2 class="section-title" data-i18n="stack_title">
+          Mein <span>Tech Stack</span>
+        </h2>
+        <p class="section-subtitle" data-i18n="stack_subtitle">
           Hier sind die Technologien und Werkzeuge, die ich im Studium und in
           meinen privaten Projekten aktuell nutze und vertiefe.
         </p>
-        <div class="tech-grid">
-          <div class="tech-card">
-            <div class="tech-icon">
-              <img src="images/techstack/java.svg" alt="Java Logo" />
-            </div>
-            <h4>Java</h4>
-          </div>
 
-          <div class="tech-card">
-            <div class="tech-icon">
-              <img src="images/techstack/lua.svg" alt="Lua Logo" />
-            </div>
-            <h4>Lua</h4>
-          </div>
+        <div class="tech-marquee">
+          <div class="marquee-fade"></div>
 
-          <div class="tech-card">
-            <div class="tech-icon">
-              <img src="images/techstack/js.svg" alt="JavaScript Logo" />
+          <div class="tech-track">
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/java.svg" alt="Java" />
+              </div>
+              <h4>Java</h4>
             </div>
-            <h4>JavaScript</h4>
-          </div>
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/lua.svg" alt="Lua" />
+              </div>
+              <h4>Lua</h4>
+            </div>
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/js.svg" alt="JS" />
+              </div>
+              <h4>JavaScript</h4>
+            </div>
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/html.svg" alt="HTML" />
+              </div>
+              <h4>HTML5</h4>
+            </div>
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/css.svg" alt="CSS" />
+              </div>
+              <h4>CSS3</h4>
+            </div>
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/sql.svg" alt="SQL" />
+              </div>
+              <h4>SQL</h4>
+            </div>
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/linux.svg" alt="Linux" />
+              </div>
+              <h4>Linux</h4>
+            </div>
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/git.svg" alt="Git" />
+              </div>
+              <h4>Git</h4>
+            </div>
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/vscode.svg" alt="VS Code" />
+              </div>
+              <h4>VS Code</h4>
+            </div>
 
-          <div class="tech-card">
-            <div class="tech-icon">
-              <img src="images/techstack/html.svg" alt="HTML5 Logo" />
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/java.svg" alt="Java" />
+              </div>
+              <h4>Java</h4>
             </div>
-            <h4>HTML5</h4>
-          </div>
-
-          <div class="tech-card">
-            <div class="tech-icon">
-              <img src="images/techstack/css.svg" alt="CSS3 Logo" />
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/lua.svg" alt="Lua" />
+              </div>
+              <h4>Lua</h4>
             </div>
-            <h4>CSS3</h4>
-          </div>
-
-          <div class="tech-card">
-            <div class="tech-icon">
-              <img src="images/techstack/sql.svg" alt="SQL Logo" />
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/js.svg" alt="JS" />
+              </div>
+              <h4>JavaScript</h4>
             </div>
-            <h4>SQL</h4>
-          </div>
-
-          <div class="tech-card">
-            <div class="tech-icon">
-              <img src="images/techstack/linux.svg" alt="Linux Logo" />
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/html.svg" alt="HTML" />
+              </div>
+              <h4>HTML5</h4>
             </div>
-            <h4>Linux</h4>
-          </div>
-
-          <div class="tech-card">
-            <div class="tech-icon">
-              <img src="images/techstack/git.svg" alt="Git Logo" />
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/css.svg" alt="CSS" />
+              </div>
+              <h4>CSS3</h4>
             </div>
-            <h4>Git</h4>
-          </div>
-
-          <div class="tech-card">
-            <div class="tech-icon">
-              <img src="images/techstack/vscode.svg" alt="VS Code Logo" />
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/sql.svg" alt="SQL" />
+              </div>
+              <h4>SQL</h4>
             </div>
-            <h4>VS Code</h4>
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/linux.svg" alt="Linux" />
+              </div>
+              <h4>Linux</h4>
+            </div>
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/git.svg" alt="Git" />
+              </div>
+              <h4>Git</h4>
+            </div>
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/vscode.svg" alt="VS Code" />
+              </div>
+              <h4>VS Code</h4>
+            </div>
           </div>
         </div>
       </div>
@@ -197,8 +265,10 @@
 
     <section class="projects section" id="projects">
       <div class="container">
-        <h2 class="section-title">Meine <span>Projekte</span></h2>
-        <p class="section-subtitle">
+        <h2 class="section-title" data-i18n="projects_title">
+          Meine <span>Projekte</span>
+        </h2>
+        <p class="section-subtitle" data-i18n="projects_subtitle">
           Theorie ist gut, Praxis ist besser. Hier zeige ich, woran ich arbeite.
         </p>
 
@@ -216,6 +286,7 @@
 
           <div class="project-info">
             <h3>🛡️ PhishingDefender</h3>
+
             <div class="tech-stack-row">
               <span class="tech-badge">Java 17</span>
               <span class="tech-badge">Swing / AWT</span>
@@ -223,63 +294,75 @@
               <span class="tech-badge">MVC Pattern</span>
             </div>
 
-            <p class="project-description">
+            <p class="project-description" data-i18n="pd_desc">
               Ein interaktives Lernspiel ("Serious Game") zur Cybersicherheit.
               Ziel ist es, Kindern und Jugendlichen das Erkennen von
               Phishing-Mails beizubringen.
             </p>
 
             <ul class="project-features">
-              <li>
+              <li data-i18n="pd_feat_java">
                 <strong>Pure Java:</strong> Keine Game-Engine. UI, Animationen
                 (30 FPS Buffer) und Logik sind komplett selbst in Swing
                 implementiert.
               </li>
-              <li>
+              <li data-i18n="pd_feat_arch">
                 <strong>Architektur:</strong> Saubere Trennung durch
                 Manager-Klassen (Sound, Settings, Achievements).
               </li>
-              <li>
+              <li data-i18n="pd_feat_features">
                 <strong>Features:</strong> Highscore-System, Speichern (JSON),
                 Admin-Modus und interaktives "Cyber-HQ".
               </li>
             </ul>
 
             <div class="project-buttons">
-              <a href="projects/phishing-defender.html" class="cta-button"
+              <a
+                href="projects/phishing-defender.html"
+                class="cta-button"
+                data-i18n="pd_btn_view"
                 >Projekt ansehen</a
               >
               <a
                 href="https://github.com/yusef03/PhishingDefender"
                 target="_blank"
                 class="cta-button cta-button-outline"
+                data-i18n="pd_btn_code"
                 >Code auf GitHub</a
               >
             </div>
           </div>
         </div>
 
-        <h3 class="subsection-title">Weitere Projekte & Experimente</h3>
+        <h3 class="subsection-title" data-i18n="other_projects_title">
+          Weitere Projekte & Experimente
+        </h3>
+
         <div class="projects-grid-small reveal">
           <div class="project-card-small">
-            <h4>Portfolio Projekt</h4>
-            <p>
+            <h4 data-i18n="proj_portfolio_title">Portfolio Projekt</h4>
+
+            <p data-i18n="project_portfolio_desc">
               Aktueller Projekt <br />
               Planung und Realisierung einer Landingpage, um modernes UI-Design
               mit sauberer Code-Struktur zu verbinden.
             </p>
             <div class="small-links">
-              <span>🚧 In Arbeit</span>
+              <span data-i18n="project_portfolio_status">🚧 In Arbeit</span>
             </div>
           </div>
 
           <div class="project-card-small">
-            <h4>Mehr auf GitHub</h4>
-            <p>Schau dir meine aktuellen Repositories und Code-Snippets an.</p>
+            <h4 data-i18n="proj_github_title">Mehr auf GitHub</h4>
+
+            <p data-i18n="project_github_desc">
+              Schau dir meine aktuellen Repositories und Code-Snippets an.
+            </p>
             <a
               href="https://github.com/yusef03"
               target="_blank"
               class="small-link-text"
+              data-i18n="project_github_link"
               >Zum Profil &rarr;</a
             >
           </div>
@@ -291,7 +374,11 @@
       <div class="container">
         <div class="about-grid">
           <div class="about-content reveal">
-            <h2 class="section-title" style="text-align: left">
+            <h2
+              class="section-title"
+              style="text-align: left"
+              data-i18n="about_title"
+            >
               Über <span style="color: var(--primary-color)">Mich</span>
             </h2>
 
@@ -302,11 +389,12 @@
                 color: white;
                 margin-bottom: 20px;
               "
+              data-i18n="about_quote"
             >
               „Ich mag Dinge erst dann, wenn sie wirklich sauber funktionieren.“
             </p>
 
-            <p>
+            <p data-i18n="about_text_1">
               Ich bin Yusef Bach und studiere Informatik an der Hochschule
               Hannover im dritten Semester. Mir ist wichtig, dass ich die Dinge,
               an denen ich arbeite, wirklich verstehe. Nicht nur anwenden,
@@ -314,14 +402,14 @@
               funktioniert.
             </p>
 
-            <p>
+            <p data-i18n="about_text_2">
               Ich arbeite gerne klar und strukturiert. Das hilft mir sowohl bei
               Projekten wie dem Datenbankmodellieren als auch im Alltag. Am
               meisten Spaß machen mir Themen, bei denen man tiefer in Systeme
               eintaucht, zum Beispiel Linux oder Softwarearchitektur.
             </p>
 
-            <p>
+            <p data-i18n="about_text_3">
               In meiner Freizeit brauche ich manchmal Abstand vom Bildschirm.
               Musik hören, Freunde treffen oder einfach kurz abschalten – das
               bringt mir wieder Ruhe, damit ich mich danach wieder besser
@@ -331,24 +419,27 @@
             <div class="about-stats">
               <div class="stat-item">
                 <h3>3.</h3>
-                <p>Semester (WiSe 25/26)</p>
+                <p data-i18n="stat_semester">Semester (WiSe 25/26)</p>
               </div>
               <div class="stat-item">
                 <h3>100%</h3>
-                <p>Leidenschaft & Fokus</p>
+                <p data-i18n="stat_passion">Leidenschaft & Fokus</p>
               </div>
               <div class="stat-item">
                 <h3>∞</h3>
-                <p>Lernbereitschaft</p>
+                <p data-i18n="stat_learning">Lernbereitschaft</p>
               </div>
             </div>
 
             <div style="margin-top: 30px; display: flex; gap: 15px">
-              <a href="#contact" class="cta-button">Lass uns sprechen</a>
+              <a href="#contact" class="cta-button" data-i18n="btn_talk"
+                >Lass uns sprechen</a
+              >
               <a
                 href="docs/Lebenslauf_Yusef_Bach.pdf"
                 target="_blank"
                 class="cta-button cta-button-outline"
+                data-i18n="btn_cv"
               >
                 CV Download (PDF)
               </a>
@@ -373,47 +464,53 @@
     <section class="cta-section">
       <div class="container">
         <div class="cta-content">
-          <h2>Kontakt</h2>
-          <p>
+          <h2 data-i18n="cta_title">Kontakt</h2>
+          <p data-i18n="cta_text">
             Wenn Sie Fragen zu meinen Projekten haben oder mit mir in Austausch
             treten möchten, können Sie mich jederzeit kontaktieren.
           </p>
-          <a href="#contact" class="cta-button">Kontakt aufnehmen</a>
+          <a href="#contact" class="cta-button" data-i18n="cta_btn"
+            >Kontakt aufnehmen</a
+          >
         </div>
       </div>
     </section>
 
     <section class="contact section" id="contact">
       <div class="container">
-        <h2 class="section-title">Kontaktieren <span>Sie mich</span></h2>
-        <p class="section-subtitle">
+        <h2 class="section-title" data-i18n="contact_title">
+          Kontaktieren <span>Sie mich</span>
+        </h2>
+        <p class="section-subtitle" data-i18n="contact_subtitle">
           Ich freue mich darauf, von Ihnen zu hören und Ihre Fragen oder
           IT-Themen zu besprechen.
         </p>
 
         <div class="contact-grid reveal">
           <div class="contact-info">
-            <h3>Lassen Sie uns zusammenarbeiten</h3>
-            <p>
+            <h3 data-i18n="contact_header">Lassen Sie uns zusammenarbeiten</h3>
+            <p data-i18n="contact_text">
               Ich stehe Ihnen für Fragen zu meinem Werdegang oder meinen
               Projekten jederzeit zur Verfügung. Sie können mich über das
               Formular oder direkt per E-Mail erreichen.
             </p>
             <div class="contact-details">
-              <div class="contact-item"></div>
-
               <div class="contact-item">
                 <div class="contact-icon">📞</div>
                 <div class="contact-text">
-                  <h4>Telefon</h4>
-                  <p><a href="tel:">Bei Anfrage</a></p>
+                  <h4 data-i18n="contact_label_phone">Telefon</h4>
+                  <p>
+                    <a href="tel:" data-i18n="contact_phone_placeholder"
+                      >Bei Anfrage</a
+                    >
+                  </p>
                 </div>
               </div>
 
               <div class="contact-item">
                 <div class="contact-icon">✉️</div>
                 <div class="contact-text">
-                  <h4>E-Mail</h4>
+                  <h4 data-i18n="contact_label_email">E-Mail</h4>
                   <p>
                     <a href="mailto:kontakt@yusefbach.de"
                       >kontakt@yusefbach.de</a
@@ -425,8 +522,10 @@
               <div class="contact-item">
                 <div class="contact-icon">📍</div>
                 <div class="contact-text">
-                  <h4>Standort</h4>
-                  <p>Region Hannover (Verfügbar vor Ort & Remote)</p>
+                  <h4 data-i18n="contact_label_location">Standort</h4>
+                  <p data-i18n="contact_location_val">
+                    Region Hannover (Verfügbar vor Ort & Remote)
+                  </p>
                 </div>
               </div>
             </div>
@@ -434,54 +533,60 @@
 
           <form class="contact-form">
             <div class="form-group">
-              <label for="name">Name</label>
+              <label for="name" data-i18n="form_name">Name</label>
               <input
                 type="text"
                 id="name"
                 name="name"
                 class="form-control"
                 placeholder="Ihr Name"
+                data-i18n-placeholder="form_name_placeholder"
                 required
               />
             </div>
 
             <div class="form-group">
-              <label for="email">E-Mail</label>
+              <label for="email" data-i18n="form_email">E-Mail</label>
               <input
                 type="email"
                 id="email"
                 name="email"
                 class="form-control"
                 placeholder="Ihre E-Mail-Adresse"
+                data-i18n-placeholder="form_email_placeholder"
                 required
               />
             </div>
 
             <div class="form-group">
-              <label for="subject">Betreff</label>
+              <label for="subject" data-i18n="form_subject">Betreff</label>
               <input
                 type="text"
                 id="subject"
                 name="subject"
                 class="form-control"
                 placeholder="Betreff"
+                data-i18n-placeholder="form_subject_placeholder"
                 required
               />
               <input type="text" name="_gotcha" style="display: none" />
             </div>
 
             <div class="form-group">
-              <label for="message">Nachricht</label>
+              <label for="message" data-i18n="form_message">Nachricht</label>
               <textarea
                 id="message"
                 name="message"
                 class="form-control"
                 placeholder="Ihre Nachricht"
+                data-i18n-placeholder="form_message_placeholder"
                 required
               ></textarea>
             </div>
 
-            <button type="submit" class="submit-btn">Nachricht senden</button>
+            <button type="submit" class="submit-btn" data-i18n="form_btn_send">
+              Nachricht senden
+            </button>
           </form>
         </div>
       </div>
@@ -492,11 +597,12 @@
         <div class="footer-grid">
           <div class="footer-about">
             <a href="#" class="footer-logo">Yusef<span> Bach</span></a>
-            <p>
+            <p data-i18n="footer_about">
               Informatik-Student & Nachwuchs-DEV.<br />
               Motiviert, als Werkstudent Theorie in Praxis umzusetzen und echte
               Projekte zu unterstützen.
             </p>
+
             <div class="footer-social">
               <a
                 href="https://github.com/yusef03"
@@ -596,33 +702,48 @@
           </div>
 
           <div class="footer-links-container">
-            <h3 class="footer-heading">Navigation</h3>
+            <h3 class="footer-heading" data-i18n="footer_nav">Navigation</h3>
             <ul class="footer-links">
               <li>
-                <a href="#projects"><i>&rsaquo;</i> Projekte</a>
+                <a href="#projects"
+                  ><i style="margin-right: 5px">&rsaquo;</i>
+                  <span data-i18n="nav_projects">Projekte</span></a
+                >
               </li>
               <li>
-                <a href="#skills"><i>&rsaquo;</i> Tech Stack</a>
+                <a href="#skills"
+                  ><i style="margin-right: 5px">&rsaquo;</i>
+                  <span data-i18n="nav_stack">Tech Stack</span></a
+                >
               </li>
               <li>
-                <a href="#about"><i>&rsaquo;</i> Über mich</a>
+                <a href="#about"
+                  ><i style="margin-right: 5px">&rsaquo;</i>
+                  <span data-i18n="nav_about">Über mich</span></a
+                >
               </li>
               <li>
                 <a href="projects/phishing-defender.html"
-                  ><i>&rsaquo;</i> Case Study</a
+                  ><i style="margin-right: 5px">&rsaquo;</i> Case Study</a
                 >
               </li>
             </ul>
           </div>
 
           <div class="footer-links-container">
-            <h3 class="footer-heading">Rechtliches</h3>
+            <h3 class="footer-heading" data-i18n="footer_legal">Rechtliches</h3>
             <ul class="footer-links">
               <li>
-                <a href="impressum.html"><i>&rsaquo;</i> Impressum</a>
+                <a href="impressum.html"
+                  ><i style="margin-right: 5px">&rsaquo;</i>
+                  <span data-i18n="footer_impressum">Impressum</span></a
+                >
               </li>
               <li>
-                <a href="datenschutz.html"><i>&rsaquo;</i> Datenschutz</a>
+                <a href="datenschutz.html"
+                  ><i style="margin-right: 5px">&rsaquo;</i>
+                  <span data-i18n="footer_privacy">Datenschutz</span></a
+                >
               </li>
             </ul>
           </div>
@@ -633,6 +754,7 @@
         </div>
       </div>
     </footer>
+    <script src="js/translations.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>
