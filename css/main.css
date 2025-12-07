@@ -1724,7 +1724,8 @@ footer {
   background-size: 20px 20px;
   pointer-events: none;
 }
-/* --- 1. Navigation (Edel & Symmetrisch) --- */
+/* --- 1. Navigation (Fixed & Mobile Optimized) --- */
+.navbar,
 .project-nav {
   position: fixed;
   top: 0;
@@ -1732,83 +1733,80 @@ footer {
   width: 100%;
   height: 80px;
   z-index: 1000;
-
-  /* Glas-Effekt Hintergrund */
   background: rgba(10, 10, 10, 0.85);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-
   display: flex;
   align-items: center;
 }
 
+.container,
 .nav-container {
   width: 100%;
-  max-width: 1400px; /* Breiter, damit nichts quetscht */
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 40px;
-
+  padding: 0 30px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  /* WICHTIG: Erlaubt uns, die Reihenfolge flexibel zu steuern */
+  justify-content: space-between;
 }
 
-/* LINKS: Zurück Button */
+/* 1. LINKS: Logo / Zurück Button */
+.logo,
 .back-link {
   display: flex;
   align-items: center;
   gap: 12px;
-  color: #aaa;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  flex: 1; /* Nimmt links Platz ein */
-  z-index: 1002;
-}
-
-.back-link span:first-child {
-  font-size: 1.2rem;
-  color: var(--primary-color);
-}
-
-.back-link:hover {
   color: white;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  position: relative;
+  z-index: 1002;
+  /* FIX: Verhindert, dass der Link den ganzen Platz einnimmt und den Hamburger blockiert */
+  flex: 0 0 auto;
+  order: 1; /* Immer ganz links */
 }
 
-/* WRAPPER für Desktop-Layout */
+.back-link span {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+}
+
+/* 2. MITTE (Desktop): Das Menü (Links & Download) */
+.nav-links,
 .nav-content-wrapper {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex: 3;
+  flex: 1; /* Nimmt den verfügbaren Platz */
+  justify-content: space-between; /* Verteilt Mitte und Rechts */
+  order: 2; /* In der Mitte der Leiste */
+  margin-left: 40px; /* Abstand zum Logo */
 }
 
-/* MITTE: Navigation Links */
+/* Die Links in der Mitte */
 .internal-links {
   display: flex;
-  gap: 40px;
-  justify-content: center;
-  flex: 1;
+  gap: 30px;
+  margin: 0 auto; /* Zentriert die Links perfekt */
 }
 
 .internal-links a {
   color: #bbb;
   text-decoration: none;
-  font-size: 0.95rem;
   font-weight: 500;
-  padding: 8px 0;
+  transition: all 0.3s;
+  padding: 5px 0;
   position: relative;
-  transition: all 0.3s ease;
 }
-
 .internal-links a:hover {
   color: white;
-  text-shadow: 0 0 12px rgba(157, 0, 255, 0.5);
+  text-shadow: 0 0 10px rgba(157, 0, 255, 0.5);
 }
 
+/* Animation Strich unter Links */
 .internal-links a::after {
   content: "";
   position: absolute;
@@ -1817,53 +1815,51 @@ footer {
   width: 0;
   height: 2px;
   background: var(--primary-color);
-
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
   transform: translateX(-50%);
-  /box-shadow: 0 0 10px var(--primary-color);
   border-radius: 2px;
 }
-
 .internal-links a:hover::after {
   width: 100%;
 }
 
-/* RECHTS: Button Gruppe */
+/* Rechts im Desktop Menü (Download Button) */
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 15px; /* Abstand zwischen Download & Sprache */
-  justify-content: flex-end;
-  flex: 1;
 }
 
-/* Der Download Button (Edler, transparenter Look) */
 .nav-download-btn {
   background: rgba(157, 0, 255, 0.1);
   color: #ce80ff;
   border: 1px solid rgba(157, 0, 255, 0.3);
-  padding: 8px 24px;
+  padding: 8px 20px;
   border-radius: 50px;
   text-decoration: none;
   font-size: 0.85rem;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.3s;
 }
-
 .nav-download-btn:hover {
   background: var(--primary-color);
   color: white;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 20px rgba(157, 0, 255, 0.3);
-  transform: translateY(-2px);
 }
 
-/* Der Sprach-Umschalter (Minimalistisch) */
+/* 3. RECHTS AUSSEN (Sprach-Button & Hamburger) */
+.mobile-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  order: 3; /* Ganz rechts positioniert */
+  margin-left: 20px;
+  z-index: 1005; /* WICHTIG: Höher als alles andere -> Klickbar! */
+}
+
+/* Sprach-Button (Glass Look) */
 .lang-btn {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #aaa;
+  color: #bbb;
   padding: 6px 12px;
   border-radius: 20px;
   cursor: pointer;
@@ -1874,56 +1870,67 @@ footer {
   gap: 6px;
   transition: all 0.3s;
 }
-
-.lang-btn svg {
-  width: 14px;
-  height: 14px;
-  fill: currentColor;
-}
-
 .lang-btn:hover {
   border-color: white;
   color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+.lang-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
 }
 
-/* HAMBURGER (Für Mobile) */
+/* Hamburger Icon */
 .hamburger {
-  display: none; /* Auf Desktop weg */
+  display: none; /* Auf Desktop ausgeblendet */
   flex-direction: column;
   gap: 6px;
   cursor: pointer;
-  z-index: 1002;
+  width: 28px;
 }
 .hamburger span {
-  width: 25px;
+  width: 100%;
   height: 2px;
   background-color: white;
   transition: 0.3s;
 }
 
-/* === MOBILE STYLES === */
+/* === MOBILE STYLES (Unter 1100px) === */
 @media (max-width: 1100px) {
+  /* Layout: Controls (Lang + Burger) nach rechts schieben */
+  .mobile-controls {
+    margin-left: auto;
+  }
+
   .hamburger {
     display: flex;
-  } /* Burger zeigen */
+  } /* Burger sichtbar machen */
 
+  /* Das Menü (Nav Links) verstecken & als Overlay stylen */
+  .nav-links,
   .nav-content-wrapper {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background: rgba(5, 5, 5, 0.98);
+    background: rgba(5, 5, 5, 0.98); /* Dunkles Overlay */
     backdrop-filter: blur(20px);
     flex-direction: column;
     justify-content: center;
     gap: 40px;
+    margin-left: 0;
+    z-index: 1001; /* Unter den Controls (Lang/Burger), damit die sichtbar bleiben */
+
+    /* Unsichtbar als Standard */
     opacity: 0;
     pointer-events: none;
     transition: all 0.3s ease;
-    z-index: 1001;
   }
 
+  /* Wenn Menü offen ist (Klasse .active via JS) */
+  .nav-links.active,
   .nav-content-wrapper.active {
     opacity: 1;
     pointer-events: auto;
@@ -1931,26 +1938,22 @@ footer {
 
   .internal-links {
     flex-direction: column;
+    align-items: center;
     gap: 30px;
   }
   .internal-links a {
     font-size: 1.5rem;
   }
 
-  .nav-right {
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  /* Burger Animation */
+  /* Hamburger Animation zu X */
   .hamburger span.active:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 6px);
+    transform: rotate(45deg) translate(6px, 6px);
   }
   .hamburger span.active:nth-child(2) {
     opacity: 0;
   }
   .hamburger span.active:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -6px);
+    transform: rotate(-45deg) translate(6px, -6px);
   }
 }
 
