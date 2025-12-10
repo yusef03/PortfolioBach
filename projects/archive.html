@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projekt Archiv | Yusef Bach</title>
+    <script src="../js/status.js"></script>
+    <link rel="stylesheet" href="../css/main.css" />
+  </head>
+  <body>
+    <nav class="project-nav sticky-nav">
+      <div class="nav-container">
+        <a href="../index.html" class="back-link"><span>←</span> Zurück</a>
+        <div class="mobile-header-controls">
+          <button
+            id="lang-switch"
+            class="lang-btn"
+            aria-label="Switch Language"
+          ></button>
+        </div>
+      </div>
+    </nav>
+
+    <section
+      class="archive-header"
+      style="padding-top: 140px; padding-bottom: 40px; text-align: center"
+    >
+      <div class="container">
+        <h1 class="hero-title" style="font-size: 2.5rem">
+          Projekt <span class="highlight-text">Archiv</span>
+        </h1>
+        <p
+          style="
+            color: #aaa;
+            max-width: 600px;
+            margin: 20px auto;
+            line-height: 1.6;
+          "
+        >
+          Eine Sammlung aller meiner Coding-Experimente, Tools und Case Studies.
+          Hier landet alles, was nicht auf der Startseite steht.
+        </p>
+      </div>
+    </section>
+
+    <section class="archive-content" style="padding-bottom: 120px">
+      <div class="container">
+        <div id="archive-grid-container" class="archive-grid"></div>
+      </div>
+    </section>
+
+    <footer>
+      <div
+        class="container"
+        style="
+          text-align: center;
+          padding: 40px;
+          color: #555;
+          border-top: 1px solid rgba(255, 255, 255, 0.05);
+        "
+      >
+        &copy; 2025 Yusef Bach
+      </div>
+    </footer>
+
+    <script src="../js/translations.js"></script>
+    <script src="../js/projects-data.js"></script>
+    <script src="../js/project-renderer.js"></script>
+    <script src="../js/script.js"></script>
+  </body>
+</html>

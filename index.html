@@ -16,14 +16,17 @@
     />
     <meta name="author" content="Yusef Bach" />
 
-    <link rel="icon" type="image/png" href="images/logo.png" />
+    <link rel="icon" type="image/png" href="images/ui/logo.png" />
 
     <meta property="og:title" content="Yusef Bach - Portfolio" />
     <meta
       property="og:description"
       content="Informatik-Student & Entwickler. Schau dir meine Projekte und Case Studies an."
     />
-    <meta property="og:image" content="https://yusefbach.de/images/logo.png" />
+    <meta
+      property="og:image"
+      content="https://yusefbach.de/images/ui/logo.png"
+    />
     <meta property="og:url" content="https://yusefbach.de/" />
 
     <link rel="canonical" href="https://yusefbach.de/" />
@@ -47,7 +50,7 @@
         <nav class="navbar">
           <a href="#" class="logo">
             <img
-              src="images/logo.png"
+              src="images/ui/logo.png"
               alt="Bach IT Logo"
               style="height: 40px; margin-right: 10px"
             />
@@ -119,7 +122,7 @@
 
           <div class="hero-image">
             <img
-              src="images/yusefbach_profile.jpg"
+              src="../images/ui/profile.jpg"
               alt="Yusef Bach"
               style="
                 width: 100%;
@@ -269,104 +272,17 @@
         <h2 class="section-title" data-i18n="projects_title">
           Meine <span>Projekte</span>
         </h2>
-        <p class="section-subtitle" data-i18n="projects_subtitle">
-          Theorie ist gut, Praxis ist besser. Hier zeige ich, woran ich arbeite.
-        </p>
 
-        <div class="project-showcase reveal">
-          <div class="project-image">
-            <img
-              src="images/phishing_project.png"
-              alt="Phishing Defender Gameplay"
-              onerror="this.src='https://placehold.co/600x400/1e1e1e/e30000?text=Gameplay+Screenshot'"
-            />
-            <div class="project-overlay">
-              <span class="badge badge-highlight">Serious Game</span>
-            </div>
-          </div>
+        <div id="hero-project-container"></div>
 
-          <div class="project-info">
-            <h3>🛡️ PhishingDefender</h3>
-
-            <div class="tech-stack-row">
-              <span class="tech-badge">Java 17</span>
-              <span class="tech-badge">Swing / AWT</span>
-              <span class="tech-badge">Gson (JSON)</span>
-              <span class="tech-badge">MVC Pattern</span>
-            </div>
-
-            <p class="project-description" data-i18n="pd_desc">
-              Ein interaktives Lernspiel ("Serious Game") zur Cybersicherheit.
-              Ziel ist es, Kindern und Jugendlichen das Erkennen von
-              Phishing-Mails beizubringen.
-            </p>
-
-            <ul class="project-features">
-              <li data-i18n="pd_feat_java">
-                <strong>Pure Java:</strong> Keine Game-Engine. UI, Animationen
-                (30 FPS Buffer) und Logik sind komplett selbst in Swing
-                implementiert.
-              </li>
-              <li data-i18n="pd_feat_arch">
-                <strong>Architektur:</strong> Saubere Trennung durch
-                Manager-Klassen (Sound, Settings, Achievements).
-              </li>
-              <li data-i18n="pd_feat_features">
-                <strong>Features:</strong> Highscore-System, Speichern (JSON),
-                Admin-Modus und interaktives "Cyber-HQ".
-              </li>
-            </ul>
-
-            <div class="project-buttons">
-              <a
-                href="projects/phishing-defender.html"
-                class="cta-button"
-                data-i18n="pd_btn_view"
-                >Projekt ansehen</a
-              >
-              <a
-                href="https://github.com/yusef03/PhishingDefender"
-                target="_blank"
-                class="cta-button cta-button-outline"
-                data-i18n="pd_btn_code"
-                >Code auf GitHub</a
-              >
-            </div>
-          </div>
-        </div>
-
-        <h3 class="subsection-title" data-i18n="other_projects_title">
-          Weitere Projekte & Experimente
-        </h3>
-
-        <div class="projects-grid-small reveal">
-          <div class="project-card-small">
-            <h4 data-i18n="proj_portfolio_title">Portfolio Projekt</h4>
-
-            <p data-i18n="project_portfolio_desc">
-              Aktueller Projekt <br />
-              Planung und Realisierung einer Landingpage, um modernes UI-Design
-              mit sauberer Code-Struktur zu verbinden.
-            </p>
-            <div class="small-links">
-              <span data-i18n="project_portfolio_status">🚧 In Arbeit</span>
-            </div>
-          </div>
-
-          <div class="project-card-small">
-            <h4 data-i18n="proj_github_title">Mehr auf GitHub</h4>
-
-            <p data-i18n="project_github_desc">
-              Schau dir meine aktuellen Repositories und Code-Snippets an.
-            </p>
-            <a
-              href="https://github.com/yusef03"
-              target="_blank"
-              class="small-link-text"
-              data-i18n="project_github_link"
-              >Zum Profil &rarr;</a
-            >
-          </div>
+        <div class="archive-cta reveal">
+          <p data-i18n="archive_cta_text">
+            Weitere Experimente, Tools & Case Studies
+          </p>
+          <a href="projects/archive.html" class="cta-button cta-button-outline">
+            <span data-i18n="archive_cta_btn">Zum Projekt-Archiv</span>
+            <span>&rarr;</span>
+          </a>
         </div>
       </div>
     </section>
@@ -449,7 +365,7 @@
 
           <div class="about-image reveal">
             <img
-              src="images/yusefbach_profile.jpg"
+              src="../images/ui/profile.jpg"
               alt="Yusef bei der Arbeit"
               style="
                 border-radius: 20px;
@@ -756,6 +672,9 @@
       </div>
     </footer>
     <script src="js/translations.js"></script>
+    <script src="js/projects-data.js"></script>
+    <script src="js/project-renderer.js"></script>
+
     <script src="js/script.js"></script>
   </body>
 </html>

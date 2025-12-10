@@ -2181,3 +2181,187 @@ body.fade-out {
     border-color: rgba(255, 255, 255, 0.2);
   }
 }
+
+/* --- Hero Project Layout (Index) --- */
+.hero-project-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.hero-image-wrapper {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  /* Aspect Ratio fix for consistent height */
+  aspect-ratio: 16/9;
+}
+
+.hero-project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hero-image-wrapper:hover .hero-project-img {
+  transform: scale(1.05);
+}
+
+@media (max-width: 992px) {
+  .hero-project-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .hero-image-wrapper {
+    order: -1; /* Bild über Text auf Handy */
+  }
+}
+
+/* --- Archive Grid System --- */
+.archive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.archive-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s, border-color 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.archive-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(157, 0, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.archive-img-container {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.archive-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  backdrop-filter: blur(3px);
+}
+
+.archive-card:hover .overlay {
+  opacity: 1;
+}
+
+.view-btn {
+  background: var(--primary-color);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transform: translateY(10px);
+  transition: transform 0.3s;
+}
+
+.archive-card:hover .view-btn {
+  transform: translateY(0);
+}
+
+.card-content {
+  padding: 25px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header h4 {
+  margin: 0;
+  color: white;
+  font-size: 1.1rem;
+}
+.status-badge {
+  font-size: 0.7rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 3px 8px;
+  border-radius: 4px;
+  color: #aaa;
+}
+
+.card-desc {
+  font-size: 0.9rem;
+  color: #999;
+  line-height: 1.5;
+  margin: 15px 0 20px;
+  flex-grow: 1;
+}
+
+.card-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.card-tags span {
+  font-size: 0.75rem;
+  color: var(--primary-color);
+  background: rgba(157, 0, 255, 0.1);
+  border: 1px solid rgba(157, 0, 255, 0.2);
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+
+/* ========================
+   ARCHIVE LINK
+   ======================== */
+.archive-cta {
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 160px;
+  padding: 50px 20px;
+  background: radial-gradient(
+    circle at center,
+    rgba(157, 0, 255, 0.03) 0%,
+    transparent 70%
+  );
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+  position: relative;
+}
+
+.archive-cta p {
+  color: #888;
+  font-size: 1rem;
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+}
+
+/* Kleiner Pfeil-Effekt für den Button */
+.archive-cta .cta-button span {
+  display: inline-block;
+  transition: transform 0.3s;
+}
+.archive-cta .cta-button:hover span {
+  transform: translateX(5px);
+}

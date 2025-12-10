@@ -223,6 +223,80 @@ const translations = {
 
     // --- LEGAL PAGES (Note) ---
     legal_note: "", // Leer für DE
+
+    // --- CV ENGINE PROJECT (DE) ---
+    // Startseite Karte
+    proj_cv_title: "HTML/CSS CV Engine",
+    proj_cv_desc:
+      "Entwicklung einer Print-Optimierten Rendering-Engine für Bewerbungsunterlagen. Pixelgenaues A4-Design direkt im Browser.",
+    proj_cv_status: "🚀 Beendet",
+    proj_cv_link: "Case Study ansehen",
+
+    // Detail Seite - Nav & Hero
+    cv_hero_title: "Next Gen <span class='text-stroke'>Application</span>",
+    cv_hero_subtitle:
+      "Kein Word. Kein Canva. <span class='highlight-text'>100% Code.</span>",
+    cv_hero_badge: "CSS Print Engine",
+
+    // Mission
+    cv_tag_project: "Das Konzept",
+    cv_mission_title:
+      "Bewerbung als <br><span class='highlight-text'>Code-Experience</span>",
+    cv_mission_text:
+      "Standard-Tools wie Word sind unflexibel und generieren unsauberen Code. Meine Lösung: Ein eigenes Framework basierend auf HTML5 & CSS3, das Design-Freiheit mit technischer Präzision verbindet.",
+    cv_mission_subtext:
+      "Das Ziel: Absolute Kontrolle über Layout, Typografie und 'Dark Glass' Ästhetik – bei perfektem PDF-Export.",
+
+    // Stats
+    cv_stat_dependencies: "Dependencies",
+    cv_stat_performance: "Lighthouse Score",
+    cv_stat_format: "Format",
+
+    // Tech Highlights (Process)
+    cv_tech_title: "Technical <span class='highlight-text'>Deep Dive</span>",
+    cv_tech_sub: "Warum HTML besser ist als Word.",
+
+    cv_feat_1_title: "Print CSS Optimization",
+    cv_feat_1_desc:
+      "Nutzung von @page und zoom-Hacks für pixelgenaue A4-Skalierung ohne Ränder.",
+    cv_feat_2_title: "Glassmorphism UI",
+    cv_feat_2_desc:
+      "Modernes UI-Design mit backdrop-filter und CSS-Variablen für Dark-Mode Ästhetik.",
+    cv_feat_3_title: "Privacy Workflow",
+    cv_feat_3_desc:
+      "Trennung von privaten Daten und Code via .gitignore und Placeholder-Strategie.",
+
+    // Challenges
+    cv_chal_title: "Challenges & <span class='highlight-text'>Solutions</span>",
+    cv_chal_sub: "Der Weg vom Browser zum Papier.",
+
+    cv_chal_1_title: "Problem: Browser Rendering",
+    cv_chal_1_desc:
+      "Browser rendern Abstände unterschiedlich. Ein PDF aus Chrome sah anders aus als in Edge.",
+    cv_chal_1_sol:
+      "Einsatz von `webkit-print-color-adjust: exact` und striktem CSS Reset für Druck-Medien.",
+
+    cv_chal_2_title: "Problem: Privacy",
+    cv_chal_2_desc:
+      "Wie zeige ich den Code auf GitHub, ohne meine Telefonnummer zu leaken?",
+    cv_chal_2_sol:
+      "Architektur-Split: `index.html` (Dummy Daten) vs. `private_data.js` (Lokal).",
+
+    // Downloads
+    cv_dl_title: "Check the <span class='highlight-text'>Results</span>",
+    cv_dl_sub: "Code ansehen oder Ergebnis prüfen.",
+    cv_dl_repo_info: "Full Source Code",
+    cv_dl_pdf_info: "Result Preview (PDF)",
+
+    // --- CV ENGINE HERO FEATURES ---
+    cv_card_feat_1:
+      "<strong>Print CSS:</strong> Pixelgenaue A4-Skalierung via @page Rules.",
+    cv_card_feat_2:
+      "<strong>Privacy-First:</strong> Datentrennung via .gitignore Strategie.",
+    cv_card_feat_3:
+      "<strong>No-Framework:</strong> 100% Vanilla HTML5 & CSS3 Architecture.",
+    archive_cta_text: "Weitere Experimente, Tools & Case Studies",
+    archive_cta_btn: "Zum Projekt-Archiv",
   },
 
   en: {
@@ -449,5 +523,79 @@ const translations = {
     // --- LEGAL PAGES (Note) ---
     legal_note:
       "<br><br><em>Note: The German version of this document is the legally binding one.</em>",
+    // --- CV ENGINE PROJECT (EN) ---
+    // Home Card
+    proj_cv_title: "HTML/CSS CV Engine",
+    proj_cv_desc:
+      "Development of a print-optimized rendering engine for application documents. Pixel-perfect A4 design directly in the browser.",
+    proj_cv_status: "🚀 Completed",
+    proj_cv_link: "View Case Study",
+
+    // Detail Page
+    cv_hero_title: "Next Gen <span class='text-stroke'>Application</span>",
+    cv_hero_subtitle:
+      "No Word. No Canva. <span class='highlight-text'>100% Code.</span>",
+    cv_hero_badge: "CSS Print Engine",
+
+    // Mission
+    cv_tag_project: "The Concept",
+    cv_mission_title:
+      "Application as a <br><span class='highlight-text'>Code Experience</span>",
+    cv_mission_text:
+      "Standard tools like Word are inflexible and generate messy code. My solution: A custom framework based on HTML5 & CSS3 linking design freedom with technical precision.",
+    cv_mission_subtext:
+      "The Goal: Absolute control over layout, typography, and 'Dark Glass' aesthetics – with perfect PDF export.",
+
+    // Stats
+    cv_stat_dependencies: "Dependencies",
+    cv_stat_performance: "Lighthouse Score",
+    cv_stat_format: "Format",
+
+    // Tech Highlights
+    cv_tech_title: "Technical <span class='highlight-text'>Deep Dive</span>",
+    cv_tech_sub: "Why HTML beats Word.",
+
+    cv_feat_1_title: "Print CSS Optimization",
+    cv_feat_1_desc:
+      "Using @page and zoom hacks for pixel-perfect A4 scaling without margins.",
+    cv_feat_2_title: "Glassmorphism UI",
+    cv_feat_2_desc:
+      "Modern UI design with backdrop-filter and CSS variables for Dark Mode aesthetics.",
+    cv_feat_3_title: "Privacy Workflow",
+    cv_feat_3_desc:
+      "Separation of private data and code via .gitignore and placeholder strategy.",
+
+    // Challenges
+    cv_chal_title: "Challenges & <span class='highlight-text'>Solutions</span>",
+    cv_chal_sub: "The path from browser to paper.",
+
+    cv_chal_1_title: "Problem: Browser Rendering",
+    cv_chal_1_desc:
+      "Browsers render margins differently. A Chrome PDF looked different from Edge.",
+    cv_chal_1_sol:
+      "Usage of `webkit-print-color-adjust: exact` and strict CSS reset for print media.",
+
+    cv_chal_2_title: "Problem: Privacy",
+    cv_chal_2_desc:
+      "How to show code on GitHub without leaking my phone number?",
+    cv_chal_2_sol:
+      "Architecture Split: `index.html` (Dummy Data) vs. `private_data.js` (Local).",
+
+    // Downloads
+    cv_dl_title: "Check the <span class='highlight-text'>Results</span>",
+    cv_dl_sub: "View code or check the result.",
+    cv_dl_repo_info: "Full Source Code",
+    cv_dl_pdf_info: "Result Preview (PDF)",
+
+    // --- CV ENGINE HERO FEATURES ---
+    cv_card_feat_1:
+      "<strong>Print CSS:</strong> Pixel-perfect A4 scaling via @page rules.",
+    cv_card_feat_2:
+      "<strong>Privacy-First:</strong> Data separation via .gitignore strategy.",
+    cv_card_feat_3:
+      "<strong>No-Framework:</strong> 100% Vanilla HTML5 & CSS3 Architecture.",
+
+    archive_cta_text: "More Experiments, Tools & Case Studies",
+    archive_cta_btn: "Go to Project Archive",
   },
 };
