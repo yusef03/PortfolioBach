@@ -1,5 +1,15 @@
 # Yusef Bach - Portfolio 🚀
 
+### 🚀 Latest Updates (v2.2.0)
+
+**Major Architecture Overhaul & CV Engine Rollout**
+
+- **Dynamic Rendering Engine:** Das Portfolio nutzt nun ein JS-basiertes CMS-System zur Trennung von Daten und Design.
+- **Asset Reorganization:** Vollständige Umstrukturierung der Ordner nach Domain-Driven Design.
+- **New Case Study:** Integration der "HTML/CSS CV Engine" mit Live-Demo und Repo-Link.
+
+[📜 Kompletten Changelog ansehen](./CHANGELOG.md)
+
 Moin! Das ist das Repository für meine persönliche Portfolio-Website [yusefbach.de](https://yusefbach.de).
 
 Hier zeige ich meine Projekte (wie den Phishing Defender), meinen Tech-Stack und wer ich bin. Das Ganze ist mein "Spielplatz", um Web-Technologien, DNS-Configs und Server-Kommunikation in der Praxis zu lernen.
