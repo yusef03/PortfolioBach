@@ -1,0 +1,1816 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Architecture | Case Study</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="../images/projects/portfolio-meta/logopf.png"
+    />
+
+    <script src="../js/status.js"></script>
+    <link rel="stylesheet" href="../css/main.css" />
+
+    <style>
+      /* --- ASSET 1: CSS CODE GRID PATTERN --- */
+      .code-hero-bg {
+        background-color: #050505;
+        background-image: linear-gradient(
+            rgba(157, 0, 255, 0.05) 1px,
+            transparent 1px
+          ),
+          linear-gradient(90deg, rgba(157, 0, 255, 0.05) 1px, transparent 1px);
+        background-size: 40px 40px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      /* SCANLINE EFFECT */
+      .scan-line-hero {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          var(--primary-color),
+          transparent
+        );
+        opacity: 0.5;
+        box-shadow: 0 0 15px var(--primary-color);
+        animation: scanHero 6s linear infinite;
+        z-index: 0;
+      }
+
+      @keyframes scanHero {
+        0% {
+          top: -10%;
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          top: 110%;
+          opacity: 0;
+        }
+      }
+
+      /* TEXT GRADIENT */
+      .hero-title-gradient {
+        background: linear-gradient(to bottom right, #ffffff 30%, #a0a0a0 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .code-hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at center,
+          transparent 0%,
+          #0a0a0a 100%
+        );
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      .meta-tag {
+        font-family: "Courier New", monospace;
+        color: var(--primary-color);
+        background: rgba(157, 0, 255, 0.1);
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+        display: inline-block;
+        border: 1px solid rgba(157, 0, 255, 0.2);
+      }
+      .nav-container {
+        justify-content: flex-start !important;
+      }
+
+      .back-link {
+        margin-right: auto !important;
+      }
+
+      .mobile-header-controls {
+        margin-left: 30px;
+        display: flex;
+        align-items: center;
+        gap: 15px; /* Abstand zwischen DE/EN und Hamburger */
+      }
+
+      @media (max-width: 1100px) {
+        .mobile-header-controls {
+          margin-left: 0;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="project-deep-dive">
+    <nav class="project-nav sticky-nav">
+      <div class="nav-container">
+        <a href="../index.html" class="back-link">
+          <span>←</span> <span>Portfolio</span>
+        </a>
+
+        <div class="nav-content-wrapper" id="project-nav-links">
+          <div class="internal-links">
+            <a href="#origin" onclick="closeProjectMenu()">Origin</a>
+            <a href="#architecture" onclick="closeProjectMenu()"
+              >Architecture</a
+            >
+            <a href="#features" onclick="closeProjectMenu()">Features</a>
+            <a href="#roadmap" onclick="closeProjectMenu()">Roadmap</a>
+          </div>
+        </div>
+
+        <div class="mobile-header-controls">
+          <button
+            id="lang-switch"
+            class="lang-btn"
+            aria-label="Switch Language"
+          ></button>
+          <div class="hamburger" id="project-hamburger">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <header class="project-hero" id="home">
+      <div class="code-hero-bg"></div>
+      <div class="code-hero-overlay"></div>
+      <div class="scan-line-hero"></div>
+
+      <div
+        class="hero-content container"
+        style="position: relative; z-index: 1"
+      >
+        <div class="hero-badges fade-in-up">
+          <span
+            class="meta-tag"
+            style="font-family: monospace; border-color: #333; color: #888"
+          >
+            <span style="color: var(--primary-color)">●</span> SYSTEM_ROOT
+          </span>
+          <span class="hero-badge outline">BUILD v2.2.0</span>
+        </div>
+
+        <h1
+          class="hero-title fade-in-up hero-title-gradient"
+          style="animation-delay: 0.2s"
+        >
+          PORTFOLIO<span
+            class="text-stroke"
+            style="-webkit-text-fill-color: initial"
+            >BACH</span
+          >
+        </h1>
+
+        <p
+          class="hero-subtitle fade-in-up"
+          style="animation-delay: 0.4s"
+          data-i18n="meta_hero_sub"
+        >
+          Kein Baukasten. Keine Templates.<br />
+          <span
+            class="highlight-text"
+            style="text-shadow: 0 0 20px rgba(157, 0, 255, 0.4)"
+            >100% Engineered.</span
+          >
+        </p>
+      </div>
+
+      <div class="scroll-indicator fade-in" style="animation-delay: 1s">
+        <span data-i18n="pd_hero_scroll">Deep Dive</span>
+        <div class="mouse"><div class="wheel"></div></div>
+      </div>
+    </header>
+
+    <section class="project-section dark-bg" id="origin">
+      <style>
+        .stats-card {
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.05);
+          border-radius: 12px;
+          padding: 30px;
+          width: 100%;
+        }
+        .bar-group {
+          margin-bottom: 25px;
+        }
+        .bar-label {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 8px;
+          font-size: 0.9rem;
+          font-family: monospace;
+        }
+        .bar-bg {
+          width: 100%;
+          height: 8px;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 4px;
+          overflow: hidden;
+        }
+        .bar-fill {
+          height: 100%;
+          border-radius: 4px;
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 1.5s cubic-bezier(0.2, 1, 0.2, 1);
+        }
+        .reveal.active .bar-fill {
+          transform: scaleX(1);
+        }
+        .bar-fill.red {
+          background: #ff4757;
+          width: 100%;
+          box-shadow: 0 0 10px rgba(255, 71, 87, 0.4);
+        }
+        .bar-fill.green {
+          background: var(--primary-color);
+          width: 2%;
+          box-shadow: 0 0 10px var(--primary-color);
+        }
+        .bar-sub {
+          font-size: 0.75rem;
+          color: #666;
+          margin-top: 5px;
+        }
+        .mvc-diagram {
+          display: flex;
+          gap: 15px;
+          align-items: center;
+          justify-content: center;
+        }
+        .mvc-box {
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          padding: 15px 20px;
+          border-radius: 8px;
+          text-align: center;
+          background: linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.05),
+            rgba(0, 0, 0, 0.5)
+          );
+          transition: transform 0.3s;
+        }
+        .mvc-box:hover {
+          transform: translateY(-5px);
+          border-color: var(--primary-color);
+        }
+        .mvc-box small {
+          display: block;
+          color: #666;
+          font-size: 0.7rem;
+          margin-top: 4px;
+          font-family: monospace;
+        }
+        .mvc-arrow {
+          color: var(--primary-color);
+          font-size: 1.2rem;
+        }
+        @media (max-width: 768px) {
+          .mvc-diagram {
+            flex-direction: column;
+          }
+          .mvc-arrow {
+            transform: rotate(90deg);
+          }
+        }
+      </style>
+
+      <div class="container">
+        <h2
+          class="section-heading center-text reveal"
+          data-i18n="meta_c1_title"
+        >
+          Chapter I: <span class="highlight-text">The Origin</span>
+        </h2>
+        <p class="section-subtitle center-text reveal" data-i18n="meta_c1_sub">
+          Warum ich das Rad neu erfunden habe.
+        </p>
+
+        <div class="mission-grid" style="margin-top: 80px">
+          <div class="mission-content reveal">
+            <span class="section-tag">Motivation</span>
+            <h3 data-i18n="meta_c1_mot_title">Das "Black Box" Problem</h3>
+            <p class="text-lg" data-i18n="meta_c1_mot_text">
+              Natürlich hätte ich WordPress oder Wix nehmen können...
+            </p>
+            <p class="text-muted" data-i18n="meta_c1_mot_sub">
+              Aber im Studium lerne ich Algorithmen...
+            </p>
+          </div>
+
+          <div
+            class="terminal-wrapper reveal"
+            style="margin: 0; width: 100%; align-self: center"
+          >
+            <div class="terminal-header-bar">
+              <span class="dot red"></span><span class="dot yellow"></span
+              ><span class="dot green"></span>
+              <span class="term-title">mindset.sh</span>
+            </div>
+            <div class="terminal-body">
+              <p class="comment"># Option A: The Easy Way (Rejected)</p>
+              <div
+                class="code-line"
+                style="
+                  opacity: 0.5;
+                  text-decoration: line-through;
+                  color: #ff5757;
+                "
+              >
+                <span class="prompt">$</span> npm install
+                wordpress-theme-starter
+              </div>
+              <br />
+              <p class="comment"># Option B: The Engineering Way</p>
+              <div class="code-line">
+                <span class="prompt">yusef@home:~$</span> mkdir PortfolioBach
+              </div>
+              <div class="code-line">
+                <span class="prompt">yusef@home:~$</span> touch index.html
+                main.css renderer.js
+              </div>
+              <div class="code-output">
+                [STATUS] Control acquired.<br />
+                [STATUS] Bloatware removed.<br />
+                [READY] Starting development...
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="feature-row reveal"
+          style="margin-top: 120px; align-items: center"
+        >
+          <div class="feature-visual">
+            <div class="stats-card">
+              <h4 style="margin-bottom: 25px; font-weight: 500">
+                Bundle Size Comparison
+              </h4>
+              <div class="bar-group">
+                <div class="bar-label">
+                  <span>Standard Template</span>
+                  <span style="color: #ff4757">~5.0 MB</span>
+                </div>
+                <div class="bar-bg">
+                  <div class="bar-fill red"></div>
+                </div>
+                <div class="bar-sub">
+                  jQuery, Bootstrap, Fonts, Trackers, Ads
+                </div>
+              </div>
+              <div class="bar-group" style="margin-top: 30px">
+                <div class="bar-label">
+                  <span class="highlight-text">PortfolioBach</span>
+                  <span class="highlight-text">~50 KB</span>
+                </div>
+                <div class="bar-bg">
+                  <div class="bar-fill green"></div>
+                </div>
+                <div class="bar-sub">Pure HTML5, CSS3, Vanilla JS Logic</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-text">
+            <span class="section-tag">Performance</span>
+            <h3 data-i18n="meta_c1_perf_title">Bloatware vs. Handwerk</h3>
+            <p data-i18n="meta_c1_perf_text">
+              Fertige Templates laden oft Megabytes...
+            </p>
+            <p class="text-muted" data-i18n="meta_c1_perf_sub">
+              Der Student-Ansatz: ...
+            </p>
+          </div>
+        </div>
+
+        <div class="mission-grid reveal" style="margin-top: 120px">
+          <div class="mission-content">
+            <span class="section-tag">Transfer</span>
+            <h3 data-i18n="meta_c1_trans_title">Theorie trifft Praxis</h3>
+            <p data-i18n="meta_c1_trans_text">
+              In der Hochschule lernen wir Java und OOP...
+            </p>
+            <p class="text-muted" data-i18n="meta_c1_trans_sub">
+              Das Portfolio ist mein "Labor"...
+            </p>
+          </div>
+
+          <div
+            class="mission-image"
+            style="display: flex; justify-content: center"
+          >
+            <div class="mvc-diagram">
+              <div class="mvc-box">
+                <strong>Model</strong><small>projects-data.js</small>
+              </div>
+              <div class="mvc-arrow">→</div>
+              <div
+                class="mvc-box"
+                style="
+                  border-color: var(--primary-color);
+                  box-shadow: 0 0 15px rgba(157, 0, 255, 0.2);
+                "
+              >
+                <strong>Controller</strong><small>renderer.js</small>
+              </div>
+              <div class="mvc-arrow">→</div>
+              <div class="mvc-box">
+                <strong>View</strong><small>index.html</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section" id="architecture">
+      <style>
+        .code-window {
+          background: #1e1e1e;
+          border-radius: 8px;
+          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+          border: 1px solid #333;
+          font-family: "Courier New", monospace;
+          overflow: hidden;
+          width: 100%;
+          transition: transform 0.3s ease;
+        }
+        .code-window:hover {
+          transform: translateY(-5px);
+          border-color: #444;
+        }
+        .cw-header {
+          background: #252526;
+          padding: 10px 15px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          border-bottom: 1px solid #1e1e1e;
+        }
+        .cw-dot {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+        }
+        .cw-dot.red {
+          background: #ff5f56;
+        }
+        .cw-dot.yellow {
+          background: #ffbd2e;
+        }
+        .cw-dot.green {
+          background: #27c93f;
+        }
+        .cw-title {
+          margin-left: auto;
+          margin-right: auto;
+          color: #999;
+          font-size: 0.8rem;
+        }
+        .cw-body {
+          padding: 20px;
+          color: #d4d4d4;
+          font-size: 0.85rem;
+          line-height: 1.6;
+          overflow-x: auto;
+        }
+        .cw-line {
+          display: block;
+          white-space: pre;
+        }
+        .cw-num {
+          color: #858585;
+          margin-right: 15px;
+          user-select: none;
+          border-right: 1px solid #333;
+          padding-right: 10px;
+        }
+        .kwd {
+          color: #569cd6;
+        }
+        .str {
+          color: #ce9178;
+        }
+        .fn {
+          color: #dcdcaa;
+        }
+        .var {
+          color: #9cdcfe;
+        }
+        .cmt {
+          color: #6a9955;
+          font-style: italic;
+        }
+      </style>
+
+      <div class="container">
+        <h2
+          class="section-heading center-text reveal"
+          data-i18n="meta_c2_title"
+        >
+          Chapter II: <span class="highlight-text">The Architecture</span>
+        </h2>
+        <p class="section-subtitle center-text reveal" data-i18n="meta_c2_sub">
+          Vom statischen HTML zur dynamischen Engine.
+        </p>
+
+        <div
+          class="mission-grid reveal"
+          style="margin-top: 60px; align-items: center"
+        >
+          <div class="mission-content">
+            <span class="section-tag">Evolution</span>
+            <h3 data-i18n="meta_c2_evo_title">Statisch vs. Dynamisch</h3>
+            <p data-i18n="meta_c2_evo_text">
+              Zu Beginn (v1.0) bestand dieses Portfolio...
+            </p>
+            <p class="text-muted" data-i18n="meta_c2_evo_sub">
+              Die Lösung (v2.2)...
+            </p>
+            <ul class="project-features">
+              <li data-i18n="meta_c2_li_1">
+                <strong>Früher:</strong> Copy & Paste von Code-Blöcken.
+              </li>
+              <li data-i18n="meta_c2_li_2">
+                <strong>Heute:</strong> Eine zentrale Daten-Quelle.
+              </li>
+            </ul>
+          </div>
+
+          <div class="mission-image">
+            <div class="stats-card" style="padding: 20px">
+              <h4 style="font-size: 1rem; margin-bottom: 15px; color: #888">
+                Struktur-Vergleich
+              </h4>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  text-align: center;
+                  gap: 20px;
+                "
+              >
+                <div style="flex: 1; opacity: 0.5">
+                  <div style="font-size: 3rem">📄</div>
+                  <div style="font-weight: bold; color: #ff4757">v1.0</div>
+                  <div style="font-size: 0.8rem">
+                    index.html<br />about.html<br />contact.html
+                  </div>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    color: var(--primary-color);
+                  "
+                >
+                  ➝
+                </div>
+                <div style="flex: 1">
+                  <div style="font-size: 3rem">⚙️</div>
+                  <div style="font-weight: bold; color: #27c93f">v2.2</div>
+                  <div style="font-size: 0.8rem">
+                    renderer.js<br />+ data.json
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-row reveal" style="margin-top: 100px">
+          <div class="feature-text">
+            <span class="section-tag">Engineering</span>
+            <h3 data-i18n="meta_c2_eng_title">Die "Rendering Engine"</h3>
+            <p data-i18n="meta_c2_eng_text">
+              Ich wollte verstehen, wie moderne Frameworks...
+            </p>
+            <p class="text-muted" data-i18n="meta_c2_eng_sub">
+              Das System basiert auf...
+            </p>
+            <ul class="tech-list" style="margin-top: 20px">
+              <li data-i18n="meta_c2_li_3"><strong>Data Layer:</strong>...</li>
+              <li data-i18n="meta_c2_li_4"><strong>Logic Layer:</strong>...</li>
+              <li data-i18n="meta_c2_li_5"><strong>View Layer:</strong>...</li>
+            </ul>
+            <p
+              class="text-muted"
+              style="margin-top: 20px; font-size: 0.9rem"
+              data-i18n="meta_c2_eng_note"
+            >
+              <em>Das ermöglicht mir...</em>
+            </p>
+          </div>
+
+          <div class="feature-visual">
+            <div class="code-window">
+              <div class="cw-header">
+                <span class="cw-dot red"></span
+                ><span class="cw-dot yellow"></span
+                ><span class="cw-dot green"></span>
+                <span class="cw-title">project-renderer.js</span>
+              </div>
+              <div class="cw-body">
+                <span class="cw-line"
+                  ><span class="cw-num">01</span
+                  ><span class="cmt"
+                    >// Core Function: Renders projects into the DOM</span
+                  ></span
+                >
+                <span class="cw-line"
+                  ><span class="cw-num">02</span
+                  ><span class="kwd">function</span>
+                  <span class="fn">initProjectRender</span>() {</span
+                >
+                <span class="cw-line"
+                  ><span class="cw-num">03</span>
+                  <span class="kwd">const</span>
+                  <span class="var">container</span> =
+                  <span class="var">document</span>.<span class="fn"
+                    >getElementById</span
+                  >(<span class="str">"hero-container"</span>);</span
+                >
+                <span class="cw-line"><span class="cw-num">04</span></span>
+                <span class="cw-line"
+                  ><span class="cw-num">05</span>
+                  <span class="cmt"
+                    >// Filter current hero project from data</span
+                  ></span
+                >
+                <span class="cw-line"
+                  ><span class="cw-num">06</span>
+                  <span class="kwd">const</span>
+                  <span class="var">heroItem</span> =
+                  <span class="var">projectsData</span>.<span class="fn"
+                    >find</span
+                  >(<span class="var">p</span> => <span class="var">p</span>.id
+                  === <span class="var">HERO_ID</span>);</span
+                >
+                <span class="cw-line"><span class="cw-num">07</span></span>
+                <span class="cw-line"
+                  ><span class="cw-num">08</span>
+                  <span class="kwd">if</span> (<span class="var"
+                    >container</span
+                  >
+                  && <span class="var">heroItem</span>) {</span
+                >
+                <span class="cw-line"
+                  ><span class="cw-num">09</span>
+                  <span class="var">container</span>.<span class="var"
+                    >innerHTML</span
+                  >
+                  = <span class="fn">renderTemplate</span>(<span class="var"
+                    >heroItem</span
+                  >);</span
+                >
+                <span class="cw-line"><span class="cw-num">10</span> }</span>
+                <span class="cw-line"><span class="cw-num">11</span>}</span>
+              </div>
+            </div>
+            <p
+              style="
+                text-align: center;
+                font-size: 0.8rem;
+                color: #666;
+                margin-top: 10px;
+              "
+            >
+              Logic-Layer Snippet
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section dark-bg" id="features">
+      <style>
+        .lighthouse-grid {
+          display: flex;
+          gap: 20px;
+          justify-content: center;
+          flex-wrap: wrap;
+          margin: 40px 0;
+        }
+        .score-circle {
+          position: relative;
+          width: 90px;
+          height: 90px;
+        }
+        .score-circle svg {
+          width: 100%;
+          height: 100%;
+          transform: rotate(-90deg);
+        }
+        .circle-bg {
+          fill: none;
+          stroke: rgba(255, 255, 255, 0.05);
+          stroke-width: 5;
+        }
+        .circle-fill {
+          fill: none;
+          stroke: #27c93f;
+          stroke-width: 5;
+          stroke-dasharray: 251;
+          stroke-dashoffset: 251;
+          transition: stroke-dashoffset 2s ease-out;
+          stroke-linecap: round;
+        }
+        .reveal.active .circle-fill {
+          stroke-dashoffset: 0;
+        }
+        .score-text {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: #27c93f;
+          font-weight: bold;
+          font-family: monospace;
+          font-size: 1.2rem;
+        }
+        .score-label {
+          text-align: center;
+          margin-top: 10px;
+          font-size: 0.8rem;
+          color: #888;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+        .observer-demo-box {
+          background: #111;
+          border: 1px solid #333;
+          padding: 25px;
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-top: 20px;
+          transition: all 0.5s;
+        }
+        .reveal.active .observer-demo-box {
+          border-color: var(--primary-color);
+          box-shadow: 0 0 20px rgba(157, 0, 255, 0.1);
+        }
+        .sensor-light {
+          width: 15px;
+          height: 15px;
+          background: #333;
+          border-radius: 50%;
+          margin-right: 15px;
+          box-shadow: inset 0 0 5px #000;
+          transition: all 0.3s;
+        }
+        .reveal.active .sensor-light {
+          background: #27c93f;
+          box-shadow: 0 0 15px #27c93f;
+        }
+        .sensor-status {
+          font-family: monospace;
+          color: #555;
+          font-size: 0.9rem;
+        }
+        .reveal.active .sensor-status {
+          color: #fff;
+        }
+        .reveal.active .sensor-status::after {
+          content: " [ACTIVE]";
+          color: #27c93f;
+        }
+        .pipeline-container {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-top: 20px;
+          font-family: monospace;
+          font-size: 0.8rem;
+          overflow-x: auto;
+          padding-bottom: 10px;
+        }
+        .pipe-box {
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          padding: 10px 15px;
+          border-radius: 6px;
+          white-space: nowrap;
+        }
+        .pipe-arrow {
+          color: #666;
+          font-size: 1.2rem;
+        }
+        .pipe-logic {
+          border-color: var(--primary-color);
+          color: var(--primary-color);
+          position: relative;
+        }
+        .pipe-logic::before {
+          content: "⚙️ Logic";
+          position: absolute;
+          top: -20px;
+          left: 50%;
+          transform: translateX(-50%);
+          font-size: 0.7rem;
+          color: var(--primary-color);
+        }
+        .gpu-card {
+          background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.02) 0%,
+            rgba(0, 0, 0, 0.6) 100%
+          );
+          border: 1px solid rgba(255, 255, 255, 0.05);
+          border-radius: 12px;
+          padding: 25px;
+          position: relative;
+          overflow: hidden;
+        }
+        .gpu-layer {
+          position: absolute;
+          right: -20px;
+          bottom: -20px;
+          font-size: 6rem;
+          opacity: 0.05;
+          font-weight: 900;
+          background: -webkit-linear-gradient(#fff, #000);
+          background-clip: text;
+          -webkit-background-clip: text;
+        }
+        .code-snippet-mini {
+          background: #000;
+          padding: 10px;
+          border-radius: 4px;
+          font-family: monospace;
+          font-size: 0.8rem;
+          color: #bbb;
+          border-left: 2px solid var(--primary-color);
+          margin-top: 15px;
+        }
+        .kwd-css {
+          color: #ff79c6;
+        }
+        .val-css {
+          color: #8be9fd;
+        }
+      </style>
+
+      <div class="container">
+        <h2
+          class="section-heading center-text reveal"
+          data-i18n="meta_c3_title"
+        >
+          Chapter III: <span class="highlight-text">Invisible Tech</span>
+        </h2>
+        <p class="section-subtitle center-text reveal" data-i18n="meta_c3_sub">
+          Features, die man fühlt, aber nicht sieht.
+        </p>
+
+        <div class="mission-grid reveal" style="align-items: center">
+          <div class="mission-content">
+            <span class="section-tag">State Management</span>
+            <h3 data-i18n="meta_c3_i18n_title">Custom i18n Engine</h3>
+            <p data-i18n="meta_c3_i18n_text">Statt 500KB für eine Library...</p>
+            <ul class="project-features">
+              <li data-i18n="meta_c3_li_1">
+                <strong>Attribute Mapping:</strong>...
+              </li>
+              <li data-i18n="meta_c3_li_2"><strong>Persistence:</strong>...</li>
+              <li data-i18n="meta_c3_li_3">
+                <strong>Fade-Transition:</strong>...
+              </li>
+            </ul>
+          </div>
+          <div class="mission-image">
+            <div
+              class="code-window"
+              style="border-color: rgba(157, 0, 255, 0.3)"
+            >
+              <div class="cw-header">
+                <span class="cw-title">translations.js</span>
+              </div>
+              <div class="cw-body">
+                <span class="cw-line"
+                  ><span class="kwd">const</span>
+                  <span class="var">translations</span> = {</span
+                >
+                <span class="cw-line">
+                  <span class="str">"de"</span>: {
+                  <span class="str">meta_c3_css_text:</span>:
+                  <span class="str"
+                    >"Die Sprache bleibt dank <code>localStorage</code> beim
+                    Reload erhalten."</span
+                  >
+                  },</span
+                >
+                <span class="cw-line">
+                  <span class="str">"en"</span>: {
+                  <span class="str">meta_c3_li_2:</span>:
+                  <span class="str"
+                    >"The language remains thanks to localStorage on
+                    reload"</span
+                  >
+                  }</span
+                >
+                <span class="cw-line">};</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mission-grid reveal" style="margin-top: 100px">
+          <div class="mission-image" style="order: 2">
+            <div class="gpu-card">
+              <h4 style="margin-bottom: 20px">Logic Pipeline Visualization</h4>
+              <div class="code-snippet-mini" style="margin-bottom: 20px">
+                if (heroItem) return renderHero(heroItem);
+              </div>
+              <div class="pipeline-container">
+                <div class="pipe-box" style="color: #ff5757">img/logo.png</div>
+                <div class="pipe-arrow">→</div>
+                <div class="pipe-box pipe-logic">Detect Path</div>
+                <div class="pipe-arrow">→</div>
+                <div class="pipe-box" style="color: #27c93f">
+                  ../img/logo.png
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mission-content" style="order: 1">
+            <span class="section-tag">Dynamic Rendering</span>
+            <h3 data-i18n="meta_c3_dom_title">Smart DOM Injection</h3>
+            <p data-i18n="meta_c3_dom_text">
+              Die project-renderer.js agiert wie...
+            </p>
+            <p class="text-muted" data-i18n="meta_c3_dom_sub">
+              Ein besonderes Highlight...
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-top: 100px" class="reveal">
+          <h3
+            class="center-text"
+            style="margin-bottom: 40px"
+            data-i18n="meta_c3_perf_title"
+          >
+            Performance First
+          </h3>
+          <p
+            class="center-text text-muted"
+            style="max-width: 600px; margin: 0 auto"
+            data-i18n="meta_c3_perf_text"
+          >
+            Ein Portfolio muss schnell sein...
+          </p>
+
+          <div class="lighthouse-grid">
+            <div>
+              <div class="score-circle">
+                <svg viewBox="0 0 100 100">
+                  <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
+                  <circle class="circle-fill" cx="50" cy="50" r="40"></circle>
+                </svg>
+                <div class="score-text">100</div>
+              </div>
+              <div class="score-label">Performance</div>
+            </div>
+            <div>
+              <div class="score-circle">
+                <svg viewBox="0 0 100 100">
+                  <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
+                  <circle
+                    class="circle-fill"
+                    cx="50"
+                    cy="50"
+                    r="40"
+                    style="transition-delay: 0.2s"
+                  ></circle>
+                </svg>
+                <div class="score-text">100</div>
+              </div>
+              <div class="score-label">Accessibility</div>
+            </div>
+            <div>
+              <div class="score-circle">
+                <svg viewBox="0 0 100 100">
+                  <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
+                  <circle
+                    class="circle-fill"
+                    cx="50"
+                    cy="50"
+                    r="40"
+                    style="transition-delay: 0.4s"
+                  ></circle>
+                </svg>
+                <div class="score-text">100</div>
+              </div>
+              <div class="score-label">Best Practices</div>
+            </div>
+            <div>
+              <div class="score-circle">
+                <svg viewBox="0 0 100 100">
+                  <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
+                  <circle
+                    class="circle-fill"
+                    cx="50"
+                    cy="50"
+                    r="40"
+                    style="transition-delay: 0.6s"
+                  ></circle>
+                </svg>
+                <div class="score-text">100</div>
+              </div>
+              <div class="score-label">SEO</div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="feature-row reveal"
+          style="margin-top: 100px; display: block"
+        >
+          <div style="text-align: center; max-width: 700px; margin: 0 auto">
+            <span class="section-tag">Observer Pattern</span>
+            <h3 data-i18n="meta_c3_obs_title">Ressourcen-Effizienz</h3>
+            <p data-i18n="meta_c3_obs_text">
+              Scroll-Events feuern hunderte Male...
+            </p>
+            <div class="observer-demo-box">
+              <div style="display: flex; align-items: center">
+                <div class="sensor-light"></div>
+                <div class="sensor-status">STATUS: IDLE</div>
+              </div>
+              <div style="font-size: 0.8rem; color: #666; text-align: right">
+                Triggered only when<br />visible in Viewport
+              </div>
+            </div>
+            <p
+              class="text-muted"
+              style="margin-top: 15px; font-size: 0.9rem"
+              data-i18n="meta_c3_obs_note"
+            >
+              <em>⬆️ Live Demo...</em>
+            </p>
+          </div>
+        </div>
+
+        <div class="mission-grid reveal" style="margin-top: 100px">
+          <div class="mission-content">
+            <span class="section-tag">Architecture</span>
+            <h3 data-i18n="meta_c3_css_title">Modern CSS & GPU</h3>
+            <p data-i18n="meta_c3_css_text">CSS ist mehr als nur Farbe...</p>
+          </div>
+          <div class="mission-image">
+            <div class="gpu-card">
+              <div class="gpu-layer">GPU</div>
+              <h4>Hardware Acceleration</h4>
+              <div class="code-snippet-mini">
+                <span class="kwd-css">.element</span> {<br />
+                &nbsp;&nbsp;<span class="kwd-css">transform</span>:
+                <span class="val-css">translate3d(0,0,0)</span>;<br />
+                &nbsp;&nbsp;<span class="kwd-css">will-change</span>:
+                <span class="val-css">transform</span>;<br />
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section" id="devops">
+      <style>
+        .git-container {
+          position: relative;
+          padding-left: 20px;
+          font-family: monospace;
+          font-size: 0.85rem;
+          border-left: 2px solid rgba(255, 255, 255, 0.1);
+          margin-left: 10px;
+        }
+        .git-commit {
+          position: relative;
+          margin-bottom: 25px;
+          padding-left: 20px;
+          opacity: 0;
+          transform: translateX(-10px);
+          transition: all 0.5s ease;
+        }
+        .reveal.active .git-commit {
+          opacity: 1;
+          transform: translateX(0);
+        }
+        .git-commit:nth-child(1) {
+          transition-delay: 0.1s;
+        }
+        .git-commit:nth-child(2) {
+          transition-delay: 0.2s;
+        }
+        .git-commit:nth-child(3) {
+          transition-delay: 0.3s;
+        }
+        .git-commit:nth-child(4) {
+          transition-delay: 0.4s;
+        }
+        .git-dot {
+          position: absolute;
+          left: -26px;
+          top: 2px;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: #555;
+          border: 2px solid #111;
+        }
+        .git-dot.feat {
+          background: #27c93f;
+          box-shadow: 0 0 10px rgba(39, 201, 63, 0.4);
+        }
+        .git-dot.fix {
+          background: #ff4757;
+        }
+        .git-dot.merge {
+          background: #a55eea;
+          border: 2px solid #fff;
+        }
+        .commit-hash {
+          color: #666;
+          margin-right: 10px;
+        }
+        .commit-msg {
+          color: #ccc;
+        }
+        .commit-tag {
+          display: inline-block;
+          padding: 2px 6px;
+          border-radius: 4px;
+          font-size: 0.7rem;
+          margin-left: 10px;
+          background: rgba(255, 255, 255, 0.1);
+          color: #aaa;
+        }
+        .folder-card {
+          background: #1e1e1e;
+          border: 1px solid #333;
+          border-radius: 8px;
+          padding: 20px;
+          font-family: monospace;
+          color: #aaa;
+          line-height: 1.8;
+        }
+        .folder-tree span {
+          display: block;
+        }
+        .folder-hl {
+          color: var(--primary-color);
+          font-weight: bold;
+        }
+        .folder-comment {
+          color: #555;
+          display: inline-block;
+          margin-left: 10px;
+          font-style: italic;
+        }
+      </style>
+
+      <div class="container">
+        <h2
+          class="section-heading center-text reveal"
+          data-i18n="meta_c4_title"
+        >
+          Chapter IV: <span class="highlight-text">DevOps & Workflow</span>
+        </h2>
+        <p class="section-subtitle center-text reveal" data-i18n="meta_c4_sub">
+          Code ist nur so gut wie der Prozess dahinter.
+        </p>
+
+        <div
+          class="mission-grid reveal"
+          style="align-items: start; margin-top: 60px"
+        >
+          <div class="mission-image">
+            <div class="folder-card" style="border-left: 4px solid #a55eea">
+              <h4
+                style="
+                  color: #fff;
+                  margin-bottom: 20px;
+                  border-bottom: 1px solid #333;
+                  padding-bottom: 10px;
+                "
+              >
+                Git History (Main)
+              </h4>
+              <div class="git-container">
+                <div class="git-commit">
+                  <div
+                    class="git-dot"
+                    style="
+                      background: #ff9f43;
+                      border-color: #111;
+                      box-shadow: 0 0 10px rgba(255, 159, 67, 0.4);
+                    "
+                  ></div>
+                  <span class="commit-hash">8a2b4f</span
+                  ><span class="commit-msg"
+                    >refactor: reorganize assets (DDD structure)</span
+                  >
+                </div>
+                <div class="git-commit">
+                  <div class="git-dot feat"></div>
+                  <span class="commit-hash">3c9d1e</span
+                  ><span class="commit-msg"
+                    >feat: impl dynamic renderer & i18n engine</span
+                  >
+                </div>
+                <div class="git-commit">
+                  <div class="git-dot fix"></div>
+                  <span class="commit-hash">b7a89c</span
+                  ><span class="commit-msg"
+                    >fix: mobile nav z-index conflict</span
+                  >
+                </div>
+                <div class="git-commit">
+                  <div class="git-dot merge"></div>
+                  <span class="commit-hash">1f0e2d</span
+                  ><span class="commit-msg"
+                    >merge: branch 'dev/v2.2' -> 'main'</span
+                  ><span class="commit-tag">v2.2.0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mission-content">
+            <span class="section-tag">Version Control</span>
+            <h3 data-i18n="meta_c4_git_title">Clean Commits</h3>
+            <p data-i18n="meta_c4_git_text">
+              Ein Portfolio wächst organisch...
+            </p>
+            <ul class="project-features">
+              <li data-i18n="meta_c4_li_1">
+                <strong>Semantic Commits:</strong>...
+              </li>
+              <li data-i18n="meta_c4_li_2"><strong>Branching:</strong>...</li>
+              <li data-i18n="meta_c4_li_3"><strong>Safety:</strong>...</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mission-grid reveal" style="margin-top: 100px">
+          <div class="mission-content">
+            <span class="section-tag">Structure</span>
+            <h3 data-i18n="meta_c4_str_title">Domain Driven Design</h3>
+            <p data-i18n="meta_c4_str_text">Anfangs lagen alle Bilder...</p>
+            <p class="text-muted" data-i18n="meta_c4_str_sub">
+              Im Zuge des Refactorings...
+            </p>
+          </div>
+
+          <div class="mission-image">
+            <div class="folder-card">
+              <div class="folder-tree">
+                <span>📂 images/</span>
+                <span
+                  >├── 📂 ui/
+                  <span class="folder-comment">// Logos, Profile</span></span
+                >
+                <span
+                  >├── 📂 techstack/
+                  <span class="folder-comment">// SVG Icons</span></span
+                >
+                <span>└── 📂 projects/</span>
+                <span
+                  >&nbsp;&nbsp;&nbsp;&nbsp;├── 📂
+                  <span class="folder-hl">phishing/</span></span
+                >
+                <span
+                  >&nbsp;&nbsp;&nbsp;&nbsp;└── 📂
+                  <span class="folder-hl">cv-engine/</span></span
+                >
+              </div>
+            </div>
+            <p
+              style="
+                text-align: center;
+                font-size: 0.8rem;
+                color: #666;
+                margin-top: 10px;
+              "
+            >
+              Refactored File Structure
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section dark-bg" id="infrastructure">
+      <style>
+        .dns-card {
+          background: #0a0a0a;
+          border: 1px solid #333;
+          border-radius: 8px;
+          padding: 0;
+          font-family: "Courier New", monospace;
+          overflow: hidden;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+        }
+        .dns-header {
+          background: #222;
+          padding: 10px 15px;
+          color: #fff;
+          font-size: 0.8rem;
+          border-bottom: 1px solid #333;
+          display: flex;
+          justify-content: space-between;
+        }
+        .dns-body {
+          padding: 20px;
+          font-size: 0.85rem;
+          color: #ccc;
+        }
+        .dns-row {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr 2fr;
+          margin-bottom: 10px;
+          padding-bottom: 10px;
+          border-bottom: 1px solid #1a1a1a;
+        }
+        .dns-row:last-child {
+          border-bottom: none;
+        }
+        .dns-label {
+          color: #666;
+          font-size: 0.7rem;
+          text-transform: uppercase;
+          margin-bottom: 5px;
+        }
+        .dns-val {
+          color: #fff;
+        }
+        .dns-val.ip {
+          color: #569cd6;
+        }
+        .dns-val.cname {
+          color: #ce9178;
+        }
+        .file-hack-box {
+          background: rgba(255, 87, 87, 0.1);
+          border: 1px solid rgba(255, 87, 87, 0.3);
+          border-radius: 8px;
+          padding: 20px;
+          margin-top: 30px;
+        }
+        .file-hack-box.solved {
+          background: rgba(39, 201, 63, 0.1);
+          border-color: rgba(39, 201, 63, 0.3);
+        }
+        .hack-icon {
+          font-size: 1.5rem;
+          margin-bottom: 10px;
+        }
+        .hack-title {
+          font-weight: bold;
+          margin-bottom: 5px;
+          color: #fff;
+        }
+        .hack-desc {
+          font-size: 0.9rem;
+          color: #bbb;
+        }
+      </style>
+
+      <div class="container">
+        <h2
+          class="section-heading center-text reveal"
+          data-i18n="meta_c5_title"
+        >
+          Chapter V: <span class="highlight-text">Infrastructure</span>
+        </h2>
+        <p class="section-subtitle center-text reveal" data-i18n="meta_c5_sub">
+          Der Weg zur eigenen Identität (yusefbach.de).
+        </p>
+
+        <div class="mission-grid reveal" style="align-items: center">
+          <div class="mission-content">
+            <span class="section-tag">DNS Routing</span>
+            <h3 data-i18n="meta_c5_dns_title">Vom Hobby zum Pro</h3>
+            <p data-i18n="meta_c5_dns_text">Anfangs lief die Seite...</p>
+            <p class="text-muted" data-i18n="meta_c5_dns_sub">
+              Die Herausforderung...
+            </p>
+          </div>
+
+          <div class="mission-image">
+            <div class="dns-card">
+              <div class="dns-header">
+                <span>DNS Zone File</span><span>TTL: 3600</span>
+              </div>
+              <div class="dns-body">
+                <div class="dns-row" style="color: #666; font-size: 0.7rem">
+                  <span>TYPE</span><span>HOST</span><span>PRIO</span
+                  ><span>VALUE</span>
+                </div>
+                <div class="dns-row">
+                  <span style="color: #27c93f">A</span><span>@</span
+                  ><span>0</span><span class="dns-val ip">185.199.108.153</span>
+                </div>
+                <div class="dns-row">
+                  <span style="color: #27c93f">A</span><span>@</span
+                  ><span>0</span><span class="dns-val ip">185.199.109.153</span>
+                </div>
+                <div class="dns-row">
+                  <span style="color: #27c93f">A</span><span>@</span
+                  ><span>0</span><span class="dns-val ip">185.199.110.153</span>
+                </div>
+                <div class="dns-row">
+                  <span style="color: #a55eea">CNAME</span><span>www</span
+                  ><span>0</span
+                  ><span class="dns-val cname">yusef03.github.io</span>
+                </div>
+              </div>
+            </div>
+            <p
+              style="
+                text-align: center;
+                font-size: 0.8rem;
+                color: #666;
+                margin-top: 10px;
+              "
+            >
+              GitHub Pages DNS Configuration
+            </p>
+          </div>
+        </div>
+
+        <div class="feature-row reveal" style="margin-top: 100px">
+          <div style="max-width: 800px; margin: 0 auto">
+            <h3 class="center-text" data-i18n="meta_c5_cname_title">
+              The "Persistence Issue"
+            </h3>
+            <p class="center-text text-muted" data-i18n="meta_c5_cname_text">
+              Ein klassischer Fallstrick...
+            </p>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+                margin-top: 40px;
+              "
+            >
+              <div class="file-hack-box">
+                <div class="hack-icon">⚠️</div>
+                <div class="hack-title" data-i18n="meta_c5_hack_prob_title">
+                  Das Problem
+                </div>
+                <div class="hack-desc" data-i18n="meta_c5_hack_prob_desc">
+                  Ich hatte die Domain...
+                </div>
+              </div>
+
+              <div class="file-hack-box solved">
+                <div class="hack-icon">✅</div>
+                <div class="hack-title" data-i18n="meta_c5_hack_fix_title">
+                  Der Fix: CNAME File
+                </div>
+                <div class="hack-desc" data-i18n="meta_c5_hack_fix_desc">
+                  Die Lösung ist...
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section" id="roadmap" style="padding-bottom: 0">
+      <style>
+        .roadmap-wrapper {
+          position: relative;
+          max-width: 800px;
+          margin: 80px auto 0;
+          padding-left: 50px;
+        }
+        .roadmap-line {
+          position: absolute;
+          left: 19px;
+          top: 0;
+          bottom: 0;
+          width: 2px;
+          background: linear-gradient(
+            to bottom,
+            var(--primary-color) 0%,
+            rgba(157, 0, 255, 0) 100%
+          );
+          z-index: 0;
+        }
+        .roadmap-node {
+          position: relative;
+          margin-bottom: 80px;
+        }
+        .node-marker {
+          position: absolute;
+          left: -40px;
+          top: 0;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background: #0a0a0a;
+          border: 2px solid #333;
+          z-index: 1;
+          transition: all 0.3s;
+          box-shadow: 0 0 10px #000;
+        }
+        .node-marker.done {
+          border-color: #27c93f;
+          background: #27c93f;
+          box-shadow: 0 0 20px rgba(39, 201, 63, 0.6);
+        }
+        .node-marker.active {
+          border-color: var(--primary-color);
+          background: transparent;
+          animation: pulse-neon 2s infinite;
+        }
+        .node-marker.future {
+          border-color: #555;
+          border-style: dashed;
+        }
+        @keyframes pulse-neon {
+          0% {
+            box-shadow: 0 0 0 0 rgba(157, 0, 255, 0.7);
+          }
+          70% {
+            box-shadow: 0 0 0 15px rgba(157, 0, 255, 0);
+          }
+          100% {
+            box-shadow: 0 0 0 0 rgba(157, 0, 255, 0);
+          }
+        }
+        .roadmap-card {
+          background: rgba(255, 255, 255, 0.02);
+          border: 1px solid rgba(255, 255, 255, 0.05);
+          padding: 25px;
+          border-radius: 12px;
+          backdrop-filter: blur(5px);
+          transition: transform 0.3s, border-color 0.3s;
+        }
+        .roadmap-node:hover .roadmap-card {
+          transform: translateX(10px);
+          border-color: var(--primary-color);
+          background: linear-gradient(
+            90deg,
+            rgba(157, 0, 255, 0.05) 0%,
+            transparent 100%
+          );
+        }
+        .rm-tag {
+          font-size: 0.7rem;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          margin-bottom: 5px;
+          display: block;
+        }
+        .rm-title {
+          font-size: 1.3rem;
+          color: #fff;
+          margin-bottom: 10px;
+          font-weight: 700;
+        }
+        .rm-desc {
+          font-size: 0.95rem;
+          color: #aaa;
+          line-height: 1.6;
+        }
+        .final-statement {
+          font-size: 4rem;
+          font-weight: 900;
+          line-height: 1.1;
+          margin-bottom: 20px;
+          text-transform: uppercase;
+          background: linear-gradient(90deg, #fff 0%, #888 100%);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      </style>
+
+      <div class="container">
+        <h2
+          class="section-heading center-text reveal"
+          data-i18n="meta_c6_title"
+        >
+          Chapter VI: <span class="highlight-text">Future Roadmap</span>
+        </h2>
+        <p class="section-subtitle center-text reveal" data-i18n="meta_c6_sub">
+          Code is never finished. The journey continues.
+        </p>
+
+        <div class="roadmap-wrapper reveal">
+          <div class="roadmap-line"></div>
+
+          <div class="roadmap-node">
+            <div class="node-marker done"></div>
+            <div class="roadmap-card">
+              <span class="rm-tag" style="color: #27c93f"
+                >Current Status (v2.2)</span
+              >
+              <h3 class="rm-title" data-i18n="meta_c6_n1_title">
+                Architecture Shift
+              </h3>
+              <p class="rm-desc" data-i18n="meta_c6_n1_desc">Migration...</p>
+            </div>
+          </div>
+
+          <div class="roadmap-node">
+            <div class="node-marker active"></div>
+            <div class="roadmap-card">
+              <span class="rm-tag" style="color: var(--primary-color)"
+                >Milestone 1 (Q1 2026)</span
+              >
+              <h3 class="rm-title" data-i18n="meta_c6_n2_title">
+                UX & Accessibility
+              </h3>
+              <p class="rm-desc" data-i18n="meta_c6_n2_desc">Einführung...</p>
+            </div>
+          </div>
+
+          <div class="roadmap-node">
+            <div class="node-marker future"></div>
+            <div class="roadmap-card">
+              <span class="rm-tag" style="color: #888">Milestone 2</span>
+              <h3 class="rm-title" data-i18n="meta_c6_n3_title">
+                Headless CMS
+              </h3>
+              <p class="rm-desc" data-i18n="meta_c6_n3_desc">Ablösung...</p>
+            </div>
+          </div>
+
+          <div class="roadmap-node" style="margin-bottom: 0">
+            <div class="node-marker future"></div>
+            <div class="roadmap-card">
+              <span class="rm-tag" style="color: #888">Long Term Vision</span>
+              <h3 class="rm-title" data-i18n="meta_c6_n4_title">
+                Own Framework
+              </h3>
+              <p class="rm-desc" data-i18n="meta_c6_n4_desc">Migration...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="project-section"
+      style="padding: 150px 0; text-align: center"
+    >
+      <div class="container reveal">
+        <h2 class="final-statement" data-i18n="meta_outro_title">
+          Ready for<br />Production
+        </h2>
+        <p
+          style="
+            font-size: 1.2rem;
+            color: #888;
+            max-width: 600px;
+            margin: 0 auto 40px;
+          "
+          data-i18n="meta_outro_text"
+        >
+          Dieses Portfolio ist der Beweis...
+        </p>
+
+        <div style="display: flex; justify-content: center; gap: 20px">
+          <a
+            href="../index.html#contact"
+            class="cta-button"
+            data-i18n="meta_outro_btn"
+            >Lass uns arbeiten</a
+          >
+          <a
+            href="../index.html"
+            class="cta-button cta-button-outline"
+            data-i18n="meta_outro_home"
+            >Zur Startseite</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <footer
+      style="
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 40px 0;
+        background: #050505;
+      "
+    >
+      <div
+        class="container"
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 20px;
+        "
+      >
+        <div style="font-family: monospace; color: #666; font-size: 0.9rem">
+          &copy; 2025 Yusef Bach
+        </div>
+
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: #444;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 5px 15px;
+            border-radius: 50px;
+          "
+        >
+          <span
+            style="
+              width: 8px;
+              height: 8px;
+              background: #27c93f;
+              border-radius: 50%;
+              box-shadow: 0 0 5px #27c93f;
+            "
+          ></span>
+          SYSTEM: ONLINE
+          <span style="color: #333">|</span>
+          BUILD: v2.2.0
+        </div>
+      </div>
+    </footer>
+
+    <script src="../js/translations.js"></script>
+    <script src="../js/script.js"></script>
+
+    <script>
+      // Scroll Reveal Logic (Standalone)
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      document
+        .querySelectorAll(".reveal, .fade-in-up")
+        .forEach((el) => observer.observe(el));
+
+      // Inline-Logik Menü (Sicherheitsnetz)
+      const menuBtn = document.getElementById("project-hamburger");
+      const menuOverlay = document.getElementById("project-nav-links");
+      if (menuBtn) {
+        menuBtn.addEventListener("click", () => {
+          menuBtn.classList.toggle("active");
+          menuOverlay.classList.toggle("active");
+          const spans = menuBtn.querySelectorAll("span");
+          spans.forEach((s) => s.classList.toggle("active"));
+        });
+      }
+      function closeProjectMenu() {
+        if (menuBtn) {
+          menuBtn.classList.remove("active");
+          menuOverlay.classList.remove("active");
+          menuBtn
+            .querySelectorAll("span")
+            .forEach((s) => s.classList.remove("active"));
+        }
+      }
+    </script>
+  </body>
+</html>

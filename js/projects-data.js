@@ -1,7 +1,7 @@
 /**
  * PROJECT CONFIGURATION
  */
-const HERO_PROJECT_ID = "phishing-defender";
+const HERO_PROJECT_ID = "portfolio-meta";
 
 const projectsData = [
   {
@@ -33,5 +33,23 @@ const projectsData = [
     badges: ["HTML5", "CSS3 Print", "Git Privacy", "Glassmorphism"],
     features: ["cv_card_feat_1", "cv_card_feat_2", "cv_card_feat_3"],
     statusKey: "proj_cv_status",
+  },
+
+  {
+    id: "portfolio-meta",
+    titleKey: "NEU: Portfolio System Architecture", // Verweist auf translation
+    descKey: "meta_desc", // Verweist auf translation
+    btnKey: "meta_btn", // "View Case"
+    codeKey: "meta_code", // "View Code" (GitHub)
+
+    image: "images/projects/portfolio-meta/logopf.png",
+
+    linkDetails: "projects/portfolio-meta.html",
+    linkCode: "https://github.com/yusef03/PortfolioBach", // Link zum Repo selbst
+
+    // Badges für die Karte im Archiv
+    badges: ["Architecture", "Vanilla JS", "DevOps", "Case Study"],
+    features: [], // Brauchen wir hier nicht zwingend, da es im Archiv angezeigt wird
+    statusKey: "meta_status",
   },
 ];

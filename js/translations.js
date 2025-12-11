@@ -27,7 +27,7 @@ const translations = {
     projects_subtitle:
       "Theorie ist gut, Praxis ist besser. Hier zeige ich, woran ich arbeite.",
 
-    // Project: Phishing Defender Card
+    // Project: Phishing Defender
     pd_desc:
       "Ein interaktives Lernspiel ('Serious Game') zur Cybersicherheit. Ziel ist es, Kindern und Jugendlichen das Erkennen von Phishing-Mails beizubringen.",
     pd_btn_view: "Projekt ansehen",
@@ -114,7 +114,6 @@ const translations = {
     pd_hero_scroll: "Case ansehen",
     pd_page_subtitle:
       "Ein Serious Game zur Cybersicherheit.<br> Keine Engine. <span class='highlight-text'>100% Pure Java.</span>",
-
     pd_tag_project: "Das Projekt",
     pd_mission_title:
       "Werde zum <br><span class='highlight-text'>Cyber-Detektiv</span>",
@@ -124,7 +123,6 @@ const translations = {
       "Entwickelt als Semesterprojekt an der Hochschule Hannover. <br> Das Ziel: Trockene Theorie in adrenalingeladenes Gameplay verwandeln.",
     pd_stat_levels: "Level",
     pd_stat_weeks: "Wochen Dev",
-
     pd_planning_title: "Strategic <span class='highlight-text'>Planning</span>",
     pd_planning_sub:
       "Ein Spiel entsteht nicht durch Zufall. Es entsteht durch Planung.",
@@ -138,7 +136,6 @@ const translations = {
     pd_step_4_desc: "Highscores, Save-System & Audio.",
     pd_step_5_title: "Polish",
     pd_step_5_desc: "Animationen, Testing & Release.",
-
     pd_feat_main_title: "Use-Case Driven Development",
     pd_feat_main_desc:
       'Jedes Feature basierte auf klar definierten Use-Cases. Vom "Spiel starten" bis zum "Firewall Bonus aktivieren". Dies garantierte einen klaren Fokus und verhinderte Feature-Creep.',
@@ -148,7 +145,6 @@ const translations = {
     pd_uc_game_desc: "Firewall-Bonus System aktivieren",
     pd_uc_pers_title: "Persistence",
     pd_uc_pers_desc: "Highscore & Daten-Speicherung",
-
     pd_evo_title: "The <span class='highlight-text'>Evolution</span>",
     pd_evo_1_title: "Paper Prototype",
     pd_evo_1_desc:
@@ -156,7 +152,6 @@ const translations = {
     pd_evo_2_title: "Final Release",
     pd_evo_2_desc:
       "Umsetzung in Java Swing mit Custom-Rendering und Animationen.",
-
     pd_challenges_title:
       "Challenges & <span class='highlight-text'>Solutions</span>",
     pd_challenges_sub:
@@ -167,21 +162,18 @@ const translations = {
     pd_chal_label_1: "Gegenmaßnahme",
     pd_chal_sol_1:
       'Anwendung des <strong>MVP-Prinzips</strong> (Minimum Viable Product). Kern-Features (Gameplay) hatten absolute Priorität vor "Nice-to-Have" Features.',
-
     pd_chal_risk_2: "Risiko: Swing Limitations",
     pd_chal_desc_2:
       "Java Swing ist alt. HTML-Rendering und Layout-Manager verhielten sich oft unvorhersehbar (z.B. falsche Scrollbalken).",
     pd_chal_label_2: "Lösung",
     pd_chal_sol_2:
       'Implementierung eigener <strong>Custom Panels</strong> (Scrollable Interface) und Nutzung von "Buffering" für flüssige Animationen.',
-
     pd_chal_risk_3: "Risiko: Datenverlust",
     pd_chal_desc_3:
       "Gefahr von Code-Verlust oder kaputten Builds während der heißen Entwicklungsphase.",
     pd_chal_label_3: "Strategie",
     pd_chal_sol_3:
       "Strikte <strong>Git-Strategie</strong> mit regelmäßigen Commits und Backups auf GitHub. OS-unabhängige Speicherpfade.",
-
     pd_files_title: "Project <span class='highlight-text'>Files</span>",
     pd_files_sub: "Transparenz ist alles. Sieh dir meine Planung an.",
     pd_files_note:
@@ -189,7 +181,6 @@ const translations = {
     pd_file_1_desc: "PDF • 20 Seiten • Architektur & GUI Skizzen",
     pd_file_2_desc: "PDF • 12 Seiten • Meilensteine & Risiko-Analyse",
     pd_file_3_desc: "Source Code • Assets • Releases",
-
     pd_arch_title: "Under the <span class='highlight-text'>Hood</span>",
     pd_arch_sub: "Saubere Software-Architektur statt Spaghetti-Code.",
     pd_arch_mvc_title: "MVC & Manager Pattern",
@@ -204,10 +195,8 @@ const translations = {
     pd_arch_li_4:
       "<strong>IntegrityShield:</strong> Visuelles Feedback-System für Leben.",
     pd_arch_caption: "Klassendiagramm (Auszug der Architektur)",
-
     pd_gallery_title: "Mission <span class='highlight-text'>Gallery</span>",
     pd_gallery_sub: "Einblicke in das Spielgeschehen.",
-
     pd_download_title: "Get the <span class='highlight-text'>Defender</span>",
     pd_download_sub: "Wähle deine Version und starte die Mission.",
     pd_dl_rec: "Empfohlen",
@@ -221,24 +210,16 @@ const translations = {
     pd_term_opt_a: "# Option A: Doppelklick auf die .jar Datei",
     pd_term_opt_b: "# Option B: Start über Terminal (für Debugging)",
 
-    // --- LEGAL PAGES (Note) ---
-    legal_note: "", // Leer für DE
-
-    // --- CV ENGINE PROJECT (DE) ---
-    // Startseite Karte
+    // --- CV ENGINE PROJECT ---
     proj_cv_title: "HTML/CSS CV Engine",
     proj_cv_desc:
       "Entwicklung einer Print-Optimierten Rendering-Engine für Bewerbungsunterlagen. Pixelgenaues A4-Design direkt im Browser.",
     proj_cv_status: "🚀 Beendet",
     proj_cv_link: "Case Study ansehen",
-
-    // Detail Seite - Nav & Hero
     cv_hero_title: "Next Gen <span class='text-stroke'>Application</span>",
     cv_hero_subtitle:
       "Kein Word. Kein Canva. <span class='highlight-text'>100% Code.</span>",
     cv_hero_badge: "CSS Print Engine",
-
-    // Mission
     cv_tag_project: "Das Konzept",
     cv_mission_title:
       "Bewerbung als <br><span class='highlight-text'>Code-Experience</span>",
@@ -246,16 +227,11 @@ const translations = {
       "Standard-Tools wie Word sind unflexibel und generieren unsauberen Code. Meine Lösung: Ein eigenes Framework basierend auf HTML5 & CSS3, das Design-Freiheit mit technischer Präzision verbindet.",
     cv_mission_subtext:
       "Das Ziel: Absolute Kontrolle über Layout, Typografie und 'Dark Glass' Ästhetik – bei perfektem PDF-Export.",
-
-    // Stats
     cv_stat_dependencies: "Dependencies",
     cv_stat_performance: "Lighthouse Score",
     cv_stat_format: "Format",
-
-    // Tech Highlights (Process)
     cv_tech_title: "Technical <span class='highlight-text'>Deep Dive</span>",
     cv_tech_sub: "Warum HTML besser ist als Word.",
-
     cv_feat_1_title: "Print CSS Optimization",
     cv_feat_1_desc:
       "Nutzung von @page und zoom-Hacks für pixelgenaue A4-Skalierung ohne Ränder.",
@@ -265,38 +241,182 @@ const translations = {
     cv_feat_3_title: "Privacy Workflow",
     cv_feat_3_desc:
       "Trennung von privaten Daten und Code via .gitignore und Placeholder-Strategie.",
-
-    // Challenges
     cv_chal_title: "Challenges & <span class='highlight-text'>Solutions</span>",
     cv_chal_sub: "Der Weg vom Browser zum Papier.",
-
     cv_chal_1_title: "Problem: Browser Rendering",
     cv_chal_1_desc:
       "Browser rendern Abstände unterschiedlich. Ein PDF aus Chrome sah anders aus als in Edge.",
     cv_chal_1_sol:
       "Einsatz von `webkit-print-color-adjust: exact` und striktem CSS Reset für Druck-Medien.",
-
     cv_chal_2_title: "Problem: Privacy",
     cv_chal_2_desc:
       "Wie zeige ich den Code auf GitHub, ohne meine Telefonnummer zu leaken?",
     cv_chal_2_sol:
       "Architektur-Split: `index.html` (Dummy Daten) vs. `private_data.js` (Lokal).",
-
-    // Downloads
     cv_dl_title: "Check the <span class='highlight-text'>Results</span>",
     cv_dl_sub: "Code ansehen oder Ergebnis prüfen.",
     cv_dl_repo_info: "Full Source Code",
     cv_dl_pdf_info: "Result Preview (PDF)",
-
-    // --- CV ENGINE HERO FEATURES ---
     cv_card_feat_1:
       "<strong>Print CSS:</strong> Pixelgenaue A4-Skalierung via @page Rules.",
     cv_card_feat_2:
       "<strong>Privacy-First:</strong> Datentrennung via .gitignore Strategie.",
     cv_card_feat_3:
       "<strong>No-Framework:</strong> 100% Vanilla HTML5 & CSS3 Architecture.",
+
     archive_cta_text: "Weitere Experimente, Tools & Case Studies",
     archive_cta_btn: "Zum Projekt-Archiv",
+
+    // ============================================
+    // META PORTFOLIO - DE
+    // ============================================
+    meta_title: "Portfolio Architecture v2",
+    meta_desc:
+      "Dokumentation des Portfolios selbst. Von statischem HTML zur dynamischen Rendering-Engine. Ein Deep-Dive in Software-Architektur, DNS-Routing und Performance.",
+    meta_btn: "Ansehen",
+    meta_code: "Repo ansehen",
+    meta_status: "⚡ Live",
+
+    // Hero
+    meta_hero_sub:
+      "Kein Baukasten. Keine Templates.<br><span class='highlight-text' style='text-shadow: 0 0 20px rgba(157,0,255,0.4);'>100% Engineered.</span>",
+
+    // Chapter 1: Origin
+    meta_c1_title: "Chapter I: <span class='highlight-text'>The Origin</span>",
+    meta_c1_sub: "Warum ich das Rad neu erfunden habe.",
+    meta_c1_mot_title: 'Das "Black Box" Problem',
+    meta_c1_mot_text:
+      "Natürlich hätte ich WordPress oder Wix nehmen können. Das geht in 2 Stunden und sieht gut aus.",
+    meta_c1_mot_sub:
+      "Aber im Studium lerne ich Algorithmen, Datenstrukturen und wie Computer 'denken'. Einen Baukasten zu benutzen, fühlt sich an wie Schummeln. Es ist eine 'Black Box', ich werfe Inhalt rein und vorne kommt eine Webseite raus, aber ich habe keine Ahnung warum, warum und wie das funktioniert!<br><br><strong>Das Ziel:</strong> Ich wollte den Code besitzen. Ich wollte <em>Inspect Element</em> im Browser drücken und jede einzelne Klasse verstehen, weil ich sie selbst geschrieben habe.",
+    meta_c1_perf_title: "Bloatware vs. Handwerk",
+    meta_c1_perf_text:
+      "Fertige Templates laden oft Megabytes an JavaScript-Bibliotheken (jQuery, Bootstrap, zig Plugins), nur um ein bisschen Text anzuzeigen. Das ist Verschwendung.",
+    meta_c1_perf_sub:
+      "<strong>Mein Ansatz:</strong> Ich habe mir eine Challenge gesetzt: <span style='color:white'>Zero Dependencies.</span> Kein Bootstrap, kein React, kein Tailwind. Nur natives HTML5, CSS3 und Vanilla JS. <br><br>Dadurch habe ich gelernt, wie CSS Grid wirklich funktioniert, anstatt nur <code>col-md-6</code> zu schreiben. Das Ergebnis? Eine Seite, die in Millisekunden lädt (Lighthouse 100).",
+    meta_c1_trans_title: "Theorie trifft Praxis",
+    meta_c1_trans_text:
+      "In der Hochschule lernen wir Java und OOP (Objektorientierung). Viele Studenten fragen: 'Brauche ich das für Webseiten?'",
+    meta_c1_trans_sub:
+      "Das Portfolio ist mein 'Labor'. Ich wollte sehen, ob ich Konzepte wie das <strong>MVC-Pattern</strong> (Model-View-Controller) auch auf eine einfache Webseite anwenden kann. Hier darf ich Dinge kaputt machen und reparieren, ohne dass ein Kunde sich beschwert. Das ist der einzige Weg, wirklich tiefes Verständnis aufzubauen.",
+
+    // Chapter 2: Architecture
+    meta_c2_title:
+      "Chapter II: <span class='highlight-text'>The Architecture</span>",
+    meta_c2_sub: "Vom statischen HTML zur dynamischen Engine.",
+    meta_c2_evo_title: "Statisch vs. Dynamisch",
+    meta_c2_evo_text:
+      "Zu Beginn (v1.0) bestand dieses Portfolio aus einzelnen HTML-Dateien und eine alte Test Webseite. Das Problem: Wenn ich im Menü einen Link ändern wollte, musste ich das in fünf verschiedenen Dateien tun. Das war fehleranfällig und fühlte sich nicht 'smart' an.",
+    meta_c2_evo_sub:
+      "<strong>Die Lösung (v2.2):</strong> Ich habe versucht, das Prinzip 'Don't Repeat Yourself' (DRY) anzuwenden. Anstatt Inhalte hart in HTML zu coden, habe ich sie in Datenstrukturen ausgelagert.",
+    meta_c2_li_1: "<strong>Früher:</strong> Copy & Paste von Code-Blöcken.",
+    meta_c2_li_2:
+      "<strong>Heute:</strong> Eine zentrale Daten-Quelle (Single Source of Truth).",
+    meta_c2_eng_title: 'Die "Rendering Engine"',
+    meta_c2_eng_text:
+      "Ich wollte verstehen, wie moderne Frameworks (wie React) im Kern funktionieren. Also habe ich eine stark vereinfachte Version selbst gebaut.",
+    meta_c2_eng_sub:
+      "Das System basiert auf einer Trennung der Zuständigkeiten (Separation of Concerns):",
+    meta_c2_li_3:
+      "<strong>Data Layer:</strong> <code>projects-data.js</code> hält alle Infos (Texte, Bildpfade) als JSON-Objekte.",
+    meta_c2_li_4:
+      "<strong>Logic Layer:</strong> <code>project-renderer.js</code> nimmt diese Daten und baut das HTML live im Browser zusammen.",
+    meta_c2_li_5:
+      "<strong>View Layer:</strong> Die <code>index.html</code> ist nur noch ein leerer Rahmen (Container).",
+    meta_c2_eng_note:
+      "<em>Das ermöglicht mir, ein neues Projekt hinzuzufügen, indem ich einfach nur einen Eintrag im Array mache – ohne eine einzige Zeile HTML zu schreiben.</em>",
+
+    // Chapter 3: Features
+    meta_c3_title:
+      "Chapter III: <span class='highlight-text'>Invisible Tech</span>",
+    meta_c3_sub: "Features, die man fühlt, aber nicht sieht.",
+    meta_c3_i18n_title: "Custom i18n Engine",
+    meta_c3_i18n_text:
+      "Statt 500KB für eine Library wie <em>i18next</em> zu laden, habe ich eine eigene Engine geschrieben.",
+    meta_c3_li_1:
+      "<strong>Attribute Mapping:</strong> Der Content ist vom HTML entkoppelt (<code>data-i18n</code>).",
+    meta_c3_li_2:
+      "<strong>Persistence:</strong> Die Sprache bleibt dank <code>localStorage</code> beim Reload erhalten.",
+    meta_c3_li_3:
+      "<strong>Fade-Transition:</strong> Ein Promise-basierter Übergang sorgt für sanfte Animationen statt hartem Flackern.",
+    meta_c3_dom_title: "Smart DOM Injection",
+    meta_c3_dom_text:
+      "Die <code>project-renderer.js</code> agiert wie ein Mini-Framework ('Vanilla React'). Sie entscheidet zur Laufzeit, was gerendert wird.",
+    meta_c3_dom_sub:
+      "Ein besonderes Highlight ist die <strong>Path Normalization</strong>. Da die Engine sowohl auf der Startseite (Root) als auch im Archiv (Subfolder) läuft, repariert sie relative Bildpfade automatisch, bevor sie ins DOM injiziert werden. Keine 'Broken Images', egal wo der Code läuft.",
+    meta_c3_perf_title: "Performance First",
+    meta_c3_perf_text:
+      "Ein Portfolio muss schnell sein. Durch den Verzicht auf Frameworks und die Nutzung von Hardware-Acceleration (GPU) erreichen wir Top-Werte.",
+    meta_c3_obs_title: "Ressourcen-Effizienz",
+    meta_c3_obs_text:
+      "Scroll-Events feuern hunderte Male pro Sekunde. Das tötet den Akku mobiler Geräte. Meine Lösung: Die <strong>Intersection Observer API</strong>.",
+    meta_c3_obs_note:
+      "<em>⬆️ Live Demo: Dieser Kasten wurde erst aktiviert, als du ihn gerade gesehen hast. Vorher verbrauchte er 0% Rechenleistung.</em>",
+    meta_c3_css_title: "Modern CSS & GPU",
+    meta_c3_css_text:
+      "CSS ist mehr als nur Farbe. Ich nutze <strong>Custom Properties</strong> für globales Theming. Zusätzlich erzwinge ich bei Animationen via <code>transform: translate3d</code> das Rendering auf der <strong>Grafikkarte (GPU)</strong> statt der CPU.",
+
+    // Chapter 4: DevOps
+    meta_c4_title:
+      "Chapter IV: <span class='highlight-text'>DevOps & Workflow</span>",
+    meta_c4_sub: "Code ist nur so gut wie der Prozess dahinter.",
+    meta_c4_git_title: "Clean Commits",
+    meta_c4_git_text:
+      "Ein Portfolio wächst organisch. Um das Chaos zu beherrschen, nutze ich eine strikte Git-Strategie.",
+    meta_c4_li_1:
+      "<strong>Semantic Commits:</strong> Jeder Commit beginnt mit <code>feat:</code>, <code>fix:</code> oder <code>chore:</code>. Das macht die History lesbar.",
+    meta_c4_li_2:
+      "<strong>Branching:</strong> Neue Features (wie diese Meta-Seite) entstehen in isolierten Branches, bevor sie in den <code>main</code>-Branch gemerged werden.",
+    meta_c4_li_3:
+      "<strong>Safety:</strong> Kein Code landet ohne Test (lokaler Live-Server) im Production-Build.",
+    meta_c4_str_title: "Domain Driven Design",
+    meta_c4_str_text:
+      "Anfangs lagen alle Bilder in einem Ordner. Das Chaos war vorprogrammiert.",
+    meta_c4_str_sub:
+      "Im Zuge des Refactorings (v2.2) habe ich die Struktur aufgeräumt. Assets sind nun logisch nach ihrer Domäne gruppiert. Das macht das Projekt wartbar und skalierbar für zukünftige Erweiterungen.",
+
+    // Chapter 5: Infrastructure
+    meta_c5_title:
+      "Chapter V: <span class='highlight-text'>Infrastructure</span>",
+    meta_c5_sub: "Der Weg zur eigenen Identität (yusefbach.de).",
+    meta_c5_dns_title: "Vom Hobby zum Pro",
+    meta_c5_dns_text:
+      "Anfangs lief die Seite unter <code>yusef03.github.io</code>. Für ein professionelles Auftreten musste eine Top-Level-Domain (TLD) her.",
+    meta_c5_dns_sub:
+      "Die Herausforderung: GitHub Pages ist ein statischer Hoster. Man muss die Brücke zwischen Domain-Provider und GitHub manuell bauen. Ich nutze redundante <strong>A-Records</strong> (4 Load-Balancer IPs) für Ausfallsicherheit.",
+    meta_c5_cname_title: 'The "Persistence Issue"',
+    meta_c5_cname_text:
+      "Ein klassischer Fallstrick bei GitHub Pages, der mich Nerven gekostet hat.",
+    meta_c5_hack_prob_title: "Das Problem",
+    meta_c5_hack_prob_desc:
+      "Ich hatte die Domain in den GitHub Settings eingetragen. Alles funktionierte. Aber nach jedem neuen <code>git push</code> war die Einstellung plötzlich weg und die Seite offline.<br><br><strong>Grund:</strong> GitHub überschreibt manuelle Settings beim Deployment.",
+    meta_c5_hack_fix_title: "Der Fix: CNAME File",
+    meta_c5_hack_fix_desc:
+      "Die Lösung ist eine unscheinbare Datei namens <code>CNAME</code> (ohne Endung) im Root-Verzeichnis.<br><br><strong>Inhalt:</strong> <code>yusefbach.de</code><br><br>Damit ist die Domain 'Code-defined'. Egal wie oft ich deploye, GitHub weiß jetzt: 'Das gehört mir.'",
+
+    // Chapter 6: Roadmap
+    meta_c6_title:
+      "Chapter VI: <span class='highlight-text'>Future Roadmap</span>",
+    meta_c6_sub: "Code is never finished. The journey continues.",
+    meta_c6_n1_title: "Architecture Shift",
+    meta_c6_n1_desc:
+      "Migration von statischem HTML zu einer datengetriebenen JS-Engine. Implementierung von i18n, Dark Mode & Intersection Observer.",
+    meta_c6_n2_title: "UX & Accessibility",
+    meta_c6_n2_desc:
+      "Einführung eines <strong>Light/Dark Mode Toggles</strong> basierend auf CSS-Variablen. Fokus auf WCAG 2.1 Konformität (Kontraste & Screenreader-Support).",
+    meta_c6_n3_title: "Headless CMS",
+    meta_c6_n3_desc:
+      "Ablösung der lokalen JSON-Dateien durch eine echte API (Contentful/Strapi). Verwaltung der Projekte über ein Admin-Dashboard statt Code-Commits.",
+    meta_c6_n4_title: "Own Framework",
+    meta_c6_n4_desc:
+      "Migration der Vanilla-Architektur zu <strong>Next.js</strong> (React). Nutzung von Server Side Rendering (SSR) für maximale Performance und SEO.",
+
+    // Footer
+    meta_outro_title: "Ready for<br>Production",
+    meta_outro_text:
+      "Dieses Portfolio ist der Beweis, dass ich bereit bin, Theorie in echten Mehrwert zu verwandeln.",
+    meta_outro_btn: "Lass uns arbeiten",
+    meta_outro_home: "Zur Startseite",
   },
 
   en: {
@@ -327,7 +447,7 @@ const translations = {
     projects_subtitle:
       "Theory is good, practice is better. Here is what I am working on.",
 
-    // Project: Phishing Defender Card
+    // Project: Phishing Defender
     pd_desc:
       "An interactive learning game ('Serious Game') for cyber security. The goal is to teach children and teenagers how to recognize phishing emails.",
     pd_btn_view: "View Project",
@@ -413,7 +533,6 @@ const translations = {
     pd_hero_scroll: "Explore Case",
     pd_page_subtitle:
       "A Serious Game for Cyber Security.<br> No Engine. <span class='highlight-text'>100% Pure Java.</span>",
-
     pd_tag_project: "The Project",
     pd_mission_title:
       "Become a <br><span class='highlight-text'>Cyber Detective</span>",
@@ -423,7 +542,6 @@ const translations = {
       "Developed as a semester project at the University of Applied Sciences Hannover. <br> The goal: Turn dry theory into adrenaline-pumping gameplay.",
     pd_stat_levels: "Levels",
     pd_stat_weeks: "Weeks Dev",
-
     pd_planning_title: "Strategic <span class='highlight-text'>Planning</span>",
     pd_planning_sub:
       "A game is not created by chance. It is created by planning.",
@@ -437,7 +555,6 @@ const translations = {
     pd_step_4_desc: "Highscores, Save-System & Audio.",
     pd_step_5_title: "Polish",
     pd_step_5_desc: "Animations, Testing & Release.",
-
     pd_feat_main_title: "Use-Case Driven Development",
     pd_feat_main_desc:
       'Every feature was based on clearly defined use-cases. From "Start Game" to "Activate Firewall Bonus". This guaranteed a clear focus and prevented feature creep.',
@@ -447,7 +564,6 @@ const translations = {
     pd_uc_game_desc: "Activate Firewall Bonus System",
     pd_uc_pers_title: "Persistence",
     pd_uc_pers_desc: "Highscore & Data Storage",
-
     pd_evo_title: "The <span class='highlight-text'>Evolution</span>",
     pd_evo_1_title: "Paper Prototype",
     pd_evo_1_desc:
@@ -455,7 +571,6 @@ const translations = {
     pd_evo_2_title: "Final Release",
     pd_evo_2_desc:
       "Implementation in Java Swing with custom rendering and animations.",
-
     pd_challenges_title:
       "Challenges & <span class='highlight-text'>Solutions</span>",
     pd_challenges_sub:
@@ -466,21 +581,18 @@ const translations = {
     pd_chal_label_1: "Countermeasure",
     pd_chal_sol_1:
       'Applying the <strong>MVP Principle</strong> (Minimum Viable Product). Core features (Gameplay) had absolute priority over "Nice-to-Have" features.',
-
     pd_chal_risk_2: "Risk: Swing Limitations",
     pd_chal_desc_2:
       "Java Swing is old. HTML rendering and layout managers often behaved unpredictably (e.g., wrong scrollbars).",
     pd_chal_label_2: "Solution",
     pd_chal_sol_2:
       'Implementation of own <strong>Custom Panels</strong> (Scrollable Interface) and use of "Buffering" for smooth animations.',
-
     pd_chal_risk_3: "Risk: Data Loss",
     pd_chal_desc_3:
       "Danger of code loss or broken builds during the hot development phase.",
     pd_chal_label_3: "Strategy",
     pd_chal_sol_3:
       "Strict <strong>Git Strategy</strong> with regular commits and backups on GitHub. OS-independent storage paths.",
-
     pd_files_title: "Project <span class='highlight-text'>Files</span>",
     pd_files_sub: "Transparency is everything. See my planning.",
     pd_files_note:
@@ -488,7 +600,6 @@ const translations = {
     pd_file_1_desc: "PDF • 20 Pages • Architecture & GUI Sketches",
     pd_file_2_desc: "PDF • 12 Pages • Milestones & Risk Analysis",
     pd_file_3_desc: "Source Code • Assets • Releases",
-
     pd_arch_title: "Under the <span class='highlight-text'>Hood</span>",
     pd_arch_sub: "Clean software architecture instead of spaghetti code.",
     pd_arch_mvc_title: "MVC & Manager Pattern",
@@ -503,10 +614,8 @@ const translations = {
     pd_arch_li_4:
       "<strong>IntegrityShield:</strong> Visual feedback system for lives.",
     pd_arch_caption: "Class Diagram (Excerpt of Architecture)",
-
     pd_gallery_title: "Mission <span class='highlight-text'>Gallery</span>",
     pd_gallery_sub: "Insights into the gameplay.",
-
     pd_download_title: "Get the <span class='highlight-text'>Defender</span>",
     pd_download_sub: "Choose your version and start the mission.",
     pd_dl_rec: "Recommended",
@@ -520,24 +629,16 @@ const translations = {
     pd_term_opt_a: "# Option A: Double click on the .jar file",
     pd_term_opt_b: "# Option B: Start via Terminal (for debugging)",
 
-    // --- LEGAL PAGES (Note) ---
-    legal_note:
-      "<br><br><em>Note: The German version of this document is the legally binding one.</em>",
-    // --- CV ENGINE PROJECT (EN) ---
-    // Home Card
+    // --- CV ENGINE PROJECT ---
     proj_cv_title: "HTML/CSS CV Engine",
     proj_cv_desc:
       "Development of a print-optimized rendering engine for application documents. Pixel-perfect A4 design directly in the browser.",
     proj_cv_status: "🚀 Completed",
     proj_cv_link: "View Case Study",
-
-    // Detail Page
     cv_hero_title: "Next Gen <span class='text-stroke'>Application</span>",
     cv_hero_subtitle:
       "No Word. No Canva. <span class='highlight-text'>100% Code.</span>",
     cv_hero_badge: "CSS Print Engine",
-
-    // Mission
     cv_tag_project: "The Concept",
     cv_mission_title:
       "Application as a <br><span class='highlight-text'>Code Experience</span>",
@@ -545,16 +646,11 @@ const translations = {
       "Standard tools like Word are inflexible and generate messy code. My solution: A custom framework based on HTML5 & CSS3 linking design freedom with technical precision.",
     cv_mission_subtext:
       "The Goal: Absolute control over layout, typography, and 'Dark Glass' aesthetics – with perfect PDF export.",
-
-    // Stats
     cv_stat_dependencies: "Dependencies",
     cv_stat_performance: "Lighthouse Score",
     cv_stat_format: "Format",
-
-    // Tech Highlights
     cv_tech_title: "Technical <span class='highlight-text'>Deep Dive</span>",
     cv_tech_sub: "Why HTML beats Word.",
-
     cv_feat_1_title: "Print CSS Optimization",
     cv_feat_1_desc:
       "Using @page and zoom hacks for pixel-perfect A4 scaling without margins.",
@@ -564,30 +660,22 @@ const translations = {
     cv_feat_3_title: "Privacy Workflow",
     cv_feat_3_desc:
       "Separation of private data and code via .gitignore and placeholder strategy.",
-
-    // Challenges
     cv_chal_title: "Challenges & <span class='highlight-text'>Solutions</span>",
     cv_chal_sub: "The path from browser to paper.",
-
     cv_chal_1_title: "Problem: Browser Rendering",
     cv_chal_1_desc:
       "Browsers render margins differently. A Chrome PDF looked different from Edge.",
     cv_chal_1_sol:
       "Usage of `webkit-print-color-adjust: exact` and strict CSS reset for print media.",
-
     cv_chal_2_title: "Problem: Privacy",
     cv_chal_2_desc:
       "How to show code on GitHub without leaking my phone number?",
     cv_chal_2_sol:
       "Architecture Split: `index.html` (Dummy Data) vs. `private_data.js` (Local).",
-
-    // Downloads
     cv_dl_title: "Check the <span class='highlight-text'>Results</span>",
     cv_dl_sub: "View code or check the result.",
     cv_dl_repo_info: "Full Source Code",
     cv_dl_pdf_info: "Result Preview (PDF)",
-
-    // --- CV ENGINE HERO FEATURES ---
     cv_card_feat_1:
       "<strong>Print CSS:</strong> Pixel-perfect A4 scaling via @page rules.",
     cv_card_feat_2:
@@ -597,5 +685,155 @@ const translations = {
 
     archive_cta_text: "More Experiments, Tools & Case Studies",
     archive_cta_btn: "Go to Project Archive",
+
+    // ============================================
+    // META PORTFOLIO (NEW) - EN
+    // ============================================
+    meta_title: "Portfolio Architecture v2",
+    meta_desc:
+      "Documentation of the portfolio itself. From static HTML to a dynamic rendering engine. A deep dive into software architecture, DNS routing, and performance.",
+    meta_btn: "Read Deep Dive",
+    meta_code: "View Repo",
+    meta_status: "⚡ Live",
+
+    // Hero
+    meta_hero_sub:
+      "No Builders. No Templates.<br><span class='highlight-text' style='text-shadow: 0 0 20px rgba(157,0,255,0.4);'>100% Engineered.</span>",
+
+    // Chapter 1: Origin
+    meta_c1_title: "Chapter I: <span class='highlight-text'>The Origin</span>",
+    meta_c1_sub: "Why I reinvented the wheel.",
+    meta_c1_mot_title: 'The "Black Box" Problem',
+    meta_c1_mot_text:
+      "Of course, I could have used WordPress or Wix. That takes 2 hours and looks good.",
+    meta_c1_mot_sub:
+      "But in my studies, I learn algorithms, data structures, and how computers 'think'. Using a builder feels like cheating. It's a 'Black Box' – I throw content in, and a website comes out, but I have no idea why.<br><br><strong>The Goal:</strong> I wanted to own the code. I wanted to press <em>Inspect Element</em> in the browser and understand every single class because I wrote it myself.",
+    meta_c1_perf_title: "Bloatware vs. Craftsmanship",
+    meta_c1_perf_text:
+      "Finished templates often load megabytes of JavaScript libraries (jQuery, Bootstrap, countless plugins) just to display a bit of text. That is wasteful.",
+    meta_c1_perf_sub:
+      "<strong>The Student Approach:</strong> I set myself a challenge: <span style='color:white'>Zero Dependencies.</span> No Bootstrap, no React, no Tailwind. Only native HTML5, CSS3, and Vanilla JS. <br><br>Through this, I learned how CSS Grid really works instead of just writing <code>col-md-6</code>. The result? A page that loads in milliseconds (Lighthouse 100).",
+    meta_c1_trans_title: "Theory meets Practice",
+    meta_c1_trans_text:
+      "At university, we learn Java and OOP (Object Oriented Programming). Many students ask: 'Do I need this for websites?'",
+    meta_c1_trans_sub:
+      "The portfolio is my 'Lab'. I wanted to see if I could apply concepts like the <strong>MVC Pattern</strong> (Model-View-Controller) to a simple website. Here, I can break things and fix them without a client complaining. It is the only way to build truly deep understanding.",
+
+    // Chapter 2: Architecture
+    meta_c2_title:
+      "Chapter II: <span class='highlight-text'>The Architecture</span>",
+    meta_c2_sub: "From static HTML to a dynamic engine.",
+    meta_c2_evo_title: "Static vs. Dynamic",
+    meta_c2_evo_text:
+      "In the beginning (v1.0), this portfolio consisted of individual HTML files. The problem: If I wanted to change a link in the menu, I had to do it in five different files. That was error-prone and didn't feel 'smart'.",
+    meta_c2_evo_sub:
+      "<strong>The Solution (v2.2):</strong> I tried to apply the 'Don't Repeat Yourself' (DRY) principle. Instead of hardcoding content in HTML, I outsourced it to data structures.",
+    meta_c2_li_1: "<strong>Before:</strong> Copy & Paste of code blocks.",
+    meta_c2_li_2:
+      "<strong>Today:</strong> A central data source (Single Source of Truth).",
+    meta_c2_eng_title: 'The "Rendering Engine"',
+    meta_c2_eng_text:
+      "I wanted to understand how modern frameworks (like React) work at their core. So I built a heavily simplified version myself.",
+    meta_c2_eng_sub: "The system is based on Separation of Concerns:",
+    meta_c2_li_3:
+      "<strong>Data Layer:</strong> <code>projects-data.js</code> holds all info (texts, image paths) as JSON objects.",
+    meta_c2_li_4:
+      "<strong>Logic Layer:</strong> <code>project-renderer.js</code> takes this data and builds the HTML live in the browser.",
+    meta_c2_li_5:
+      "<strong>View Layer:</strong> The <code>index.html</code> is just an empty frame (container).",
+    meta_c2_eng_note:
+      "<em>This allows me to add a new project by simply adding an entry to the array – without writing a single line of HTML.</em>",
+
+    // Chapter 3: Features
+    meta_c3_title:
+      "Chapter III: <span class='highlight-text'>Invisible Tech</span>",
+    meta_c3_sub: "Features you feel but don't see.",
+    meta_c3_i18n_title: "Custom i18n Engine",
+    meta_c3_i18n_text:
+      "Instead of loading 500KB for a library like <em>i18next</em>, I wrote my own engine.",
+    meta_c3_li_1:
+      "<strong>Attribute Mapping:</strong> Content is decoupled from HTML (<code>data-i18n</code>).",
+    meta_c3_li_2:
+      "<strong>Persistence:</strong> The language remains thanks to <code>localStorage</code> on reload.",
+    meta_c3_li_3:
+      "<strong>Fade-Transition:</strong> A Promise-based transition ensures smooth animations instead of hard flickering.",
+    meta_c3_dom_title: "Smart DOM Injection",
+    meta_c3_dom_text:
+      "The <code>project-renderer.js</code> acts like a mini-framework ('Vanilla React'). It decides at runtime what is rendered.",
+    meta_c3_dom_sub:
+      "A special highlight is <strong>Path Normalization</strong>. Since the engine runs on both the start page (Root) and in the archive (Subfolder), it automatically repairs relative image paths before injecting them into the DOM. No 'Broken Images', no matter where the code runs.",
+    meta_c3_perf_title: "Performance First",
+    meta_c3_perf_text:
+      "A portfolio must be fast. By avoiding frameworks and using hardware acceleration (GPU), we achieve top scores.",
+    meta_c3_obs_title: "Resource Efficiency",
+    meta_c3_obs_text:
+      "Scroll events fire hundreds of times per second. That kills mobile device batteries. My solution: The <strong>Intersection Observer API</strong>.",
+    meta_c3_obs_note:
+      "<em>⬆️ Live Demo: This box was only activated when you just saw it. Before that, it consumed 0% computing power.</em>",
+    meta_c3_css_title: "Modern CSS & GPU",
+    meta_c3_css_text:
+      "CSS is more than just color. I use <strong>Custom Properties</strong> for global theming. Additionally, I force rendering on the <strong>Graphics Card (GPU)</strong> via <code>transform: translate3d</code> instead of the CPU.",
+
+    // Chapter 4: DevOps
+    meta_c4_title:
+      "Chapter IV: <span class='highlight-text'>DevOps & Workflow</span>",
+    meta_c4_sub: "Code is only as good as the process behind it.",
+    meta_c4_git_title: "Clean Commits",
+    meta_c4_git_text:
+      "A portfolio grows organically. To control the chaos, I use a strict Git strategy.",
+    meta_c4_li_1:
+      "<strong>Semantic Commits:</strong> Every commit starts with <code>feat:</code>, <code>fix:</code>, or <code>chore:</code>. This makes the history readable.",
+    meta_c4_li_2:
+      "<strong>Branching:</strong> New features (like this meta page) are created in isolated branches before being merged into the <code>main</code> branch.",
+    meta_c4_li_3:
+      "<strong>Safety:</strong> No code lands in the production build without testing (local live server).",
+    meta_c4_str_title: "Domain Driven Design",
+    meta_c4_str_text:
+      "Initially, all images were in one folder. Chaos was pre-programmed.",
+    meta_c4_str_sub:
+      "During the refactoring (v2.2), I cleaned up the structure. Assets are now logically grouped by their domain. This makes the project maintainable and scalable for future expansions.",
+
+    // Chapter 5: Infrastructure
+    meta_c5_title:
+      "Chapter V: <span class='highlight-text'>Infrastructure</span>",
+    meta_c5_sub: "The path to my own identity (yusefbach.de).",
+    meta_c5_dns_title: "From Hobby to Pro",
+    meta_c5_dns_text:
+      "Initially, the site ran under <code>yusef03.github.io</code>. For a professional appearance, a Top-Level Domain (TLD) was needed.",
+    meta_c5_dns_sub:
+      "The challenge: GitHub Pages is a static host. You have to manually build the bridge between domain provider and GitHub. I use redundant <strong>A-Records</strong> (4 Load Balancer IPs) for reliability.",
+    meta_c5_cname_title: 'The "Persistence Issue"',
+    meta_c5_cname_text:
+      "A classic pitfall with GitHub Pages that cost me some nerves.",
+    meta_c5_hack_prob_title: "The Problem",
+    meta_c5_hack_prob_desc:
+      "I had entered the domain in GitHub settings. Everything worked. But after every new <code>git push</code>, the setting was suddenly gone and the site offline.<br><br><strong>Reason:</strong> GitHub overwrites manual settings on deployment.",
+    meta_c5_hack_fix_title: "The Fix: CNAME File",
+    meta_c5_hack_fix_desc:
+      "The solution is an inconspicuous file named <code>CNAME</code> (no extension) in the root directory.<br><br><strong>Content:</strong> <code>yusefbach.de</code><br><br>This makes the domain 'Code-defined'. No matter how often I deploy, GitHub now knows: 'This belongs to me.'",
+
+    // Chapter 6: Roadmap
+    meta_c6_title:
+      "Chapter VI: <span class='highlight-text'>Future Roadmap</span>",
+    meta_c6_sub: "Code is never finished. The journey continues.",
+    meta_c6_n1_title: "Architecture Shift",
+    meta_c6_n1_desc:
+      "Migration from static HTML to a data-driven JS engine. Implementation of i18n, Dark Mode & Intersection Observer.",
+    meta_c6_n2_title: "UX & Accessibility",
+    meta_c6_n2_desc:
+      "Introduction of a <strong>Light/Dark Mode Toggle</strong> based on CSS variables. Focus on WCAG 2.1 compliance (contrasts & screen reader support).",
+    meta_c6_n3_title: "Headless CMS",
+    meta_c6_n3_desc:
+      "Replacement of local JSON files with a real API (Contentful/Strapi). Managing projects via an admin dashboard instead of code commits.",
+    meta_c6_n4_title: "Own Framework",
+    meta_c6_n4_desc:
+      "Migration of the Vanilla architecture to <strong>Next.js</strong> (React). Using Server Side Rendering (SSR) for maximum performance and SEO.",
+
+    // Footer
+    meta_outro_title: "Ready for<br>Production",
+    meta_outro_text:
+      "This portfolio is proof that I am ready to turn theory into real value.",
+    meta_outro_btn: "Let's work",
+    meta_outro_home: "Back to Home",
   },
 };
