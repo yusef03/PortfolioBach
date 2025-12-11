@@ -2,7 +2,48 @@
 
 Hier dokumentiere ich, was sich am Projekt ändert.
 
-## [2.2.0] - 2025-12-10
+## [2.2.0] - 2025-12-11 (The Meta Update)
+
+Dieses Update dokumentiert das System selbst. Wir haben das Portfolio in eine eigene Case Study verwandelt.
+
+### 🚀 New Project
+
+- **Portfolio System Architecture:** Neue Detailseite (`projects/portfolio-meta.html`) hinzugefügt.
+  - **Inhalt:** Dokumentation der Custom Rendering Engine (MVC), DNS-Infrastruktur und Git-Workflows.
+  - **Interactive Assets:** Implementierung von CSS-basierten Terminal-Fenstern, lebendigen Git-Graphen und Lighthouse-Visualisierungen.
+  - **Design:** Neuer "Cyber-Grid" Hero-Bereich mit Scanline-Animationen und Neon-Timeline.
+
+### 🐛 Fixes & Polish
+
+- **Navigation Layout:** Korrektur der Flexbox-Anordnung für den Sprach-Button und Hamburger-Menü (Mobile & Desktop).
+- **CSS Compliance:** Behebung von Vendor-Prefix Warnungen (`background-clip`).
+- **Translations:** Vollständige DE/EN Unterstützung für die neue Meta-Seite.
+
+### 🚀 New Features (Architecture)
+
+- **Dynamic Project Rendering:** Implementierung einer JS-basierten Rendering-Engine (`project-renderer.js`). Trennung von Daten (`projects-data.js`) und View-Layer.
+- **Hero/Archive Logic:** Automatische Zuweisung des Hero-Projekts auf der Startseite basierend auf Konfiguration ID. Alle weiteren Projekte werden automatisch in das Archiv verschoben.
+- **Project Archive:** Neue dedizierte Unterseite (`projects/archive.html`) für die Projektübersicht mit Grid-Layout.
+- **Maintenance System:** Globaler Switch (`status.js`) zur sofortigen Umleitung auf eine Wartungsseite bei kritischen Updates.
+
+### 📦 Content & Projects
+
+- **New Case Study:** "HTML/CSS CV Engine" hinzugefügt.
+  - Integration der Detailseite mit Privacy-First Workflow Beschreibung.
+  - Live-Demo und Repository Verlinkung.
+- **Translations:** Erweiterung der `translations.js` um CV-Projekt-Daten und Archiv-Navigation (DE/EN).
+
+### ♻️ Refactoring
+
+- **Asset Reorganization:** Umstrukturierung des `images/` Ordners nach Domain-Driven Design (`ui/`, `projects/phishing/`, `projects/cv-engine/`) für bessere Skalierbarkeit.
+- **Navigation Redesign:** - Desktop: Symmetrisches Layout mit zentrierten Links.
+  - Mobile: Optimierte Header-Controls (Sprache & Hamburger getrennt vom Overlay-Menü) zur Behebung von Z-Index Konflikten.
+- **CSS Architecture:** Einführung von Utility-Klassen für Hero-Layouts und Archiv-Cards.
+
+### 🐛 Bug Fixes
+
+- Korrektur der mobilen Navigation (Overlay blockierte Interaktionen).
+- Fix der relativen Pfadauflösung für Bilder in Unterordnern (`projects/`).
 
 ### 🚀 New Features (Architecture)
 

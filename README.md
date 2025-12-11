@@ -2,6 +2,14 @@
 
 ### 🚀 Latest Updates (v2.2.0)
 
+**New Meta-Case Study: Portfolio System Architecture**
+
+- **Documentation:** Ich habe das Portfolio selbst als Projekt dokumentiert. Erfahre, wie die dynamische Vanilla-JS Engine unter der Haube funktioniert.
+- **Deep Dive:** Detaillierte Einblicke in das MVC-Pattern, CNAME-Hacks bei GitHub Pages und Performance-Optimierung (Observer Pattern).
+- **Visuals:** High-End CSS-Animationen und interaktive Code-Demos.
+
+[👉 Case Study ansehen](https://yusefbach.de/projects/portfolio-meta.html)
+
 **Major Architecture Overhaul & CV Engine Rollout**
 
 - **Dynamic Rendering Engine:** Das Portfolio nutzt nun ein JS-basiertes CMS-System zur Trennung von Daten und Design.
