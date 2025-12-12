@@ -36,11 +36,7 @@
     </style>
   </head>
   <body>
-    <header style="position: relative; background: transparent; padding: 20px">
-      <a href="index.html" class="logo" style="justify-content: center"
-        >Yusef<span> Bach</span></a
-      >
-    </header>
+    <app-header base-path="."></app-header>
 
     <section class="error-container">
       <h1 class="glitch-text">404</h1>
@@ -52,8 +48,10 @@
       <a href="index.html" class="cta-button">Zurück zur Sicherheit (Home)</a>
     </section>
 
-    <footer>
-      <div class="container"><p>&copy; 2025 Yusef Bach</p></div>
-    </footer>
+    <app-footer base-path="."></app-footer>
+    <script src="js/components/AppHeader.js"></script>
+    <script src="js/components/AppFooter.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/script.js"></script>
   </body>
 </html>

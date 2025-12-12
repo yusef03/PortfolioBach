@@ -30,37 +30,7 @@
     </style>
   </head>
   <body>
-    <nav
-      class="project-nav"
-      style="
-        position: fixed;
-        top: 0;
-        width: 100%;
-        padding: 20px 50px;
-        background: rgba(10, 10, 10, 0.9);
-        backdrop-filter: blur(10px);
-        z-index: 1000;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      "
-    >
-      <a
-        href="index.html"
-        class="back-link"
-        style="
-          color: white;
-          text-decoration: none;
-          text-transform: uppercase;
-          letter-spacing: 2px;
-          font-weight: 600;
-        "
-        ><span>←</span> Zurück</a
-      >
-      <div style="color: white; font-weight: 800; text-transform: uppercase">
-        Impressum
-      </div>
-    </nav>
+    <app-header base-path="."></app-header>
 
     <section class="legal-content">
       <div class="container">
@@ -91,13 +61,9 @@
       </div>
     </section>
 
-    <footer>
-      <div class="container">
-        <div class="footer-copy">
-          <p>&copy; 2025 Yusef Bach.</p>
-        </div>
-      </div>
-    </footer>
+    <app-footer base-path="."></app-footer>
+    <script src="js/components/AppHeader.js"></script>
+    <script src="js/components/AppFooter.js"></script>
     <script src="js/translations.js"></script>
     <script src="js/script.js"></script>
   </body>

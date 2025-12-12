@@ -8,18 +8,7 @@
     <link rel="stylesheet" href="../css/main.css" />
   </head>
   <body>
-    <nav class="project-nav sticky-nav">
-      <div class="nav-container">
-        <a href="../index.html" class="back-link"><span>←</span> Zurück</a>
-        <div class="mobile-header-controls">
-          <button
-            id="lang-switch"
-            class="lang-btn"
-            aria-label="Switch Language"
-          ></button>
-        </div>
-      </div>
-    </nav>
+    <app-header base-path=".."></app-header>
 
     <section
       class="archive-header"
@@ -49,20 +38,10 @@
       </div>
     </section>
 
-    <footer>
-      <div
-        class="container"
-        style="
-          text-align: center;
-          padding: 40px;
-          color: #555;
-          border-top: 1px solid rgba(255, 255, 255, 0.05);
-        "
-      >
-        &copy; 2025 Yusef Bach
-      </div>
-    </footer>
+    <app-footer base-path=".."></app-footer>
 
+    <script src="../js/components/AppHeader.js"></script>
+    <script src="../js/components/AppFooter.js"></script>
     <script src="../js/translations.js"></script>
     <script src="../js/projects-data.js"></script>
     <script src="../js/project-renderer.js"></script>

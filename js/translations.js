@@ -250,7 +250,7 @@ const translations = {
       "Einsatz von `webkit-print-color-adjust: exact` und striktem CSS Reset für Druck-Medien.",
     cv_chal_2_title: "Problem: Privacy",
     cv_chal_2_desc:
-      "Wie zeige ich den Code auf GitHub, ohne meine Telefonnummer zu leaken?",
+      "Wie zeige ich den Code auf GitHub, ohne meine privaten Sachen hochzuladen?",
     cv_chal_2_sol:
       "Architektur-Split: `index.html` (Dummy Daten) vs. `private_data.js` (Lokal).",
     cv_dl_title: "Check the <span class='highlight-text'>Results</span>",
@@ -266,6 +266,45 @@ const translations = {
 
     archive_cta_text: "Weitere Experimente, Tools & Case Studies",
     archive_cta_btn: "Zum Projekt-Archiv",
+
+    // Sektion 1: Code Highlight
+    cv_code_title: "The <span class='highlight-text'>Secret Sauce</span>",
+    cv_code_sub: "Wie man den Browser zwingt, perfektes A4 zu drucken.",
+    cv_code_box_title: "style.css (Print Logic)",
+    cv_code_desc_title: "Warum ist das wichtig?",
+    cv_code_desc_text:
+      "Standard-Webseiten drucken schlecht. Header werden abgeschnitten, Hintergründe werden weiß. <br><br><strong>Meine Lösung:</strong> Ich nutze <code>@media print</code>, um das CSS-Grid komplett neu zu berechnen. Elemente wie Navigationsleisten werden ausgeblendet, während der Lebenslauf-Container exakt auf die physikalischen Millimeter eines A4-Blattes gezwungen wird.",
+
+    // Sektion 2: Word vs. Code Comparison
+    cv_comp_title: "Word vs. <span class='highlight-text'>Code</span>",
+    cv_comp_bad_title: "Klassische Vorlagen",
+    cv_comp_bad_li_1: "Verrutschende Layouts bei Textänderung",
+    cv_comp_bad_li_2: "Keine Versionierung (Lebenslauf_v2.docx)",
+    cv_comp_bad_li_3: "Langweiliges Standard-Design",
+    cv_comp_bad_li_4: "Schlechte PDF-Komprimierung",
+
+    cv_comp_good_title: "Meine HTML-Engine",
+    cv_comp_good_li_1:
+      "<strong>Pixel-Perfect:</strong> Layout ist in Stein gemeißelt (CSS Grid)",
+    cv_comp_good_li_2:
+      "<strong>Git-Versionierung:</strong> Jede Änderung ist nachvollziehbar",
+    cv_comp_good_li_3:
+      "<strong>High-End UI:</strong> Glassmorphism & Vektorgrafiken",
+    cv_comp_good_li_4:
+      "<strong>Privacy:</strong> Daten-Trennung durch .gitignore",
+
+    // Sektion 3: Roadmap
+    cv_road_title: "What's <span class='highlight-text'>Next?</span>",
+    cv_road_done_1_title: "Core Engine",
+    cv_road_done_1_desc: "HTML Structure & Print CSS",
+    cv_road_done_2_title: "Privacy Layer",
+    cv_road_done_2_desc: "Git Hooks & Data Separation",
+    cv_road_plan_1_title: "JSON Import",
+    cv_road_plan_1_desc:
+      "Lebenslauf-Daten aus JSON-Datei laden statt Hardcoding.",
+    cv_road_plan_2_title: "PDF-Auto-Gen",
+    cv_road_plan_2_desc:
+      "Automatischer PDF-Export via Node.js (Puppeteer) bei jedem Git Push.",
 
     // ============================================
     // META PORTFOLIO - DE
@@ -685,6 +724,44 @@ const translations = {
 
     archive_cta_text: "More Experiments, Tools & Case Studies",
     archive_cta_btn: "Go to Project Archive",
+
+    // Section 1: Code Highlight
+    cv_code_title: "The <span class='highlight-text'>Secret Sauce</span>",
+    cv_code_sub: "How to force the browser to print perfect A4.",
+    cv_code_box_title: "style.css (Print Logic)",
+    cv_code_desc_title: "Why does this matter?",
+    cv_code_desc_text:
+      "Standard websites print poorly. Headers get cut off, backgrounds turn white. <br><br><strong>My Solution:</strong> I use <code>@media print</code> to completely recalculate the CSS Grid. Elements like navigation bars are hidden, while the CV container is forced to the exact physical millimeters of an A4 sheet.",
+
+    // Section 2: Word vs. Code Comparison
+    cv_comp_title: "Word vs. <span class='highlight-text'>Code</span>",
+    cv_comp_bad_title: "Classic Templates",
+    cv_comp_bad_li_1: "Layouts break when text changes",
+    cv_comp_bad_li_2: "No versioning (CV_Final_v2.docx)",
+    cv_comp_bad_li_3: "Boring standard design",
+    cv_comp_bad_li_4: "Poor PDF compression",
+
+    cv_comp_good_title: "My HTML Engine",
+    cv_comp_good_li_1:
+      "<strong>Pixel-Perfect:</strong> Layout is set in stone (CSS Grid)",
+    cv_comp_good_li_2:
+      "<strong>Git Versioning:</strong> Every change is traceable",
+    cv_comp_good_li_3:
+      "<strong>High-End UI:</strong> Glassmorphism & Vector Graphics",
+    cv_comp_good_li_4:
+      "<strong>Privacy:</strong> Data separation via .gitignore",
+
+    // Section 3: Roadmap
+    cv_road_title: "What's <span class='highlight-text'>Next?</span>",
+    cv_road_done_1_title: "Core Engine",
+    cv_road_done_1_desc: "HTML Structure & Print CSS",
+    cv_road_done_2_title: "Privacy Layer",
+    cv_road_done_2_desc: "Git Hooks & Data Separation",
+    cv_road_plan_1_title: "JSON Import",
+    cv_road_plan_1_desc: "Load CV data from JSON file instead of hardcoding.",
+    cv_road_plan_2_title: "PDF-Auto-Gen",
+    cv_road_plan_2_desc:
+      "Automatic PDF export via Node.js (Puppeteer) on every Git Push.",
 
     // ============================================
     // META PORTFOLIO (NEW) - EN

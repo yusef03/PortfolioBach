@@ -66,25 +66,7 @@
     </style>
   </head>
   <body>
-    <header>
-      <div class="container">
-        <nav class="navbar">
-          <a href="index.html" class="logo">
-            <img
-              src="images/logo.png"
-              alt="Bach IT Logo"
-              style="height: 40px; margin-right: 10px"
-            />
-            <span>Yusef Bach</span>
-          </a>
-          <div class="nav-links" style="display: flex">
-            <a href="index.html" class="nav-link-clean">
-              <span>←</span> Zurück zur Startseite
-            </a>
-          </div>
-        </nav>
-      </div>
-    </header>
+    <app-header base-path="."></app-header>
 
     <section class="thanks-content">
       <div class="container">
@@ -108,12 +90,10 @@
       </div>
     </section>
 
-    <footer>
-      <div class="container">
-        <div class="footer-copy" style="border: none; padding: 0">
-          <p>&copy; 2025 Yusef Bach.</p>
-        </div>
-      </div>
-    </footer>
+    <app-footer base-path="."></app-footer>
+    <script src="js/components/AppHeader.js"></script>
+    <script src="js/components/AppFooter.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/script.js"></script>
   </body>
 </html>

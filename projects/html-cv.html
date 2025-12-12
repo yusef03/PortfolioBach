@@ -12,16 +12,6 @@
         <a href="../projects/archive.html" class="back-link">
           <span>←</span> <span data-i18n="nav_portfolio">Portfolio</span>
         </a>
-        <div class="mobile-header-controls">
-          <button
-            id="lang-switch"
-            class="lang-btn"
-            aria-label="Switch Language"
-          ></button>
-          <div class="hamburger" id="project-hamburger">
-            <span></span><span></span><span></span>
-          </div>
-        </div>
         <div class="nav-content-wrapper" id="project-nav-links">
           <div class="internal-links">
             <a
@@ -48,6 +38,16 @@
               data-i18n="pd_nav_download"
               >Download</a
             >
+          </div>
+        </div>
+        <div class="mobile-header-controls">
+          <button
+            id="lang-switch"
+            class="lang-btn"
+            aria-label="Switch Language"
+          ></button>
+          <div class="hamburger" id="project-hamburger">
+            <span></span><span></span><span></span>
           </div>
         </div>
       </div>
@@ -180,6 +180,62 @@
       </div>
     </section>
 
+    <section class="project-section dark-bg">
+      <div class="container">
+        <h2
+          class="section-heading center-text reveal"
+          data-i18n="cv_code_title"
+        >
+          The Secret Sauce
+        </h2>
+        <p class="section-subtitle center-text reveal" data-i18n="cv_code_sub">
+          Wie man den Browser zwingt, perfektes A4 zu drucken.
+        </p>
+
+        <div class="code-showcase reveal">
+          <div class="code-window">
+            <div class="code-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span class="code-title" data-i18n="cv_code_box_title"
+                >style.css (Print Logic)</span
+              >
+            </div>
+            <pre><code class="language-css">
+/* Der "Magic Hack" für randlosen Druck */
+@media print {
+    @page {
+        margin: 0; /* Zwingt Browser-Ränder auf 0 */
+        size: A4;
+    }
+
+    html, body {
+        width: 210mm;
+        height: 297mm;
+        /* Verhindert Scaling-Fehler bei unterschiedlichen DPI */
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .page-wrapper {
+        /* Zoom-Fix für überlaufende Inhalte */
+        zoom: 0.95; 
+        background-color: #1a1a1a !important;
+    }
+}
+            </code></pre>
+          </div>
+          <div class="code-description">
+            <h3 data-i18n="cv_code_desc_title">Warum ist das wichtig?</h3>
+            <p data-i18n="cv_code_desc_text">
+              Standard-Webseiten drucken schlecht...
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="project-section">
       <div class="container">
         <h2
@@ -262,6 +318,78 @@
       </div>
     </section>
 
+    <section class="project-section">
+      <div class="container">
+        <h2
+          class="section-heading center-text reveal"
+          data-i18n="cv_comp_title"
+        >
+          Word vs. Code
+        </h2>
+
+        <div class="comparison-grid reveal">
+          <div class="comp-card bad">
+            <div class="comp-icon">❌</div>
+            <h3 data-i18n="cv_comp_bad_title">Klassische Vorlagen</h3>
+            <ul>
+              <li data-i18n="cv_comp_bad_li_1">Verrutschende Layouts</li>
+              <li data-i18n="cv_comp_bad_li_2">Keine Versionierung</li>
+              <li data-i18n="cv_comp_bad_li_3">Langweiliges Standard-Design</li>
+              <li data-i18n="cv_comp_bad_li_4">Schlechte PDF-Komprimierung</li>
+            </ul>
+          </div>
+
+          <div class="comp-card good">
+            <div class="comp-icon">✅</div>
+            <h3 data-i18n="cv_comp_good_title">Meine HTML-Engine</h3>
+            <ul>
+              <li data-i18n="cv_comp_good_li_1">Pixel-Perfect Layout</li>
+              <li data-i18n="cv_comp_good_li_2">Git-Versionierung</li>
+              <li data-i18n="cv_comp_good_li_3">High-End UI</li>
+              <li data-i18n="cv_comp_good_li_4">Privacy Protection</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section dark-bg">
+      <div class="container">
+        <h2
+          class="section-heading center-text reveal"
+          data-i18n="cv_road_title"
+        >
+          What's Next?
+        </h2>
+        <div class="roadmap-container reveal">
+          <div class="roadmap-item done">
+            <span class="status">✅ Done</span>
+            <h4 data-i18n="cv_road_done_1_title">Core Engine</h4>
+            <p data-i18n="cv_road_done_1_desc">HTML Structure & Print CSS</p>
+          </div>
+          <div class="roadmap-item done">
+            <span class="status">✅ Done</span>
+            <h4 data-i18n="cv_road_done_2_title">Privacy Layer</h4>
+            <p data-i18n="cv_road_done_2_desc">Git Hooks & Data Separation</p>
+          </div>
+          <div class="roadmap-item planned">
+            <span class="status">🚧 Planned</span>
+            <h4 data-i18n="cv_road_plan_1_title">JSON Import</h4>
+            <p data-i18n="cv_road_plan_1_desc">
+              Lebenslauf-Daten aus JSON laden.
+            </p>
+          </div>
+          <div class="roadmap-item planned">
+            <span class="status">🚀 Vision</span>
+            <h4 data-i18n="cv_road_plan_2_title">PDF-Auto-Gen</h4>
+            <p data-i18n="cv_road_plan_2_desc">
+              Automatischer PDF-Export via Node.js.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="project-section download-section" id="downloads">
       <div class="container">
         <h2 class="section-heading center-text reveal" data-i18n="cv_dl_title">
@@ -298,15 +426,9 @@
             >
           </div>
         </div>
-
-        <div
-          class="footer-note"
-          style="margin-top: 60px; text-align: center; color: #666"
-        >
-          <p>© 2025 Yusef Bach</p>
-        </div>
       </div>
     </section>
+    <app-footer base-path=".."></app-footer>
 
     <div class="lightbox" id="lightbox">
       <span class="lightbox-close">&times;</span>
@@ -353,6 +475,7 @@
             (document.body.style.overflow = "auto"));
         });
     </script>
+    <script src="../js/components/AppFooter.js"></script>
     <script src="../js/translations.js"></script>
     <script src="../js/script.js"></script>
   </body>
