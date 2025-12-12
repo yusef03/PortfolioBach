@@ -1947,3 +1947,56 @@ pre {
   max-width: 300px;
   margin: 0 auto;
 }
+
+/* =========================================
+   MOBILE HEADER FIXES (Deep Dive)
+   ========================================= */
+
+@media (max-width: 768px) {
+  /* 1. Header Container aufräumen */
+  .project-nav .nav-container {
+    padding: 0 15px; /* Weniger Rand für mehr Platz */
+    justify-content: space-between;
+  }
+
+  /* 2. "Portfolio" Text ausblenden, nur Pfeil lassen */
+  .back-link span:nth-child(2) {
+    display: none;
+  }
+
+  .back-link span:first-child {
+    font-size: 1.5rem; /* Pfeil größer machen */
+  }
+
+  /* 3. Controls (Sprache & Burger) fixen */
+  .mobile-header-controls {
+    margin-left: auto; /* Nach rechts schieben */
+    gap: 10px; /* Abstand verringern */
+  }
+
+  /* 4. Sprach-Button kompakter */
+  .lang-btn {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+    margin: 0; /* Margin reset */
+  }
+
+  /* 5. Nav Links (Mission etc.) sicher ausblenden */
+  .project-nav .nav-content-wrapper {
+    display: none; /* Standardmäßig aus */
+  }
+
+  /* Wenn Menü offen ist */
+  .project-nav .nav-content-wrapper.active {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1500;
+  }
+}

@@ -1046,3 +1046,53 @@ footer {
   font-size: 0.9rem;
   color: #bbb;
 }
+
+/* =========================================
+   MOBILE REPAIRS (Fixes for Issue List)
+   ========================================= */
+
+/* Fix: Code Window & Overflow (Problem 4) */
+.code-window, 
+.pipeline-container, 
+.gpu-card,
+.stats-card,
+.folder-card {
+  max-width: 100%; /* Verhindert Rausragen */
+  box-sizing: border-box;
+}
+
+/* Erzwingt Scrollbalken INNHALB des Code-Fensters auf Handy */
+.cw-body, pre {
+  overflow-x: auto !important; 
+  white-space: pre; /* Behält Formatierung */
+  max-width: 100%;
+}
+
+/* Fix: Buttons auf Handy nicht riesig (Problem 2 & 3) */
+@media (max-width: 768px) {
+  .hero-buttons, 
+  .project-buttons,
+  .about-content div { /* Container der Buttons */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Zentriert sie, statt zu stretchen */
+    width: 100%;
+    gap: 15px;
+  }
+
+  /* Begrenze die Breite der Buttons */
+  .cta-button, 
+  .cta-button-outline {
+    width: 100%;
+    max-width: 280px; /* Maximale Breite auf Handy */
+    text-align: center;
+  }
+}
+
+/* Fix: Hamburger Menü Klickbarkeit (Problem 1 & 6) */
+.hamburger {
+  z-index: 2000 !important; /* Muss über allem liegen */
+  position: relative;
+}
+
+

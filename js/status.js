@@ -4,7 +4,7 @@
 
 //  TRUE, um  Wartungsseite zu aktivieren
 //  FALSE, um  Seite wieder live zu schalten
-const MAINTENANCE_MODE = true;
+const MAINTENANCE_MODE = false;
 
 (function () {
   // Pfad zur Wartungsseite (relativ zur Root)

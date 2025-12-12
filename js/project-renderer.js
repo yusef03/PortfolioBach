@@ -1,4 +1,4 @@
-/* Dynamic Project Renderer v2 */
+/* Dynamic Project Renderer v2.1 (Mobile Fix) */
 
 document.addEventListener("DOMContentLoaded", () => {
   initProjectRender();
@@ -23,27 +23,27 @@ function initProjectRender() {
   if (archiveContainer) {
     let gridHTML = "";
 
-    // Fix paths for subdirectory usage (add "../")
+    // ERKENNUNG: Sind wir in einem Unterordner?
+    // Wir prüfen, ob wir NICHT auf index.html sind (bzw. ob wir im projects Ordner sind)
+    const isSubFolder = window.location.pathname.includes("/projects/");
+
     archiveItems.forEach((item) => {
       let adjustedItem = { ...item };
+
+      // FIX: Nur "../" hinzufügen, wenn wir WIRKLICH im Unterordner sind
       if (
+        isSubFolder &&
         !adjustedItem.image.startsWith("http") &&
         !adjustedItem.image.startsWith("../")
       ) {
         adjustedItem.image = "../" + adjustedItem.image;
       }
+
       gridHTML += renderArchiveTemplate(adjustedItem);
     });
 
-    // Append Static GitHub Card
     gridHTML += renderGithubCard();
     archiveContainer.innerHTML = gridHTML;
-  }
-
-  // 4. Update Translations
-  if (typeof updateLanguage === "function") {
-    const currentLang = localStorage.getItem("language") || "de";
-    updateLanguage(currentLang);
   }
 }
 
@@ -53,13 +53,16 @@ function renderHeroTemplate(p) {
   const badges = p.badges
     .map((b) => `<span class="tech-badge">${b}</span>`)
     .join("");
-  const features = p.features.map((k) => `<li data-i18n="${k}"></li>`).join("");
+  // Feature Liste rendering fix
+  const features = p.features
+    ? p.features.map((k) => `<li data-i18n="${k}"></li>`).join("")
+    : "";
 
   return `
     <div class="project-info reveal">
         <div class="hero-project-layout">
             <div class="hero-image-wrapper">
-                 <img src="${p.image}" alt="Project Hero" class="hero-project-img">
+                 <img src="${p.image}" alt="Project Hero" class="hero-project-img" loading="lazy">
             </div>
             <div class="hero-text-wrapper">
                 <h3>${p.titleKey}</h3>
@@ -76,14 +79,12 @@ function renderHeroTemplate(p) {
 }
 
 function renderArchiveTemplate(p) {
-  // Strip "projects/" from link if already in projects folder to avoid double nesting issues if strictly relative
-  // Or use clean relative logic: link is "projects/x.html", inside projects/archive.html -> target is "x.html"
-  const relativeLink = p.linkDetails.split("/").pop();
+  const relativeLink = p.linkDetails.split("/").pop(); // Holt "dateiname.html"
 
   return `
     <div class="archive-card reveal">
         <div class="archive-img-container">
-            <img src="${p.image}" alt="Project Preview">
+            <img src="${p.image}" alt="Project Preview" loading="lazy">
             <div class="overlay">
                 <a href="${relativeLink}" class="view-btn">View Case</a>
             </div>
@@ -107,10 +108,11 @@ function renderArchiveTemplate(p) {
 function renderGithubCard() {
   return `
     <div class="archive-card github-card reveal">
-        <div class="card-content" style="height:100%; display:flex; flex-direction:column; justify-content:center;">
+        <div class="card-content" style="height:100%; display:flex; flex-direction:column; justify-content:center; align-items: center; text-align: center;">
+            <div style="font-size: 3rem; margin-bottom: 10px;">To be continued...</div>
             <h4 data-i18n="proj_github_title">Mehr auf GitHub</h4>
             <p data-i18n="project_github_desc" class="card-desc" style="margin:15px 0;"></p>
-            <a href="https://github.com/yusef03" target="_blank" class="small-link-text" data-i18n="project_github_link">Profile &rarr;</a>
+            <a href="https://github.com/yusef03" target="_blank" class="cta-button cta-button-outline" style="font-size: 0.9rem;" data-i18n="project_github_link">Zum Profil &rarr;</a>
         </div>
     </div>`;
 }
