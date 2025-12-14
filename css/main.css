@@ -1519,6 +1519,7 @@ pre {
   :root {
     --spacing: 80px;
   }
+  .hero-project-layout,
   .hero-grid,
   .about-grid,
   .contact-grid,
@@ -1534,6 +1535,11 @@ pre {
   .about-image,
   .hero-image-wrapper {
     order: -1;
+  }
+  .hero-project-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
   }
   .hero-image img,
   .about-image img {

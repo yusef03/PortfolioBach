@@ -3,22 +3,6 @@
    ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
-  /*  MOBILE NAVIGATION  */
-  const hamburger = document.getElementById("hamburger");
-  const navLinks = document.getElementById("navLinks");
-
-  if (hamburger && navLinks) {
-    hamburger.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
-
-      // Hamburger Animation (zu X werden)
-      const spans = hamburger.querySelectorAll("span");
-      spans.forEach((span) => {
-        span.classList.toggle("active");
-      });
-    });
-  }
-
   /*  SCROLLING */
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
@@ -51,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /*  SCROLL ANIMATIONS (Reveal on Scroll)  */
   const observerOptions = {
-    threshold: 0.1, // Startet, wenn 10% des Elements sichtbar sind
+    threshold: 0.1,
     rootMargin: "0px 0px -50px 0px",
   };
 
