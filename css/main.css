@@ -1953,69 +1953,80 @@ pre {
   max-width: 300px;
   margin: 0 auto;
 }
-/* =========================================
-   FINAL MOBILE FIX: PROJECT OVERLAY
-   ========================================= */
+/* ==========================================================================
+   FINAL PROJECT NAV FIX
+   ========================================================================== */
 
+/* Standard Desktop: Immer sichtbar, nebeneinander */
+.project-nav .nav-content-wrapper {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  position: static !important; /* Wichtig für Desktop */
+  background: transparent !important;
+  width: auto !important;
+  height: auto !important;
+  flex-direction: row !important;
+  gap: 30px;
+}
+
+.mobile-header-controls {
+  display: none !important; /* Kein Hamburger auf Desktop */
+}
+
+/* MOBILE OVERRIDE (Ab 1100px) */
 @media (max-width: 1100px) {
-  /* 1. Header Container */
-  .project-nav .nav-container {
-    padding: 0 20px;
+  /* 1. Hamburger sichtbar machen */
+  .mobile-header-controls {
+    display: flex !important;
+    position: relative;
+    z-index: 10001;
   }
 
-  /* 2. Das Overlay - Erzwinge Vollbild & Schwarz */
+  /* 2. Menü verstecken und als Overlay stylen */
   .project-nav .nav-content-wrapper {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     width: 100vw !important;
     height: 100vh !important;
-    background-color: rgba(0, 0, 0, 0.98) !important; /* Tiefschwarz */
+
+    background-color: rgba(5, 5, 5, 0.98) !important;
     backdrop-filter: blur(15px);
 
-    display: flex !important;
-    flex-direction: column;
+    flex-direction: column !important;
     justify-content: center;
     align-items: center;
-    gap: 40px;
 
-    /* Versteckt Zustand */
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+    /* ZUSTAND: ZU */
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
 
     transition: all 0.3s ease-in-out;
-    z-index: 9990 !important;
+    z-index: 10000;
   }
 
-  /* 3. Offener Zustand */
+  /* 3. Menü OFFEN (wird durch JS gesteuert) */
   .project-nav .nav-content-wrapper.active {
     opacity: 1 !important;
     visibility: visible !important;
-    pointer-events: auto !important; /* Macht Links klickbar */
+    pointer-events: auto !important;
   }
 
-  /* 4. Links */
   .project-nav .internal-links {
     flex-direction: column;
     gap: 40px;
+    text-align: center;
   }
+
   .project-nav .internal-links a {
-    font-size: 2rem !important; /* Schön groß */
-    color: #ffffff !important;
+    font-size: 2rem !important;
+    color: white !important;
     display: block;
   }
 
-  /* 5. Hamburger muss GANZ nach vorne */
-  .mobile-header-controls {
-    position: relative;
-    z-index: 9999 !important; /* Höher als das Overlay */
-    display: flex;
-    gap: 20px;
-    align-items: center;
-  }
-
-  /* Download Button mobil ausblenden */
   .nav-right {
     display: none !important;
   }
