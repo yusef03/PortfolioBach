@@ -1957,13 +1957,12 @@ pre {
    FINAL PROJECT NAV FIX
    ========================================================================== */
 
-/* Standard Desktop: Immer sichtbar, nebeneinander */
 .project-nav .nav-content-wrapper {
   display: flex !important;
   opacity: 1 !important;
   visibility: visible !important;
   pointer-events: auto !important;
-  position: static !important; /* Wichtig für Desktop */
+  position: static !important;
   background: transparent !important;
   width: auto !important;
   height: auto !important;
@@ -1972,19 +1971,16 @@ pre {
 }
 
 .mobile-header-controls {
-  display: none !important; /* Kein Hamburger auf Desktop */
+  display: none !important;
 }
 
-/* MOBILE OVERRIDE (Ab 1100px) */
 @media (max-width: 1100px) {
-  /* 1. Hamburger sichtbar machen */
   .mobile-header-controls {
     display: flex !important;
     position: relative;
     z-index: 10001;
   }
 
-  /* 2. Menü verstecken und als Overlay stylen */
   .project-nav .nav-content-wrapper {
     position: fixed !important;
     top: 0 !important;
@@ -1999,7 +1995,6 @@ pre {
     justify-content: center;
     align-items: center;
 
-    /* ZUSTAND: ZU */
     opacity: 0 !important;
     visibility: hidden !important;
     pointer-events: none !important;
@@ -2008,7 +2003,6 @@ pre {
     z-index: 10000;
   }
 
-  /* 3. Menü OFFEN (wird durch JS gesteuert) */
   .project-nav .nav-content-wrapper.active {
     opacity: 1 !important;
     visibility: visible !important;
