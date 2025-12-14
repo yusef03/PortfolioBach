@@ -1012,27 +1012,6 @@
       document
         .querySelectorAll(".reveal, .fade-in-up")
         .forEach((el) => observer.observe(el));
-
-      // Inline-Logik Menü (Sicherheitsnetz)
-      const menuBtn = document.getElementById("project-hamburger");
-      const menuOverlay = document.getElementById("project-nav-links");
-      if (menuBtn) {
-        menuBtn.addEventListener("click", () => {
-          menuBtn.classList.toggle("active");
-          menuOverlay.classList.toggle("active");
-          const spans = menuBtn.querySelectorAll("span");
-          spans.forEach((s) => s.classList.toggle("active"));
-        });
-      }
-      function closeProjectMenu() {
-        if (menuBtn) {
-          menuBtn.classList.remove("active");
-          menuOverlay.classList.remove("active");
-          menuBtn
-            .querySelectorAll("span")
-            .forEach((s) => s.classList.remove("active"));
-        }
-      }
     </script>
   </body>
 </html>
