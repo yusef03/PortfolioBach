@@ -3,6 +3,36 @@
    ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
+  /* ==========================================================================
+     PROJECT PAGES NAVIGATION (Phishing, CV, Meta, etc.)
+     Dies steuert NUR die Header auf den Unterseiten.
+     ========================================================================== */
+  const projectHamburger = document.getElementById("project-hamburger");
+  const projectNavLinks = document.getElementById("project-nav-links");
+
+  if (projectHamburger && projectNavLinks) {
+    projectHamburger.addEventListener("click", () => {
+      // Toggle Klassen für Animation & Sichtbarkeit
+      projectHamburger.classList.toggle("active");
+      projectNavLinks.classList.toggle("active");
+
+      // Hamburger Striche animieren (X)
+      const spans = projectHamburger.querySelectorAll("span");
+      spans.forEach((span) => span.classList.toggle("active"));
+    });
+
+    // Menü schließen, wenn man einen Link klickt
+    projectNavLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        projectHamburger.classList.remove("active");
+        projectNavLinks.classList.remove("active");
+        projectHamburger
+          .querySelectorAll("span")
+          .forEach((s) => s.classList.remove("active"));
+      });
+    });
+  }
+
   /*  SCROLLING */
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
