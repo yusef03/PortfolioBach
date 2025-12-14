@@ -1953,3 +1953,68 @@ pre {
   max-width: 300px;
   margin: 0 auto;
 }
+
+/* =========================================
+   MOBILE FIX: PROJECT NAV & OVERLAY
+   ========================================= */
+
+@media (max-width: 1100px) {
+  /* 1. Container aufräumen: Platz schaffen */
+  .project-nav .nav-container {
+    padding: 0 20px;
+  }
+
+  .project-nav .nav-content-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Volle Höhe */
+    background-color: rgba(5, 5, 5, 0.98);
+    backdrop-filter: blur(15px);
+
+    /* Inhalt zentrieren */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    /* Animation */
+    transition: all 0.3s ease-in-out;
+    z-index: 1001;
+  }
+
+  .project-nav .nav-content-wrapper.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+  }
+
+  .project-nav .internal-links {
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .project-nav .internal-links a {
+    font-size: 1.8rem;
+    color: #fff;
+    display: block;
+  }
+
+  .mobile-header-controls {
+    position: relative;
+    z-index: 1005;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .nav-right {
+    display: none;
+  }
+}
