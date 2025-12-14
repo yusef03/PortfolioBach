@@ -1,5 +1,5 @@
 /* ==========================================================================
-   YUSEF BACH PORTFOLIO - MAIN SCRIPT (FIXED v3)
+   YUSEF BACH PORTFOLIO - MAIN SCRIPT 
    ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -7,20 +7,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const projectHamburger = document.getElementById("project-hamburger");
   const projectNavLinks = document.getElementById("project-nav-links");
 
-  // Sicherheits-Check: Gibt es das Menü auf dieser Seite?
+  // Sicherheits-Check:  Menü auf dieser Seite?
   if (projectHamburger && projectNavLinks) {
-    // Öffnen/Schließen beim Klick auf Hamburger
     projectHamburger.addEventListener("click", (e) => {
-      e.stopPropagation(); // Verhindert Bubbling
+      e.stopPropagation();
       projectHamburger.classList.toggle("active");
       projectNavLinks.classList.toggle("active");
 
-      // Animation der Striche
       const spans = projectHamburger.querySelectorAll("span");
       spans.forEach((span) => span.classList.toggle("active"));
     });
 
-    // Schließen beim Klick auf einen Link
     const internalLinks = projectNavLinks.querySelectorAll("a");
     internalLinks.forEach((link) => {
       link.addEventListener("click", () => {
@@ -33,10 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* --- 2. SMOOTH SCROLLING (Global) --- */
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
-      // Nur verhindern, wenn es ein Anker auf der gleichen Seite ist
       const href = this.getAttribute("href");
       if (href.startsWith("#") && href.length > 1) {
         e.preventDefault();
@@ -54,12 +49,9 @@ document.addEventListener("DOMContentLoaded", () => {
           });
         }
       }
-      // HIER WAR DER FEHLER: Wir greifen nicht mehr auf das gelöschte 'navLinks' zu.
-      // Das Schließen übernehmen die spezifischen Listener oben.
     });
   });
 
-  /* --- 3. SCROLL ANIMATIONS (Reveal) --- */
   const observerOptions = {
     threshold: 0.1,
     rootMargin: "0px 0px -50px 0px",
@@ -77,14 +69,13 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(el);
   });
 
-  /* --- 4. STICKY HEADER SHADOW --- */
   const header =
     document.querySelector("header") || document.querySelector(".project-nav");
   if (header) {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 50) {
-        header.classList.add("scrolled"); // Besser per Klasse steuern wenn möglich
-        // Fallback Inline Styles (wie vorher)
+        header.classList.add("scrolled");
+
         header.style.background = "rgba(5, 5, 5, 0.98)";
         header.style.boxShadow = "0 10px 30px rgba(0, 0, 0, 0.5)";
       } else {
@@ -111,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
       submitBtn.innerText = "Sende...";
       submitBtn.disabled = true;
 
-      // EmailJS IDs hier eintragen oder global lassen
+      // EmailJS IDs hier eintragen
       emailjs.sendForm("service_y8c0s0c", "template_k23slsm", this).then(
         () => {
           window.location.href = "thanks.html";
