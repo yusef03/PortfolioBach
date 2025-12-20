@@ -458,6 +458,8 @@ const translations = {
     meta_outro_home: "Zur Startseite",
   },
 
+  /** ENGLISH */
+
   en: {
     // --- NAVIGATION ---
     nav_projects: "Projects",

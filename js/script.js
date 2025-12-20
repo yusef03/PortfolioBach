@@ -149,31 +149,67 @@ document.addEventListener("DOMContentLoaded", () => {
     type();
   }
 
-  /* --- 7. LANGUAGE SWITCHER --- */
+  /* --- 7. LANGUAGE SWITCHER (CINEMA EFFECT) --- */
   const langBtn = document.getElementById("lang-switch");
+
   if (langBtn && typeof translations !== "undefined") {
+    // Status laden (Default: DE)
     let currentLang = localStorage.getItem("language") || "de";
 
-    function setLanguage(lang) {
+    // Core-Funktion: Tauscht DOM-Inhalte
+    function applyTranslations(lang) {
+      // Text-Inhalte aktualisieren
       document.querySelectorAll("[data-i18n]").forEach((el) => {
         const key = el.getAttribute("data-i18n");
-        if (translations[lang] && translations[lang][key])
-          el.innerHTML = translations[lang][key];
+        const text = translations[lang]?.[key];
+
+        if (text) {
+          // HTML-Rendering nur wenn nötig (Sicherheit & Performance)
+          el[text.includes("<") ? "innerHTML" : "textContent"] = text;
+        }
       });
-      localStorage.setItem("language", lang);
-      // Button Update
-      const label = lang === "de" ? "EN" : "DE";
-      langBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg> <span>${label}</span>`;
+
+      // Formular-Platzhalter aktualisieren
+      document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+        const key = el.getAttribute("data-i18n-placeholder");
+        if (translations[lang]?.[key]) {
+          el.placeholder = translations[lang][key];
+        }
+      });
+
+      // Button UI Update (Icon + Label)
+      const label = lang.toUpperCase();
+      langBtn.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+            </svg> 
+            <span style="font-weight:600; font-size: 0.85rem; margin-left: 6px;">${label}</span>`;
+
+      // Meta-Daten setzen
+      document.documentElement.lang = lang;
     }
 
-    setLanguage(currentLang);
+    // Initiale Anwendung (Silent Load)
+    applyTranslations(currentLang);
+
+    // Click Handler mit Sequenz-Steuerung
     langBtn.addEventListener("click", () => {
-      currentLang = currentLang === "de" ? "en" : "de";
-      document.body.classList.add("fade-out");
+      const nextLang = currentLang === "de" ? "en" : "de";
+
+      // Phase 1: Fade Out & Blur
+      document.body.classList.add("lang-switching");
+
+      // Phase 2: Content Swap (im unsichtbaren Zustand)
       setTimeout(() => {
-        setLanguage(currentLang);
-        document.body.classList.remove("fade-out");
-      }, 300);
+        applyTranslations(nextLang);
+        currentLang = nextLang;
+        localStorage.setItem("language", currentLang);
+
+        // Phase 3: Fade In (im nächsten Frame)
+        requestAnimationFrame(() => {
+          document.body.classList.remove("lang-switching");
+        });
+      }, 400); // Sync mit CSS-Transition-Dauer
     });
   }
 });
