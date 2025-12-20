@@ -1954,8 +1954,8 @@ pre {
   margin: 0 auto;
 }
 /* ==========================================================================
-   FINAL PROJECT NAV FIX
-   ========================================================================== */
+    PROJECT NAV 
+   ============================== */
 
 .project-nav .nav-content-wrapper {
   display: flex !important;
@@ -2024,4 +2024,30 @@ pre {
   .nav-right {
     display: none !important;
   }
+}
+
+/* =========================================
+   LANGUAGE SWITCH TRANSITION
+   ========================================= */
+
+/* Basis-Zustand */
+body {
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+  filter: blur(0);
+}
+
+body.lang-switching {
+  opacity: 0;
+  filter: blur(8px); /* Blur */
+  transform: scale(0.99); /* Minimaler Zoom-Out */
+  transition: opacity 0.3s ease-out, filter 0.3s ease-out,
+    transform 0.3s ease-out;
+  pointer-events: none;
+}
+
+.lang-btn:active {
+  transform: scale(0.95);
+  background-color: rgba(255, 255, 255, 0.1);
 }
