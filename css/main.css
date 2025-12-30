@@ -2157,3 +2157,62 @@ body.lang-switching {
     padding: 30px;
   }
 }
+
+/* =========================================
+   GITHUB CARD FIX (Archive)
+   ========================================= */
+
+.github-card {
+  /* Macht die Karte genau so hoch wie die anderen */
+  min-height: 400px;
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px dashed rgba(255, 255, 255, 0.2); /* Gestrichelter Rand für "Mehr..." Look */
+  transition: all 0.3s ease;
+}
+
+.github-card:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--primary-color);
+  transform: translateY(-5px);
+}
+
+.github-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Zentriert alles vertikal */
+  align-items: center; /* Zentriert alles horizontal */
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.github-icon-wrapper {
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  transition: color 0.3s;
+}
+
+.github-card:hover .github-icon-wrapper {
+  color: white;
+  transform: scale(1.1);
+}
+
+.github-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.github-content p {
+  color: #888;
+  font-size: 0.95rem;
+  margin-bottom: 30px;
+  max-width: 80%;
+  line-height: 1.5;
+}
+
+/* Button-Anpassung für die Karte */
+.github-content .cta-button-outline {
+  padding: 10px 25px;
+  font-size: 0.9rem;
+}
