@@ -456,6 +456,14 @@ const translations = {
       "Dieses Portfolio ist der Beweis, dass ich bereit bin, Theorie in echten Mehrwert zu verwandeln.",
     meta_outro_btn: "Lass uns arbeiten",
     meta_outro_home: "Zur Startseite",
+
+    // --- ZERTIFIZIERUNG SECTION ---
+    cert_title: "Qualifikation & <br><span>Zertifizierung</span>",
+    cert_text:
+      "Sicherheit ist kein Zufallsprodukt. Durch die Zertifizierung der <strong>ISC2</strong> (International Information System Security Certification Consortium) weise ich fundiertes Wissen in den Bereichen Sicherheitsprinzipien, Netzwerksicherheit und Incident Response nach.",
+    cert_item_1: "Security Principles",
+    cert_item_2: "Network Security",
+    cert_item_3: "Incident Response",
   },
 
   /** ENGLISH */
@@ -914,5 +922,13 @@ const translations = {
       "This portfolio is proof that I am ready to turn theory into real value.",
     meta_outro_btn: "Let's work",
     meta_outro_home: "Back to Home",
+
+    // --- CERTIFICATION SECTION ---
+    cert_title: "Qualifications & <br><span>Certification</span>",
+    cert_text:
+      "Security is not a coincidence. Through the <strong>ISC2</strong> (International Information System Security Certification Consortium) certification, I demonstrate solid expertise in Security Principles, Network Security, and Incident Response.",
+    cert_item_1: "Security Principles",
+    cert_item_2: "Network Security",
+    cert_item_3: "Incident Response",
   },
 };
