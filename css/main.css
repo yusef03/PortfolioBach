@@ -256,6 +256,11 @@
   margin-bottom: 0;
 }
 
+#skills,
+#contact {
+  padding-top: 120px;
+}
+
 /* --- CTA & Contact --- */
 .cta-section {
   background-color: var(--dark-bg);
