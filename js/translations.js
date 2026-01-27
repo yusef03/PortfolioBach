@@ -11,7 +11,7 @@ const translations = {
     // --- HERO SECTION (Index) ---
     hero_title_prefix: "Informatik-Student & <br>",
     hero_text:
-      "Hi, ich bin Yusef. Ich studiere Angewandte Informatik an der Hochschule Hannover (3. Semester). <br><br> Mein Ansatz ist: <strong>Erst verstehen, dann coden.</strong> Mich fasziniert die ganze Breite der IT – von Web-Entwicklung über Datenbanken bis zur IT-Security. Dabei gebe ich mich nicht mit schnellen Lösungen zufrieden, sondern will wissen, was unter der Haube passiert. Ich arbeite analytisch und strukturiert, um Systeme zu bauen, die wirklich sauber funktionieren.<br><br> Aktuell suche ich eine <strong>Werkstudentenstelle</strong>, um genau diese Denkweise in ein echtes Team einzubringen.",
+      "Hi, ich bin Yusef. Ich studiere Angewandte Informatik an der Hochschule Hannover (4. Semester). <br><br> Mein Ansatz ist: <strong>Erst verstehen, dann coden.</strong> Mich fasziniert die ganze Breite der IT – von Web-Entwicklung über Datenbanken bis zur IT-Security. Dabei gebe ich mich nicht mit schnellen Lösungen zufrieden, sondern will wissen, was unter der Haube passiert. Ich arbeite analytisch und strukturiert, um Systeme zu bauen, die wirklich sauber funktionieren.<br><br> Aktuell suche ich eine <strong>Werkstudentenstelle</strong>, um genau diese Denkweise in ein echtes Team einzubringen.",
     hero_btn_primary: "Mein Hauptprojekt ansehen",
     hero_btn_contact: "Kontakt aufnehmen",
 
@@ -55,12 +55,12 @@ const translations = {
     about_quote:
       "„Ich mag Dinge erst dann, wenn sie wirklich sauber funktionieren.“",
     about_text_1:
-      "Ich bin Yusef Bach und studiere Informatik an der Hochschule Hannover im dritten Semester. Mir ist wichtig, dass ich die Dinge, an denen ich arbeite, wirklich verstehe. Nicht nur anwenden, sondern nachvollziehen, wie etwas aufgebaut ist und warum es funktioniert.",
+      "Ich bin Yusef Bach und studiere Informatik an der Hochschule Hannover im vierten Semester. Mir ist wichtig, dass ich die Dinge, an denen ich arbeite, wirklich verstehe. Nicht nur anwenden, sondern nachvollziehen, wie etwas aufgebaut ist und warum es funktioniert.",
     about_text_2:
       "Ich arbeite gerne klar und strukturiert. Das hilft mir sowohl bei Projekten wie dem Datenbankmodellieren als auch im Alltag. Am meisten Spaß machen mir Themen, bei denen man tiefer in Systeme eintaucht, zum Beispiel Linux oder Softwarearchitektur.",
     about_text_3:
       "In meiner Freizeit brauche ich manchmal Abstand vom Bildschirm. Musik hören, Freunde treffen oder einfach kurz abschalten – das bringt mir wieder Ruhe, damit ich mich danach wieder besser konzentrieren kann.",
-    stat_semester: "Semester (WiSe 25/26)",
+    stat_semester: "Semester (SoSe 26)",
     stat_passion: "Leidenschaft & Fokus",
     stat_learning: "Lernbereitschaft",
     btn_talk: "Lass uns sprechen",
@@ -480,7 +480,7 @@ const translations = {
     // --- HERO SECTION (Index) ---
     hero_title_prefix: "CS Student & <br>",
     hero_text:
-      "Hi, I'm Yusef. I am studying Applied Computer Science at the University of Applied Sciences Hannover (3rd Semester). <br><br> My approach is: <strong>Understand first, then code.</strong> I am fascinated by the entire breadth of IT – from web development to databases and IT security. I am not satisfied with quick fixes; I want to know what happens under the hood. I work analytically and in a structured way to build systems that work cleanly.<br><br> I am currently looking for a <strong>working student position</strong> to bring exactly this mindset into a real team.",
+      "Hi, I'm Yusef. I am studying Applied Computer Science at the University of Applied Sciences Hannover (4rd Semester). <br><br> My approach is: <strong>Understand first, then code.</strong> I am fascinated by the entire breadth of IT – from web development to databases and IT security. I am not satisfied with quick fixes; I want to know what happens under the hood. I work analytically and in a structured way to build systems that work cleanly.<br><br> I am currently looking for a <strong>working student position</strong> to bring exactly this mindset into a real team.",
     hero_btn_primary: "View Main Project",
     hero_btn_contact: "Get in Touch",
 
@@ -522,12 +522,12 @@ const translations = {
     about_title: "About <span style='color: var(--primary-color)'>Me</span>",
     about_quote: "“I only like things when they really work cleanly.”",
     about_text_1:
-      "I'm Yusef Bach and I'm studying Computer Science at the University of Applied Sciences Hannover in my third semester. It is important to me that I really understand the things I work on. Not just applying them, but understanding how something is built and why it works.",
+      "I'm Yusef Bach and I'm studying Computer Science at the University of Applied Sciences Hannover in my fourth semester. It is important to me that I really understand the things I work on. Not just applying them, but understanding how something is built and why it works.",
     about_text_2:
       "I like working clearly and structured. This helps me both with projects like database modeling and in everyday life. I enjoy topics most where you dive deeper into systems, for example Linux or software architecture.",
     about_text_3:
       "In my free time, I sometimes need distance from the screen. Listening to music, meeting friends, or just switching off briefly – that brings me peace so I can concentrate better afterwards.",
-    stat_semester: "Semester (Winter 25/26)",
+    stat_semester: "Semester (Summer 26)",
     stat_passion: "Passion & Focus",
     stat_learning: "Willingness to learn",
     btn_talk: "Let's talk",
