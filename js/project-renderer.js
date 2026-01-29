@@ -1,16 +1,38 @@
-/* Dynamic Project Renderer v2.1 (Mobile Fix) */
+/**
+ * ============================================================================
+ * DATEI: js/project-renderer.js
+ * PROJEKT: PortfolioBach (Bachelor Thesis Artifact)
+ * AUTOR:   03yusef
+ * VERSION: 2.1.0 (Final Release - Mobile Fix)
+ *
+ * BESCHREIBUNG:
+ * Kern-Logik für das dynamische Rendering der Projektinhalte.
+ * Verarbeitet die JSON-Daten, trennt Hero- von Archiv-Projekten und
+ * handhabt die relative Pfad-Auflösung für Assets in Unterordnern.
+ * ============================================================================
+ */
 
+
+/* Initialisierung nach DOM-Load sicherstellen */
 document.addEventListener("DOMContentLoaded", () => {
   initProjectRender();
 });
 
+
+
+/**
+ * Hauptfunktion: Steuert den Render-Prozess für Hero- und Grid-Bereiche.
+ * Prüft auf Verfügbarkeit der Container und Datenintegrität.
+ */
 function initProjectRender() {
   const heroContainer = document.getElementById("hero-project-container");
   const archiveContainer = document.getElementById("archive-grid-container");
 
+
+  // Abbruch, falls Daten-Objekt noch nicht geladen wurde (Race-Condition Schutz)
   if (typeof projectsData === "undefined") return;
 
-  // 1. Filter Data
+// 1. Datensegmentierung: Hero-Projekt vs. Restliche Projekte
   const heroItem = projectsData.find((p) => p.id === HERO_PROJECT_ID);
   const archiveItems = projectsData.filter((p) => p.id !== HERO_PROJECT_ID);
 
@@ -23,14 +45,14 @@ function initProjectRender() {
   if (archiveContainer) {
     let gridHTML = "";
 
-    // ERKENNUNG: Sind wir in einem Unterordner?
-    // Wir prüfen, ob wir NICHT auf index.html sind (bzw. ob wir im projects Ordner sind)
+// KONTEXT-CHECK: Befinden wir uns in einem Unterordner?
+    // Wichtig für korrekte Asset-Verlinkung (../ Präfix Logik)
     const isSubFolder = window.location.pathname.includes("/projects/");
 
     archiveItems.forEach((item) => {
       let adjustedItem = { ...item };
 
-      // FIX: Nur "../" hinzufügen, wenn wir WIRKLICH im Unterordner sind
+      // Falls im Unterordner, Bildpfade relativ anpassen
       if (
         isSubFolder &&
         !adjustedItem.image.startsWith("http") &&
@@ -42,18 +64,28 @@ function initProjectRender() {
       gridHTML += renderArchiveTemplate(adjustedItem);
     });
 
+    // Github-Karte als letztes Element statisch hinzufügen
     gridHTML += renderGithubCard();
     archiveContainer.innerHTML = gridHTML;
   }
 }
 
-/* --- Templates --- */
+/* ==========================================================================
+   TEMPLATES & COMPONENT GENERATORS
+   Erzeugt HTML-Strings basierend auf den übergebenen Datenobjekten.
+   ========================================================================== */
+
+/**
+ * Generiert das HTML für das hervorgehobene Hero-Projekt.
+ * @param {Object} p - Das Projekt-Datenobjekt
+ */
 
 function renderHeroTemplate(p) {
   const badges = p.badges
     .map((b) => `<span class="tech-badge">${b}</span>`)
     .join("");
-  // Feature Liste rendering fix
+
+
   const features = p.features
     ? p.features.map((k) => `<li data-i18n="${k}"></li>`).join("")
     : "";
@@ -77,6 +109,11 @@ function renderHeroTemplate(p) {
         </div>
     </div>`;
 }
+
+/**
+ * Generiert das HTML für eine Standard-Projektkarte im Grid.
+ * Extrahiert den Dateinamen für relative Verlinkung.
+ */
 
 function renderArchiveTemplate(p) {
   const relativeLink = p.linkDetails.split("/").pop(); // Holt "dateiname.html"
@@ -104,6 +141,11 @@ function renderArchiveTemplate(p) {
         </div>
     </div>`;
 }
+
+
+/**
+ * Statische Komponente für den GitHub-Link am Ende des Grids.
+ */
 
 function renderGithubCard() {
   return `
