@@ -1,9 +1,29 @@
-/* ==========================================================================
-   YUSEF BACH PORTFOLIO - MAIN SCRIPT 
-   ========================================================================== */
+/**
+ * ============================================================================
+ * DATEI: js/script.js
+ * PROJEKT: PortfolioBach (Bachelor Thesis Artifact)
+ * AUTOR:   03yusef
+ * VERSION: 1.5.0 (Final Release - Main Controller)
+ *
+ * BESCHREIBUNG:
+ * Globaler Einstiegspunkt für die Interaktionslogik der Website.
+ * Beinhaltet UI-Steuerung (Navigation, Scroll-Effekte), Formular-Handling
+ * und die clientseitige Internationalisierung (i18n).
+ * ============================================================================
+ */
 
+
+/* Initialisierung der Skripte erst nach vollständigem Laden des DOM-Baums */
 document.addEventListener("DOMContentLoaded", () => {
-  /* --- 1. PROJEKT NAVIGATION (Für Unterseiten wie Meta, Phishing) --- */
+
+
+
+/* ==========================================================================
+     1. NAVIGATION CONTROLLER (Mobile / Hamburger Menu)
+     Steuert die Interaktion des Menüs auf Projekt-Unterseiten.
+     ========================================================================== */
+
+
   const projectHamburger = document.getElementById("project-hamburger");
   const projectNavLinks = document.getElementById("project-nav-links");
 
@@ -30,6 +50,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+
+  /* ==========================================================================
+     2. SMOOTH SCROLLING ENGINE
+     Verarbeitet Anker-Links (#) und berechnet den Scroll-Offset dynamisch.
+     ========================================================================== */
+
+
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       const href = this.getAttribute("href");
@@ -52,6 +79,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+
+/* ==========================================================================
+     3. INTERSECTION OBSERVER (Scroll Animations)
+     Überwacht Elemente und triggert CSS-Klassen für Reveal-Effekte beim Scrollen.
+     ========================================================================== */
+
   const observerOptions = {
     threshold: 0.1,
     rootMargin: "0px 0px -50px 0px",
@@ -68,6 +101,13 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".reveal, .fade-in-up").forEach((el) => {
     observer.observe(el);
   });
+
+
+
+/* ==========================================================================
+     4. DYNAMIC HEADER UI
+     Passt Hintergrund und Schatten des Headers basierend auf Scroll-Position an.
+     ========================================================================== */
 
   const header =
     document.querySelector("header") || document.querySelector(".project-nav");
@@ -91,7 +131,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* --- 5. CONTACT FORM (EmailJS) --- */
+ /* ==========================================================================
+     5. CONTACT FORM HANDLER (EmailJS Integration)
+     Asynchrone Formularverarbeitung und Versand.
+     ========================================================================== */
+
+     
   const contactForm = document.querySelector(".contact-form");
   if (contactForm) {
     contactForm.addEventListener("submit", function (event) {
@@ -102,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
       submitBtn.innerText = "Sende...";
       submitBtn.disabled = true;
 
-      // EmailJS IDs hier eintragen
+      // EmailJS Service Aufruf
       emailjs.sendForm("service_y8c0s0c", "template_k23slsm", this).then(
         () => {
           window.location.href = "thanks.html";
@@ -116,7 +161,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* --- 6. TYPING EFFECT --- */
+/* ==========================================================================
+     6. HERO TYPEWRITER EFFECT
+     Rekursive Funktion für die Text-Animation im Hero-Bereich.
+     ========================================================================== */
+
   const typingElement = document.querySelector(".typing-text");
   if (typingElement) {
     const words = ["Java Developer", "Tech Enthusiast", "Problem Solver"];
@@ -149,7 +198,11 @@ document.addEventListener("DOMContentLoaded", () => {
     type();
   }
 
-  /* --- 7. LANGUAGE SWITCHER (CINEMA EFFECT) --- */
+/* ==========================================================================
+     7. LANGUAGE SWITCHER MODULE (Cinema Effect)
+     Client-seitiges i18n mit visuellen Übergängen.
+     ========================================================================== */
+     
   const langBtn = document.getElementById("lang-switch");
 
   if (langBtn && typeof translations !== "undefined") {

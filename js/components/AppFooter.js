@@ -1,3 +1,10 @@
+/**
+ * Footer-Komponente für die gesamte Seite.
+ * Akzeptiert das Attribut "base-path", um Links korrekt zu setzen,
+ * wenn die Komponente in Unterverzeichnissen genutzt wird.
+ */
+
+
 class AppFooter extends HTMLElement {
   constructor() {
     super();

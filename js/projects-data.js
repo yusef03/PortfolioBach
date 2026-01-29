@@ -1,8 +1,31 @@
 /**
- * PROJECT CONFIGURATION
+ * ============================================================================
+ * DATEI: js/projects-data.js
+ * PROJEKT: PortfolioBach (Bachelor Thesis Artifact)
+ * AUTOR:   03yusef
+ * VERSION: 1.2.0 (Final Data Set)
+ *
+ * BESCHREIBUNG:
+ * Zentrale Datenhaltung für alle Projekt-Exponate.
+ * Dient als statische Datenbank (Single Source of Truth) für den
+ * Project-Renderer. Enthält Metadaten, Asset-Pfade und i18n-Keys.
+ * ============================================================================
+ */
+
+/**
+ * KONFIGURATION: Highlight-Projekt
+ * Definiert, welches Projekt als "Hero"-Section auf der Startseite
+ * prominent dargestellt wird.
  */
 const HERO_PROJECT_ID = "portfolio-meta";
 
+
+
+/**
+ * DATENSATZ: Projekt-Portfolio
+ * Array aus Projekt-Objekten. Keys wie 'titleKey' oder 'descKey' korrespondieren
+ * mit der Datei translations.js für die Mehrsprachigkeit.
+ */
 const projectsData = [
   {
     id: "phishing-defender",

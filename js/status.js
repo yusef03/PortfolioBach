@@ -1,9 +1,21 @@
+/**
+ * ============================================================================
+ * DATEI: js/status.js
+ * PROJEKT: PortfolioBach
+ * AUTOR:   03yusef
+ * VERSION: 1.0.0 (Global Config)
+ *
+ * BESCHREIBUNG:
+ * Zentraler Schalter für den Wartungsmodus.
+ * Leitet Besucher automatisch um, wenn Wartungsarbeiten stattfinden.
+ * ============================================================================
+ */
+
 /* =========================================
    MAINTENANCE MODE SWITCH
    ========================================= */
 
-//  TRUE, um  Wartungsseite zu aktivieren
-//  FALSE, um  Seite wieder live zu schalten
+// Hauptschalter: true = Wartung aktiv, false = Seite online
 const MAINTENANCE_MODE = false;
 
 (function () {
