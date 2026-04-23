@@ -2,7 +2,8 @@ import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 
 app = FastAPI(title="Ask Yusef API", version="1.0")
 
@@ -36,19 +37,18 @@ async def chat_endpoint(request: ChatRequest):
          raise HTTPException(status_code=500, detail="Gemini API Key missing in Environment Variables")
     
     try:
-        # GenAI Konfiguration
-        genai.configure(api_key=api_key)
+        # Neues GenAI SDK Initialisieren
+        client = genai.Client(api_key=api_key)
         system_instruction = load_system_prompt()
         
-        # Initialisiere gemini-1.5-flash-latest Modell
-        # Wir übergeben das gesamte "Gehirn" als System Instruktion.
-        model = genai.GenerativeModel(
-            model_name="gemini-1.5-flash-latest",
-            system_instruction=system_instruction
-        )
-        
         # Generiere die Antwort
-        response = model.generate_content(request.query)
+        response = client.models.generate_content(
+            model='gemini-1.5-flash',
+            contents=request.query,
+            config=types.GenerateContentConfig(
+                system_instruction=system_instruction,
+            )
+        )
         
         return {"answer": response.text}
 
