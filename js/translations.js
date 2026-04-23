@@ -462,11 +462,28 @@ const translations = {
     meta_c5_hack_fix_desc:
       "Die Lösung ist eine unscheinbare Datei namens <code>CNAME</code> (ohne Endung) im Root-Verzeichnis.<br><br><strong>Inhalt:</strong> <code>yusefbach.de</code><br><br>Damit ist die Domain 'Code-defined'. Egal wie oft ich deploye, GitHub weiß jetzt: 'Das gehört mir.'",
 
-    // Chapter 6: Roadmap
+    // Chapter 6: The AI Brain (RAG Backend)
     meta_c6_title:
-      "Chapter VI: <span class='highlight-text'>Future Roadmap</span>",
-    meta_c6_sub: "Code is never finished. The journey continues.",
-    meta_c6_n1_title: "Architecture Shift",
+      "Chapter VI: <span class='highlight-text'>The AI Brain</span>",
+    meta_c6_sub: "Ein Zero-Dependency RAG Chat-Twin.",
+    meta_c6_n1_title: "Python Serverless",
+    meta_c6_n1_desc:
+      "Die Google Gemini 1.5 Flash API läuft als isolierter Microservice auf Vercel (FastAPI).",
+    meta_c6_n2_title: "System Context Injection",
+    meta_c6_n2_desc:
+      "Eine markdown-basierte Datenbank ('yusef_brain.md') orchestriert das LLM strikt auf meine Entwickler-Persona und Karrieredaten.",
+    meta_c6_n3_title: "Vanilla Bot UI",
+    meta_c6_n3_desc:
+      "Das Frontend kommuniziert asynchron via privater Fetch-Pipeline mit dem Backend. Das Glassmorphism-UI kommt komplett ohne React oder externe Packages aus.",
+    meta_c6_n4_title: "Context Safety",
+    meta_c6_n4_desc:
+      "CORS Header und strict Model-Directives verhindern Missbrauch (Prompt Injection).",
+
+    // Chapter 7: Roadmap
+    meta_c7_title:
+      "Chapter VII: <span class='highlight-text'>Future Roadmap</span>",
+    meta_c7_sub: "Code is never finished. The journey continues.",
+    meta_c7_n1_title: "Architecture Shift",
     meta_c6_n1_desc:
       "Migration von statischem HTML zu einer datengetriebenen JS-Engine. Implementierung von i18n, Dark Mode & Intersection Observer.",
     meta_c6_n2_title: "UX & Accessibility",
@@ -476,7 +493,7 @@ const translations = {
     meta_c6_n3_desc:
       "Ablösung der lokalen JSON-Dateien durch eine echte API (Contentful/Strapi). Verwaltung der Projekte über ein Admin-Dashboard statt Code-Commits.",
     meta_c6_n4_title: "Own Framework",
-    meta_c6_n4_desc:
+    meta_c7_n4_desc:
       "Migration der Vanilla-Architektur zu <strong>Next.js</strong> (React). Nutzung von Server Side Rendering (SSR) für maximale Performance und SEO.",
 
     // Footer
@@ -956,22 +973,41 @@ const translations = {
     meta_c5_hack_fix_desc:
       "The solution is an inconspicuous file named <code>CNAME</code> (no extension) in the root directory.<br><br><strong>Content:</strong> <code>yusefbach.de</code><br><br>This makes the domain 'Code-defined'. No matter how often I deploy, GitHub now knows: 'This belongs to me.'",
 
-    // Chapter 6: Roadmap
+    // Chapter 6: The AI Brain (RAG Backend)
     meta_c6_title:
-      "Chapter VI: <span class='highlight-text'>Future Roadmap</span>",
-    meta_c6_sub: "Code is never finished. The journey continues.",
-    meta_c6_n1_title: "Architecture Shift",
+      "Chapter VI: <span class='highlight-text'>The AI Brain</span>",
+    meta_c6_sub: "A Zero-Dependency RAG Chat-Twin.",
+    meta_c6_n1_title: "Python Serverless",
+    meta_c6_n1_desc:
+      "The Google Gemini 1.5 Flash API runs as an isolated microservice on Vercel (FastAPI).",
+    meta_c6_n2_title: "System Context Injection",
+    meta_c6_n2_desc:
+      "A markdown-based database ('yusef_brain.md') strictly orchestrates the LLM to my developer persona.",
+    meta_c6_n3_title: "Vanilla Bot UI",
+    meta_c6_n3_desc:
+      "The frontend asynchronously communicates via a private fetch-pipeline. The Glassmorphism UI is built without React or external packages.",
+    meta_c6_n4_title: "Context Safety",
+    meta_c6_n4_desc:
+      "CORS headers and strict model directives prevent misuse (prompt injections).",
+
+    // Chapter 7: Roadmap
+    meta_c7_title:
+      "Chapter VII: <span class='highlight-text'>Future Roadmap</span>",
+    meta_c7_sub: "Code is never finished. The journey continues.",
+    meta_c7_n1_title: "Architecture Shift",
     meta_c6_n1_desc:
       "Migration from static HTML to a data-driven JS engine. Implementation of i18n, Dark Mode & Intersection Observer.",
     meta_c6_n2_title: "UX & Accessibility",
     meta_c6_n2_desc:
+    meta_c7_n2_title: "UX & Accessibility",
+    meta_c7_n2_desc:
       "Introduction of a <strong>Light/Dark Mode Toggle</strong> based on CSS variables. Focus on WCAG 2.1 compliance (contrasts & screen reader support).",
-    meta_c6_n3_title: "Headless CMS",
-    meta_c6_n3_desc:
+    meta_c7_n3_title: "Headless CMS",
+    meta_c7_n3_desc:
       "Replacement of local JSON files with a real API (Contentful/Strapi). Managing projects via an admin dashboard instead of code commits.",
-    meta_c6_n4_title: "Own Framework",
-    meta_c6_n4_desc:
-      "Migration of the Vanilla architecture to <strong>Next.js</strong> (React). Using Server Side Rendering (SSR) for maximum performance and SEO.",
+    meta_c7_n4_title: "Own Framework",
+    meta_c7_n4_desc:
+      "Migration of the vanilla architecture to <strong>Next.js</strong> (React). Utilizing Server Side Rendering (SSR) for maximum performance and SEO.",
 
     // Footer
     meta_outro_title: "Ready for<br>Production",

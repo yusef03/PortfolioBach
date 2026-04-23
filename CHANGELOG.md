@@ -2,6 +2,27 @@
 
 Hier dokumentiere ich, was sich am Projekt ändert.
 
+## [2.3.0] - 2026-04-23 (The AI & RAG Update)
+
+Dieses Update verwandelt das statische Portfolio in eine KI-gestützte Architektur, inklusive Zero-Dependency Frontend-Bot und Serverless Python-Backend.
+
+### 🧠 Backend & AI Integration
+- **RAG Architecture (`api/index.py`):** Neues Vercel Serverless Function Backend implementiert. Liest dynamisch `yusef_brain.md` als System-Kontext.
+- **Gemini 1.5 Flash:** Vollständige Migration auf das neue `google-genai` SDK zur performanten Beantwortung von User-Fragen zum Portfolio in Echtzeit.
+- **CORS & Security:** API Endpoint sicher isoliert und via CORS-Policies geschützt.
+
+### 💬 Frontend & Design
+- **"Ask Yusef" Chat Widget:** Eigenentwickeltes, schwebendes Bot-Widget (Vanilla JS, kein Framework-Overhead).
+- **Glassmorphism UI:** Neues CSS-Styling (`backdrop-filter`) für das Chatfenster im Enterprise-Design.
+- **Async UX:** "Ghost-Message" Typing-Animation und Error-Handling implementiert für sauberes Nutzerfeedback.
+
+### 📝 Content & Persona Shift
+- **HDI Group Positionierung:** Überarbeitung aller Hero- und About-Texte (Fokus auf Clean Architecture, MVC und AI Development).
+- **Neues Projekt:** "Community Software" (Lead Developer, Lua, SQL Optimization, High-Traffic Architektur) vollständig in die `projects-data.js` integriert.
+- **System-Prompt (`yusef_brain.md`):** Detaillierte Persona-Datenbank für das LLM aufgebaut.
+
+---
+
 ## [2.2.0] - 2025-12-11 (The Meta Update)
 
 Dieses Update dokumentiert das System selbst. Wir haben das Portfolio in eine eigene Case Study verwandelt.

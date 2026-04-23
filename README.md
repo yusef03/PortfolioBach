@@ -1,20 +1,21 @@
 # Yusef Bach - Portfolio 🚀
 
-### 🚀 Latest Updates (v2.2.0)
+### 🚀 Latest Updates (v2.3.0)
 
-**New Meta-Case Study: Portfolio System Architecture**
+**New System Feature: Zero-Dependency AI Twin**
 
-- **Documentation:** Ich habe das Portfolio selbst als Projekt dokumentiert. Erfahre, wie die dynamische Vanilla-JS Engine unter der Haube funktioniert.
-- **Deep Dive:** Detaillierte Einblicke in das MVC-Pattern, CNAME-Hacks bei GitHub Pages und Performance-Optimierung (Observer Pattern).
-- **Visuals:** High-End CSS-Animationen und interaktive Code-Demos.
+- **RAG Architecture:** Serverseitige Integration der Google Gemini 1.5 Flash API auf Vercel, gebunden an dieses Portfolio über eine FastAPI Backend-Route (`/api/chat`).
+- **Bot Widget:** Custom Glassmorphism UI Bot-Widget, das rein über Vanilla JS und Fetch-API mit dem Serverless Backend anspricht - extrem leichtgewichtig.
+- **Deep Persona:** Das LLM wird durch eine Markdown "Brain" Datei (`yusef_brain.md`) präzise auf die Persona 'AI Developer @ HDI' konditioniert.
 
-[👉 Case Study ansehen](https://yusefbach.de/projects/portfolio-meta.html)
+[📜 Kompletten Changelog ansehen](./CHANGELOG.md)
 
-**Major Architecture Overhaul & CV Engine Rollout**
+---
+
+**Past Update (v2.2.0): Meta-Case Study**
 
 - **Dynamic Rendering Engine:** Das Portfolio nutzt nun ein JS-basiertes CMS-System zur Trennung von Daten und Design.
-- **Asset Reorganization:** Vollständige Umstrukturierung der Ordner nach Domain-Driven Design.
-- **New Case Study:** Integration der "HTML/CSS CV Engine" mit Live-Demo und Repo-Link.
+- **Documentation:** Eine Deep-Dive Seite, die das MVC Pattern in reinem Vanilla JS dokumentiert.
 
 [📜 Kompletten Changelog ansehen](./CHANGELOG.md)
 
