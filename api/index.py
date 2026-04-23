@@ -54,15 +54,17 @@ async def chat_endpoint(request: ChatRequest):
         try:
             response_data = call_gemini('gemini-2.5-flash')
         except urllib.error.HTTPError as e:
-            if e.code in [503, 429, 404]: 
+            if e.code in [503, 404]: 
                 print(f"Model Overloaded ({e.code}), failing over to gemini-2.5-flash-lite...")
                 try:
                     response_data = call_gemini('gemini-2.5-flash-lite')
                 except urllib.error.HTTPError as e2:
+                    if e2.code == 429: raise e2
                     print(f"Model Overloaded again ({e2.code}), failing over to gemini-2.0-flash...")
                     try:
                         response_data = call_gemini('gemini-2.0-flash')
                     except urllib.error.HTTPError as e3:
+                        if e3.code == 429: raise e3
                         print(f"Last lifeline ({e3.code}), falling back to gemini-2.0-flash-lite...")
                         response_data = call_gemini('gemini-2.0-flash-lite')
             else:
@@ -73,8 +75,10 @@ async def chat_endpoint(request: ChatRequest):
 
     except urllib.error.HTTPError as e:
         error_info = e.read().decode('utf-8')
-        print(f"Gemini API Direct Error: {e.code} - {error_info}")
-        raise HTTPException(status_code=500, detail="Der AI-Twin ist momentan nicht erreichbar.")
+        print(f"Gemini Rate Limit / API Error: {e.code}")
+        if e.code == 429:
+            return {"answer": "Puh, meine KI-Leitung glüht heute! Mein kostenloses Google API-Limit ist für diesen Moment ausgeschöpft. Schreib Yusef am besten direkt über LinkedIn oder das Kontaktformular, er antwortet in der Regel sofort!"}
+        return {"answer": "Puh, meine Serververbindung zu den Google AI-Servern hat gerade einen Schluckauf. Versuch es einfach gleich nochmal oder kontaktiere Yusef direkt!"}
     except Exception as e:
         print(f"API System Error: {e}")
-        raise HTTPException(status_code=500, detail="Der AI-Twin ist momentan nicht erreichbar.")
+        return {"answer": "Es gab ein Problem beim Hochfahren meiner Systeme. Bitte benutze vorerst das reguläre Kontaktformular!"}
