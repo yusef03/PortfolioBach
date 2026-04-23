@@ -886,15 +886,62 @@
       </div>
     </section>
 
+    <section class="project-section dark-bg" id="aibrain">
+      <div class="container">
+        <div class="feature-row reveal" style="flex-direction: row-reverse">
+          <div class="feature-text">
+            <h2 data-i18n="meta_c6_title">
+              Chapter VI: <span class="highlight-text">The AI Brain</span>
+            </h2>
+            <p class="text-muted" data-i18n="meta_c6_sub">A Zero-Dependency RAG Chat-Twin.</p>
+
+            <h3 style="margin-top: 30px" data-i18n="meta_c6_n1_title">Python Serverless</h3>
+            <p data-i18n="meta_c6_n1_desc">Die Google Gemini API läuft als isolierter Microservice auf Vercel (FastAPI).</p>
+
+            <h3 style="margin-top: 20px" data-i18n="meta_c6_n2_title">System Context Injection</h3>
+            <p data-i18n="meta_c6_n2_desc">Eine markdown-basierte Datenbank ('yusef_brain.md') orchestriert das LLM.</p>
+
+            <h3 style="margin-top: 20px" data-i18n="meta_c6_n3_title">Vanilla Bot UI</h3>
+            <p data-i18n="meta_c6_n3_desc">Das Frontend kommuniziert asynchron via privater Fetch-Pipeline.</p>
+
+            <h3 style="margin-top: 20px" data-i18n="meta_c6_n4_title">Context Safety</h3>
+            <p data-i18n="meta_c6_n4_desc">CORS Header und Strict Model-Directives verhindern Missbrauch.</p>
+          </div>
+
+          <div class="mission-image" style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 30px;">
+            <h4 style="margin-bottom: 30px; text-align: center; color: var(--primary-light);">RAG Architecture Flow</h4>
+            <div class="pipeline-container" style="flex-direction: column; gap: 10px; align-items: stretch; margin-top: 0;">
+              <div class="pipe-box" style="text-align: center;">
+                <span style="color: #fff;">User</span> (Glassmorphism UI)
+              </div>
+              <div style="text-align: center; color: #666; font-size: 1.2rem;">↓</div>
+              <div class="pipe-box pipe-logic" style="text-align: center; background: rgba(157,0,255,0.05);">
+                <div style="font-weight: bold; color: white;">Vercel Serverless</div>
+                <div style="font-size: 0.75rem; color: #aaa; margin-top: 5px;">Failover: 2.5-flash → 2.0-flash → 8b</div>
+              </div>
+              <div style="text-align: center; color: #666; font-size: 1.2rem;">↓</div>
+              <div class="pipe-box" style="text-align: center;">
+                <span style="color: #27c93f;">yusef_brain.md</span> (Context Injection)
+              </div>
+              <div style="text-align: center; color: #666; font-size: 1.2rem;">↓</div>
+              <div class="pipe-box" style="background: rgba(157,0,255,0.2); border-color: rgba(157,0,255,0.5); text-align: center; color: white; font-weight: bold;">
+                Google Gemini API
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="project-section" id="roadmap" style="padding-bottom: 0">
       <div class="container">
         <h2
           class="section-heading center-text reveal"
-          data-i18n="meta_c6_title"
+          data-i18n="meta_c7_title"
         >
-          Chapter VI: <span class="highlight-text">Future Roadmap</span>
+          Chapter VII: <span class="highlight-text">Future Roadmap</span>
         </h2>
-        <p class="section-subtitle center-text reveal" data-i18n="meta_c6_sub">
+        <p class="section-subtitle center-text reveal" data-i18n="meta_c7_sub">
           Code is never finished. The journey continues.
         </p>
 
@@ -905,12 +952,12 @@
             <div class="node-marker done"></div>
             <div class="roadmap-card">
               <span class="rm-tag" style="color: #27c93f"
-                >Current Status (v2.2)</span
+                >Current Status (v2.3)</span
               >
-              <h3 class="rm-title" data-i18n="meta_c6_n1_title">
+              <h3 class="rm-title" data-i18n="meta_c7_n1_title">
                 Architecture Shift
               </h3>
-              <p class="rm-desc" data-i18n="meta_c6_n1_desc">Migration...</p>
+              <p class="rm-desc" data-i18n="meta_c7_n1_desc">Migration...</p>
             </div>
           </div>
 
@@ -920,10 +967,10 @@
               <span class="rm-tag" style="color: var(--primary-color)"
                 >Milestone 1 (Q1 2026)</span
               >
-              <h3 class="rm-title" data-i18n="meta_c6_n2_title">
+              <h3 class="rm-title" data-i18n="meta_c7_n2_title">
                 UX & Accessibility
               </h3>
-              <p class="rm-desc" data-i18n="meta_c6_n2_desc">Einführung...</p>
+              <p class="rm-desc" data-i18n="meta_c7_n2_desc">Einführung...</p>
             </div>
           </div>
 
@@ -931,10 +978,10 @@
             <div class="node-marker future"></div>
             <div class="roadmap-card">
               <span class="rm-tag" style="color: #888">Milestone 2</span>
-              <h3 class="rm-title" data-i18n="meta_c6_n3_title">
+              <h3 class="rm-title" data-i18n="meta_c7_n3_title">
                 Headless CMS
               </h3>
-              <p class="rm-desc" data-i18n="meta_c6_n3_desc">Ablösung...</p>
+              <p class="rm-desc" data-i18n="meta_c7_n3_desc">Ablösung...</p>
             </div>
           </div>
 
@@ -942,10 +989,10 @@
             <div class="node-marker future"></div>
             <div class="roadmap-card">
               <span class="rm-tag" style="color: #888">Long Term Vision</span>
-              <h3 class="rm-title" data-i18n="meta_c6_n4_title">
+              <h3 class="rm-title" data-i18n="meta_c7_n4_title">
                 Own Framework
               </h3>
-              <p class="rm-desc" data-i18n="meta_c6_n4_desc">Migration...</p>
+              <p class="rm-desc" data-i18n="meta_c7_n4_desc">Migration...</p>
             </div>
           </div>
         </div>
