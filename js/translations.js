@@ -84,7 +84,7 @@ const translations = {
     about_quote:
       "„Ich mag Dinge erst dann, wenn sie wirklich sauber funktionieren.“",
     about_text_1:
-      "Ich bin Yusef, B.Sc. Informatik-Student (4. Semester) und trete bald meine Rolle als Werkstudent AI Developer bei der HDI Group an. Mein Leitsatz ist simpel: Ich möchte Systeme nicht nur anwenden, sondern ihr Fundament begreifen. Es reicht mir nicht, APIs zusammenzukleben – ich entwerfe saubere Use-Cases und Architekturen, die im Enterprise-Umfeld performen.",
+      "Ich bin Yusef, B.Sc. Informatik-Student (4. Semester) und aktuell bei der HDI Group als AI Developer Werkstudent tätig. Mein Leitsatz ist simpel: Ich möchte Systeme nicht nur anwenden, sondern ihr Fundament begreifen. Es reicht mir nicht, APIs zusammenzukleben – ich entwerfe saubere Use-Cases und Architekturen, die im Enterprise-Umfeld performen.",
     about_text_2:
       "Egal ob beim Datenbankmodellieren, in der Java-Entwicklung oder bei systemnahen Projekten – Struktur und Patterns wie MVC sind für mich Pflicht, nicht nur Theorie. Aktuell konzentriere ich mich darauf, dieses strukturierte Software Engineering in die Welt der Enterprise AI und RAG-Lösungen zu übertragen.",
     about_text_3:
@@ -484,15 +484,15 @@ const translations = {
       "Chapter VII: <span class='highlight-text'>Future Roadmap</span>",
     meta_c7_sub: "Code is never finished. The journey continues.",
     meta_c7_n1_title: "Architecture Shift",
-    meta_c6_n1_desc:
+    meta_c7_n1_desc:
       "Migration von statischem HTML zu einer datengetriebenen JS-Engine. Implementierung von i18n, Dark Mode & Intersection Observer.",
-    meta_c6_n2_title: "UX & Accessibility",
-    meta_c6_n2_desc:
+    meta_c7_n2_title: "UX & Accessibility",
+    meta_c7_n2_desc:
       "Einführung eines <strong>Light/Dark Mode Toggles</strong> basierend auf CSS-Variablen. Fokus auf WCAG 2.1 Konformität (Kontraste & Screenreader-Support).",
-    meta_c6_n3_title: "Headless CMS",
-    meta_c6_n3_desc:
+    meta_c7_n3_title: "Headless CMS",
+    meta_c7_n3_desc:
       "Ablösung der lokalen JSON-Dateien durch eine echte API (Contentful/Strapi). Verwaltung der Projekte über ein Admin-Dashboard statt Code-Commits.",
-    meta_c6_n4_title: "Own Framework",
+    meta_c7_n4_title: "Own Framework",
     meta_c7_n4_desc:
       "Migration der Vanilla-Architektur zu <strong>Next.js</strong> (React). Nutzung von Server Side Rendering (SSR) für maximale Performance und SEO.",
 
@@ -596,7 +596,7 @@ const translations = {
     about_title: "About <span style='color: var(--primary-color)'>Me</span>",
     about_quote: "“I only like things when they really work cleanly.”",
     about_text_1:
-      "I'm Yusef, a 4th-semester B.Sc. Computer Science student, soon starting my role as a Working Student AI Developer at HDI Group. My principle is simple: I don't just want to use systems; I want to grasp their foundation. Simply gluing APIs together isn't enough for me – I design clean architectures and use-cases that perform in an enterprise environment.",
+      "I'm Yusef, a 4th-semester B.Sc. Computer Science student, and currently working as an AI Developer student trainee at the HDI Group. My principle is simple: I don't just want to use systems; I want to grasp their foundation. Simply gluing APIs together isn't enough for me – I design clean architectures and use-cases that perform in an enterprise environment.",
     about_text_2:
       "Whether it's database modeling, Java development, or low-level web projects – structure and patterns like MVC are mandatory for me, not just theory. Currently, I am focused on transferring this structured software engineering approach into the world of Enterprise AI and RAG solutions.",
     about_text_3:
