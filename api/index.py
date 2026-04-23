@@ -40,10 +40,10 @@ async def chat_endpoint(request: ChatRequest):
         genai.configure(api_key=api_key)
         system_instruction = load_system_prompt()
         
-        # Initialisiere gemini-1.5-flash Modell
+        # Initialisiere gemini-1.5-flash-latest Modell
         # Wir übergeben das gesamte "Gehirn" als System Instruktion.
         model = genai.GenerativeModel(
-            model_name="gemini-1.5-flash",
+            model_name="gemini-1.5-flash-latest",
             system_instruction=system_instruction
         )
         
