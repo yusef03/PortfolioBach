@@ -50,17 +50,21 @@ async def chat_endpoint(request: ChatRequest):
             with urllib.request.urlopen(req) as response:
                 return json.loads(response.read().decode('utf-8'))
         
-        # Zero-Dependency REST-Call with Failover Architecture
+        # Zero-Dependency REST-Call with Failover Architecture (Modern 2.x/3.x Stack)
         try:
             response_data = call_gemini('gemini-2.5-flash')
         except urllib.error.HTTPError as e:
-            if e.code in [503, 429, 404]: # Overloaded or Not Found Server Fallback
-                print(f"Model Overloaded ({e.code}), failing over to gemini-2.0-flash...")
+            if e.code in [503, 429, 404]: 
+                print(f"Model Overloaded ({e.code}), failing over to gemini-2.5-flash-lite...")
                 try:
-                    response_data = call_gemini('gemini-2.0-flash')
+                    response_data = call_gemini('gemini-2.5-flash-lite')
                 except urllib.error.HTTPError as e2:
-                    print(f"Model Overloaded again ({e2.code}), failing over to gemini-1.5-flash-8b...")
-                    response_data = call_gemini('gemini-1.5-flash-8b')
+                    print(f"Model Overloaded again ({e2.code}), failing over to gemini-2.0-flash...")
+                    try:
+                        response_data = call_gemini('gemini-2.0-flash')
+                    except urllib.error.HTTPError as e3:
+                        print(f"Last lifeline ({e3.code}), falling back to gemini-2.0-flash-lite...")
+                        response_data = call_gemini('gemini-2.0-flash-lite')
             else:
                 raise e
 
