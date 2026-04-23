@@ -1,3 +1,10 @@
+/* === GLOBAL MOBILE FIXES === */
+/* Prevents iOS Safari double tap hover-click bug and input zoom */
+a, button, input, textarea, .nav-links a, .cta-button, .cta-button-outline {
+  touch-action: manipulation !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
 /* --- Typography Helpers --- */
 .container {
   max-width: 1300px;
