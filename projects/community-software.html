@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="../js/status.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Community Software | Case Study</title>
+    <link rel="stylesheet" href="../css/main.css?v=5" />
+  </head>
+  <body class="project-deep-dive">
+    <nav class="project-nav sticky-nav">
+      <div class="nav-container">
+        <a href="../index.html" class="back-link">
+          <span>←</span> <span data-i18n="nav_portfolio">Portfolio</span>
+        </a>
+
+        <div class="nav-content-wrapper" id="project-nav-links">
+          <div class="internal-links">
+            <a href="#mission" data-i18n="pd_nav_mission">Mission</a>
+            <a href="#architecture" data-i18n="pd_nav_arch">Architektur</a>
+          </div>
+        </div>
+
+        <div class="mobile-header-controls">
+          <button
+            id="lang-switch"
+            class="lang-btn"
+            aria-label="Switch Language"
+          ></button>
+          <div class="hamburger" id="project-hamburger">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <header class="project-hero" id="home">
+      <!-- Fallback pattern since we might not have a video for this -->
+      <div class="hero-pattern" style="opacity: 0.5;"></div>
+      
+      <div class="hero-content container">
+        <div class="hero-badges fade-in-up">
+          <span class="hero-badge" data-i18n="cs_hero_badge">Lead Developer</span>
+          <span class="hero-badge outline">01/2021 - 09/2023</span>
+        </div>
+
+        <h1 class="hero-title fade-in-up" style="animation-delay: 0.2s">
+          Community<span class="text-stroke">Engine</span>
+        </h1>
+
+        <p
+          class="hero-subtitle fade-in-up"
+          style="animation-delay: 0.4s"
+          data-i18n="cs_page_subtitle"
+        >
+          Eine asynchrone Backend und Frontend-Struktur für eine große Community. <span class="highlight-text">Lua, JS & SQL Optimization.</span>
+        </p>
+      </div>
+
+      <div class="scroll-indicator fade-in" style="animation-delay: 1s">
+        <span>Explore Case</span>
+        <div class="mouse">
+          <div class="wheel"></div>
+        </div>
+      </div>
+    </header>
+
+    <section class="project-section dark-bg" id="mission">
+      <div class="container">
+        <div class="mission-grid">
+          <div class="mission-content reveal">
+            <span class="section-tag" data-i18n="cs_tag_project">Live System</span>
+            <h2 class="section-heading" data-i18n="cs_mission_title">
+              Verantwortung für <br /><span class="highlight-text">Live-Systeme</span> während des Studiums
+            </h2>
+            <p class="text-lg" data-i18n="cs_mission_text">
+              Ein Projekt über zweieinhalb Jahre (01/2021 – 09/2023), in dem ich gelernt habe, was es bedeutet, eine Architektur zu bauen, die performen muss, wenn echte User massenhaft Daten erzeugen.
+            </p>
+            <p class="text-muted" data-i18n="cs_mission_subtext">
+              Der Fokus lag auf der Entwicklung von Server-Client-Strukturen und der absolut reibungslosen Datenpflege im Live-Betrieb. Fehler dürfen eine bestehende Wirtschaft oder Inventare nicht gefährden.
+            </p>
+
+            <div class="stats-row">
+              <div class="stat-box">
+                <span class="stat-val">Lua/JS</span>
+                <span class="stat-label">Core Logic</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-val">SQL</span>
+                <span class="stat-label">Database</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-val">2.5</span>
+                <span class="stat-label">Jahre Ops</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="feature-visual reveal delay-200">
+             <div class="code-window">
+               <div class="cw-header">
+                 <div class="cw-dot red"></div>
+                 <div class="cw-dot yellow"></div>
+                 <div class="cw-dot green"></div>
+                 <div class="cw-title">server_core.lua</div>
+               </div>
+               <div class="cw-body">
+<span class="cw-line"><span class="cw-num">1</span><span class="cmt">-- Handling event-driven SQL queries for High-Traffic</span></span>
+<span class="cw-line"><span class="cw-num">2</span><span class="var">RegisterNetEvent</span>(<span class="str">'core:updatePlayerState'</span>, <span class="kwd">function</span>(source, payload)</span>
+<span class="cw-line"><span class="cw-num">3</span>  <span class="kwd">local</span> _src = source</span>
+<span class="cw-line"><span class="cw-num">4</span>  <span class="kwd">local</span> queryId = <span class="fn">OptimizeQuery</span>(payload)</span>
+<span class="cw-line"><span class="cw-num">5</span>  </span>
+<span class="cw-line"><span class="cw-num">6</span>  <span class="cmt">-- Ensuring Data Integrity via transactions</span></span>
+<span class="cw-line"><span class="cw-num">7</span>  <span class="var">MySQL.Async.execute</span>(<span class="str">'UPDATE users SET state=@state WHERE id=@id'</span>, {</span>
+<span class="cw-line"><span class="cw-num">8</span>    [<span class="str">'@state'</span>] = payload.current_state,</span>
+<span class="cw-line"><span class="cw-num">9</span>    [<span class="str">'@id'</span>] = payload.user_identifier</span>
+<span class="cw-line"><span class="cw-num">10</span>  }, <span class="kwd">function</span>(rowsChanged)</span>
+<span class="cw-line"><span class="cw-num">11</span>    <span class="kwd">if</span> rowsChanged > 0 <span class="kwd">then</span></span>
+<span class="cw-line"><span class="cw-num">12</span>       <span class="fn">LogData</span>(<span class="str">"Success"</span>, _src)</span>
+<span class="cw-line"><span class="cw-num">13</span>    <span class="kwd">end</span></span>
+<span class="cw-line"><span class="cw-num">14</span>  <span class="kwd">end</span>)</span>
+<span class="cw-line"><span class="cw-num">15</span><span class="kwd">end</span>)</span>
+               </div>
+             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section" id="architecture">
+      <div class="container">
+        <h2 class="section-heading center-text reveal" data-i18n="cs_arch_title">
+          High-Traffic <br /><span class="highlight-text">Architecture</span>
+        </h2>
+        <p class="section-subtitle center-text reveal" data-i18n="cs_arch_sub">
+          Vorbereitung interner Wissensquellen und saubere Event-Listener.
+        </p>
+
+        <div class="challenge-grid reveal">
+          <div class="challenge-card">
+            <div class="challenge-header">
+              <div class="icon-box icon-success">⚡</div>
+              <h4 class="challenge-title" data-i18n="cs_chal_1_title">
+                SQL Query Last
+              </h4>
+            </div>
+            <p class="challenge-desc" data-i18n="cs_chal_1_desc">
+              Tausende Anfragen an die relationale Datenbank mussten optimiert werden (SQL Optimization).
+            </p>
+            <div class="solution-block">
+              <div class="icon-box icon-danger">🛡️</div>
+              <div class="solution-text">
+                <span class="solution-label">Strategy</span>
+                <span>Asynchrone Caching-Layer und sorgfältig designte Indizes verhinderten Blockaden im Live-Betrieb.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="challenge-card">
+            <div class="challenge-header">
+              <div class="icon-box icon-success">📦</div>
+              <h4 class="challenge-title" data-i18n="cs_chal_2_title">
+                Versionierung
+              </h4>
+            </div>
+            <p class="challenge-desc" data-i18n="cs_chal_2_desc">
+               Striktes Release-Management und Versionierung über Git gewährleisteten den reibungslosen Update-Prozess.
+            </p>
+            <div class="solution-block">
+              <div class="icon-box icon-danger">🛡️</div>
+              <div class="solution-text">
+                <span class="solution-label">Workflow</span>
+                <span>Trennung von Development, Staging und Live Branch. Dokumentation von Updates für das Moderatoren-Team.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="challenge-card">
+            <div class="challenge-header">
+              <div class="icon-box icon-success">🤝</div>
+              <h4 class="challenge-title" data-i18n="cs_chal_3_title">
+                System-Support
+              </h4>
+            </div>
+            <p class="challenge-desc" data-i18n="cs_chal_3_desc">
+              Technischer Support und systematisches Troubleshooting (2nd-Level) der gemeldeten Bugs durch die Community.
+            </p>
+            <div class="solution-block">
+              <div class="icon-box icon-danger">🛡️</div>
+              <div class="solution-text">
+                <span class="solution-label">Operations</span>
+                <span>Aktives Ticket-System und Logging halfen beim Identifizieren und reproduzieren von Use-Case Bugs.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <app-footer base-path=".."></app-footer>
+
+    <script>
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          }
+        });
+      }, observerOptions);
+      document.querySelectorAll(".reveal, .fade-in-up, .fade-in").forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
+    <script src="../js/components/AppFooter.js"></script>
+    <script src="../js/translations.js"></script>
+    <script src="../js/script.js"></script>
+  </body>
+</html>
