@@ -59,18 +59,18 @@ const projectsData = [
   },
   {
     id: "community-software",
-    titleKey: "community_title",
+    titleKey: "Community Projekt",
     descKey: "community_desc",
     btnKey: "community_btn",
     codeKey: "community_code",
-    
+
     // Additional info based on CV
     timeframe: "01/2021 - 09/2023",
     role: "Lead Developer & Community Management",
 
     image: "images/projects/cv-engine/code.jpg", // Optional placeholder
     linkDetails: "projects/community-software.html",
-    linkCode: "https://github.com/yusef03", 
+    linkCode: "https://github.com/yusef03",
     badges: ["Lua", "JavaScript", "SQL Optimization", "Git Release Management", "2nd-Level Support"],
     features: ["community_feat_1", "community_feat_2", "community_feat_3"],
     statusKey: "community_status",
