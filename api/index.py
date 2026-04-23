@@ -1,9 +1,9 @@
 import os
+import json
+import urllib.request
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from google import genai
-from google.genai import types
 
 app = FastAPI(title="Ask Yusef API", version="1.0")
 
@@ -37,21 +37,33 @@ async def chat_endpoint(request: ChatRequest):
          raise HTTPException(status_code=500, detail="Gemini API Key missing in Environment Variables")
     
     try:
-        # Neues GenAI SDK Initialisieren
-        client = genai.Client(api_key=api_key)
         system_instruction = load_system_prompt()
         
-        # Generiere die Antwort
-        response = client.models.generate_content(
-            model='gemini-1.5-flash',
-            contents=request.query,
-            config=types.GenerateContentConfig(
-                system_instruction=system_instruction,
-            )
-        )
+        # Zero-Dependency REST-Call to Gemini API (Bypasses SDK bugs)
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={api_key}"
         
-        return {"answer": response.text}
+        payload = {
+            "systemInstruction": {
+                "parts": [{"text": system_instruction}]
+            },
+            "contents": [
+                {"parts": [{"text": request.query}]}
+            ]
+        }
+        
+        data = json.dumps(payload).encode('utf-8')
+        req = urllib.request.Request(url, data=data, headers={'Content-Type': 'application/json'})
+        
+        with urllib.request.urlopen(req) as response:
+            response_data = json.loads(response.read().decode('utf-8'))
+            text_answer = response_data['candidates'][0]['content']['parts'][0]['text']
+        
+        return {"answer": text_answer}
 
+    except urllib.error.HTTPError as e:
+        error_info = e.read().decode('utf-8')
+        print(f"Gemini API Direct Error: {e.code} - {error_info}")
+        raise HTTPException(status_code=500, detail="Der AI-Twin ist momentan nicht erreichbar.")
     except Exception as e:
-        print(f"API Error: {e}")
+        print(f"API System Error: {e}")
         raise HTTPException(status_code=500, detail="Der AI-Twin ist momentan nicht erreichbar.")
