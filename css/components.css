@@ -1071,6 +1071,11 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  /* SAFARI MOBILE FIX: Verhindert, dass der fixed flex-container Screen-Klicks abfängt */
+  pointer-events: none; 
+}
+#rag-bot-wrapper > * {
+  pointer-events: auto;
 }
 
 #rag-fab-btn {
@@ -1226,7 +1231,8 @@ footer {
   padding: 10px 15px;
   border-radius: 20px;
   color: white;
-  font-size: 0.9rem;
+  /* SAFARI MOBILE FIX: Input MUSS min 16px sein, sonst ignoriert iOS user-scalable=0 und zoomt! */
+  font-size: 16px; 
   outline: none;
   transition: border-color 0.3s;
 }

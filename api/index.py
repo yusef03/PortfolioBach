@@ -39,25 +39,32 @@ async def chat_endpoint(request: ChatRequest):
     try:
         system_instruction = load_system_prompt()
         
-        # Zero-Dependency REST-Call to Gemini API (Bypasses SDK bugs)
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={api_key}"
+        def call_gemini(model_name):
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
+            payload = {
+                "systemInstruction": {"parts": [{"text": system_instruction}]},
+                "contents": [{"parts": [{"text": request.query}]}]
+            }
+            data = json.dumps(payload).encode('utf-8')
+            req = urllib.request.Request(url, data=data, headers={'Content-Type': 'application/json'})
+            with urllib.request.urlopen(req) as response:
+                return json.loads(response.read().decode('utf-8'))
         
-        payload = {
-            "systemInstruction": {
-                "parts": [{"text": system_instruction}]
-            },
-            "contents": [
-                {"parts": [{"text": request.query}]}
-            ]
-        }
-        
-        data = json.dumps(payload).encode('utf-8')
-        req = urllib.request.Request(url, data=data, headers={'Content-Type': 'application/json'})
-        
-        with urllib.request.urlopen(req) as response:
-            response_data = json.loads(response.read().decode('utf-8'))
-            text_answer = response_data['candidates'][0]['content']['parts'][0]['text']
-        
+        # Zero-Dependency REST-Call with Failover Architecture
+        try:
+            response_data = call_gemini('gemini-2.5-flash')
+        except urllib.error.HTTPError as e:
+            if e.code in [503, 429, 404]: # Overloaded or Not Found Server Fallback
+                print(f"Model Overloaded ({e.code}), failing over to gemini-2.0-flash...")
+                try:
+                    response_data = call_gemini('gemini-2.0-flash')
+                except urllib.error.HTTPError as e2:
+                    print(f"Model Overloaded again ({e2.code}), failing over to gemini-1.5-flash-8b...")
+                    response_data = call_gemini('gemini-1.5-flash-8b')
+            else:
+                raise e
+
+        text_answer = response_data['candidates'][0]['content']['parts'][0]['text']
         return {"answer": text_answer}
 
     except urllib.error.HTTPError as e:
