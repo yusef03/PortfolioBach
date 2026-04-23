@@ -9,9 +9,9 @@ const translations = {
     nav_portfolio: "Portfolio",
 
     // --- HERO SECTION (Index) ---
-    hero_title_prefix: "Informatik-Student & <br>",
+    hero_title_prefix: "AI Developer & <br>",
     hero_text:
-      "Hi, ich bin Yusef. Ich studiere Angewandte Informatik an der Hochschule Hannover (4. Semester). <br><br> Mein Ansatz ist: <strong>Erst verstehen, dann coden.</strong> Mich fasziniert die ganze Breite der IT – von Web-Entwicklung über Datenbanken bis zur IT-Security. Dabei gebe ich mich nicht mit schnellen Lösungen zufrieden, sondern will wissen, was unter der Haube passiert. Ich arbeite analytisch und strukturiert, um Systeme zu bauen, die wirklich sauber funktionieren.<br><br> Aktuell suche ich eine <strong>Werkstudentenstelle</strong>, um genau diese Denkweise in ein echtes Team einzubringen.",
+      "Fokus auf Enterprise AI, Data Architectures & saubere Systemintegration.<br><br> Hi, ich bin Yusef. Mein Ansatz ist: <strong>Erst verstehen, dann coden.</strong> Ich baue Systeme mit sauberer Architektur, die von Grund auf funktionieren – ohne Framework-Bloatware. Mit einem starken Fundament in Java, SQL und Vanilla Tech übertrage ich tiefes Software-Engineering-Wissen auf KI-Anwendungen und komplexe Integrationen.<br><br><span style='font-size: 0.95rem; color: var(--text-secondary);'>Werkstudent AI @ HDI Group | B.Sc. Informatik</span>",
     hero_btn_primary: "Mein Hauptprojekt ansehen",
     hero_btn_contact: "Kontakt aufnehmen",
 
@@ -41,6 +41,35 @@ const translations = {
 
     // Other Projects
     other_projects_title: "Weitere Projekte & Experimente",
+
+    // New Community Project
+    community_title: "Community Software",
+    community_desc:
+      "Fokus auf die Entwicklung von Gameplay-Features und UIs mittels Lua und JavaScript sowie die Verwaltung und Optimierung von SQL-Datenbanken für hohen User-Traffic.",
+    community_btn: "Case Study ansehen",
+    community_code: "GitHub",
+    community_feat_1: "<strong>Gameplay & UI:</strong> Entwicklung von Gameplay-Systemen & UI-Komponenten mit (Lua/JS).",
+    community_feat_2: "<strong>SQL-Architektur:</strong> Architektur & Optimierung relationaler SQL-Datenbanken für Live-Betrieb.",
+    community_feat_3: "<strong>DevOps & Support:</strong> Striktes Release-Management über Git und Troubleshooting (2nd-Level).",
+    community_status: "🚀 Live",
+
+    cs_hero_badge: "Lead Developer",
+    cs_page_subtitle: "Eine asynchrone Backend und Frontend-Struktur für eine große Community. <span class='highlight-text'>Lua, JS & SQL Optimization.</span>",
+    cs_tag_project: "Live System",
+    cs_mission_title: "Verantwortung für <br><span class='highlight-text'>Live-Systeme</span> während des Studiums",
+    cs_mission_text: "Ein Projekt über zweieinhalb Jahre (01/2021 – 09/2023), in dem ich gelernt habe, was es bedeutet, eine Architektur zu bauen, die performen muss, wenn echte User massenhaft Daten erzeugen.",
+    cs_mission_subtext: "Der Fokus lag auf der Entwicklung von Server-Client-Strukturen und der absolut reibungslosen Datenpflege im Live-Betrieb. Fehler dürfen eine bestehende Wirtschaft oder Inventare nicht gefährden.",
+    cs_arch_title: "High-Traffic <br><span class='highlight-text'>Architecture</span>",
+    cs_arch_sub: "Vorbereitung interner Wissensquellen und saubere Event-Listener.",
+    cs_chal_title: "Performance & <span class='highlight-text'>Troubleshooting</span>",
+    cs_chal_sub: "Datenpflege im Live-Betrieb verzeiht keine Leichtsinnsfehler.",
+    cs_chal_1_title: "SQL Query Last",
+    cs_chal_1_desc: "Tausende Anfragen an die relationale Datenbank mussten optimiert werden (SQL Optimization).",
+    cs_chal_2_title: "Versionierung",
+    cs_chal_2_desc: "Striktes Release-Management und Versionierung über Git gewährleisteten den reibungslosen Update-Prozess.",
+    cs_chal_3_title: "System-Support",
+    cs_chal_3_desc: "Technischer Support und systematisches Troubleshooting (2nd-Level) der gemeldeten Bugs durch die Community.",
+
     proj_portfolio_title: "Portfolio Projekt",
     project_portfolio_desc:
       "Aktueller Projekt <br> Planung und Realisierung einer Landingpage, um modernes UI-Design mit sauberer Code-Struktur zu verbinden.",
@@ -55,9 +84,9 @@ const translations = {
     about_quote:
       "„Ich mag Dinge erst dann, wenn sie wirklich sauber funktionieren.“",
     about_text_1:
-      "Ich bin Yusef Bach und studiere Informatik an der Hochschule Hannover im vierten Semester. Mir ist wichtig, dass ich die Dinge, an denen ich arbeite, wirklich verstehe. Nicht nur anwenden, sondern nachvollziehen, wie etwas aufgebaut ist und warum es funktioniert.",
+      "Ich bin Yusef, B.Sc. Informatik-Student (4. Semester) und trete bald meine Rolle als Werkstudent AI Developer bei der HDI Group an. Mein Leitsatz ist simpel: Ich möchte Systeme nicht nur anwenden, sondern ihr Fundament begreifen. Es reicht mir nicht, APIs zusammenzukleben – ich entwerfe saubere Use-Cases und Architekturen, die im Enterprise-Umfeld performen.",
     about_text_2:
-      "Ich arbeite gerne klar und strukturiert. Das hilft mir sowohl bei Projekten wie dem Datenbankmodellieren als auch im Alltag. Am meisten Spaß machen mir Themen, bei denen man tiefer in Systeme eintaucht, zum Beispiel Linux oder Softwarearchitektur.",
+      "Egal ob beim Datenbankmodellieren, in der Java-Entwicklung oder bei systemnahen Projekten – Struktur und Patterns wie MVC sind für mich Pflicht, nicht nur Theorie. Aktuell konzentriere ich mich darauf, dieses strukturierte Software Engineering in die Welt der Enterprise AI und RAG-Lösungen zu übertragen.",
     about_text_3:
       "In meiner Freizeit brauche ich manchmal Abstand vom Bildschirm. Musik hören, Freunde treffen oder einfach kurz abschalten – das bringt mir wieder Ruhe, damit ich mich danach wieder besser konzentrieren kann.",
     stat_semester: "Semester (SoSe 26)",
@@ -478,9 +507,9 @@ const translations = {
     nav_portfolio: "Portfolio",
 
     // --- HERO SECTION (Index) ---
-    hero_title_prefix: "CS Student & <br>",
+    hero_title_prefix: "AI Developer & <br>",
     hero_text:
-      "Hi, I'm Yusef. I am studying Applied Computer Science at the University of Applied Sciences Hannover (4rd Semester). <br><br> My approach is: <strong>Understand first, then code.</strong> I am fascinated by the entire breadth of IT – from web development to databases and IT security. I am not satisfied with quick fixes; I want to know what happens under the hood. I work analytically and in a structured way to build systems that work cleanly.<br><br> I am currently looking for a <strong>working student position</strong> to bring exactly this mindset into a real team.",
+      "Focus on Enterprise AI, Data Architectures & clean System Integration.<br><br> Hi, I'm Yusef. My approach is: <strong>Understand first, then code.</strong> I build systems with clean architectures that work perfectly from the ground up – without framework bloatware. With a strong foundation in Java, SQL, and Vanilla Tech, I apply deep software engineering knowledge to AI applications and complex integrations.<br><br><span style='font-size: 0.95rem; color: var(--text-secondary);'>Working Student AI @ HDI Group | B.Sc. Computer Science</span>",
     hero_btn_primary: "View Main Project",
     hero_btn_contact: "Get in Touch",
 
@@ -510,6 +539,34 @@ const translations = {
 
     // Other Projects
     other_projects_title: "Other Projects & Experiments",
+
+    community_title: "Community Software",
+    community_desc:
+      "Focus on the development of gameplay features and UIs using Lua and JavaScript, alongside administration and optimization of SQL databases for high user traffic.",
+    community_btn: "View Case Study",
+    community_code: "GitHub",
+    community_feat_1: "<strong>Gameplay & UI:</strong> Development of gameplay systems & UI components (Lua/JS).",
+    community_feat_2: "<strong>SQL Architecture:</strong> Architecture & optimization of relational SQL databases for live operation.",
+    community_feat_3: "<strong>DevOps & Support:</strong> Strict release management via Git and technical troubleshooting (2nd-Level).",
+    community_status: "🚀 Live",
+
+    cs_hero_badge: "Lead Developer",
+    cs_page_subtitle: "An asynchronous backend and frontend structure for a large community. <span class='highlight-text'>Lua, JS & SQL Optimization.</span>",
+    cs_tag_project: "Live System",
+    cs_mission_title: "Taking responsibility for <br><span class='highlight-text'>Live Systems</span> during my studies",
+    cs_mission_text: "A massive project over two and a half years (01/2021 – 09/2023) where I learned what it takes to build an architecture that must perform under the pressure of real users creating big data continuously.",
+    cs_mission_subtext: "The focus lay on developing server-client logic in Lua and perfectly structuring data maintenance during live operation. A bug must never crash economies or inventories.",
+    cs_arch_title: "High-Traffic <br><span class='highlight-text'>Architecture</span>",
+    cs_arch_sub: "Preparing internal knowledge bases and keeping event listeners clean.",
+    cs_chal_title: "Performance & <span class='highlight-text'>Troubleshooting</span>",
+    cs_chal_sub: "Data maintenance during live operation is unforgiving.",
+    cs_chal_1_title: "SQL Query Load",
+    cs_chal_1_desc: "Thousands of queries hitting the database required serious SQL Optimization strategies.",
+    cs_chal_2_title: "Versioning",
+    cs_chal_2_desc: "Strict release management and versioning through Git ensured smooth updates.",
+    cs_chal_3_title: "System Support",
+    cs_chal_3_desc: "Technical support and systematic troubleshooting (2nd-Level) of bugs reported by the active community.",
+
     proj_portfolio_title: "Portfolio Project",
     project_portfolio_desc:
       "Current Project <br> Planning and realization of a landing page to combine modern UI design with clean code structure.",
@@ -522,9 +579,9 @@ const translations = {
     about_title: "About <span style='color: var(--primary-color)'>Me</span>",
     about_quote: "“I only like things when they really work cleanly.”",
     about_text_1:
-      "I'm Yusef Bach and I'm studying Computer Science at the University of Applied Sciences Hannover in my fourth semester. It is important to me that I really understand the things I work on. Not just applying them, but understanding how something is built and why it works.",
+      "I'm Yusef, a 4th-semester B.Sc. Computer Science student, soon starting my role as a Working Student AI Developer at HDI Group. My principle is simple: I don't just want to use systems; I want to grasp their foundation. Simply gluing APIs together isn't enough for me – I design clean architectures and use-cases that perform in an enterprise environment.",
     about_text_2:
-      "I like working clearly and structured. This helps me both with projects like database modeling and in everyday life. I enjoy topics most where you dive deeper into systems, for example Linux or software architecture.",
+      "Whether it's database modeling, Java development, or low-level web projects – structure and patterns like MVC are mandatory for me, not just theory. Currently, I am focused on transferring this structured software engineering approach into the world of Enterprise AI and RAG solutions.",
     about_text_3:
       "In my free time, I sometimes need distance from the screen. Listening to music, meeting friends, or just switching off briefly – that brings me peace so I can concentrate better afterwards.",
     stat_semester: "Semester (Summer 26)",

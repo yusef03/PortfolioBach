@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const typingElement = document.querySelector(".typing-text");
   if (typingElement) {
-    const words = ["Java Developer", "Tech Enthusiast", "Problem Solver"];
+    const words = ["Software Engineer", "Data Architect", "System Integrator"];
     let wordIndex = 0,
       charIndex = 0,
       isDeleting = false;
