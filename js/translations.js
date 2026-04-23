@@ -995,10 +995,8 @@ const translations = {
       "Chapter VII: <span class='highlight-text'>Future Roadmap</span>",
     meta_c7_sub: "Code is never finished. The journey continues.",
     meta_c7_n1_title: "Architecture Shift",
-    meta_c6_n1_desc:
+    meta_c7_n1_desc:
       "Migration from static HTML to a data-driven JS engine. Implementation of i18n, Dark Mode & Intersection Observer.",
-    meta_c6_n2_title: "UX & Accessibility",
-    meta_c6_n2_desc:
     meta_c7_n2_title: "UX & Accessibility",
     meta_c7_n2_desc:
       "Introduction of a <strong>Light/Dark Mode Toggle</strong> based on CSS variables. Focus on WCAG 2.1 compliance (contrasts & screen reader support).",
