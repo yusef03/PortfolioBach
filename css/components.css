@@ -1136,8 +1136,9 @@ footer {
 
 .glass-panel.hidden {
   opacity: 0;
+  visibility: hidden;
   transform: scale(0.8);
-  pointer-events: none;
+  pointer-events: none !important;
 }
 
 .chat-header {
