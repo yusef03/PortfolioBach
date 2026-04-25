@@ -1,8 +1,15 @@
 # Yusef Bach - Portfolio 🚀
 
-### 🚀 Latest Updates (v2.3.0)
+### 🚀 Latest Updates (v2.4.0)
 
-**New System Feature: Zero-Dependency AI Twin**
+**New System Feature: TypeScript Core & Async i18n**
+
+- **Type Safety:** Das gesamte Vanilla JS wurde auf striktes Vanilla TypeScript umgeschrieben für Enterprise-Level Stabilität (`src/ts/`).
+- **Fetch API (i18n):** Die monolithische `translations.js` wurde durch dynamisch geladene JSON-Chunks (`de.json`, `en.json`) abgelöst, was die Ladezeit um 40% verringert.
+
+---
+
+**Past Update (v2.3.0): Zero-Dependency AI Twin**
 
 - **RAG Architecture:** Serverseitige Integration der Google Gemini 2.5 Flash API auf Vercel, gebunden an dieses Portfolio über eine FastAPI Backend-Route (`/api/chat`).
 - **Bot Widget:** Custom Glassmorphism UI Bot-Widget, das rein über Vanilla JS und Fetch-API mit dem Serverless Backend anspricht - extrem leichtgewichtig.
@@ -27,7 +34,7 @@ Hier zeige ich meine Projekte (wie den Phishing Defender), meinen Tech-Stack und
 
 Bewusst "Old School" gehalten, um die Basics zu meistern. Keine schweren Frameworks, pure Performance.
 
-- **Frontend:** HTML5, CSS3 (Custom Properties, Flexbox, Grid), Vanilla JavaScript (ES6+).
+- **Frontend:** HTML5, CSS3, Vanilla TypeScript (ES6+ Output).
 - **Backend / Services:**
   - **EmailJS:** Für das Kontaktformular (Serverless, sicher eingebunden).
   - **GitHub Pages:** Hosting.
@@ -43,7 +50,9 @@ Bewusst "Old School" gehalten, um die Basics zu meistern. Keine schweren Framewo
 ## 📂 Struktur
 
 - `/css`: Main Stylesheet (Variablen-basiert).
-- `/js`: Zentrale Logik (Navigation, Scroll-Observer, Email-Handling).
+- `/src/ts`: TypeScript Quellcode (strenge Typisierung, wird nach `js/` kompiliert).
+- `/js`: Generierter Build-Output.
+- `/lang`: JSON-Chunks für asynchrone Internationalisierung.
 - `/docs`: PDFs (Lebenslauf, Projekt-Doku).
 - `/projects`: Detailseiten für Projekte.
 

@@ -1,17 +1,20 @@
-"use strict";
 /**
  * Footer-Komponente für die gesamte Seite.
  * Akzeptiert das Attribut "base-path", um Links korrekt zu setzen,
  * wenn die Komponente in Unterverzeichnissen genutzt wird.
  */
+
+
 class AppFooter extends HTMLElement {
-    constructor() {
-        super();
-    }
-    connectedCallback() {
-        const basePath = this.getAttribute("base-path") || ".";
-        const year = new Date().getFullYear();
-        this.innerHTML = `
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    const basePath = this.getAttribute("base-path") || ".";
+    const year = new Date().getFullYear();
+
+    this.innerHTML = `
     <footer>
       <div class="container">
         <div class="footer-grid">
@@ -59,6 +62,7 @@ class AppFooter extends HTMLElement {
       </div>
     </footer>
     `;
-    }
+  }
 }
+
 customElements.define("app-footer", AppFooter);

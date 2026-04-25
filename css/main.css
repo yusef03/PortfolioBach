@@ -2207,3 +2207,16 @@ body.lang-switching {
   padding: 10px 25px;
   font-size: 0.9rem;
 }
+
+/* ACCESSIBILITY: Focus States */
+:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 4px;
+}
+
+.project-card-small:focus-within,
+.archive-card:focus-within {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  border-color: rgba(157, 0, 255, 0.3);
+}
