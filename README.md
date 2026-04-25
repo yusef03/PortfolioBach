@@ -63,4 +63,4 @@ Schreib mir gerne über das Formular auf der Seite oder direkt an `kontakt@yusef
 
 ---
 
-© 2025 Yusef Bach
+© 2026 Yusef Bach
