@@ -58,9 +58,13 @@ Bewusst "Old School" gehalten, um die Basics zu meistern. Keine schweren Framewo
 
 ## 📞 Kontakt
 
-Ich suche aktuell nach einer **Werkstudentenstelle** im Bereich Softwareentwicklung / IT-Security.
-Schreib mir gerne über das Formular auf der Seite oder direkt an `kontakt@yusefbach.de`.
+Du hast Fragen zu meinen Projekten oder möchtest dich über AI & Security austauschen? 
+
+* 📧 E-Mail: [kontakt@yusefbach.de](mailto:kontakt@yusefbach.de)
+* 🌐 Portfolio: [yusefbach.de](https://yusefbach.de)
+* 💼 LinkedIn: [Yusef Bach](https://linkedin.com/in/yusef-bach)
 
 ---
+"The best way to predict the future is to invent it."
 
 © 2026 Yusef Bach
