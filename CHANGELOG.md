@@ -2,6 +2,25 @@
 
 Hier dokumentiere ich, was sich am Projekt ändert.
 
+## [2.4.0] - 2026-04-26 (The TS & Performance Core Update)
+
+Ein signifikantes Architektur-Upgrade. Das Framework wurde von purem JavaScript auf TypeScript gehärtet und die Internationalisierung (i18n) wurde auf asynchrone Requests ausgelagert.
+
+### 🧱 Architecture & Typings
+- **TypeScript Migration:** Die komplette `js/` Basis wurde nach `src/ts/` umgezogen und streng via Vanilla TypeScript typisiert.
+- **Interfaces (`types.d.ts`):** Strikte Typen für Projekte und Übersetzungen sichern die Skalierbarkeit ohne Third-Party-Bloatware.
+- **Build Step:** Ein minimaler lokaler Compile-Prozess konvertiert die Dateien in Plain ES6 JavaScript.
+
+### ⚡ Performance & Async UI
+- **i18n JSON Chunking:** Die monolithische `translations.js` (60KB) wurde vollständig aufgelöst.
+- **Dynamic Fetch:** Übersetzungen (`lang/de.json`, `lang/en.json`) werden per `fetch()` lazy nachgeladen, erst bei Sprachwechsel. Ladezeiten massiv verkürzt.
+- **Lazy Loading (Bilder):** Systemweite Implementierung von `loading="lazy"` für alle Images "below the fold".
+
+### ♿ Accessibility (A11y)
+- **Keyboard Navigation:** Native `:focus-within` Ringe in CSS implementiert zur barrierefreien Tabulator-Steuerung.
+
+---
+
 ## [2.3.0] - 2026-04-23 (The AI & RAG Update)
 
 Dieses Update verwandelt das statische Portfolio in eine KI-gestützte Architektur, inklusive Zero-Dependency Frontend-Bot und Serverless Python-Backend.

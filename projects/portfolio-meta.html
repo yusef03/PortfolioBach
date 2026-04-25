@@ -438,8 +438,8 @@
         <div class="mission-grid reveal" style="align-items: center">
           <div class="mission-content">
             <span class="section-tag">State Management</span>
-            <h3 data-i18n="meta_c3_i18n_title">Custom i18n Engine</h3>
-            <p data-i18n="meta_c3_i18n_text">Statt 500KB für eine Library...</p>
+            <h3 data-i18n="meta_c3_i18n_title">Async i18n Engine</h3>
+            <p data-i18n="meta_c3_i18n_text">Statt 500KB Libraries, dynamisches <code>fetch()</code> in Vanilla TypeScript.</p>
             <ul class="project-features">
               <li data-i18n="meta_c3_li_1">
                 <strong>Attribute Mapping:</strong>...
@@ -456,28 +456,23 @@
               style="border-color: rgba(157, 0, 255, 0.3)"
             >
               <div class="cw-header">
-                <span class="cw-title">translations.js</span>
+                <span class="cw-title">lang/de.json (Async Chunk)</span>
               </div>
               <div class="cw-body">
                 <span class="cw-line"
-                  ><span class="kwd">const</span>
-                  <span class="var">translations</span> = {</span
+                  ><span class="kwd">{</span></span
                 >
                 <span class="cw-line">
-                  <span class="str">"de"</span>: {
-                  <span class="str">meta_c3_css_text:</span>:
+                  <span class="str">"meta_c3_css_text"</span>:
                   <span class="str"
-                    >"Die Sprache bleibt dank <code>localStorage</code> beim
-                    Reload erhalten."</span
+                    >"Die Sprache bleibt dank <code>localStorage</code>..."</span
                   >
                   },</span
                 >
                 <span class="cw-line">
-                  <span class="str">"en"</span>: {
-                  <span class="str">meta_c3_li_2:</span>:
+                  <span class="str">"meta_c3_li_2"</span>:
                   <span class="str"
-                    >"The language remains thanks to localStorage on
-                    reload"</span
+                    >"Persistence..."</span
                   >
                   }</span
                 >
@@ -1045,7 +1040,6 @@
     <app-footer base-path=".."></app-footer>
 
     <script src="../js/components/AppFooter.js"></script>
-    <script src="../js/translations.js"></script>
     <script src="../js/bot.js"></script>
     <script src="../js/script.js"></script>
 

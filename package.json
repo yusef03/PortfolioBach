@@ -1,0 +1,27 @@
+{
+  "name": "portfoliobach",
+  "version": "1.0.0",
+  "description": "**New System Feature: Zero-Dependency AI Twin**",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yusef03/PortfolioBach.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/yusef03/PortfolioBach/issues"
+  },
+  "homepage": "https://github.com/yusef03/PortfolioBach#readme",
+  "devDependencies": {
+    "typescript": "^6.0.3"
+  }
+}

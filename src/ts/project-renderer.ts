@@ -1,4 +1,3 @@
-"use strict";
 /**
  * ============================================================================
  * DATEI: js/project-renderer.js
@@ -12,64 +11,86 @@
  * handhabt die relative Pfad-Auflösung für Assets in Unterordnern.
  * ============================================================================
  */
+
+
 /* Initialisierung nach DOM-Load sicherstellen */
 document.addEventListener("DOMContentLoaded", () => {
-    initProjectRender();
+  initProjectRender();
 });
+
+
+
 /**
  * Hauptfunktion: Steuert den Render-Prozess für Hero- und Grid-Bereiche.
  * Prüft auf Verfügbarkeit der Container und Datenintegrität.
  */
 function initProjectRender() {
-    const heroContainer = document.getElementById("hero-project-container");
-    const archiveContainer = document.getElementById("archive-grid-container");
-    // Abbruch, falls Daten-Objekt noch nicht geladen wurde (Race-Condition Schutz)
-    if (typeof projectsData === "undefined")
-        return;
-    // 1. Datensegmentierung: Hero-Projekt vs. Restliche Projekte
-    const heroItem = projectsData.find((p) => p.id === HERO_PROJECT_ID);
-    const archiveItems = projectsData.filter((p) => p.id !== HERO_PROJECT_ID);
-    // 2. Render Index Page (Hero)
-    if (heroContainer && heroItem) {
-        heroContainer.innerHTML = renderHeroTemplate(heroItem);
-    }
-    // 3. Render Archive Page (Grid)
-    if (archiveContainer) {
-        let gridHTML = "";
-        // KONTEXT-CHECK: Befinden wir uns in einem Unterordner?
-        // Wichtig für korrekte Asset-Verlinkung (../ Präfix Logik)
-        const isSubFolder = window.location.pathname.includes("/projects/");
-        archiveItems.forEach((item) => {
-            let adjustedItem = Object.assign({}, item);
-            // Falls im Unterordner, Bildpfade relativ anpassen
-            if (isSubFolder &&
-                !adjustedItem.image.startsWith("http") &&
-                !adjustedItem.image.startsWith("../")) {
-                adjustedItem.image = "../" + adjustedItem.image;
-            }
-            gridHTML += renderArchiveTemplate(adjustedItem);
-        });
-        // Github-Karte als letztes Element statisch hinzufügen
-        gridHTML += renderGithubCard();
-        archiveContainer.innerHTML = gridHTML;
-    }
+  const heroContainer = document.getElementById("hero-project-container");
+  const archiveContainer = document.getElementById("archive-grid-container");
+
+
+  // Abbruch, falls Daten-Objekt noch nicht geladen wurde (Race-Condition Schutz)
+  if (typeof projectsData === "undefined") return;
+
+// 1. Datensegmentierung: Hero-Projekt vs. Restliche Projekte
+  const heroItem = projectsData.find((p) => p.id === HERO_PROJECT_ID);
+  const archiveItems = projectsData.filter((p) => p.id !== HERO_PROJECT_ID);
+
+  // 2. Render Index Page (Hero)
+  if (heroContainer && heroItem) {
+    heroContainer.innerHTML = renderHeroTemplate(heroItem);
+  }
+
+  // 3. Render Archive Page (Grid)
+  if (archiveContainer) {
+    let gridHTML = "";
+
+// KONTEXT-CHECK: Befinden wir uns in einem Unterordner?
+    // Wichtig für korrekte Asset-Verlinkung (../ Präfix Logik)
+    const isSubFolder = window.location.pathname.includes("/projects/");
+
+    archiveItems.forEach((item) => {
+      let adjustedItem = { ...item };
+
+      // Falls im Unterordner, Bildpfade relativ anpassen
+      if (
+        isSubFolder &&
+        !adjustedItem.image.startsWith("http") &&
+        !adjustedItem.image.startsWith("../")
+      ) {
+        adjustedItem.image = "../" + adjustedItem.image;
+      }
+
+      gridHTML += renderArchiveTemplate(adjustedItem);
+    });
+
+    // Github-Karte als letztes Element statisch hinzufügen
+    gridHTML += renderGithubCard();
+    archiveContainer.innerHTML = gridHTML;
+  }
 }
+
 /* ==========================================================================
    TEMPLATES & COMPONENT GENERATORS
    Erzeugt HTML-Strings basierend auf den übergebenen Datenobjekten.
    ========================================================================== */
+
 /**
  * Generiert das HTML für das hervorgehobene Hero-Projekt.
  * @param {Object} p - Das Projekt-Datenobjekt
  */
-function renderHeroTemplate(p) {
-    const badges = p.badges
-        .map((b) => `<span class="tech-badge">${b}</span>`)
-        .join("");
-    const features = p.features
-        ? p.features.map((k) => `<li data-i18n="${k}"></li>`).join("")
-        : "";
-    return `
+
+function renderHeroTemplate(p: Project) {
+  const badges = p.badges
+    .map((b) => `<span class="tech-badge">${b}</span>`)
+    .join("");
+
+
+  const features = p.features
+    ? p.features.map((k) => `<li data-i18n="${k}"></li>`).join("")
+    : "";
+
+  return `
     <div class="project-info reveal">
         <div class="hero-project-layout">
             <div class="hero-image-wrapper">
@@ -88,13 +109,16 @@ function renderHeroTemplate(p) {
         </div>
     </div>`;
 }
+
 /**
  * Generiert das HTML für eine Standard-Projektkarte im Grid.
  * Extrahiert den Dateinamen für relative Verlinkung.
  */
-function renderArchiveTemplate(p) {
-    const relativeLink = p.linkDetails.split("/").pop(); // Holt "dateiname.html"
-    return `
+
+function renderArchiveTemplate(p: Project) {
+  const relativeLink = p.linkDetails.split("/").pop(); // Holt "dateiname.html"
+
+  return `
     <div class="archive-card reveal">
         <div class="archive-img-container">
             <img src="${p.image}" alt="Project Preview" loading="lazy">
@@ -110,18 +134,21 @@ function renderArchiveTemplate(p) {
             <p data-i18n="${p.descKey}" class="card-desc"></p>
             <div class="card-tags">
                 ${p.badges
-        .slice(0, 3)
-        .map((b) => `<span>${b}</span>`)
-        .join("")}
+                  .slice(0, 3)
+                  .map((b) => `<span>${b}</span>`)
+                  .join("")}
             </div>
         </div>
     </div>`;
 }
+
+
 /**
  * Statische Komponente für den GitHub-Link am Ende des Grids.
  */
+
 function renderGithubCard() {
-    return `
+  return `
     <div class="archive-card github-card reveal">
         <div class="github-content">
             <div class="github-icon-wrapper">

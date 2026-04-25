@@ -1,11 +1,20 @@
+"use strict";
 /* ==========================================================================
    RAG AI-BOT CONTROLLER (Vanilla JS)
    ========================================================================== */
-
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. INJECT BOT HTML DYNAMICALLY ON ANY PAGE
-  if (!document.getElementById("rag-bot-wrapper")) {
-    const botHTML = `
+    // 1. INJECT BOT HTML DYNAMICALLY ON ANY PAGE
+    if (!document.getElementById("rag-bot-wrapper")) {
+        const botHTML = `
       <div id="rag-bot-wrapper">
         <div id="rag-chat-window" class="glass-panel hidden">
           <div class="chat-header">
@@ -34,97 +43,85 @@ document.addEventListener("DOMContentLoaded", () => {
         </button>
       </div>
     `;
-    document.body.insertAdjacentHTML("beforeend", botHTML);
-  }
-
-  const fabBtn = document.getElementById("rag-fab-btn");
-  const chatWindow = document.getElementById("rag-chat-window");
-  const closeBtn = document.getElementById("rag-close-btn");
-  const sendBtn = document.getElementById("rag-send-btn");
-  const inputField = document.getElementById("rag-chat-input");
-  const messagesContainer = document.getElementById("rag-chat-messages");
-
-  // Deine aktive Vercel URL
-  const backendUrl = "https://portfolio-bach-seven.vercel.app/api/chat";
-
-  if (!fabBtn) return; // Fallback
-
-
-  // Toggle Visibility
-  fabBtn.addEventListener("click", () => chatWindow.classList.toggle("hidden"));
-  closeBtn.addEventListener("click", () => chatWindow.classList.add("hidden"));
-
-  // Senden per Button oder Enter-Taste
-  sendBtn.addEventListener("click", handleSend);
-  inputField.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") handleSend();
-  });
-
-  async function handleSend() {
-    const userText = inputField.value.trim();
-    if (!userText) return;
-
-    // 1. User-Input ins DOM hängen
-    appendMessage("user", userText);
-    inputField.value = "";
-
-    // 2. Ladezustand erzeugen
-    const loadingId = appendMessage("bot", "Yusef-Twin denkt nach...", true);
-
-    try {
-      // 3. FETCH Call an das Vercel Serverless-Backend
-      const response = await fetch(backendUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query: userText })
-      });
-
-      if (!response.ok) throw new Error("Backend Error");
-
-      const data = await response.json();
-      
-      // 4. Antwort auslesen und ersetzen
-      removeMessage(loadingId);
-      appendMessage("bot", data.answer);
-      
-    } catch (error) {
-      console.error("RAG Integration Error:", error);
-      removeMessage(loadingId);
-      
-      // PERMANENT 100% FALLBACK - Niemals einen Ugly Error anzeigen!
-      const fallbackReplies = [
-        "Oh, meine Verbindung zu den Google AI-Servern hat gerade einen Schluckauf. Kein Problem! Wenn du Genaueres über Yusef wissen willst, schreib ihm einfach am besten direkt oder schau in die Projekt-Cases!",
-        "Hmm, kurzes API-Timeout. Was ich dir aus dem lokalen KI-Gedächtnis sagen kann: Yusef ist ein sehr enthusiastischer Entwickler und liebt es, architektonische Probleme zu lösen. Kontaktier ihn gerne direkt!",
-        "Die Serverless-Leitung glüht heute. Aber mach dir nichts draus! In der Zwischenzeit kannst du ja mal in das Projekt 'Community Software' reinschauen, darauf ist Yusef besonders stolz!"
-      ];
-      const reply = fallbackReplies[Math.floor(Math.random() * fallbackReplies.length)];
-      appendMessage("bot", reply);
+        document.body.insertAdjacentHTML("beforeend", botHTML);
     }
-  }
-
-  // DOM Helper: Append Message
-  function appendMessage(sender, text, isLoading = false) {
-    const msgDiv = document.createElement("div");
-    const id = "msg-" + Date.now();
-    msgDiv.id = id;
-    msgDiv.className = `msg ${sender}-msg ${isLoading ? "loading-blink" : ""}`;
-    
-    // Minimales Markdown-Parsing (für Sterne und Umbrüche der AI)
-    let parsedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-    parsedText = parsedText.replace(/\*/g, '•'); // Listen
-    parsedText = parsedText.replace(/\n/g, '<br>'); // Umbrüche
-
-    msgDiv.innerHTML = parsedText;
-    messagesContainer.appendChild(msgDiv);
-    
-    // Auto-Scroll nach unten
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    return id;
-  }
-
-  // DOM Helper: Remove Message
-  function removeMessage(id) {
-    const el = document.getElementById(id);
-    if (el) el.remove();
-  }
+    const fabBtn = document.getElementById("rag-fab-btn");
+    const chatWindow = document.getElementById("rag-chat-window");
+    const closeBtn = document.getElementById("rag-close-btn");
+    const sendBtn = document.getElementById("rag-send-btn");
+    const inputField = document.getElementById("rag-chat-input");
+    const messagesContainer = document.getElementById("rag-chat-messages");
+    // Deine aktive Vercel URL
+    const backendUrl = "https://portfolio-bach-seven.vercel.app/api/chat";
+    if (!fabBtn)
+        return; // Fallback
+    // Toggle Visibility
+    fabBtn.addEventListener("click", () => chatWindow.classList.toggle("hidden"));
+    closeBtn.addEventListener("click", () => chatWindow.classList.add("hidden"));
+    // Senden per Button oder Enter-Taste
+    sendBtn.addEventListener("click", handleSend);
+    inputField.addEventListener("keypress", (e) => {
+        if (e.key === "Enter")
+            handleSend();
+    });
+    function handleSend() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const userText = inputField.value.trim();
+            if (!userText)
+                return;
+            // 1. User-Input ins DOM hängen
+            appendMessage("user", userText);
+            inputField.value = "";
+            // 2. Ladezustand erzeugen
+            const loadingId = appendMessage("bot", "Yusef-Twin denkt nach...", true);
+            try {
+                // 3. FETCH Call an das Vercel Serverless-Backend
+                const response = yield fetch(backendUrl, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ query: userText })
+                });
+                if (!response.ok)
+                    throw new Error("Backend Error");
+                const data = yield response.json();
+                // 4. Antwort auslesen und ersetzen
+                removeMessage(loadingId);
+                appendMessage("bot", data.answer);
+            }
+            catch (error) {
+                console.error("RAG Integration Error:", error);
+                removeMessage(loadingId);
+                // PERMANENT 100% FALLBACK - Niemals einen Ugly Error anzeigen!
+                const fallbackReplies = [
+                    "Oh, meine Verbindung zu den Google AI-Servern hat gerade einen Schluckauf. Kein Problem! Wenn du Genaueres über Yusef wissen willst, schreib ihm einfach am besten direkt oder schau in die Projekt-Cases!",
+                    "Hmm, kurzes API-Timeout. Was ich dir aus dem lokalen KI-Gedächtnis sagen kann: Yusef ist ein sehr enthusiastischer Entwickler und liebt es, architektonische Probleme zu lösen. Kontaktier ihn gerne direkt!",
+                    "Die Serverless-Leitung glüht heute. Aber mach dir nichts draus! In der Zwischenzeit kannst du ja mal in das Projekt 'Community Software' reinschauen, darauf ist Yusef besonders stolz!"
+                ];
+                const reply = fallbackReplies[Math.floor(Math.random() * fallbackReplies.length)];
+                appendMessage("bot", reply);
+            }
+        });
+    }
+    // DOM Helper: Append Message
+    function appendMessage(sender, text, isLoading = false) {
+        const msgDiv = document.createElement("div");
+        const id = "msg-" + Date.now();
+        msgDiv.id = id;
+        msgDiv.className = `msg ${sender}-msg ${isLoading ? "loading-blink" : ""}`;
+        // Minimales Markdown-Parsing (für Sterne und Umbrüche der AI)
+        let parsedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        parsedText = parsedText.replace(/\*/g, '•'); // Listen
+        parsedText = parsedText.replace(/\n/g, '<br>'); // Umbrüche
+        msgDiv.innerHTML = parsedText;
+        messagesContainer.appendChild(msgDiv);
+        // Auto-Scroll nach unten
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        return id;
+    }
+    // DOM Helper: Remove Message
+    function removeMessage(id) {
+        const el = document.getElementById(id);
+        if (el)
+            el.remove();
+    }
 });
