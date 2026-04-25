@@ -4,7 +4,7 @@
 
 **New System Feature: Zero-Dependency AI Twin**
 
-- **RAG Architecture:** Serverseitige Integration der Google Gemini 1.5 Flash API auf Vercel, gebunden an dieses Portfolio über eine FastAPI Backend-Route (`/api/chat`).
+- **RAG Architecture:** Serverseitige Integration der Google Gemini 2.5 Flash API auf Vercel, gebunden an dieses Portfolio über eine FastAPI Backend-Route (`/api/chat`).
 - **Bot Widget:** Custom Glassmorphism UI Bot-Widget, das rein über Vanilla JS und Fetch-API mit dem Serverless Backend anspricht - extrem leichtgewichtig.
 - **Deep Persona:** Das LLM wird durch eine Markdown "Brain" Datei (`yusef_brain.md`) präzise auf die Persona 'AI Developer @ HDI' konditioniert.
 
