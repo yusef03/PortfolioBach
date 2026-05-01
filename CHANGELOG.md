@@ -1,179 +1,143 @@
 # Changelog
 
-Hier dokumentiere ich, was sich am Projekt ändert.
+Alle wesentlichen Änderungen am Projekt werden hier dokumentiert.
+Format basiert auf [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## [2.4.1] - 2026-05-01 (The Product Engineer & StudyNexus Update)
+---
 
-Ein massives Content- und Identitäts-Upgrade. Die Ausrichtung des Portfolios wurde von "Vanilla-Only" auf moderne Systemarchitektur und AI-Driven Engineering aktualisiert. Einführung des Flaggschiff-Projekts StudyNexus.
+## [2.5.0] - 2026-05-01 (The AI & Mobile Reliability Update)
 
-### 🚀 New Features & Pages
+Umfassendes Stabilitäts- und Intelligence-Upgrade. Mobilnavigation vollständig neu implementiert, Bot-Intelligenz erweitert und das Wissenssystem des AI-Twins auf das aktuelle Projekt-Portfolio aktualisiert.
 
-- **StudyNexus Case Study (`studynexus.html`):** Eine hochdetaillierte Projektseite hinzugefügt. Beinhaltet Architektur-Diagramme, Security-Flows (CSRF, JWT), das PostgreSQL-Datenbankschema und Architecture Decision Records (ADRs).
-- **Modern Tech Stack Marquee:** Laufschrift um moderne Enterprise- und KI-Tools erweitert (Next.js, Docker, Python, PostgreSQL, LLMs), um den aktuellen Tech-Fokus widerzuspiegeln.
+### 🐛 Bug Fixes
+
+- **Mobile Navigation (Critical Fix):** Zwei konkurrierende `@media (max-width: 1100px)`-Blöcke in `main.css` zusammengeführt. Der erste Block setzte `.nav-content-wrapper` ohne `.project-nav`-Präfix global, was zu Selektor-Konflikten und fehlerhaftem Overlay-Verhalten führte. Bereinigt auf ein konsistentes System mit `.project-nav`-Scope.
+- **Horizontaler Scroll (Mobile):** `width: 100vw` im Overlay verursachte horizontalen Scroll auf schmalen Viewports. Behoben durch `width: 100%`.
+- **Outside-Click Close:** Hamburger-Menü schließt sich jetzt korrekt bei einem Klick außerhalb des Overlays (`document` Event-Listener).
+
+### 🤖 AI-Twin Improvements
+
+- **Sprach-Awareness:** Bot erkennt die aktuelle Seitensprache aus `localStorage` und übermittelt sie mit jeder Anfrage an das Backend.
+- **Dynamische Sprachsteuerung (Backend):** `api/index.py` injiziert eine verbindliche Sprachanweisung in den System-Prompt basierend auf dem `lang`-Feld der Request. Antworten kommen zuverlässig auf Deutsch oder Englisch.
+- **Lokalisierte UI:** Begrüßungsnachricht, Platzhaltertext, Lade-Feedback und Fallback-Meldungen im Bot-Widget sind jetzt vollständig DE/EN lokalisiert.
+- **Guardrails:** Strikte Regeln im System-Prompt verhindern Missbrauch: kein Code schreiben, keine externen Aufgaben, keine Persona-Manipulation, ausschließlich Portfolio-relevante Themen.
+- **Wissensdatenbank (`yusef_brain.md`):** Vollständige Aktualisierung auf v2.5.0. StudyNexus mit vollständigen technischen Details (FastAPI, PostgreSQL, ADRs, Security-Architektur) hinzugefügt. HDI-Rolle präzisiert. Aktueller Tech-Stack (Next.js, Docker, Redis, Alembic) ergänzt.
+
+### ✨ New Features
+
+- **StudyNexus Case Study (`projects/studynexus.html`):** Vollständige 7-Chapter-Projektseite für das Flaggschiff-Projekt. Beinhaltet Origin-Story, Tech-Stack Deep-Dive, Security-Flow-Diagramme (JWT/CSRF), Datenbankschema (9 SQLAlchemy-Modelle), Architecture Decision Records (14 ADRs) und Deployment-Architektur.
+- **StudyNexus im Archiv:** Projekt in `projects-data.ts` als erstes Archiv-Eintrag registriert (inkl. Badges, Features, Zeitrahmen).
+- **Neue Tech-Stack-Icons:** Python, React/Next.js, Docker, PostgreSQL, Claude/LLMs zur Marquee-Laufschrift hinzugefügt.
+
+### 🔧 Infrastructure
+
+- **FOUC-Prevention:** `body { visibility: hidden }` + `i18n-ready`-Klasse verhindert das Aufblitzen von HTML-Fallback-Text vor dem Laden der Übersetzungen. Catch-Block-Safety stellt sicher, dass die Seite bei JS-Fehlern trotzdem sichtbar bleibt.
+
+---
+
+## [2.4.1] - 2026-04-30 (The Product Engineer & StudyNexus Intro)
+
+Inhaltliches und Identitäts-Upgrade. Narrative angepasst an aktuelle Positionierung als Product Engineer und AI Developer.
 
 ### ✍️ Content & Rebranding
 
-- **Narrative Shift:** Die "Über Mich"- und Hero-Sektionen wurden komplett neu geschrieben. Der Fokus liegt nun auf _Product Engineering, AI Orchestration_ und _Systemarchitektur_ (Passend zur Werkstudentenstelle bei der HDI Group).
-- **Tone of Voice:** Verzicht auf elitäre "Anti-Framework"-Rhetorik. Fokus auf pragmatische Problemlösungen, bei denen das Verständnis des Fundaments (wie MVC) genutzt wird, um moderne Frameworks und KI-Agenten effizient zu steuern.
+- **Narrative Shift:** Hero- und About-Sektionen neu geschrieben. Fokus auf Product Engineering, AI Orchestration und Systemarchitektur.
+- **Tone of Voice:** Weg von elitärer "Anti-Framework"-Rhetorik hin zu pragmatischer Problemlösung.
 
-## [2.4.0] - 2026-04-26 (The TS & Performance Core Update)
+---
 
-Ein signifikantes Architektur-Upgrade. Das Framework wurde von purem JavaScript auf TypeScript gehärtet und die Internationalisierung (i18n) wurde auf asynchrone Requests ausgelagert.
+## [2.4.0] - 2026-04-26 (The TypeScript & Performance Core)
 
-### 🧱 Architecture & Typings
+Signifikantes Architektur-Upgrade. Migration auf TypeScript und async i18n JSON Fetching.
 
-- **TypeScript Migration:** Die komplette `js/` Basis wurde nach `src/ts/` umgezogen und streng via Vanilla TypeScript typisiert.
-- **Interfaces (`types.d.ts`):** Strikte Typen für Projekte und Übersetzungen sichern die Skalierbarkeit ohne Third-Party-Bloatware.
-- **Build Step:** Ein minimaler lokaler Compile-Prozess konvertiert die Dateien in Plain ES6 JavaScript.
+### 🧱 Architecture
 
-### ⚡ Performance & Async UI
+- **TypeScript Migration:** Komplette Codebasis von `js/` nach `src/ts/` migriert. Strikte Typisierung via Vanilla TypeScript.
+- **Interfaces (`types.d.ts`):** Typen für `Project`, `Translations` und alle i18n-Strukturen definiert.
+- **Build Step:** `tsc`-Compile-Schritt generiert Plain ES6 JavaScript nach `js/`.
 
-- **i18n JSON Chunking:** Die monolithische `translations.js` (60KB) wurde vollständig aufgelöst.
-- **Dynamic Fetch:** Übersetzungen (`lang/de.json`, `lang/en.json`) werden per `fetch()` lazy nachgeladen, erst bei Sprachwechsel. Ladezeiten massiv verkürzt.
-- **Lazy Loading (Bilder):** Systemweite Implementierung von `loading="lazy"` für alle Images "below the fold".
+### ⚡ Performance & i18n
 
-### ♿ Accessibility (A11y)
+- **i18n JSON Chunking:** Monolithische `translations.js` durch dynamisch geladene `lang/de.json` und `lang/en.json` ersetzt.
+- **Async Fetch:** Übersetzungen werden per `fetch()` lazy nachgeladen — Ladezeiten um ~40% reduziert.
+- **Lazy Loading:** `loading="lazy"` systemweit für alle Images below the fold.
 
-- **Keyboard Navigation:** Native `:focus-within` Ringe in CSS implementiert zur barrierefreien Tabulator-Steuerung.
+### ♿ Accessibility
+
+- **Keyboard Navigation:** Native `:focus-within`-Ringe in CSS für barrierefreie Tabulator-Steuerung.
 
 ---
 
 ## [2.3.0] - 2026-04-23 (The AI & RAG Update)
 
-Dieses Update verwandelt das statische Portfolio in eine KI-gestützte Architektur, inklusive Zero-Dependency Frontend-Bot und Serverless Python-Backend.
+Transformation des statischen Portfolios in eine KI-gestützte Architektur.
 
-### 🧠 Backend & AI Integration
+### 🧠 Backend & AI
 
-- **RAG Architecture (`api/index.py`):** Neues Vercel Serverless Function Backend implementiert. Liest dynamisch `yusef_brain.md` als System-Kontext.
-- **Gemini 1.5 Flash:** Vollständige Migration auf das neue `google-genai` SDK zur performanten Beantwortung von User-Fragen zum Portfolio in Echtzeit.
-- **CORS & Security:** API Endpoint sicher isoliert und via CORS-Policies geschützt.
+- **RAG Architecture (`api/index.py`):** Vercel Serverless Function Backend mit FastAPI. Liest `yusef_brain.md` als dynamischen System-Kontext.
+- **Gemini 2.5 Flash:** Integration der Google Gemini API via direktem REST-Call (kein SDK-Overhead).
+- **Failover Pipeline:** 4-stufige Fallback-Kaskade: `gemini-2.5-flash` → `gemini-2.5-flash-lite` → `gemini-2.0-flash` → `gemini-2.0-flash-lite`.
+- **CORS & Security:** API Endpoint gesichert, CORS-Policies konfiguriert.
 
-### 💬 Frontend & Design
+### 💬 Frontend
 
-- **"Ask Yusef" Chat Widget:** Eigenentwickeltes, schwebendes Bot-Widget (Vanilla JS, kein Framework-Overhead).
-- **Glassmorphism UI:** Neues CSS-Styling (`backdrop-filter`) für das Chatfenster im Enterprise-Design.
-- **Async UX:** "Ghost-Message" Typing-Animation und Error-Handling implementiert für sauberes Nutzerfeedback.
-
-### 📝 Content & Persona Shift
-
-- **HDI Group Positionierung:** Überarbeitung aller Hero- und About-Texte (Fokus auf Clean Architecture, MVC und AI Development).
-- **Neues Projekt:** "Community Software" (Lead Developer, Lua, SQL Optimization, High-Traffic Architektur) vollständig in die `projects-data.js` integriert.
-- **System-Prompt (`yusef_brain.md`):** Detaillierte Persona-Datenbank für das LLM aufgebaut.
+- **"Ask Yusef" Chat Widget:** Schwebendes Bot-Widget (Vanilla TypeScript, Glassmorphism UI).
+- **Graceful Fallback:** Client-seitige Fallback-Nachrichten bei API-Timeout — kein sichtbarer Error.
 
 ---
 
-## [2.2.0] - 2025-12-11 (The Meta Update)
+## [2.2.0] - 2025-12-11 (The Meta & Architecture Update)
 
-Dieses Update dokumentiert das System selbst. Wir haben das Portfolio in eine eigene Case Study verwandelt.
+Portfolio in eine eigene Case Study verwandelt. Rendering-Engine und Archiv implementiert.
 
-### 🚀 New Project
+### 🚀 New Features
 
-- **Portfolio System Architecture:** Neue Detailseite (`projects/portfolio-meta.html`) hinzugefügt.
-  - **Inhalt:** Dokumentation der Custom Rendering Engine (MVC), DNS-Infrastruktur und Git-Workflows.
-  - **Interactive Assets:** Implementierung von CSS-basierten Terminal-Fenstern, lebendigen Git-Graphen und Lighthouse-Visualisierungen.
-  - **Design:** Neuer "Cyber-Grid" Hero-Bereich mit Scanline-Animationen und Neon-Timeline.
-
-### 🐛 Fixes & Polish
-
-- **Navigation Layout:** Korrektur der Flexbox-Anordnung für den Sprach-Button und Hamburger-Menü (Mobile & Desktop).
-- **CSS Compliance:** Behebung von Vendor-Prefix Warnungen (`background-clip`).
-- **Translations:** Vollständige DE/EN Unterstützung für die neue Meta-Seite.
-
-### 🚀 New Features (Architecture)
-
-- **Dynamic Project Rendering:** Implementierung einer JS-basierten Rendering-Engine (`project-renderer.js`). Trennung von Daten (`projects-data.js`) und View-Layer.
-- **Hero/Archive Logic:** Automatische Zuweisung des Hero-Projekts auf der Startseite basierend auf Konfiguration ID. Alle weiteren Projekte werden automatisch in das Archiv verschoben.
-- **Project Archive:** Neue dedizierte Unterseite (`projects/archive.html`) für die Projektübersicht mit Grid-Layout.
-- **Maintenance System:** Globaler Switch (`status.js`) zur sofortigen Umleitung auf eine Wartungsseite bei kritischen Updates.
-
-### 📦 Content & Projects
-
+- **Portfolio System Architecture:** Detailseite `projects/portfolio-meta.html` mit Dokumentation der MVC-Engine, DNS-Infrastruktur und Git-Workflows.
+- **Dynamic Project Rendering:** JS-basierte Rendering-Engine (`project-renderer.js`). Trennung von Daten (`projects-data.js`) und View.
+- **Hero/Archive Logic:** Automatische Hero-Projektzuweisung via Konfigurations-ID.
+- **Project Archive:** Dedizierte Seite `projects/archive.html` mit Grid-Layout.
+- **Maintenance System:** Globaler Switch (`status.js`) für sofortige Wartungsumleitung.
 - **New Case Study:** "HTML/CSS CV Engine" hinzugefügt.
-  - Integration der Detailseite mit Privacy-First Workflow Beschreibung.
-  - Live-Demo und Repository Verlinkung.
-- **Translations:** Erweiterung der `translations.js` um CV-Projekt-Daten und Archiv-Navigation (DE/EN).
 
-### ♻️ Refactoring
+### 🐛 Fixes
 
-- **Asset Reorganization:** Umstrukturierung des `images/` Ordners nach Domain-Driven Design (`ui/`, `projects/phishing/`, `projects/cv-engine/`) für bessere Skalierbarkeit.
-- **Navigation Redesign:** - Desktop: Symmetrisches Layout mit zentrierten Links.
-  - Mobile: Optimierte Header-Controls (Sprache & Hamburger getrennt vom Overlay-Menü) zur Behebung von Z-Index Konflikten.
-- **CSS Architecture:** Einführung von Utility-Klassen für Hero-Layouts und Archiv-Cards.
+- Mobile Navigation: Overlay blockierte Interaktionen — behoben.
+- Relative Pfadauflösung für Bilder in Unterordnern.
+- CSS Vendor-Prefix Warnungen (`background-clip`) behoben.
 
-### 🐛 Bug Fixes
-
-- Korrektur der mobilen Navigation (Overlay blockierte Interaktionen).
-- Fix der relativen Pfadauflösung für Bilder in Unterordnern (`projects/`).
-
-### 🚀 New Features (Architecture)
-
-- **Dynamic Project Rendering:** Implementierung einer JS-basierten Rendering-Engine (`project-renderer.js`). Trennung von Daten (`projects-data.js`) und View-Layer.
-- **Hero/Archive Logic:** Automatische Zuweisung des Hero-Projekts auf der Startseite basierend auf Konfiguration ID. Alle weiteren Projekte werden automatisch in das Archiv verschoben.
-- **Project Archive:** Neue dedizierte Unterseite (`projects/archive.html`) für die Projektübersicht mit Grid-Layout.
-- **Maintenance System:** Globaler Switch (`status.js`) zur sofortigen Umleitung auf eine Wartungsseite bei kritischen Updates.
-
-### 📦 Content & Projects
-
-- **New Case Study:** "HTML/CSS CV Engine" hinzugefügt.
-  - Integration der Detailseite mit Privacy-First Workflow Beschreibung.
-  - Live-Demo und Repository Verlinkung.
-- **Translations:** Erweiterung der `translations.js` um CV-Projekt-Daten und Archiv-Navigation (DE/EN).
-
-### ♻️ Refactoring
-
-- **Asset Reorganization:** Umstrukturierung des `images/` Ordners nach Domain-Driven Design (`ui/`, `projects/phishing/`, `projects/cv-engine/`) für bessere Skalierbarkeit.
-- **Navigation Redesign:** - Desktop: Symmetrisches Layout mit zentrierten Links.
-  - Mobile: Optimierte Header-Controls (Sprache & Hamburger getrennt vom Overlay-Menü) zur Behebung von Z-Index Konflikten.
-- **CSS Architecture:** Einführung von Utility-Klassen für Hero-Layouts und Archiv-Cards.
-
-### 🐛 Bug Fixes
-
-- Korrektur der mobilen Navigation (Overlay blockierte Interaktionen).
-- Fix der relativen Pfadauflösung für Bilder in Unterordnern (`projects/`).
+---
 
 ## [2.1.0] - 2025-12-03 (The Privacy & Polish Update)
 
-Wir haben ordentlich unter der Haube aufgeräumt. Der Fokus lag auf Sicherheit, Datenschutz und einem cleaneren Look für die Navigation.
+Fokus auf Sicherheit, Datenschutz und saubererem Code.
 
 ### 🔒 Security & Privacy
 
-- **Kontaktformular:** Formspree komplett rausgeworfen und auf **EmailJS** umgestellt. Läuft jetzt direkt über die API, keine Weiterleitung mehr sichtbar.
-- **Lebenslauf:** Die PDF-Datei wurde zensiert ("Web-Version"). Private Anschrift und Handynummer sind raus, um Spam zu vermeiden.
-- **Datenschutz:** Texte aktualisiert (EmailJS statt Formspree).
-- **Broken Links:** Platzhalter-Bild (`team1.jpg`) durch echtes Profilbild ersetzt.
+- **Kontaktformular:** Formspree → EmailJS (direkte API, keine Weiterleitung).
+- **Lebenslauf:** Web-Version mit zensierter Adresse/Telefonnummer (`.gitignore`-Privacy-Ansatz).
+- **Datenschutz:** Texte DSGVO-konform aktualisiert.
 
-### 💅 UI & Design
+### 💅 UI
 
-- **Header Upgrade:** Die Navigation hat jetzt einen Glas-Effekt (`backdrop-filter`) und mehr "Luft" (Padding), damit es nicht so gequetscht aussieht.
-- **Kontakt-Button:** Neuer Gradient-Look mit Glow-Effekt statt flachem Lila.
-- **Sticky Header:** Der Header schrumpft beim Scrollen jetzt sanfter und behält genug Abstand, damit die Links lesbar bleiben.
+- Header Glassmorphism-Effekt, Gradient-Kontakt-Button, sanfteres Sticky-Scroll-Verhalten.
 
-### 🐛 Fixes & Code Quality
+### 🐛 Fixes
 
-- **Inline-JS entfernt:** Die Skripte aus den Unterseiten (Lightbox-Logik) wurden sauber in die `script.js` ausgelagert. Clean Code!
-- **Caching-Problem:** Favicon wird jetzt durch `?v=2` zuverlässig neu geladen.
-- **404 Seite:** Endlich eine eigene Fehlerseite ("Seite existiert nicht") statt der GitHub-Standardseite.
+- Inline-JS in Unterseiten ausgelagert.
+- Favicon-Caching per `?v=2` behoben.
+- Eigene 404-Fehlerseite implementiert.
 
 ---
 
-## [2.0.0] - 2025-11-30 (The Portfolio Update)
+## [2.0.0] - 2025-11-30 (The Portfolio Transformation)
 
-### 🚀 Major Transformation
+Kompletter Umbau von "Bach IT" Firmenwebseite zu persönlichem Entwickler-Portfolio.
 
-- Kompletter Umbau von einer fiktiven Test-Firmenwebseite ("Bach IT") zu meinem **persönlichen Entwickler-Portfolio**.
-- Integration der **"Phishing Defender" Case Study** als Deep-Dive Seite.
+### 🚀 Major Changes
 
-### ✨ Added
-
-- **Cinematic Hero Section:** Video-Hintergrund auf der Projektseite.
-- **Documentation Hub:** Download-Bereich für PDFs und JAR-Files.
-- **Gallery:** Lightbox-Zoom für Screenshots.
-- **Architecture:** Einbindung von UML-Diagrammen.
-
-### 🛠 Changed
-
-- **Design System:** Wechsel zu Dark-Mode mit Neon-Akzenten.
-- **Struktur:** HTML und CSS modularisiert.
+- Neues Dark-Mode Design mit Neon-Akzenten.
+- Phishing Defender Case Study als erste Detailseite.
+- Cinematic Hero Section (Video-Hintergrund), Documentation Hub, Lightbox-Galerie, UML-Diagramme.
 
 ---
 

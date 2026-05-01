@@ -173,6 +173,7 @@
       .adr-card h4 { color: #fff; font-size: 1rem; margin-bottom: 12px; }
       .adr-card p { color: #888; font-size: 0.88rem; line-height: 1.65; }
       .adr-card code { color: var(--primary-light); background: rgba(157,0,255,0.1); padding: 1px 6px; border-radius: 3px; font-size: 0.82rem; }
+      .adr-card--full { grid-column: 1 / -1; }
 
       .feature-deep-grid {
         display: grid;
@@ -383,8 +384,74 @@
         .feature-deep-grid { grid-template-columns: 1fr; }
         .security-grid { grid-template-columns: 1fr; }
         .request-flow { justify-content: flex-start; }
-        .csrf-flow { flex-wrap: wrap; }
+        .csrf-flow { flex-wrap: wrap; gap: 6px; }
         .db-hierarchy { max-width: 100%; }
+
+        /* Docker service: hide description text on tablet/mobile */
+        .docker-service .svc-desc { display: none; }
+        .docker-service { gap: 10px; flex-wrap: wrap; }
+        .docker-service .svc-tag { margin-left: auto; }
+
+        /* DB hierarchy: remove fixed min-width */
+        .db-node .dn-name { min-width: unset; }
+        .db-node { flex-wrap: wrap; }
+
+        /* GPA formula: tighter on mobile */
+        .gpa-formula { padding: 22px 16px; }
+        .gpa-formula .gf-eq { font-size: 0.9rem; }
+
+        /* Dev banner */
+        .sn-dev-banner { padding: 12px 16px; font-size: 0.82rem; }
+
+        /* Migration timeline items */
+        .mt-content .mt-title { font-size: 0.82rem; }
+        .mt-content .mt-desc  { font-size: 0.76rem; }
+      }
+
+      @media (max-width: 480px) {
+        /* Stats */
+        .sn-stat-box { padding: 20px 12px; }
+        .sn-stat-box h3 { font-size: 1.9rem; }
+        .sn-stat-box p { font-size: 0.78rem; }
+
+        /* ADR & feature cards: reduce padding */
+        .adr-card { padding: 22px 18px; }
+        .feature-deep-card { padding: 24px 18px; }
+        .security-card { padding: 22px 18px; }
+
+        /* Docker: hide tag badge, remove fixed widths */
+        .docker-service .svc-tag  { display: none; }
+        .docker-service .svc-name { min-width: unset; }
+        .docker-service .svc-port { min-width: unset; }
+
+        /* Request flow boxes: smaller */
+        .flow-step { min-width: 82px; padding: 12px 10px; }
+        .flow-step .fs-name { font-size: 0.78rem; }
+        .flow-step .fs-sub  { font-size: 0.65rem; }
+        .flow-arrow-sm { padding: 0 3px; font-size: 1rem; }
+
+        /* CSRF flow steps */
+        .csrf-step { padding: 8px 10px; font-size: 0.7rem; }
+
+        /* DB nodes */
+        .db-node { padding: 12px 14px; font-size: 0.82rem; }
+        .db-node .dn-fields { font-size: 0.72rem; }
+
+        /* GPA */
+        .gpa-formula .gf-eq { font-size: 0.8rem; }
+
+        /* Roadmap cards */
+        .roadmap-card { padding: 20px 16px; }
+
+        /* Section + outro headings */
+        .section-heading { font-size: 1.6rem; }
+        .final-statement { font-size: 2.4rem; }
+
+        /* Hero title on very small screens */
+        .hero-title { font-size: 2.8rem !important; }
+
+        /* Outro buttons stacked */
+        .sn-outro-btns { flex-direction: column; align-items: center; }
       }
     </style>
   </head>
@@ -807,7 +874,7 @@
             </div>
           </div>
 
-          <div class="adr-card" style="grid-column: 1 / -1;">
+          <div class="adr-card adr-card--full">
             <span class="adr-num" data-i18n="sn_c3_adr5_tag">ADR-07</span>
             <h4 data-i18n="sn_c3_adr5_title">HsH-Only Strategie</h4>
             <p data-i18n="sn_c3_adr5_text">Die Beschränkung auf @stud.hs-hannover.de ist kein Kompromiss – sie ist ein Design-Entscheid.</p>
@@ -1153,7 +1220,7 @@
           StudyNexus ist nicht fertig – und das ist genau der Punkt.
         </p>
 
-        <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;">
+        <div class="sn-outro-btns" style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;">
           <a href="https://github.com/yusef03/studynexus" target="_blank" rel="noopener" class="cta-button" data-i18n="sn_outro_btn">
             GitHub Repository
           </a>

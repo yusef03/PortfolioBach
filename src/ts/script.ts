@@ -48,6 +48,20 @@ document.addEventListener("DOMContentLoaded", () => {
           .forEach((s) => s.classList.remove("active"));
       });
     });
+
+    document.addEventListener("click", (e) => {
+      if (
+        projectNavLinks.classList.contains("active") &&
+        !projectNavLinks.contains(e.target as Node) &&
+        !projectHamburger.contains(e.target as Node)
+      ) {
+        projectHamburger.classList.remove("active");
+        projectNavLinks.classList.remove("active");
+        projectHamburger
+          .querySelectorAll("span")
+          .forEach((s) => s.classList.remove("active"));
+      }
+    });
   }
 
 

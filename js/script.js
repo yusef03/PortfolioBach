@@ -48,6 +48,17 @@ document.addEventListener("DOMContentLoaded", () => {
                     .forEach((s) => s.classList.remove("active"));
             });
         });
+        document.addEventListener("click", (e) => {
+            if (projectNavLinks.classList.contains("active") &&
+                !projectNavLinks.contains(e.target) &&
+                !projectHamburger.contains(e.target)) {
+                projectHamburger.classList.remove("active");
+                projectNavLinks.classList.remove("active");
+                projectHamburger
+                    .querySelectorAll("span")
+                    .forEach((s) => s.classList.remove("active"));
+            }
+        });
     }
     /* ==========================================================================
        2. SMOOTH SCROLLING ENGINE

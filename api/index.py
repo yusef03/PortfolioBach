@@ -29,15 +29,24 @@ def load_system_prompt():
 
 class ChatRequest(BaseModel):
     query: str
+    lang: str = "de"
 
 @app.post("/api/chat")
 async def chat_endpoint(request: ChatRequest):
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
          raise HTTPException(status_code=500, detail="Gemini API Key missing in Environment Variables")
-    
+
     try:
-        system_instruction = load_system_prompt()
+        base_prompt = load_system_prompt()
+        lang_instruction = (
+            "CRITICAL LANGUAGE RULE: The user has their browser set to English. You MUST respond in English only. "
+            "Every single word of your reply must be in English.\n\n"
+            if request.lang == "en"
+            else "CRITICAL LANGUAGE RULE: The user has their browser set to German. You MUST respond in German only. "
+            "Every single word of your reply must be in German.\n\n"
+        )
+        system_instruction = lang_instruction + base_prompt
         
         def call_gemini(model_name):
             url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
@@ -76,9 +85,23 @@ async def chat_endpoint(request: ChatRequest):
     except urllib.error.HTTPError as e:
         error_info = e.read().decode('utf-8')
         print(f"Gemini Rate Limit / API Error: {e.code}")
+        is_en = getattr(request, 'lang', 'de') == 'en'
         if e.code == 429:
-            return {"answer": "Puh, meine KI-Leitung glüht heute! Mein kostenloses Google API-Limit ist für diesen Moment ausgeschöpft. Schreib Yusef am besten direkt über LinkedIn oder das Kontaktformular, er antwortet in der Regel sofort!"}
-        return {"answer": "Puh, meine Serververbindung zu den Google AI-Servern hat gerade einen Schluckauf. Versuch es einfach gleich nochmal oder kontaktiere Yusef direkt!"}
+            return {"answer": (
+                "My free Google API quota is exhausted for now. Please reach out to Yusef directly via LinkedIn or the contact form — he usually replies quickly!"
+                if is_en else
+                "Puh, meine KI-Leitung glüht heute! Mein kostenloses Google API-Limit ist für diesen Moment ausgeschöpft. Schreib Yusef am besten direkt über LinkedIn oder das Kontaktformular, er antwortet in der Regel sofort!"
+            )}
+        return {"answer": (
+            "My connection to the Google AI servers hiccuped. Try again in a moment or contact Yusef directly!"
+            if is_en else
+            "Puh, meine Serververbindung zu den Google AI-Servern hat gerade einen Schluckauf. Versuch es einfach gleich nochmal oder kontaktiere Yusef direkt!"
+        )}
     except Exception as e:
         print(f"API System Error: {e}")
-        return {"answer": "Es gab ein Problem beim Hochfahren meiner Systeme. Bitte benutze vorerst das reguläre Kontaktformular!"}
+        is_en = getattr(request, 'lang', 'de') == 'en'
+        return {"answer": (
+            "There was a problem starting up my systems. Please use the regular contact form for now!"
+            if is_en else
+            "Es gab ein Problem beim Hochfahren meiner Systeme. Bitte benutze vorerst das reguläre Kontaktformular!"
+        )}
