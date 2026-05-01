@@ -3,6 +3,28 @@
    ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
+  const currentLang: string = localStorage.getItem("language") || "de";
+  const isEn = currentLang === "en";
+
+  const i18n = {
+    greeting: isEn
+      ? "Hi! I'm Yusef's AI Twin. Ask me anything about his skills, projects, or experience."
+      : "Hi! Ich bin der AI-Twin von Yusef. Frag mich gerne etwas zu seinen Skills, Projekten oder Erfahrungen.",
+    placeholder: isEn ? "Write a message..." : "Schreibe eine Nachricht...",
+    thinking: isEn ? "Yusef-Twin is thinking..." : "Yusef-Twin denkt nach...",
+    fallback: isEn
+      ? [
+          "Oh, connection to the AI servers hiccuped. If you'd like to know more about Yusef, reach out directly or explore the project case studies!",
+          "Quick API timeout — but here's what I know: Yusef is a passionate developer who loves solving architectural challenges. Contact him directly!",
+          "The serverless line is busy today. In the meantime, check out the Community Software project — Yusef is especially proud of that one!"
+        ]
+      : [
+          "Oh, meine Verbindung zu den Google AI-Servern hat gerade einen Schluckauf. Wenn du Genaueres über Yusef wissen willst, schreib ihm direkt oder schau in die Projekt-Cases!",
+          "Hmm, kurzes API-Timeout. Was ich dir sagen kann: Yusef ist ein sehr enthusiastischer Entwickler und liebt es, architektonische Probleme zu lösen. Kontaktier ihn gerne direkt!",
+          "Die Serverless-Leitung glüht heute. In der Zwischenzeit kannst du ja mal in das Projekt 'Community Software' reinschauen, darauf ist Yusef besonders stolz!"
+        ],
+  };
+
   // 1. INJECT BOT HTML DYNAMICALLY ON ANY PAGE
   if (!document.getElementById("rag-bot-wrapper")) {
     const botHTML = `
@@ -16,10 +38,10 @@ document.addEventListener("DOMContentLoaded", () => {
             <button id="rag-close-btn">&times;</button>
           </div>
           <div id="rag-chat-messages" class="chat-body">
-            <div class="msg bot-msg">Hi! Ich bin der AI-Twin von Yusef. Frag mich gerne etwas zu seinen Skills, Projekten oder Erfahrungen.</div>
+            <div class="msg bot-msg">${i18n.greeting}</div>
           </div>
           <div class="chat-footer">
-            <input type="text" id="rag-chat-input" placeholder="Schreibe eine Nachricht..." />
+            <input type="text" id="rag-chat-input" placeholder="${i18n.placeholder}" />
             <button id="rag-send-btn">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="white">
                 <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
@@ -44,17 +66,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const inputField = document.getElementById("rag-chat-input") as HTMLInputElement;
   const messagesContainer = document.getElementById("rag-chat-messages");
 
-  // Deine aktive Vercel URL
   const backendUrl = "https://portfolio-bach-seven.vercel.app/api/chat";
 
-  if (!fabBtn) return; // Fallback
+  if (!fabBtn) return;
 
-
-  // Toggle Visibility
   fabBtn.addEventListener("click", () => chatWindow.classList.toggle("hidden"));
   closeBtn.addEventListener("click", () => chatWindow.classList.add("hidden"));
 
-  // Senden per Button oder Enter-Taste
   sendBtn.addEventListener("click", handleSend);
   inputField.addEventListener("keypress", (e) => {
     if (e.key === "Enter") handleSend();
@@ -64,40 +82,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const userText = inputField.value.trim();
     if (!userText) return;
 
-    // 1. User-Input ins DOM hängen
     appendMessage("user", userText);
     inputField.value = "";
 
-    // 2. Ladezustand erzeugen
-    const loadingId = appendMessage("bot", "Yusef-Twin denkt nach...", true);
+    const loadingId = appendMessage("bot", i18n.thinking, true);
 
     try {
-      // 3. FETCH Call an das Vercel Serverless-Backend
       const response = await fetch(backendUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query: userText })
+        body: JSON.stringify({ query: userText, lang: currentLang })
       });
 
       if (!response.ok) throw new Error("Backend Error");
 
       const data = await response.json();
-      
-      // 4. Antwort auslesen und ersetzen
       removeMessage(loadingId);
       appendMessage("bot", data.answer);
-      
+
     } catch (error) {
       console.error("RAG Integration Error:", error);
       removeMessage(loadingId);
-      
-      // PERMANENT 100% FALLBACK - Niemals einen Ugly Error anzeigen!
-      const fallbackReplies = [
-        "Oh, meine Verbindung zu den Google AI-Servern hat gerade einen Schluckauf. Kein Problem! Wenn du Genaueres über Yusef wissen willst, schreib ihm einfach am besten direkt oder schau in die Projekt-Cases!",
-        "Hmm, kurzes API-Timeout. Was ich dir aus dem lokalen KI-Gedächtnis sagen kann: Yusef ist ein sehr enthusiastischer Entwickler und liebt es, architektonische Probleme zu lösen. Kontaktier ihn gerne direkt!",
-        "Die Serverless-Leitung glüht heute. Aber mach dir nichts draus! In der Zwischenzeit kannst du ja mal in das Projekt 'Community Software' reinschauen, darauf ist Yusef besonders stolz!"
-      ];
-      const reply = fallbackReplies[Math.floor(Math.random() * fallbackReplies.length)];
+      const reply = i18n.fallback[Math.floor(Math.random() * i18n.fallback.length)];
       appendMessage("bot", reply);
     }
   }
