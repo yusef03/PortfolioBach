@@ -188,6 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 catch (e) {
                     console.error("Language file could not be loaded:", e);
+                    document.body.classList.add("i18n-ready");
                     return;
                 }
                 // Text-Inhalte aktualisieren
@@ -215,6 +216,8 @@ document.addEventListener("DOMContentLoaded", () => {
             <span style="font-weight:600; font-size: 0.85rem; margin-left: 6px;">${label}</span>`;
                 // Meta-Daten setzen
                 document.documentElement.lang = lang;
+                // FOUC-Schutz: Body nach erstem i18n-Load sichtbar machen
+                document.body.classList.add("i18n-ready");
             });
         }
         // Initiale Anwendung (Silent Load)

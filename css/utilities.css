@@ -1,3 +1,13 @@
+/* === i18n FOUC PREVENTION ===
+   Body hidden until applyTranslations() completes on first load.
+   Prevents the ~100ms flash of stale HTML fallback text. */
+body {
+  visibility: hidden;
+}
+body.i18n-ready {
+  visibility: visible;
+}
+
 /* === GLOBAL MOBILE FIXES === */
 /* Prevents iOS Safari double tap hover-click bug and input zoom */
 a, button, input, textarea, .nav-links a, .cta-button, .cta-button-outline {
