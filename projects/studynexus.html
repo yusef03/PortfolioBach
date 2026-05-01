@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>StudyNexus | Case Study</title>
+    <link rel="icon" type="image/png" href="../images/ui/logo.png" />
+    <script src="../js/status.js"></script>
+    <link rel="stylesheet" href="../css/main.css" />
+    <noscript><style>body { visibility: visible !important; }</style></noscript>
+
+    <style>
+      /* ── StudyNexus-specific styles ─────────────────────────────── */
+
+      .sn-dev-banner {
+        background: linear-gradient(90deg, rgba(157,0,255,0.12), rgba(157,0,255,0.04));
+        border: 1px solid rgba(157,0,255,0.25);
+        border-radius: 8px;
+        padding: 14px 22px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 40px;
+        font-size: 0.9rem;
+        color: #ccc;
+      }
+      .sn-dev-banner .pulse-dot {
+        width: 10px; height: 10px;
+        border-radius: 50%;
+        background: #9d00ff;
+        animation: pulse-glow 1.8s infinite;
+        flex-shrink: 0;
+      }
+      @keyframes pulse-glow {
+        0%,100% { box-shadow: 0 0 0 0 rgba(157,0,255,0.6); }
+        50%      { box-shadow: 0 0 0 8px rgba(157,0,255,0); }
+      }
+
+      .sn-stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin-top: 60px;
+      }
+      .sn-stat-box {
+        background: #1a1a1a;
+        border: 1px solid #2a2a2a;
+        border-radius: 12px;
+        padding: 28px 20px;
+        text-align: center;
+        transition: border-color 0.3s;
+      }
+      .sn-stat-box:hover { border-color: rgba(157,0,255,0.4); }
+      .sn-stat-box h3 {
+        font-size: 2.4rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 8px;
+      }
+      .sn-stat-box p { color: #888; font-size: 0.85rem; }
+
+      .pain-list {
+        list-style: none;
+        padding: 0;
+        margin: 25px 0;
+      }
+      .pain-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 10px 0;
+        border-bottom: 1px solid #1e1e1e;
+        color: #bbb;
+        font-size: 0.95rem;
+      }
+      .pain-list li::before {
+        content: "✕";
+        color: #ff4757;
+        font-weight: 700;
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+
+      .docker-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 30px;
+      }
+      .docker-service {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        background: #161616;
+        border: 1px solid #262626;
+        border-left: 3px solid #333;
+        border-radius: 8px;
+        padding: 14px 18px;
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        transition: border-left-color 0.2s;
+      }
+      .docker-service:hover { border-left-color: var(--primary-color); }
+      .docker-service .svc-name { color: #fff; font-weight: 600; min-width: 100px; }
+      .docker-service .svc-port { color: var(--primary-color); min-width: 60px; }
+      .docker-service .svc-desc { color: #666; }
+      .docker-service .svc-tag {
+        margin-left: auto;
+        background: #1e1e1e;
+        border: 1px solid #333;
+        border-radius: 4px;
+        padding: 2px 8px;
+        font-size: 0.75rem;
+        color: #555;
+      }
+
+      .request-flow {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        margin: 40px 0;
+        overflow-x: auto;
+        padding: 10px 0;
+      }
+      .flow-step {
+        background: #161616;
+        border: 1px solid #2a2a2a;
+        border-radius: 10px;
+        padding: 18px 16px;
+        text-align: center;
+        min-width: 110px;
+        flex-shrink: 0;
+      }
+      .flow-step .fs-label { font-size: 0.75rem; color: #666; margin-bottom: 6px; }
+      .flow-step .fs-name { font-size: 0.9rem; font-weight: 600; color: #fff; }
+      .flow-step .fs-sub { font-size: 0.7rem; color: #555; margin-top: 4px; font-family: var(--font-mono); }
+      .flow-step.hl { border-color: rgba(157,0,255,0.4); background: rgba(157,0,255,0.05); }
+      .flow-arrow-sm {
+        color: #333;
+        font-size: 1.4rem;
+        padding: 0 6px;
+        flex-shrink: 0;
+      }
+
+      .adr-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-top: 50px;
+      }
+      .adr-card {
+        background: #141414;
+        border: 1px solid #222;
+        border-radius: 12px;
+        padding: 28px 24px;
+        transition: border-color 0.3s, transform 0.2s;
+      }
+      .adr-card:hover {
+        border-color: rgba(157,0,255,0.35);
+        transform: translateY(-3px);
+      }
+      .adr-card .adr-num {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--primary-color);
+        background: rgba(157,0,255,0.08);
+        border: 1px solid rgba(157,0,255,0.2);
+        border-radius: 4px;
+        padding: 3px 8px;
+        display: inline-block;
+        margin-bottom: 14px;
+      }
+      .adr-card h4 { color: #fff; font-size: 1rem; margin-bottom: 12px; }
+      .adr-card p { color: #888; font-size: 0.88rem; line-height: 1.65; }
+      .adr-card code { color: var(--primary-light); background: rgba(157,0,255,0.1); padding: 1px 6px; border-radius: 3px; font-size: 0.82rem; }
+
+      .feature-deep-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin-top: 60px;
+      }
+      .feature-deep-card {
+        background: #141414;
+        border: 1px solid #222;
+        border-radius: 14px;
+        padding: 32px 28px;
+        transition: border-color 0.3s;
+      }
+      .feature-deep-card:hover { border-color: rgba(157,0,255,0.3); }
+      .feature-deep-card .fd-tag {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        color: var(--primary-color);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+        display: block;
+      }
+      .feature-deep-card h3 { color: #fff; font-size: 1.15rem; margin-bottom: 14px; }
+      .feature-deep-card p { color: #888; font-size: 0.88rem; line-height: 1.65; margin-bottom: 12px; }
+      .feature-deep-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 16px 0 0;
+      }
+      .feature-deep-card ul li {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        padding: 7px 0;
+        border-bottom: 1px solid #1e1e1e;
+        font-size: 0.85rem;
+        color: #aaa;
+      }
+      .feature-deep-card ul li::before {
+        content: "→";
+        color: var(--primary-color);
+        flex-shrink: 0;
+      }
+      /* Global — used in ADR cards AND feature cards */
+      .event-types {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 14px;
+      }
+      .event-types span {
+        background: #1e1e1e;
+        border: 1px solid #2a2a2a;
+        border-radius: 4px;
+        padding: 4px 10px;
+        font-size: 0.72rem;
+        font-family: var(--font-mono);
+        color: #777;
+        white-space: nowrap;
+        line-height: 1.4;
+      }
+
+      .security-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+        margin-top: 60px;
+      }
+      .security-card {
+        background: #0e0e0e;
+        border: 1px solid #1e1e1e;
+        border-radius: 14px;
+        padding: 30px 26px;
+        transition: border-color 0.3s;
+      }
+      .security-card:hover { border-color: rgba(157,0,255,0.25); }
+      .security-card .sec-tag {
+        font-size: 0.72rem;
+        font-family: var(--font-mono);
+        color: #27c93f;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+        display: block;
+      }
+      .security-card h3 { color: #fff; font-size: 1.05rem; margin-bottom: 14px; }
+      .security-card p { color: #777; font-size: 0.87rem; line-height: 1.65; }
+      .security-card code { color: #27c93f; background: rgba(39,201,63,0.08); padding: 1px 6px; border-radius: 3px; font-size: 0.82rem; }
+
+      .csrf-flow {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        margin-top: 20px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+      }
+      .csrf-step {
+        background: #161616;
+        border: 1px solid #252525;
+        border-radius: 8px;
+        padding: 10px 12px;
+        font-size: 0.75rem;
+        font-family: var(--font-mono);
+        color: #888;
+        text-align: center;
+        white-space: nowrap;
+      }
+      .csrf-step.ok { border-color: rgba(39,201,63,0.3); color: #27c93f; }
+      .csrf-step.deny { border-color: rgba(255,71,87,0.3); color: #ff4757; }
+      .csrf-arrow { color: #333; padding: 0 5px; font-size: 1rem; flex-shrink: 0; }
+
+      .db-hierarchy {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin: 40px auto;
+        max-width: 500px;
+      }
+      .db-node {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 14px 20px;
+        background: #141414;
+        border: 1px solid #222;
+        border-radius: 8px;
+        margin-bottom: 0;
+        font-family: var(--font-mono);
+        font-size: 0.88rem;
+        transition: border-color 0.2s;
+      }
+      .db-node:hover { border-color: rgba(157,0,255,0.3); }
+      .db-node:not(:last-child) { border-bottom: none; border-radius: 8px 8px 0 0; }
+      .db-node + .db-node:not(:last-child) { border-radius: 0; }
+      .db-node:last-child { border-radius: 0 0 8px 8px; }
+      .db-node .dn-name { color: #fff; font-weight: 600; min-width: 170px; }
+      .db-node .dn-fields { color: #555; font-size: 0.78rem; }
+      .db-connector {
+        display: flex;
+        align-items: center;
+        padding: 0 0 0 30px;
+        color: #333;
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+      }
+
+      .gpa-formula {
+        background: #0e0e0e;
+        border: 1px solid #222;
+        border-radius: 12px;
+        padding: 32px;
+        text-align: center;
+        margin: 40px 0;
+        font-family: var(--font-mono);
+      }
+      .gpa-formula .gf-label { color: #555; font-size: 0.8rem; margin-bottom: 20px; }
+      .gpa-formula .gf-eq {
+        font-size: 1.1rem;
+        color: #fff;
+        line-height: 1.8;
+      }
+      .gpa-formula .gf-eq .num { color: var(--primary-light); }
+      .gpa-formula .gf-eq .denom { border-top: 1px solid #444; padding-top: 8px; }
+      .gpa-formula .gf-note { color: #444; font-size: 0.75rem; margin-top: 20px; }
+
+      .migration-timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin-top: 40px;
+        position: relative;
+      }
+      .migration-timeline::before {
+        content: "";
+        position: absolute;
+        left: 16px; top: 0; bottom: 0;
+        width: 1px;
+        background: #2a2a2a;
+      }
+      .mt-item {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        padding: 16px 0;
+      }
+      .mt-dot {
+        width: 10px; height: 10px;
+        border-radius: 50%;
+        background: #333;
+        border: 2px solid #444;
+        flex-shrink: 0;
+        margin-top: 5px;
+        position: relative;
+        z-index: 1;
+        margin-left: 11px;
+      }
+      .mt-dot.done { background: var(--primary-color); border-color: var(--primary-color); }
+      .mt-content { }
+      .mt-content .mt-title { color: #ccc; font-size: 0.88rem; font-family: var(--font-mono); }
+      .mt-content .mt-desc { color: #555; font-size: 0.8rem; margin-top: 3px; }
+
+      @media (max-width: 768px) {
+        .sn-stats-grid { grid-template-columns: repeat(2, 1fr); }
+        .adr-grid { grid-template-columns: 1fr; }
+        .feature-deep-grid { grid-template-columns: 1fr; }
+        .security-grid { grid-template-columns: 1fr; }
+        .request-flow { justify-content: flex-start; }
+        .csrf-flow { flex-wrap: wrap; }
+        .db-hierarchy { max-width: 100%; }
+      }
+    </style>
+  </head>
+
+  <body class="project-deep-dive">
+
+    <!-- ── Navigation ─────────────────────────────────────────────── -->
+    <nav class="project-nav sticky-nav">
+      <div class="nav-container">
+        <a href="../index.html" class="back-link">
+          <span>←</span> <span>Portfolio</span>
+        </a>
+
+        <div class="nav-content-wrapper" id="project-nav-links">
+          <div class="internal-links">
+            <a href="#origin"       data-i18n="sn_nav_origin">Origin</a>
+            <a href="#architecture" data-i18n="sn_nav_arch">Architektur</a>
+            <a href="#features"     data-i18n="sn_nav_features">Features</a>
+            <a href="#security"     data-i18n="sn_nav_security">Security</a>
+            <a href="#roadmap"      data-i18n="sn_nav_roadmap">Roadmap</a>
+          </div>
+        </div>
+
+        <div class="mobile-header-controls">
+          <button id="lang-switch" class="lang-btn" aria-label="Switch Language"></button>
+          <div class="hamburger" id="project-hamburger">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ── Hero ───────────────────────────────────────────────────── -->
+    <header class="project-hero" id="home">
+      <div class="code-hero-bg"></div>
+      <div class="code-hero-overlay"></div>
+      <div class="scan-line-hero"></div>
+
+      <div class="hero-content container" style="position:relative;z-index:1;">
+        <div class="hero-badges fade-in-up">
+          <span class="meta-tag" style="font-family:monospace;border-color:#333;color:#888;display:flex;align-items:center;gap:8px;">
+            <span class="pulse-dot" style="width:8px;height:8px;border-radius:50%;background:#9d00ff;animation:pulse-glow 1.8s infinite;display:inline-block;"></span>
+            <span data-i18n="sn_hero_badge_1">v0.3.7 — In aktiver Entwicklung</span>
+          </span>
+          <span class="hero-badge outline" data-i18n="sn_hero_badge_2">Full-Stack SaaS</span>
+        </div>
+
+        <h1 class="hero-title fade-in-up hero-title-gradient" style="animation-delay:0.2s;">
+          STUDY<span class="text-stroke" style="-webkit-text-fill-color:initial;">NEXUS</span>
+        </h1>
+
+        <p class="hero-subtitle fade-in-up" style="animation-delay:0.4s;" data-i18n="sn_hero_subtitle">
+          Eine Plattform, die kein HsH-Student hatte.<br />
+          Gebaut von einem, der sie selbst brauchte.
+        </p>
+      </div>
+
+      <div class="scroll-indicator fade-in" style="animation-delay:1s;">
+        <span data-i18n="sn_hero_scroll">Deep Dive</span>
+        <div class="mouse"><div class="wheel"></div></div>
+      </div>
+    </header>
+
+    <!-- ════════════════════════════════════════════════════════════
+         CHAPTER I — ORIGIN
+    ════════════════════════════════════════════════════════════════ -->
+    <section class="project-section dark-bg" id="origin">
+      <div class="container">
+
+        <h2 class="section-heading center-text reveal" data-i18n="sn_c1_title">
+          Chapter I: <span class="highlight-text">The Origin</span>
+        </h2>
+        <p class="section-subtitle center-text reveal" data-i18n="sn_c1_sub">
+          Aus echter Frustration wird echtes Produkt.
+        </p>
+
+        <!-- Active Dev Banner -->
+        <div class="sn-dev-banner reveal">
+          <div class="pulse-dot"></div>
+          <span>Dieses Projekt befindet sich in aktiver Entwicklung — Sprint 3.7, Phase 2 abgeschlossen. Die Case Study wird parallel zum Produkt weiterentwickelt.</span>
+        </div>
+
+        <!-- Problem vs. Vision -->
+        <div class="mission-grid reveal" style="margin-top:60px;">
+          <div class="mission-content">
+            <span class="section-tag" data-i18n="sn_c1_prob_tag">Das Problem</span>
+            <h3 data-i18n="sn_c1_prob_title">Studium organisieren ist ein Chaos</h3>
+            <p class="text-lg" data-i18n="sn_c1_prob_text">
+              Jeder HS Hannover Student kennt das: QIS, Moodle, Excel, Notizbuch – und trotzdem verliert man den Überblick.
+            </p>
+            <p class="text-muted" data-i18n="sn_c1_prob_sub">
+              Das ist kein Komfortproblem – es ist ein Systemfehler.
+            </p>
+
+            <ul class="pain-list" style="margin-top:20px;">
+              <li data-i18n="sn_c1_pain_1">Keine zentrale Anlaufstelle für Studienfortschritt</li>
+              <li data-i18n="sn_c1_pain_2">ECTS manuell in Excel nachpflegen</li>
+              <li data-i18n="sn_c1_pain_3">Prüfungstermine über mehrere Systeme verteilt</li>
+              <li data-i18n="sn_c1_pain_4">GPA mit dem Taschenrechner ausrechnen</li>
+              <li data-i18n="sn_c1_pain_5">Stundenplan-Kollisionen erst im Hörsaal bemerken</li>
+            </ul>
+          </div>
+
+          <div class="terminal-wrapper reveal" style="margin:0;width:100%;align-self:center;">
+            <div class="terminal-header-bar">
+              <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+              <span class="term-title">student_tools.sh</span>
+            </div>
+            <div class="terminal-body">
+              <p class="comment"># Aktuelle Realität an der HsH</p>
+              <div class="code-line" style="opacity:0.5;text-decoration:line-through;color:#ff5757;">
+                <span class="prompt">$</span> open QIS.exe && open moodle.hs-hannover.de
+              </div>
+              <div class="code-line" style="opacity:0.5;text-decoration:line-through;color:#ff5757;">
+                <span class="prompt">$</span> open "ECTS_Tracking_v3_FINAL.xlsx"
+              </div>
+              <div class="code-line" style="opacity:0.5;text-decoration:line-through;color:#ff5757;">
+                <span class="prompt">$</span> grep -r "Prüfungstermin" ~/Desktop/notizen/
+              </div>
+              <br />
+              <p class="comment"># Die StudyNexus Lösung</p>
+              <div class="code-line">
+                <span class="prompt">yusef@studynexus:~$</span> docker compose up --build
+              </div>
+              <div class="code-output">
+                [✓] frontend started on :3000<br />
+                [✓] backend  started on :8000<br />
+                [✓] postgres ready — migrations applied<br />
+                [READY] StudyNexus is running.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vision Box -->
+        <div class="mission-grid reveal" style="margin-top:100px;">
+          <div class="mission-image" style="display:flex;justify-content:center;align-items:center;">
+            <div class="stats-card" style="width:100%;padding:30px;">
+              <h4 style="margin-bottom:24px;font-size:0.9rem;color:#666;font-family:var(--font-mono);">Platform Scope</h4>
+              <div style="display:flex;flex-direction:column;gap:14px;">
+                <div style="display:flex;align-items:center;gap:14px;">
+                  <span style="font-size:1.4rem;">📋</span>
+                  <div>
+                    <div style="color:#fff;font-weight:500;font-size:0.9rem;">Studienplan & GPA</div>
+                    <div style="color:#555;font-size:0.78rem;">Prüfungsordnung eingebaut · ECTS-gewichtet</div>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:center;gap:14px;">
+                  <span style="font-size:1.4rem;">📅</span>
+                  <div>
+                    <div style="color:#fff;font-weight:500;font-size:0.9rem;">Schedule Board</div>
+                    <div style="color:#555;font-size:0.78rem;">15-Min CSS Grid · Kollisionserkennung</div>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:center;gap:14px;">
+                  <span style="font-size:1.4rem;">📌</span>
+                  <div>
+                    <div style="color:#fff;font-weight:500;font-size:0.9rem;">Kanban Board</div>
+                    <div style="color:#555;font-size:0.78rem;">Drag & Drop · Persistent in DB</div>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:center;gap:14px;">
+                  <span style="font-size:1.4rem;">🔐</span>
+                  <div>
+                    <div style="color:#fff;font-weight:500;font-size:0.9rem;">HsH-Only Zugang</div>
+                    <div style="color:#555;font-size:0.78rem;">@stud.hs-hannover.de · Email-verifiziert</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mission-content">
+            <span class="section-tag" data-i18n="sn_c1_vision_tag">Die Vision</span>
+            <h3 data-i18n="sn_c1_vision_title">Ein Betriebssystem fürs Studium.</h3>
+            <p data-i18n="sn_c1_vision_text">
+              StudyNexus ist keine weitere Todo-App. Es ist ein vollständiges Studien-Betriebssystem.
+            </p>
+            <p class="text-muted" data-i18n="sn_c1_vision_sub">
+              Der Zugang ist absichtlich exklusiv.
+            </p>
+
+            <div style="margin-top:30px;padding:20px;background:#0e0e0e;border:1px solid #1e1e1e;border-radius:10px;">
+              <span class="section-tag" data-i18n="sn_c1_scope_tag" style="margin-bottom:10px;display:block;">Aktueller Stand</span>
+              <p style="color:#aaa;font-size:0.88rem;line-height:1.65;" data-i18n="sn_c1_scope_text">
+                Full-Stack MVP läuft bereits vollständig.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="sn-stats-grid reveal">
+          <div class="sn-stat-box">
+            <h3>143</h3>
+            <p>Source Files<br />(Frontend + Backend)</p>
+          </div>
+          <div class="sn-stat-box">
+            <h3>9</h3>
+            <p>Datenbankmodelle<br />mit FK-Constraints</p>
+          </div>
+          <div class="sn-stat-box">
+            <h3>14</h3>
+            <p>Architecture Decision<br />Records (ADRs)</p>
+          </div>
+          <div class="sn-stat-box">
+            <h3>5</h3>
+            <p>Docker Container<br />(Compose Stack)</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         CHAPTER II — SYSTEM ARCHITECTURE
+    ════════════════════════════════════════════════════════════════ -->
+    <section class="project-section" id="architecture">
+      <div class="container">
+
+        <h2 class="section-heading center-text reveal" data-i18n="sn_c2_title">
+          Chapter II: <span class="highlight-text">System Architecture</span>
+        </h2>
+        <p class="section-subtitle center-text reveal" data-i18n="sn_c2_sub">
+          Fünf Container. Eine kohärente Plattform.
+        </p>
+
+        <!-- Monorepo -->
+        <div class="mission-grid reveal" style="margin-top:60px;align-items:center;">
+          <div class="mission-content">
+            <span class="section-tag" data-i18n="sn_c2_mono_tag">Monorepo</span>
+            <h3 data-i18n="sn_c2_mono_title">Frontend & Backend. Ein Repository.</h3>
+            <p data-i18n="sn_c2_mono_text">
+              Frontend (Next.js) und Backend (FastAPI) leben im selben Repository.
+            </p>
+            <p class="text-muted" data-i18n="sn_c2_mono_sub">
+              Jede Änderung am API-Contract ist sofort im Frontend sichtbar.
+            </p>
+          </div>
+
+          <div class="mission-image">
+            <div class="folder-card">
+              <div class="folder-tree">
+                <span style="color:#fff;font-weight:600;">📁 studynexus/</span>
+                <span>├── 📁 <span class="folder-hl">frontend/</span> <span class="folder-comment">// Next.js 14</span></span>
+                <span>│   ├── 📁 src/app/[locale]/</span>
+                <span>│   ├── 📁 src/components/</span>
+                <span>│   └── 📄 package.json</span>
+                <span>├── 📁 <span class="folder-hl">backend/</span> <span class="folder-comment">// FastAPI</span></span>
+                <span>│   ├── 📁 app/routers/</span>
+                <span>│   ├── 📁 app/models/</span>
+                <span>│   └── 📄 requirements.txt</span>
+                <span>├── 📄 docker-compose.yml</span>
+                <span>└── 📄 .env</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Data Flow -->
+        <div class="reveal" style="margin-top:100px;">
+          <span class="section-tag center-text" style="display:block;text-align:center;margin-bottom:20px;" data-i18n="sn_c2_flow_tag">Data Flow</span>
+          <h3 class="center-text" style="margin-bottom:10px;" data-i18n="sn_c2_flow_title">Der Weg einer Anfrage</h3>
+          <p class="center-text text-muted" style="max-width:600px;margin:0 auto 40px;" data-i18n="sn_c2_flow_text">
+            Jede Mutation durchläuft eine sichere Pipeline.
+          </p>
+
+          <div class="request-flow" style="justify-content:center;">
+            <div class="flow-step">
+              <div class="fs-label">Browser</div>
+              <div class="fs-name">React UI</div>
+              <div class="fs-sub">TanStack Query</div>
+            </div>
+            <div class="flow-arrow-sm">→</div>
+            <div class="flow-step hl">
+              <div class="fs-label">Next.js</div>
+              <div class="fs-name">API Route</div>
+              <div class="fs-sub">Proxy + CSRF</div>
+            </div>
+            <div class="flow-arrow-sm">→</div>
+            <div class="flow-step hl">
+              <div class="fs-label">FastAPI</div>
+              <div class="fs-name">Backend</div>
+              <div class="fs-sub">JWT + Pydantic</div>
+            </div>
+            <div class="flow-arrow-sm">→</div>
+            <div class="flow-step">
+              <div class="fs-label">PostgreSQL</div>
+              <div class="fs-name">Database</div>
+              <div class="fs-sub">SQLAlchemy ORM</div>
+            </div>
+            <div class="flow-arrow-sm" style="color:#555;">↕</div>
+            <div class="flow-step">
+              <div class="fs-label">Redis</div>
+              <div class="fs-name">Cache</div>
+              <div class="fs-sub">Sessions</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Docker Stack -->
+        <div class="mission-grid reveal" style="margin-top:100px;align-items:start;">
+          <div class="mission-content">
+            <span class="section-tag" data-i18n="sn_c2_docker_tag">Infrastructure</span>
+            <h3 data-i18n="sn_c2_docker_title">Docker Compose: Fünf Services</h3>
+            <p data-i18n="sn_c2_docker_text">Die gesamte Infrastruktur startet mit einem einzigen Befehl.</p>
+            <p class="text-muted" data-i18n="sn_c2_docker_sub">PostgreSQL und Redis haben eigene Health-Checks.</p>
+
+            <div class="terminal-wrapper" style="margin-top:30px;">
+              <div class="terminal-header-bar">
+                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                <span class="term-title">bash</span>
+              </div>
+              <div class="terminal-body">
+                <div class="code-line">
+                  <span class="prompt">$</span> docker compose up --build
+                </div>
+                <div class="code-output" style="color:#27c93f;">
+                  ✓ db        healthy (postgres:16)<br />
+                  ✓ redis     healthy (redis:7-alpine)<br />
+                  ✓ backend   started → :8000<br />
+                  ✓ frontend  started → :3000<br />
+                  ✓ adminer   started → :8080
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mission-image">
+            <div class="docker-stack">
+              <div class="docker-service">
+                <span class="svc-name">frontend</span>
+                <span class="svc-port">:3000</span>
+                <span class="svc-desc">Next.js 14 · App Router</span>
+                <span class="svc-tag">Node</span>
+              </div>
+              <div class="docker-service">
+                <span class="svc-name">backend</span>
+                <span class="svc-port">:8000</span>
+                <span class="svc-desc">FastAPI · Uvicorn · ASGI</span>
+                <span class="svc-tag">Python</span>
+              </div>
+              <div class="docker-service">
+                <span class="svc-name">db</span>
+                <span class="svc-port">:5432</span>
+                <span class="svc-desc">PostgreSQL 16-alpine</span>
+                <span class="svc-tag">Health ✓</span>
+              </div>
+              <div class="docker-service">
+                <span class="svc-name">redis</span>
+                <span class="svc-port">:6379</span>
+                <span class="svc-desc">Redis 7-alpine · Sessions</span>
+                <span class="svc-tag">Health ✓</span>
+              </div>
+              <div class="docker-service">
+                <span class="svc-name">adminer</span>
+                <span class="svc-port">:8080</span>
+                <span class="svc-desc">DB Admin UI · Dev only</span>
+                <span class="svc-tag">Tool</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         CHAPTER III — ENGINEERING DECISIONS
+    ════════════════════════════════════════════════════════════════ -->
+    <section class="project-section dark-bg" id="decisions">
+      <div class="container">
+
+        <h2 class="section-heading center-text reveal" data-i18n="sn_c3_title">
+          Chapter III: <span class="highlight-text">Engineering Decisions</span>
+        </h2>
+        <p class="section-subtitle center-text reveal" data-i18n="sn_c3_sub">
+          14 Architecture Decision Records. Hier sind die prägendsten.
+        </p>
+
+        <p class="center-text text-muted reveal" style="max-width:650px;margin:0 auto 20px;" data-i18n="sn_c3_intro">
+          Architektur-Entscheidungen sollten dokumentiert sein.
+        </p>
+
+        <div class="adr-grid reveal">
+
+          <div class="adr-card">
+            <span class="adr-num" data-i18n="sn_c3_adr1_tag">ADR-01</span>
+            <h4 data-i18n="sn_c3_adr1_title">FastAPI statt Django</h4>
+            <p data-i18n="sn_c3_adr1_text">Django ist das 'sichere' Python-Framework. FastAPI ist das richtige.</p>
+            <div class="event-types" style="margin-top:16px;">
+              <span>async-native</span><span>Pydantic v2</span><span>OpenAPI /docs</span><span>KI-ready</span>
+            </div>
+          </div>
+
+          <div class="adr-card">
+            <span class="adr-num" data-i18n="sn_c3_adr2_tag">ADR-03</span>
+            <h4 data-i18n="sn_c3_adr2_title">httpOnly Cookies statt localStorage</h4>
+            <p data-i18n="sn_c3_adr2_text">JWT in localStorage speichern ist eine klassische XSS-Schwachstelle.</p>
+            <div class="event-types" style="margin-top:16px;">
+              <span>XSS-sicher</span><span>httpOnly</span><span>SameSite=Lax</span><span>Secure</span>
+            </div>
+          </div>
+
+          <div class="adr-card">
+            <span class="adr-num" data-i18n="sn_c3_adr3_tag">ADR-02</span>
+            <h4 data-i18n="sn_c3_adr3_title">bcrypt direkt – kein passlib</h4>
+            <p data-i18n="sn_c3_adr3_text">passlib ist de facto unmaintained. Letzte Version 2022.</p>
+            <div class="event-types" style="margin-top:16px;">
+              <span>bcrypt 4.1.3</span><span>kein passlib</span><span>Python 3.13+ safe</span>
+            </div>
+          </div>
+
+          <div class="adr-card">
+            <span class="adr-num" data-i18n="sn_c3_adr4_tag">ADR-12</span>
+            <h4 data-i18n="sn_c3_adr4_title">CSRF via Custom Header</h4>
+            <p data-i18n="sn_c3_adr4_text">Klassisches CSRF-Token-Management benötigt Server-State. Stattdessen <code>x-studynexus-client: true</code>.</p>
+            <div class="event-types" style="margin-top:16px;">
+              <span>stateless</span><span>CORS-Preflight</span><span>Origin-Check</span>
+            </div>
+          </div>
+
+          <div class="adr-card" style="grid-column: 1 / -1;">
+            <span class="adr-num" data-i18n="sn_c3_adr5_tag">ADR-07</span>
+            <h4 data-i18n="sn_c3_adr5_title">HsH-Only Strategie</h4>
+            <p data-i18n="sn_c3_adr5_text">Die Beschränkung auf @stud.hs-hannover.de ist kein Kompromiss – sie ist ein Design-Entscheid.</p>
+            <div class="event-types" style="margin-top:16px;">
+              <span>@stud.hs-hannover.de</span><span>echte Prüfungsordnung</span><span>verifiziete Community</span><span>keine Fake-Daten</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         CHAPTER IV — FEATURE DEEP-DIVE
+    ════════════════════════════════════════════════════════════════ -->
+    <section class="project-section" id="features">
+      <div class="container">
+
+        <h2 class="section-heading center-text reveal" data-i18n="sn_c4_title">
+          Chapter IV: <span class="highlight-text">Feature Deep-Dive</span>
+        </h2>
+        <p class="section-subtitle center-text reveal" data-i18n="sn_c4_sub">
+          Was die Plattform heute kann.
+        </p>
+
+        <div class="feature-deep-grid reveal">
+
+          <!-- Dashboard -->
+          <div class="feature-deep-card">
+            <span class="fd-tag" data-i18n="sn_c4_dash_tag">Mission Control</span>
+            <h3 data-i18n="sn_c4_dash_title">Das Herzstück: Mission Control Dashboard</h3>
+            <p data-i18n="sn_c4_dash_text">Der erste Blick nach dem Login. Echtzeit aus der Datenbank – kein Caching.</p>
+            <p class="text-muted" style="font-size:0.82rem;" data-i18n="sn_c4_dash_sub">Jedes Widget ist funktional und reaktiv.</p>
+            <ul>
+              <li data-i18n="sn_c4_dash_feat_1">GPA-Tracker mit ECTS-gewichteter Echtzeit-Berechnung</li>
+              <li data-i18n="sn_c4_dash_feat_2">Exam Countdown mit Pulsier-Animation (< 14 Tage = rot)</li>
+              <li data-i18n="sn_c4_dash_feat_3">Daily Focus: heute's Events, automatischer Wechsel nach 20 Uhr</li>
+              <li data-i18n="sn_c4_dash_feat_4">Smart Timeline: aufgaben-intelligente Sortierung nach Fälligkeit</li>
+            </ul>
+          </div>
+
+          <!-- Kanban -->
+          <div class="feature-deep-card">
+            <span class="fd-tag" data-i18n="sn_c4_kanban_tag">Task Management</span>
+            <h3 data-i18n="sn_c4_kanban_title">Kanban Board mit echtem Drag & Drop</h3>
+            <p data-i18n="sn_c4_kanban_text">@dnd-kit v6 als Fundament. Vier Spalten, Prioritäten, Modul-Verknüpfung.</p>
+            <p class="text-muted" style="font-size:0.82rem;" data-i18n="sn_c4_kanban_sub">Vollständig persistent – DB-write bei jedem Drop.</p>
+            <div class="event-types" style="margin-top:16px;">
+              <span>To Do</span><span>In Progress</span><span>Exam Ready</span><span>Done</span>
+              <span>LOW · MED · HIGH</span><span>Abgabe-Flag 📄</span><span>@dnd-kit v6</span>
+            </div>
+          </div>
+
+          <!-- Schedule -->
+          <div class="feature-deep-card">
+            <span class="fd-tag" data-i18n="sn_c4_schedule_tag">Schedule Board</span>
+            <h3 data-i18n="sn_c4_schedule_title">15-Minuten CSS-Grid Engine</h3>
+            <p data-i18n="sn_c4_schedule_text">Kein Table-Layout. Ein echtes CSS Grid mit 15-Min-Auflösung, Echtzeit-Linie und HTTP 409 Kollisionserkennung.</p>
+            <p class="text-muted" style="font-size:0.82rem;" data-i18n="sn_c4_schedule_sub">Semester-Binding. Ghosting-Modus. Mobile Agenda View.</p>
+            <div class="event-types" style="margin-top:16px;">
+              <span>LECTURE</span><span>EXERCISE</span><span>TUTORIAL</span><span>SEMINAR</span>
+              <span>EXAM</span><span>FOCUS</span><span>WORK</span><span>LIFE</span>
+              <span>+2 mehr</span>
+            </div>
+          </div>
+
+          <!-- Study Plan -->
+          <div class="feature-deep-card">
+            <span class="fd-tag" data-i18n="sn_c4_studyplan_tag">Studienplan</span>
+            <h3 data-i18n="sn_c4_studyplan_title">Visueller Studienplan</h3>
+            <p data-i18n="sn_c4_studyplan_text">Module in Semester-Spalten, Drag & Drop, ECTS-Berechnung, echte HsH-Prüfungsordnung.</p>
+            <ul>
+              <li>PFLICHT-Module automatisch geladen</li>
+              <li>WAHLPFLICHT & ERGÄNZEND manuell hinzufügbar</li>
+              <li>Drag & Drop zwischen Semestern via @dnd-kit</li>
+              <li>ECTS-Summe pro Spalte live berechnet</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         CHAPTER V — SECURITY
+    ════════════════════════════════════════════════════════════════ -->
+    <section class="project-section dark-bg" id="security">
+      <div class="container">
+
+        <h2 class="section-heading center-text reveal" data-i18n="sn_c5_title">
+          Chapter V: <span class="highlight-text">Security by Design</span>
+        </h2>
+        <p class="section-subtitle center-text reveal" data-i18n="sn_c5_sub">
+          Security ist kein Nachgedanke. Security ist Architektur.
+        </p>
+
+        <div class="security-grid reveal">
+
+          <!-- CSRF -->
+          <div class="security-card">
+            <span class="sec-tag" data-i18n="sn_c5_csrf_tag">CSRF Protection</span>
+            <h3 data-i18n="sn_c5_csrf_title">Stateless CSRF via Custom Header</h3>
+            <p data-i18n="sn_c5_csrf_text">Jede mutierende Anfrage trägt <code>x-studynexus-client: true</code>. Cross-Origin-Requests dürfen ohne CORS-Preflight keine Custom Headers setzen.</p>
+            <div class="csrf-flow" style="margin-top:20px;">
+              <div class="csrf-step">Request</div>
+              <div class="csrf-arrow">→</div>
+              <div class="csrf-step">Check Header</div>
+              <div class="csrf-arrow">→</div>
+              <div class="csrf-step">Check Origin</div>
+              <div class="csrf-arrow">→</div>
+              <div class="csrf-step ok">✓ Allow</div>
+            </div>
+          </div>
+
+          <!-- JWT -->
+          <div class="security-card">
+            <span class="sec-tag" data-i18n="sn_c5_jwt_tag">Authentication</span>
+            <h3 data-i18n="sn_c5_jwt_title">JWT in httpOnly Cookies</h3>
+            <p data-i18n="sn_c5_jwt_text">Der JWT-Token lebt ausschließlich in einem httpOnly Cookie. JavaScript kann diesen Cookie nicht auslesen.</p>
+            <div style="margin-top:20px;padding:14px;background:#0a0a0a;border-radius:8px;font-family:var(--font-mono);font-size:0.78rem;color:#555;line-height:2;">
+              <span style="color:#27c93f;">Set-Cookie:</span> token=eyJ...<br />
+              <span style="color:#27c93f;">HttpOnly</span>; <span style="color:#27c93f;">Secure</span>; SameSite=<span style="color:#27c93f;">Lax</span><br />
+              Path=/; Max-Age=<span style="color:#9d00ff;">604800</span> (7d)
+            </div>
+          </div>
+
+          <!-- Email Verification -->
+          <div class="security-card">
+            <span class="sec-tag" data-i18n="sn_c5_email_tag">Verification</span>
+            <h3 data-i18n="sn_c5_email_title">6-Digit Email Verification</h3>
+            <p data-i18n="sn_c5_email_text">6-stelliger Code via Resend API, 15-Minuten-Ablauf, nur @stud.hs-hannover.de.</p>
+            <div style="margin-top:16px;display:flex;gap:10px;align-items:center;font-family:var(--font-mono);font-size:0.8rem;flex-wrap:wrap;">
+              <div style="background:#0a0a0a;border:1px solid #1e1e1e;border-radius:6px;padding:8px 12px;color:#ccc;">Register</div>
+              <span style="color:#333;">→</span>
+              <div style="background:#0a0a0a;border:1px solid #1e1e1e;border-radius:6px;padding:8px 12px;color:#9d00ff;">6-digit Email</div>
+              <span style="color:#333;">→</span>
+              <div style="background:#0a0a0a;border:1px solid #1e1e1e;border-radius:6px;padding:8px 12px;color:#ccc;">Verify (15min)</div>
+              <span style="color:#333;">→</span>
+              <div style="background:rgba(39,201,63,0.08);border:1px solid rgba(39,201,63,0.3);border-radius:6px;padding:8px 12px;color:#27c93f;">Active</div>
+            </div>
+          </div>
+
+          <!-- Row-Level Isolation -->
+          <div class="security-card">
+            <span class="sec-tag" data-i18n="sn_c5_isolation_tag">Data Isolation</span>
+            <h3 data-i18n="sn_c5_isolation_title">Row-Level User Isolation</h3>
+            <p data-i18n="sn_c5_isolation_text">Jede Datenbank-Query filtert by user_id. Kein separates Permissions-System – das ORM erzwingt die Isolation strukturell.</p>
+            <div class="terminal-wrapper" style="margin-top:16px;">
+              <div class="terminal-header-bar" style="padding:8px 12px;">
+                <span class="term-title" style="font-size:0.75rem;">tasks.py</span>
+              </div>
+              <div class="terminal-body" style="padding:12px 16px;font-size:0.78rem;">
+                <span style="color:#555;">db.query(Task)</span><br />
+                <span style="color:#555;">&nbsp;&nbsp;.filter(Task.user_id ==</span> <span style="color:#9d00ff;">current_user.id</span><span style="color:#555;">)</span><br />
+                <span style="color:#555;">&nbsp;&nbsp;.all()</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         CHAPTER VI — DATABASE
+    ════════════════════════════════════════════════════════════════ -->
+    <section class="project-section" id="database">
+      <div class="container">
+
+        <h2 class="section-heading center-text reveal" data-i18n="sn_c6_title">
+          Chapter VI: <span class="highlight-text">Database Architecture</span>
+        </h2>
+        <p class="section-subtitle center-text reveal" data-i18n="sn_c6_sub">
+          9 Modelle. Eine vollständige Hochschul-Hierarchie.
+        </p>
+
+        <div class="mission-grid reveal" style="margin-top:60px;align-items:start;">
+          <div class="mission-content">
+            <span class="section-tag" data-i18n="sn_c6_schema_tag">Datenmodell</span>
+            <h3 data-i18n="sn_c6_schema_title">Von der Hochschule zum einzelnen Modul</h3>
+            <p data-i18n="sn_c6_schema_text">Das Datenmodell bildet die echte Hochschulhierarchie ab.</p>
+            <p class="text-muted" data-i18n="sn_c6_schema_sub">9 SQLAlchemy-Modelle mit UUID Primary Keys und PostgreSQL-native ENUMs.</p>
+          </div>
+
+          <div class="mission-image">
+            <div class="db-hierarchy">
+              <div class="db-node">
+                <span class="dn-name" style="color:var(--primary-color);">University</span>
+                <span class="dn-fields">name, kuerzel, stadt</span>
+              </div>
+              <div class="db-connector">└── FK ──</div>
+              <div class="db-node">
+                <span class="dn-name">Faculty</span>
+                <span class="dn-fields">name, kuerzel</span>
+              </div>
+              <div class="db-connector">└── FK ──</div>
+              <div class="db-node">
+                <span class="dn-name">Program</span>
+                <span class="dn-fields">abschluss, gesamt_ects</span>
+              </div>
+              <div class="db-connector">└── FK ──</div>
+              <div class="db-node">
+                <span class="dn-name">ExamRegulation</span>
+                <span class="dn-fields">version, gueltig_ab</span>
+              </div>
+              <div class="db-connector">└── FK ──</div>
+              <div class="db-node">
+                <span class="dn-name">Module</span>
+                <span class="dn-fields">ects, modul_typ, gewichtung</span>
+              </div>
+              <div class="db-connector">└── FK (user) ──</div>
+              <div class="db-node" style="border-color:rgba(157,0,255,0.3);background:rgba(157,0,255,0.05);">
+                <span class="dn-name" style="color:var(--primary-light);">StudentModule</span>
+                <span class="dn-fields">status, note, semester</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GPA Formula -->
+        <div class="reveal" style="margin-top:100px;">
+          <span class="section-tag center-text" style="display:block;text-align:center;margin-bottom:20px;" data-i18n="sn_c6_gpa_tag">GPA Algorithmus</span>
+          <h3 class="center-text" style="margin-bottom:10px;" data-i18n="sn_c6_gpa_title">Gewichtete Note – wie an echten Hochschulen</h3>
+          <p class="center-text text-muted" style="max-width:560px;margin:0 auto;" data-i18n="sn_c6_gpa_text">
+            Der GPA wird nicht einfach gemittelt – ECTS-basierte Gewichtung.
+          </p>
+
+          <div class="gpa-formula">
+            <div class="gf-label">GPA_ALGORITHM · gpa_service.py</div>
+            <div class="gf-eq">
+              <div>GPA &nbsp;=&nbsp;</div>
+              <div style="display:inline-block;vertical-align:middle;text-align:center;">
+                <div class="num">Σ ( Note × ECTS × Gewichtung )</div>
+                <div class="denom">Σ ( ECTS × Gewichtung )</div>
+              </div>
+            </div>
+            <div class="gf-note">Nur bestandene (status=PASSED), benotete (ist_benotet=true) Module fließen ein.</div>
+          </div>
+        </div>
+
+        <!-- Migration Timeline -->
+        <div class="mission-grid reveal" style="margin-top:100px;align-items:start;">
+          <div class="mission-content">
+            <span class="section-tag" data-i18n="sn_c6_migration_tag">Migrations</span>
+            <h3 data-i18n="sn_c6_migration_title">9 Alembic Migrations – Jeder Schritt versioniert</h3>
+            <p data-i18n="sn_c6_migration_text">Keine manuellen SQL-Änderungen – jede Schemaänderung ist versioniert und reversibel.</p>
+          </div>
+
+          <div class="mission-image">
+            <div class="migration-timeline">
+              <div class="mt-item"><div class="mt-dot done"></div><div class="mt-content"><div class="mt-title">001 · Create users table</div><div class="mt-desc">UUID PK, email, hashed_password, is_verified</div></div></div>
+              <div class="mt-item"><div class="mt-dot done"></div><div class="mt-content"><div class="mt-title">002 · Study plan tables</div><div class="mt-desc">University → Faculty → Program → ExamReg → Module</div></div></div>
+              <div class="mt-item"><div class="mt-dot done"></div><div class="mt-content"><div class="mt-title">003 · Fix module data</div><div class="mt-desc">kuerzel, gewichtung, 9 Wahlpflichtmodule hinzugefügt</div></div></div>
+              <div class="mt-item"><div class="mt-dot done"></div><div class="mt-content"><div class="mt-title">004 · Email verification fields</div><div class="mt-desc">verification_code, verification_expires_at</div></div></div>
+              <div class="mt-item"><div class="mt-dot done"></div><div class="mt-content"><div class="mt-title">005 · Tasks + Events tables</div><div class="mt-desc">Kanban & Schedule Board foundation</div></div></div>
+              <div class="mt-item"><div class="mt-dot done"></div><div class="mt-content"><div class="mt-title">006 · matrikelnummer</div><div class="mt-desc">unique, nullable profile field</div></div></div>
+              <div class="mt-item"><div class="mt-dot done"></div><div class="mt-content"><div class="mt-title">007 · semester_tag, event_date, lecturer</div><div class="mt-desc">Semester-Binding für Events</div></div></div>
+              <div class="mt-item"><div class="mt-dot done"></div><div class="mt-content"><div class="mt-title">008 · FOCUS type + is_submission</div><div class="mt-desc">Neuer Event-Typ, Abgabe-Flag für Tasks</div></div></div>
+              <div class="mt-item"><div class="mt-dot done"></div><div class="mt-content"><div class="mt-title">009 · Profile fields</div><div class="mt-desc">birth_date, hochschule (Digital ID Card)</div></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         CHAPTER VII — ROADMAP
+    ════════════════════════════════════════════════════════════════ -->
+    <section class="project-section dark-bg" id="roadmap" style="padding-bottom:0;">
+      <div class="container">
+
+        <h2 class="section-heading center-text reveal" data-i18n="sn_c7_title">
+          Chapter VII: <span class="highlight-text">Sprint-Roadmap</span>
+        </h2>
+        <p class="section-subtitle center-text reveal" data-i18n="sn_c7_sub">
+          Wo das Projekt steht. Wohin es geht.
+        </p>
+
+        <div class="roadmap-wrapper reveal">
+          <div class="roadmap-line"></div>
+
+          <div class="roadmap-node">
+            <div class="node-marker done"></div>
+            <div class="roadmap-card">
+              <span class="rm-tag" style="color:#27c93f;" data-i18n="sn_c7_n1_tag">Sprint 1-2 ✓</span>
+              <h3 class="rm-title" data-i18n="sn_c7_n1_title">Foundation: Auth, DB & Docker</h3>
+              <p class="rm-desc" data-i18n="sn_c7_n1_desc">JWT Authentication, PostgreSQL-Schema, Docker Compose, Email-Verifikation, Studienplan-CRUD.</p>
+            </div>
+          </div>
+
+          <div class="roadmap-node">
+            <div class="node-marker done"></div>
+            <div class="roadmap-card">
+              <span class="rm-tag" style="color:#27c93f;" data-i18n="sn_c7_n2_tag">Sprint 3.x ✓</span>
+              <h3 class="rm-title" data-i18n="sn_c7_n2_title">Mission Control & Mobile</h3>
+              <p class="rm-desc" data-i18n="sn_c7_n2_desc">Kanban Board, Schedule Board (15-Min Grid), Dashboard Widgets, Mobile FAB, Agenda View, i18n.</p>
+            </div>
+          </div>
+
+          <div class="roadmap-node">
+            <div class="node-marker active"></div>
+            <div class="roadmap-card">
+              <span class="rm-tag" style="color:var(--primary-color);" data-i18n="sn_c7_n3_tag">Sprint 4 — Geplant</span>
+              <h3 class="rm-title" data-i18n="sn_c7_n3_title">Study Spaces & Module Wiki</h3>
+              <p class="rm-desc" data-i18n="sn_c7_n3_desc">Digitale Lerngruppen, Community-Wiki, Admin-Dashboard.</p>
+            </div>
+          </div>
+
+          <div class="roadmap-node">
+            <div class="node-marker future"></div>
+            <div class="roadmap-card">
+              <span class="rm-tag" style="color:#888;" data-i18n="sn_c7_n4_tag">Sprint 5 — Vision</span>
+              <h3 class="rm-title" data-i18n="sn_c7_n4_title">AI Planning Layer</h3>
+              <p class="rm-desc" data-i18n="sn_c7_n4_desc">Intelligente Empfehlungen, Auto-Scheduling, KI-gestützte Prüfungsvorbereitung.</p>
+            </div>
+          </div>
+
+          <div class="roadmap-node" style="margin-bottom:0;">
+            <div class="node-marker future"></div>
+            <div class="roadmap-card">
+              <span class="rm-tag" style="color:#888;" data-i18n="sn_c7_n5_tag">v1.0 — Ziel</span>
+              <h3 class="rm-title" data-i18n="sn_c7_n5_title">Production Launch für die HsH</h3>
+              <p class="rm-desc" data-i18n="sn_c7_n5_desc">Öffentlicher Launch, Onboarding-Flow, Gamification: XP, Badges, Streaks.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Outro ───────────────────────────────────────────────────── -->
+    <section class="project-section" style="padding:150px 0;text-align:center;">
+      <div class="container reveal">
+        <h2 class="final-statement" data-i18n="sn_outro_title">
+          Ein Projekt<br />in Bewegung.
+        </h2>
+        <p style="font-size:1.2rem;color:#888;max-width:600px;margin:0 auto 40px;" data-i18n="sn_outro_text">
+          StudyNexus ist nicht fertig – und das ist genau der Punkt.
+        </p>
+
+        <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;">
+          <a href="https://github.com/yusef03/studynexus" target="_blank" rel="noopener" class="cta-button" data-i18n="sn_outro_btn">
+            GitHub Repository
+          </a>
+          <a href="../index.html" class="cta-button cta-button-outline" data-i18n="sn_outro_home">
+            Zur Startseite
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <app-footer base-path=".."></app-footer>
+
+    <script src="../js/components/AppFooter.js"></script>
+    <script src="../js/bot.js"></script>
+    <script src="../js/script.js"></script>
+
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("active");
+          });
+        },
+        { threshold: 0.08 }
+      );
+      document.querySelectorAll(".reveal, .fade-in-up, .fade-in").forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>

@@ -28,6 +28,25 @@ const HERO_PROJECT_ID: string = "portfolio-meta";
  */
 const projectsData: Project[] = [
   {
+    id: "studynexus",
+    titleKey: "StudyNexus",
+    descKey: "sn_desc",
+    btnKey: "sn_btn",
+    codeKey: "sn_code_btn",
+
+    image: "images/projects/studynexus/preview.svg",
+
+    linkDetails: "projects/studynexus.html",
+    linkCode: "https://github.com/yusef03/studynexus",
+
+    timeframe: "04/2026 — laufend",
+    role: "Product Owner & Full-Stack Developer",
+
+    badges: ["Next.js 14", "FastAPI", "PostgreSQL", "Docker", "Redis", "TypeScript", "Python"],
+    features: ["sn_feat_1", "sn_feat_2", "sn_feat_3"],
+    statusKey: "sn_status",
+  },
+  {
     id: "phishing-defender",
     titleKey: "PhishingDefender",
     descKey: "pd_desc",
