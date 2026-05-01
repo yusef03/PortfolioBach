@@ -220,6 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
         translationsObj = await response.json();
       } catch (e) {
         console.error("Language file could not be loaded:", e);
+        document.body.classList.add("i18n-ready");
         return;
       }
 
@@ -252,6 +253,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Meta-Daten setzen
       document.documentElement.lang = lang;
+
+      // FOUC-Schutz: Body nach erstem i18n-Load sichtbar machen
+      document.body.classList.add("i18n-ready");
     }
 
     // Initiale Anwendung (Silent Load)
