@@ -2,21 +2,38 @@
 
 Hier dokumentiere ich, was sich am Projekt ändert.
 
+## [2.4.1] - 2026-05-01 (The Product Engineer & StudyNexus Update)
+
+Ein massives Content- und Identitäts-Upgrade. Die Ausrichtung des Portfolios wurde von "Vanilla-Only" auf moderne Systemarchitektur und AI-Driven Engineering aktualisiert. Einführung des Flaggschiff-Projekts StudyNexus.
+
+### 🚀 New Features & Pages
+
+- **StudyNexus Case Study (`studynexus.html`):** Eine hochdetaillierte Projektseite hinzugefügt. Beinhaltet Architektur-Diagramme, Security-Flows (CSRF, JWT), das PostgreSQL-Datenbankschema und Architecture Decision Records (ADRs).
+- **Modern Tech Stack Marquee:** Laufschrift um moderne Enterprise- und KI-Tools erweitert (Next.js, Docker, Python, PostgreSQL, LLMs), um den aktuellen Tech-Fokus widerzuspiegeln.
+
+### ✍️ Content & Rebranding
+
+- **Narrative Shift:** Die "Über Mich"- und Hero-Sektionen wurden komplett neu geschrieben. Der Fokus liegt nun auf _Product Engineering, AI Orchestration_ und _Systemarchitektur_ (Passend zur Werkstudentenstelle bei der HDI Group).
+- **Tone of Voice:** Verzicht auf elitäre "Anti-Framework"-Rhetorik. Fokus auf pragmatische Problemlösungen, bei denen das Verständnis des Fundaments (wie MVC) genutzt wird, um moderne Frameworks und KI-Agenten effizient zu steuern.
+
 ## [2.4.0] - 2026-04-26 (The TS & Performance Core Update)
 
 Ein signifikantes Architektur-Upgrade. Das Framework wurde von purem JavaScript auf TypeScript gehärtet und die Internationalisierung (i18n) wurde auf asynchrone Requests ausgelagert.
 
 ### 🧱 Architecture & Typings
+
 - **TypeScript Migration:** Die komplette `js/` Basis wurde nach `src/ts/` umgezogen und streng via Vanilla TypeScript typisiert.
 - **Interfaces (`types.d.ts`):** Strikte Typen für Projekte und Übersetzungen sichern die Skalierbarkeit ohne Third-Party-Bloatware.
 - **Build Step:** Ein minimaler lokaler Compile-Prozess konvertiert die Dateien in Plain ES6 JavaScript.
 
 ### ⚡ Performance & Async UI
+
 - **i18n JSON Chunking:** Die monolithische `translations.js` (60KB) wurde vollständig aufgelöst.
 - **Dynamic Fetch:** Übersetzungen (`lang/de.json`, `lang/en.json`) werden per `fetch()` lazy nachgeladen, erst bei Sprachwechsel. Ladezeiten massiv verkürzt.
 - **Lazy Loading (Bilder):** Systemweite Implementierung von `loading="lazy"` für alle Images "below the fold".
 
 ### ♿ Accessibility (A11y)
+
 - **Keyboard Navigation:** Native `:focus-within` Ringe in CSS implementiert zur barrierefreien Tabulator-Steuerung.
 
 ---
@@ -26,16 +43,19 @@ Ein signifikantes Architektur-Upgrade. Das Framework wurde von purem JavaScript 
 Dieses Update verwandelt das statische Portfolio in eine KI-gestützte Architektur, inklusive Zero-Dependency Frontend-Bot und Serverless Python-Backend.
 
 ### 🧠 Backend & AI Integration
+
 - **RAG Architecture (`api/index.py`):** Neues Vercel Serverless Function Backend implementiert. Liest dynamisch `yusef_brain.md` als System-Kontext.
 - **Gemini 1.5 Flash:** Vollständige Migration auf das neue `google-genai` SDK zur performanten Beantwortung von User-Fragen zum Portfolio in Echtzeit.
 - **CORS & Security:** API Endpoint sicher isoliert und via CORS-Policies geschützt.
 
 ### 💬 Frontend & Design
+
 - **"Ask Yusef" Chat Widget:** Eigenentwickeltes, schwebendes Bot-Widget (Vanilla JS, kein Framework-Overhead).
 - **Glassmorphism UI:** Neues CSS-Styling (`backdrop-filter`) für das Chatfenster im Enterprise-Design.
 - **Async UX:** "Ghost-Message" Typing-Animation und Error-Handling implementiert für sauberes Nutzerfeedback.
 
 ### 📝 Content & Persona Shift
+
 - **HDI Group Positionierung:** Überarbeitung aller Hero- und About-Texte (Fokus auf Clean Architecture, MVC und AI Development).
 - **Neues Projekt:** "Community Software" (Lead Developer, Lua, SQL Optimization, High-Traffic Architektur) vollständig in die `projects-data.js` integriert.
 - **System-Prompt (`yusef_brain.md`):** Detaillierte Persona-Datenbank für das LLM aufgebaut.
