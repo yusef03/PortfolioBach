@@ -17,7 +17,7 @@
  * Definiert, welches Projekt als "Hero"-Section auf der Startseite
  * prominent dargestellt wird.
  */
-const HERO_PROJECT_ID = "portfolio-meta";
+const HERO_PROJECT_ID = "studynexus";
 /**
  * DATENSATZ: Projekt-Portfolio
  * Array aus Projekt-Objekten. Keys wie 'titleKey' oder 'descKey' korrespondieren
@@ -26,7 +26,7 @@ const HERO_PROJECT_ID = "portfolio-meta";
 const projectsData = [
     {
         id: "studynexus",
-        titleKey: "StudyNexus",
+        titleKey: "StudyNexus - In Development",
         descKey: "sn_desc",
         btnKey: "sn_btn",
         codeKey: "sn_code_btn",
