@@ -14,7 +14,7 @@
 **URL:** [yusefbach.de](https://yusefbach.de)
 **Repository:** https://github.com/yusef03/PortfolioBach
 **Hosting:** GitHub Pages (static only — no server-side rendering, no PHP, no Node.js runtime)
-**Last Updated:** 2026-05-01
+**Last Updated:** 2026-05-02
 
 ---
 
@@ -44,7 +44,7 @@
 | Components | Vanilla Web Components (`<app-header>`, `<app-footer>`) |
 | Rendering | Custom TypeScript rendering engine (`project-renderer.ts`) |
 | AI Bot Backend | Python FastAPI on Vercel Serverless (`api/index.py`) |
-| AI Model | Google Gemini 2.5 Flash (direct REST, no SDK) |
+| AI Model | Google Gemini 2.5 Flash (direct REST, no SDK) — failover array to flash-lite/2.0 |
 | Contact Form | EmailJS (CDN, serverless) |
 | Hosting | GitHub Pages + Custom Domain |
 | DNS | Zoho Mail routing for @yusefbach.de |
@@ -91,7 +91,7 @@ PortfolioBach/
 ├── api/
 │   └── index.py             Vercel Serverless Function (FastAPI, Gemini bot backend)
 ├── lang/                    i18n JSON chunks
-├── yusef_brain.md           AI-Twin knowledge base & persona (system prompt)
+├── yusef_brain.md           AI-Twin knowledge base & persona (v2.6.0 — structured sections, pflegefreundlich)
 ├── ANTIGRAVITY.md           THIS FILE — agent context
 ├── CHANGELOG.md             Semantic version history
 ├── README.md                Public project overview
@@ -289,6 +289,7 @@ Project-specific styles (like `.sn-dev-banner`, `.adr-grid`) go into an inline `
 
 | Version | Date | Summary |
 |---|---|---|
+| v2.5.1 | 2026-05-02 | yusef_brain.md v2.6.0 — vollständiger Rebuild, pflegefreundliche Sektions-Architektur |
 | v2.5.0 | 2026-05-01 | Mobile nav fix, bot language awareness, guardrails, StudyNexus |
 | v2.4.1 | 2026-04-30 | Content rebranding, HDI narrative, StudyNexus intro |
 | v2.4.0 | 2026-04-26 | Full TypeScript migration, async i18n JSON chunking |
