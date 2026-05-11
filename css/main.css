@@ -370,16 +370,9 @@
 
 /* --- Project Hero (Video/Image) --- */
 .project-deep-dive .project-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 30px 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 100;
-  mix-blend-mode: difference;
+  padding: 0;
+  mix-blend-mode: normal;
+  z-index: 9999;
 }
 
 .back-link {
@@ -1689,18 +1682,6 @@ pre {
   }
 }
 
-/* === MOBILE ANPASSUNG Deep Dive Nav === */
-@media (max-width: 1100px) {
-  .hamburger span.active:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 6px);
-  }
-  .hamburger span.active:nth-child(2) {
-    opacity: 0;
-  }
-  .hamburger span.active:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -6px);
-  }
-}
 
 /* =========================================
    PORTFOLIO META CASE STUDY (Specifics)
@@ -1903,102 +1884,197 @@ pre {
   }
 }
 
-/* =========================================
-   PROJECT NAV — clean mobile-first
-   ========================================= */
+/* ============================================================
+   PROJECT NAV — complete rewrite
+   ============================================================ */
 
+/* Container fills the 80px bar height */
 .project-nav .nav-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  height: 100%;
   width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 30px;
 }
 
-/* Desktop: links inline in center */
+/* Back link — reset uppercase/tracking from global .back-link */
+.project-nav .back-link {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.project-nav .back-link:hover {
+  color: #fff;
+}
+
+/* Center section links (desktop) */
 .project-nav .nav-content-wrapper {
   display: flex;
   align-items: center;
-  flex: 1;
   justify-content: center;
+  flex: 1;
+  padding: 0 20px;
 }
 
 .project-nav .internal-links {
   display: flex;
-  gap: 28px;
+  gap: 30px;
   align-items: center;
 }
 
-/* Desktop: controls bar (lang + hamburger) hidden */
-.mobile-header-controls {
-  display: none;
+.project-nav .internal-links a {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  position: relative;
+  padding: 4px 0;
+  transition: color 0.2s ease;
 }
 
-/* ── Mobile overlay nav (≤ 1100px) ── */
-@media (max-width: 1100px) {
-  /* Show right-side controls */
-  .mobile-header-controls {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    position: relative;
-    z-index: 10001;
-  }
+.project-nav .internal-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+}
 
-  /* Hamburger gets flex here (default is display:none from components.css) */
+.project-nav .internal-links a:hover {
+  color: #fff;
+}
+
+.project-nav .internal-links a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Right-side controls — lang + hamburger */
+.project-nav .mobile-header-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10000;
+}
+
+/* Override global 992px rule that adds margin-top / width:100% to lang-btn */
+.project-nav .lang-btn {
+  margin: 0;
+  width: auto;
+}
+
+/* Hamburger — hidden on desktop */
+.project-nav .hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+  background: none;
+  border: none;
+  flex-shrink: 0;
+}
+
+.project-nav .hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* X animation — JS adds .active to each span */
+.project-nav .hamburger span.active:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.project-nav .hamburger span.active:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.project-nav .hamburger span.active:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* ── Mobile overlay (≤ 1100px) ── */
+@media (max-width: 1100px) {
+
+  /* Reveal hamburger */
   .project-nav .hamburger {
     display: flex;
   }
 
-  /* Full-screen overlay — invisible by default */
+  /* Links become full-screen overlay — invisible by default */
   .project-nav .nav-content-wrapper {
     position: fixed;
     inset: 0;
-    z-index: 10000;
+    z-index: 9999;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background: rgba(6, 6, 6, 0.97);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transform: translateY(-10px);
-    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    padding: 0;
+    flex: none;
   }
 
-  /* Overlay open */
   .project-nav .nav-content-wrapper.active {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-    transform: translateY(0);
   }
 
-  /* Links stacked, large, easy to tap */
   .project-nav .internal-links {
     flex-direction: column;
-    gap: 40px;
-    text-align: center;
+    gap: 0;
+    align-items: center;
+    width: 100%;
   }
 
   .project-nav .internal-links a {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.8);
-    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.65);
+    letter-spacing: 0.3px;
+    padding: 18px 60px;
     display: block;
-    padding: 6px 20px;
+    text-align: center;
     transition: color 0.2s ease;
   }
 
   .project-nav .internal-links a:hover,
   .project-nav .internal-links a:active {
-    color: var(--primary-color);
+    color: #fff;
   }
 
-  /* No underline swipe animation inside overlay */
   .project-nav .internal-links a::after {
     display: none;
   }
