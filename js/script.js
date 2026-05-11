@@ -59,6 +59,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     .forEach((s) => s.classList.remove("active"));
             }
         });
+        // Tap on the dark overlay background (not a child) closes the menu
+        projectNavLinks.addEventListener("click", (e) => {
+            if (e.target === projectNavLinks) {
+                projectHamburger.classList.remove("active");
+                projectNavLinks.classList.remove("active");
+                projectHamburger
+                    .querySelectorAll("span")
+                    .forEach((s) => s.classList.remove("active"));
+            }
+        });
     }
     /* ==========================================================================
        2. SMOOTH SCROLLING ENGINE

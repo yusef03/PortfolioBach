@@ -1903,6 +1903,10 @@ pre {
   }
 }
 
+/* =========================================
+   PROJECT NAV — clean mobile-first
+   ========================================= */
+
 .project-nav .nav-container {
   display: flex;
   justify-content: space-between;
@@ -1910,89 +1914,69 @@ pre {
   width: 100%;
 }
 
+/* Desktop: links inline in center */
 .project-nav .nav-content-wrapper {
   display: flex;
   align-items: center;
-  gap: 40px;
-  flex-grow: 1;
+  flex: 1;
   justify-content: center;
 }
 
 .project-nav .internal-links {
   display: flex;
-  gap: 30px;
+  gap: 28px;
   align-items: center;
 }
 
-@media (max-width: 1100px) {
-  .project-nav .nav-content-wrapper {
-    display: none;
-  }
-  .project-nav .nav-content-wrapper.active {
-    display: flex;
-  }
-}
-
-.cv-repo-btn-wrapper {
-  max-width: 300px;
-  margin: 0 auto;
-}
-/* ==========================================================================
-    PROJECT NAV 
-   ============================== */
-
-.project-nav .nav-content-wrapper {
-  display: flex !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
-  position: static !important;
-  background: transparent !important;
-  width: auto !important;
-  height: auto !important;
-  flex-direction: row !important;
-  gap: 30px;
-}
-
+/* Desktop: controls bar (lang + hamburger) hidden */
 .mobile-header-controls {
-  display: none !important;
+  display: none;
 }
 
+/* ── Mobile overlay nav (≤ 1100px) ── */
 @media (max-width: 1100px) {
+  /* Show right-side controls */
   .mobile-header-controls {
-    display: flex !important;
+    display: flex;
+    align-items: center;
+    gap: 14px;
     position: relative;
     z-index: 10001;
   }
 
+  /* Hamburger gets flex here (default is display:none from components.css) */
+  .project-nav .hamburger {
+    display: flex;
+  }
+
+  /* Full-screen overlay — invisible by default */
   .project-nav .nav-content-wrapper {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100vh !important;
-
-    background-color: rgba(5, 5, 5, 0.98) !important;
-    backdrop-filter: blur(15px);
-
-    flex-direction: column !important;
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    opacity: 0 !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-
-    transition: all 0.3s ease-in-out;
-    z-index: 10000;
+    background: rgba(6, 6, 6, 0.97);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
   }
 
+  /* Overlay open */
   .project-nav .nav-content-wrapper.active {
-    opacity: 1 !important;
-    visibility: visible !important;
-    pointer-events: auto !important;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
   }
 
+  /* Links stacked, large, easy to tap */
   .project-nav .internal-links {
     flex-direction: column;
     gap: 40px;
@@ -2000,14 +1984,29 @@ pre {
   }
 
   .project-nav .internal-links a {
-    font-size: 2rem !important;
-    color: white !important;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 0.5px;
     display: block;
+    padding: 6px 20px;
+    transition: color 0.2s ease;
   }
 
-  .nav-right {
-    display: none !important;
+  .project-nav .internal-links a:hover,
+  .project-nav .internal-links a:active {
+    color: var(--primary-color);
   }
+
+  /* No underline swipe animation inside overlay */
+  .project-nav .internal-links a::after {
+    display: none;
+  }
+}
+
+.cv-repo-btn-wrapper {
+  max-width: 300px;
+  margin: 0 auto;
 }
 
 /* =========================================
