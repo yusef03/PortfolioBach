@@ -8,6 +8,13 @@ body.i18n-ready {
   visibility: visible;
 }
 
+/* Custom elements default to display:inline, causing phantom whitespace
+   below the footer and above the header. Force block context. */
+app-header,
+app-footer {
+  display: block;
+}
+
 /* === GLOBAL MOBILE FIXES === */
 /* Prevents iOS Safari double tap hover-click bug and input zoom */
 a, button, input, textarea, .nav-links a, .cta-button, .cta-button-outline {

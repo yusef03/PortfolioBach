@@ -264,6 +264,18 @@
   padding-top: 120px;
 }
 
+#about {
+  padding: 80px 0;
+}
+
+#contact {
+  padding-bottom: 80px;
+}
+
+#projects {
+  padding-bottom: 40px;
+}
+
 /* --- CTA & Contact --- */
 .cta-section {
   background-color: var(--dark-bg);
@@ -1346,7 +1358,7 @@
 .archive-cta {
   text-align: center;
   margin-top: 80px;
-  margin-bottom: 160px;
+  margin-bottom: 0;
   padding: 50px 20px;
   background: radial-gradient(
     circle at center,
