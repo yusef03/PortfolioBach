@@ -217,7 +217,7 @@ header {
   font-weight: 600;
   font-size: 0.85rem;
   transition: all 0.3s;
-  display: inline-block; /
+  display: inline-block;
 }
 
 .nav-download-btn:hover {

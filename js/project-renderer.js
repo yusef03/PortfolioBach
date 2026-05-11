@@ -30,11 +30,11 @@ function initProjectRender() {
     const heroItem = projectsData.find((p) => p.id === HERO_PROJECT_ID);
     const archiveItems = projectsData.filter((p) => p.id !== HERO_PROJECT_ID);
     // 2. Render Index Page (Hero)
-    if (heroContainer && heroItem) {
+    if (heroContainer && heroItem && heroContainer.children.length === 0) {
         heroContainer.innerHTML = renderHeroTemplate(heroItem);
     }
     // 3. Render Archive Page (Grid)
-    if (archiveContainer) {
+    if (archiveContainer && archiveContainer.children.length === 0) {
         let gridHTML = "";
         // KONTEXT-CHECK: Befinden wir uns in einem Unterordner?
         // Wichtig für korrekte Asset-Verlinkung (../ Präfix Logik)
@@ -73,7 +73,10 @@ function renderHeroTemplate(p) {
     <div class="project-info reveal">
         <div class="hero-project-layout">
             <div class="hero-image-wrapper">
-                 <img src="${p.image}" alt="Project Hero" class="hero-project-img" loading="lazy">
+                 <picture>
+                     <source srcset="${p.image.replace(/\.(png|jpg|jpeg)$/, '.webp')}" type="image/webp">
+                     <img src="${p.image}" alt="Project Hero" class="hero-project-img" loading="lazy">
+                 </picture>
             </div>
             <div class="hero-text-wrapper">
                 <h3>${p.titleKey}</h3>
@@ -97,7 +100,10 @@ function renderArchiveTemplate(p) {
     return `
     <div class="archive-card reveal">
         <div class="archive-img-container">
-            <img src="${p.image}" alt="Project Preview" loading="lazy">
+            <picture>
+                <source srcset="${p.image.replace(/\.(png|jpg|jpeg)$/, '.webp')}" type="image/webp">
+                <img src="${p.image}" alt="Project Preview" loading="lazy">
+            </picture>
             <div class="overlay">
                 <a href="${relativeLink}" class="view-btn">View Case</a>
             </div>

@@ -1,16 +1,22 @@
 import os
 import json
-import urllib.request
-from fastapi import FastAPI, HTTPException
+import httpx
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
 
+limiter = Limiter(key_func=get_remote_address)
 app = FastAPI(title="Ask Yusef API", version="1.0")
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
-# CORS-Config (Erlaubt Anfragen von jedem Origin – Für Produktion auf github.io/deineDomain einschränken!)
+# CORS-Config (Eingeschränkt auf Produktion und Localhost)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], 
+    allow_origins=["https://yusefbach.de", "http://localhost", "http://127.0.0.1"], 
     allow_credentials=True,
     allow_methods=["POST", "OPTIONS"],
     allow_headers=["*"],
@@ -18,7 +24,6 @@ app.add_middleware(
 
 # Lese yusef_brain.md als System-Prompt ein
 def load_system_prompt():
-    # api/index.py liegt in /api, yusef_brain.md im Root.
     brain_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'yusef_brain.md')
     try:
         with open(brain_path, 'r', encoding='utf-8') as file:
@@ -32,7 +37,8 @@ class ChatRequest(BaseModel):
     lang: str = "de"
 
 @app.post("/api/chat")
-async def chat_endpoint(request: ChatRequest):
+@limiter.limit("10/minute")
+async def chat_endpoint(request: Request, body: ChatRequest):
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
          raise HTTPException(status_code=500, detail="Gemini API Key missing in Environment Variables")
@@ -42,51 +48,50 @@ async def chat_endpoint(request: ChatRequest):
         lang_instruction = (
             "CRITICAL LANGUAGE RULE: The user has their browser set to English. You MUST respond in English only. "
             "Every single word of your reply must be in English.\n\n"
-            if request.lang == "en"
+            if body.lang == "en"
             else "CRITICAL LANGUAGE RULE: The user has their browser set to German. You MUST respond in German only. "
             "Every single word of your reply must be in German.\n\n"
         )
         system_instruction = lang_instruction + base_prompt
         
-        def call_gemini(model_name):
+        async def call_gemini(model_name):
             url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
             payload = {
                 "systemInstruction": {"parts": [{"text": system_instruction}]},
-                "contents": [{"parts": [{"text": request.query}]}]
+                "contents": [{"parts": [{"text": body.query}]}]
             }
-            data = json.dumps(payload).encode('utf-8')
-            req = urllib.request.Request(url, data=data, headers={'Content-Type': 'application/json'})
-            with urllib.request.urlopen(req) as response:
-                return json.loads(response.read().decode('utf-8'))
+            async with httpx.AsyncClient(timeout=30.0) as client:
+                response = await client.post(url, json=payload)
+                response.raise_for_status()
+                return response.json()
         
-        # Zero-Dependency REST-Call with Failover Architecture (Modern 2.x/3.x Stack)
         try:
-            response_data = call_gemini('gemini-2.5-flash')
-        except urllib.error.HTTPError as e:
-            if e.code in [503, 404]: 
-                print(f"Model Overloaded ({e.code}), failing over to gemini-2.5-flash-lite...")
+            response_data = await call_gemini('gemini-2.5-flash')
+        except httpx.HTTPStatusError as e:
+            if e.response.status_code in [503, 404]: 
+                print(f"Model Overloaded ({e.response.status_code}), failing over to gemini-2.5-flash-lite...")
                 try:
-                    response_data = call_gemini('gemini-2.5-flash-lite')
-                except urllib.error.HTTPError as e2:
-                    if e2.code == 429: raise e2
-                    print(f"Model Overloaded again ({e2.code}), failing over to gemini-2.0-flash...")
+                    response_data = await call_gemini('gemini-2.5-flash-lite')
+                except httpx.HTTPStatusError as e2:
+                    if e2.response.status_code == 429: raise e2
+                    print(f"Model Overloaded again ({e2.response.status_code}), failing over to gemini-2.0-flash...")
                     try:
-                        response_data = call_gemini('gemini-2.0-flash')
-                    except urllib.error.HTTPError as e3:
-                        if e3.code == 429: raise e3
-                        print(f"Last lifeline ({e3.code}), falling back to gemini-2.0-flash-lite...")
-                        response_data = call_gemini('gemini-2.0-flash-lite')
+                        response_data = await call_gemini('gemini-2.0-flash')
+                    except httpx.HTTPStatusError as e3:
+                        if e3.response.status_code == 429: raise e3
+                        print(f"Last lifeline ({e3.response.status_code}), falling back to gemini-2.0-flash-lite...")
+                        response_data = await call_gemini('gemini-2.0-flash-lite')
             else:
                 raise e
 
         text_answer = response_data['candidates'][0]['content']['parts'][0]['text']
         return {"answer": text_answer}
 
-    except urllib.error.HTTPError as e:
-        error_info = e.read().decode('utf-8')
-        print(f"Gemini Rate Limit / API Error: {e.code}")
-        is_en = getattr(request, 'lang', 'de') == 'en'
-        if e.code == 429:
+    except httpx.HTTPStatusError as e:
+        error_info = e.response.text
+        print(f"Gemini Rate Limit / API Error: {e.response.status_code} - {error_info}")
+        is_en = getattr(body, 'lang', 'de') == 'en'
+        if e.response.status_code == 429:
             return {"answer": (
                 "My free Google API quota is exhausted for now. Please reach out to Yusef directly via LinkedIn or the contact form — he usually replies quickly!"
                 if is_en else
@@ -99,7 +104,7 @@ async def chat_endpoint(request: ChatRequest):
         )}
     except Exception as e:
         print(f"API System Error: {e}")
-        is_en = getattr(request, 'lang', 'de') == 'en'
+        is_en = getattr(body, 'lang', 'de') == 'en'
         return {"answer": (
             "There was a problem starting up my systems. Please use the regular contact form for now!"
             if is_en else

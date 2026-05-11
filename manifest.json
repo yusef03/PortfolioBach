@@ -1,0 +1,21 @@
+{
+  "name": "Yusef Bach | Portfolio",
+  "short_name": "Yusef Bach",
+  "description": "Portfolio von Yusef Bach, AI Developer & Software Engineering Student",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#9d00ff",
+  "icons": [
+    {
+      "src": "images/ui/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/ui/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

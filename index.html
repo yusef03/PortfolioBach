@@ -8,15 +8,29 @@
     <title>Yusef Bach | Portfolio</title>
     <meta
       name="description"
-      content="Portfolio von Yusef Bach, Informatik-Student (4. Semester) an der HS Hannover. Tech-Enthusiast mit Fokus auf Java, IT-Security und saubere Architektur. Aktuell auf der Suche nach einer Werkstudentenstelle."
+      content="Portfolio von Yusef Bach, Informatik-Student an der HS Hannover. Tech-Enthusiast mit Fokus auf Java, IT-Security und saubere Architektur. Aktuell auf der Suche nach einer Werkstudentenstelle."
     />
     <meta
       name="keywords"
       content="Yusef Bach, Informatik Student, Werkstudent Hannover, Java, IT-Security, Tech-Enthusiast, Portfolio, Phishing Defender"
     />
     <meta name="author" content="Yusef Bach" />
+    <link rel="manifest" href="manifest.json" />
 
     <link rel="icon" type="image/png" href="images/ui/logo.png" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Yusef Bach",
+      "jobTitle": "AI Developer & Software Engineering Student",
+      "url": "https://yusefbach.de",
+      "sameAs": [
+        "https://github.com/yusef03"
+      ]
+    }
+    </script>
 
     <meta property="og:title" content="Yusef Bach - Portfolio" />
     <meta
@@ -82,19 +96,22 @@
           </div>
 
           <div class="hero-image">
-            <img
-              src="../images/ui/profile.jpg"
-              alt="Yusef Bach"
-              style="
-                width: 100%;
-                max-width: 380px;
-                height: auto;
-                margin: 0 auto;
-                display: block;
-                border-radius: 20px;
-                box-shadow: 0 20px 40px rgba(227, 0, 0, 0.2);
-              "
-            />
+            <picture>
+              <source srcset="images/ui/hero-profile.webp" type="image/webp">
+              <img
+                src="images/ui/hero-profile.jpg"
+                alt="Yusef Bach"
+                style="
+                  width: 100%;
+                  max-width: 450px;
+                  height: auto;
+                  margin: 0 auto;
+                  display: block;
+                  border-radius: 20px;
+                  box-shadow: 0 20px 40px rgba(157, 0, 255, 0.3);
+                "
+              />
+            </picture>
           </div>
         </div>
       </div>
@@ -351,7 +368,31 @@
           Meine <span>Projekte</span>
         </h2>
 
-        <div id="hero-project-container"></div>
+        <div id="hero-project-container">
+          <!-- PRERENDER_HERO_START -->
+
+    <div class="project-info reveal">
+        <div class="hero-project-layout">
+            <div class="hero-image-wrapper">
+                 <picture>
+                     <source srcset="images/projects/studynexus/preview.svg" type="image/webp">
+                     <img src="images/projects/studynexus/preview.svg" alt="Project Hero" class="hero-project-img" loading="lazy">
+                 </picture>
+            </div>
+            <div class="hero-text-wrapper">
+                <h3>StudyNexus</h3>
+                <div class="tech-stack-row"><span class="tech-badge">Next.js 14</span><span class="tech-badge">FastAPI</span><span class="tech-badge">PostgreSQL</span><span class="tech-badge">Docker</span><span class="tech-badge">Redis</span><span class="tech-badge">TypeScript</span><span class="tech-badge">Python</span></div>
+                <p class="project-description" data-i18n="sn_desc"></p>
+                <ul class="project-features"><li data-i18n="sn_feat_1"></li><li data-i18n="sn_feat_2"></li><li data-i18n="sn_feat_3"></li></ul>
+                <div class="project-buttons">
+                    <a href="projects/studynexus.html" class="cta-button" data-i18n="sn_btn">View</a>
+                    <a href="https://github.com/yusef03/studynexus" target="_blank" class="cta-button cta-button-outline" data-i18n="sn_code_btn">Code</a>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- PRERENDER_HERO_END -->
+        </div>
 
         <div class="archive-cta reveal">
           <p data-i18n="archive_cta_text">
@@ -390,7 +431,7 @@
             </p>
 
             <p data-i18n="about_text_1">
-              Ich bin Yusef, B.Sc. Informatik-Student (4. Semester) und aktuell bei der HDI Group
+              Ich bin Yusef, B.Sc. Informatik-Student und aktuell bei der HDI Group
               als AI Developer Werkstudent tätig. Mein Leitsatz ist simpel: Ich möchte Systeme nicht
               nur anwenden, sondern ihr Fundament begreifen. Es reicht mir nicht, APIs zusammenzukleben –
               ich entwerfe saubere Use-Cases und Architekturen, die im Enterprise-Umfeld performen.
@@ -412,8 +453,8 @@
 
             <div class="about-stats">
               <div class="stat-item">
-                <h3>4.</h3>
-                <p data-i18n="stat_semester">Semester (SoSe 26)</p>
+                <h3 id="semester-number">4.</h3>
+                <p data-i18n="stat_semester">Semester</p>
               </div>
               <div class="stat-item">
                 <h3>100%</h3>
@@ -441,52 +482,42 @@
           </div>
 
           <div class="about-image reveal">
-            <img
-              src="../images/ui/profile.jpg"
-              alt="Yusef bei der Arbeit"
-              loading="lazy"
-              style="
-                border-radius: 20px;
-                filter: grayscale(20%) contrast(110%);
-                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-              "
-            />
+            <picture>
+              <source srcset="images/ui/about-profile.webp" type="image/webp">
+              <img
+                src="images/ui/about-profile.jpg"
+                alt="Yusef bei der Arbeit"
+                loading="lazy"
+                style="
+                  border-radius: 20px;
+                  filter: grayscale(20%) contrast(110%);
+                  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+                "
+              />
+            </picture>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="cta-section">
-      <div class="container">
-        <div class="cta-content">
-          <h2 data-i18n="cta_title">Kontakt</h2>
-          <p data-i18n="cta_text">
-            Wenn Sie Fragen zu meinen Projekten haben oder mit mir in Austausch
-            treten möchten, können Sie mich jederzeit kontaktieren.
-          </p>
-          <a href="#contact" class="cta-button" data-i18n="cta_btn"
-            >Kontakt aufnehmen</a
-          >
-        </div>
-      </div>
-    </section>
+
 
     <section class="contact section" id="contact">
       <div class="container">
         <h2 class="section-title" data-i18n="contact_title">
-          Kontaktieren <span>Sie mich</span>
+          Kontaktiere <span>mich</span>
         </h2>
         <p class="section-subtitle" data-i18n="contact_subtitle">
-          Ich freue mich darauf, von Ihnen zu hören und Ihre Fragen oder
+          Ich freue mich darauf, von dir zu hören und deine Fragen oder
           IT-Themen zu besprechen.
         </p>
 
         <div class="contact-grid reveal">
           <div class="contact-info">
-            <h3 data-i18n="contact_header">Lassen Sie uns zusammenarbeiten</h3>
+            <h3 data-i18n="contact_header">Lass uns zusammenarbeiten</h3>
             <p data-i18n="contact_text">
-              Ich stehe Ihnen für Fragen zu meinem Werdegang oder meinen
-              Projekten jederzeit zur Verfügung. Sie können mich über das
+              Ich stehe dir für Fragen zu meinem Werdegang oder meinen
+              Projekten jederzeit zur Verfügung. Du kannst mich über das
               Formular oder direkt per E-Mail erreichen.
             </p>
             <div class="contact-details">
@@ -534,7 +565,7 @@
                 id="name"
                 name="name"
                 class="form-control"
-                placeholder="Ihr Name"
+                placeholder="Dein Name"
                 data-i18n-placeholder="form_name_placeholder"
                 required
               />
@@ -547,7 +578,7 @@
                 id="email"
                 name="email"
                 class="form-control"
-                placeholder="Ihre E-Mail-Adresse"
+                placeholder="Deine E-Mail-Adresse"
                 data-i18n-placeholder="form_email_placeholder"
                 required
               />
@@ -573,7 +604,7 @@
                 id="message"
                 name="message"
                 class="form-control"
-                placeholder="Ihre Nachricht"
+                placeholder="Deine Nachricht"
                 data-i18n-placeholder="form_message_placeholder"
                 required
               ></textarea>
@@ -602,5 +633,11 @@
 
     <script src="js/bot.js"></script>
     <script src="js/script.js"></script>
+
+    <!-- SEO: Altes Profilbild für Google Image Search behalten -->
+    <picture style="position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none;">
+      <source srcset="images/ui/profile.webp" type="image/webp">
+      <img src="images/ui/profile.jpg" alt="Yusef Bach" />
+    </picture>
   </body>
 </html>

@@ -1,6 +1,5 @@
 # Node
 node_modules/
-package-lock.json
 
 # Cache
 .cache/
@@ -9,3 +8,12 @@ dist/
 # OS
 .DS_Store
 Thumbs.db
+
+# Private / Internal — niemals auf GitHub pushen
+ANTIGRAVITY.md
+yusef_brain.md
+internal-docs/
+
+# IDE
+.idea/
+*.iml

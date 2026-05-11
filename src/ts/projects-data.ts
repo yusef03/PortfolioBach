@@ -17,7 +17,7 @@
  * Definiert, welches Projekt als "Hero"-Section auf der Startseite
  * prominent dargestellt wird.
  */
-const HERO_PROJECT_ID: string = "portfolio-meta";
+const HERO_PROJECT_ID: string = "studynexus";
 
 
 

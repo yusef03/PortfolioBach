@@ -7,6 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
+    "build": "node_modules/.bin/tsc && node scripts/prerender.js && mv js/sw.js ./sw.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

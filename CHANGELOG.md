@@ -5,6 +5,86 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [2.7.0] - 2026-05-11 (The PWA, SEO & Performance Hardening Update)
+
+Umfassendes technisches Hardening-Update. Sicherheitslücken geschlossen, Build-Pipeline modernisiert, Portfolio offline-fähig gemacht und SEO grundlegend verbessert.
+
+### ✨ New Features
+
+- **PWA / Service Worker (`sw.js`):** Portfolio ist jetzt als Progressive Web App installierbar. Ein Service Worker mit Stale-While-Revalidate-Strategie cacht alle statischen Assets (HTML, CSS, JS, Bilder). API-Calls werden bewusst nicht gecacht. Generiert via `npm run build` und liegt im Root-Verzeichnis.
+- **`manifest.json`:** PWA-Manifest mit Name, Icons, Themefarbe (`#9d00ff`) und Start-URL. Ermöglicht Installation als App auf Mobilgeräten.
+- **Pre-Rendering für SEO (`scripts/prerender.js`):** Node.js-Script das bei jedem `npm run build` die `projectsData` einliest, Hero- und Archiv-HTML generiert und direkt in `index.html` sowie `archive.html` injiziert. Googlebot sieht jetzt statisches HTML statt leerer Container.
+- **WebP-Bildoptimierung (`scripts/convert_webp.sh`):** Bash-Script konvertiert alle `.jpg`/`.png` via `ffmpeg` nach `.webp` (Qualität 80). 21 WebP-Dateien generiert. Alle Bilder-Tags in `index.html`, `project-renderer.ts` und Archiv auf `<picture>`-Tag mit WebP-Source und JPEG/PNG-Fallback umgestellt.
+- **JSON-LD Structured Data:** `Person`-Schema in `<head>` von `index.html` — Google Rich Results ready.
+
+### 🔒 Security Fixes
+
+- **CORS geschlossen:** `api/index.py` erlaubt nur noch `https://yusefbach.de`, `http://localhost`, `http://127.0.0.1`. Vorher war `allow_origins=["*"]` — jede Website konnte den Gemini-Quota aufbrauchen.
+- **Rate Limiting:** `slowapi` integriert (10 Requests/Minute pro IP) auf dem `/api/chat` Endpunkt.
+- **Async HTTP:** `urllib.request` (synchron-blockierend) durch `httpx` ersetzt — kein Thread-Blocking mehr im async FastAPI-Context.
+
+### 🔄 Updated
+
+- **StudyNexus als Hero-Projekt:** `HERO_PROJECT_ID` von `portfolio-meta` auf `studynexus` geändert — Flaggschiff-Projekt jetzt prominent auf der Startseite.
+- **Build-Script:** `package.json` `"build"` führt jetzt `tsc && prerender.js && mv sw.js` aus — vollständige Pipeline in einem Befehl.
+- **Typing-Animation:** Neue Wörter: `"AI Systems Engineer"`, `"Full-Stack Developer"`, `"Enterprise AI Developer"` — passend zum AI-Branding.
+- **Semester-Anzeige:** Dynamisch berechnet aus Startdatum `2024-09-01` in `script.ts`. Kein manuelles Update mehr nötig.
+- **Contact-Section:** Einheitliche „Du"-Ansprache in `index.html` und `lang/de.json`. Formelles „Sie" vollständig entfernt.
+- **Redundante CTA-Section entfernt:** Die doppelte Kontakt-Sektion zwischen About und Contact aus `index.html` gelöscht.
+- **`requirements.txt`:** `slowapi` und `httpx` als Dependencies eingetragen.
+
+### 🐛 Bug Fixes
+
+- **Semester-Anzeige Design:** `<div class="stat-number">` zurück zu `<h3>` — vorheriges Refactoring hatte das visuelle Styling der Stats-Box gebrochen.
+- **StudyNexus Case Study:** v0.5.0 Update — 2 neue Kapitel (BIN Prüfungsordnung, Admin Panel), 22+ ADRs, 17 Migrationen, 122 Tests, 6-Box Stats-Grid.
+
+### 🔧 Infrastructure
+
+- **Git-Hygiene:** `ANTIGRAVITY.md`, `yusef_brain.md`, `internal-docs/`, `.idea/`, `*.iml` aus Git-Tracking entfernt (`git rm --cached`). Dateien bleiben lokal, sind aber nicht mehr auf GitHub sichtbar.
+- **`ANALYSE.md` (internal-docs):** Erledigte Punkte aus Phase 1 und Phase 2 entfernt. Datei spiegelt aktuellen Stand wider.
+
+---
+
+## [2.6.0] - 2026-05-11 (The StudyNexus Deep-Dive Update)
+
+
+Umfassendes Update der StudyNexus Case Study auf Sprint-5-Stand. Zwei neue Kapitel, aktualisierte Statistiken, neue Sicherheits- und Admin-Visualisierungen. Außerdem: private Analysedokumentation, .gitignore-Bereinigung und CSS-Bugfix.
+
+### ✨ New Features
+
+- **studynexus.html — Chapter V: BIN Prüfungsordnung (NEU):** Vollständige Darstellung der BIN-PO-Integration aus Sprint 4. PDF-Quellen-Visualisierung (3 Dokumente), Prüfungsart-Farbsystem (PX/EA/R/BAA+Ko), §6-Voraussetzungsregeln-Tabelle, MilestoneWidget-Mockup mit Live-Milestone-Chips.
+- **studynexus.html — Chapter VII: Admin Panel (NEU):** Sprint-5-Delivery-Callout (2 Tage / 14 Seiten / 35+ Endpunkte / 122 Tests / 0 TS-Fehler), 6 Admin-Feature-Karten, Two-Layer-Auth-Diagram, Test-Coverage-Terminal (alle 12 Testdateien mit Zählern, "122 passed in 2.34s").
+- **Navigation:** Neue Anker `#bin-po` und `#admin` in der Projekt-Nav.
+- **ADR-Sektion:** 2 neue ADR-Karten (ADR-019 Redis-Session, ADR-021 is_admin im JWT).
+- **Security-Kapitel:** Neue Karte "Two-Layer Admin Auth" mit visuellem Layer-1/Layer-2-Diagram.
+- **Feature-Kapitel:** 4 neue Feature-Cards (MilestoneWidget, PO-Übersicht, Admin Panel Preview, plus erweiterte Studienplan-Karte).
+
+### 🔄 Updated
+
+- **Hero Badge:** "v0.3.7 — In aktiver Entwicklung" → "Sprint 5 abgeschlossen · v0.5.0"
+- **Dev Banner:** Sprint-3.7-Text → Sprint-5-Abschluss-Status mit Testmetriken
+- **Stats Grid:** 4 Boxes → 6 Boxes (200+ Files / 17 Migrations / 22+ ADRs / 122 Tests / 37 BIN Module / 5 Docker)
+- **ADR-Subtitle:** "14 ADRs" → "22+ ADRs"
+- **Migration Timeline:** 9 Einträge → 17 Einträge (Sprint 4: 012–014, Sprint 5: 015–017)
+- **Database Subtitle:** "9 Modelle" → "12+ Tabellen. 17 Alembic-Migrationen."
+- **Roadmap:** Sprint 4+5 auf ✓ Abgeschlossen gesetzt, Sprint 6 als "In Planung" ergänzt, v1.0 als finales Ziel beibehalten
+- **Kapitel-Nummerierung:** Security → VI, Database → VIII, Roadmap → IX
+- **lang/de.json + lang/en.json:** Alle neuen i18n-Keys + aktualisierte Roadmap-Keys
+- **yusef_brain.md:** StudyNexus-Sektion vollständig auf v0.5.0 aktualisiert (Sprint 4+5, alle neuen Features, 22+ ADRs, 17 Migrations, 122 Tests)
+
+### 🐛 Bug Fixes
+
+- **CSS Syntax Error (components.css:220):** Stray `/` nach `display: inline-block;` entfernt (unclosed comment start).
+- **Profil-Bilder:** `hero-profile.jpg` und `about-profile.jpg` sind jetzt zwei unterschiedliche Bilder (vorher ein geteiltes Bild). HTML bereits korrekt referenziert.
+
+### 🔒 Privacy & Infrastructure
+
+- **.gitignore:** `ANTIGRAVITY.md`, `yusef_brain.md`, `internal-docs/`, `.idea/`, `*.iml` zur .gitignore hinzugefügt.
+- **internal-docs/ANALYSE.md:** Private Gesamt-Analyse des Portfolios erstellt (13 Abschnitte, niemals auf GitHub).
+- **internal-docs/STUDYNEXUS_UPDATE_2026-05-11.md:** Lückenlose Dokumentation dieser Update-Session.
+
+---
+
 ## [2.5.0] - 2026-05-01 (The AI & Mobile Reliability Update)
 
 Umfassendes Stabilitäts- und Intelligence-Upgrade. Mobilnavigation vollständig neu implementiert, Bot-Intelligenz erweitert und das Wissenssystem des AI-Twins auf das aktuelle Projekt-Portfolio aktualisiert.

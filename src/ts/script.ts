@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const typingElement = document.querySelector(".typing-text");
   if (typingElement) {
-    const words = ["Software Engineer", "Data Architect", "System Integrator"];
+    const words = ["AI Systems Engineer", "Full-Stack Developer", "Enterprise AI Developer"];
     let wordIndex = 0,
       charIndex = 0,
       isDeleting = false;
@@ -295,4 +295,30 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 400); // Sync mit CSS-Transition-Dauer
     });
   }
+
+/* ==========================================================================
+     8. DYNAMIC SEMESTER STAT
+     ========================================================================== */
+  const semesterStat = document.getElementById("semester-number");
+  if (semesterStat) {
+    const startDate = new Date('2024-09-01');
+    const now = new Date();
+    const monthsElapsed = (now.getFullYear() - startDate.getFullYear()) * 12 + now.getMonth() - startDate.getMonth();
+    const semester = Math.ceil(monthsElapsed / 6) || 1;
+    semesterStat.textContent = semester.toString() + ".";
+  }
+
+/* ==========================================================================
+     9. SERVICE WORKER REGISTRATION
+     ========================================================================== */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js').then((registration) => {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      }).catch((err) => {
+        console.log('ServiceWorker registration failed: ', err);
+      });
+    });
+  }
+
 });
