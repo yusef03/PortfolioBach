@@ -1715,7 +1715,6 @@ pre {
 }
 
 @media (max-width: 576px) {
-  .service-card,
   .contact-form,
   .project-showcase {
     padding: 30px 20px;

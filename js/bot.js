@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const sendBtn = document.getElementById("rag-send-btn");
     const inputField = document.getElementById("rag-chat-input");
     const messagesContainer = document.getElementById("rag-chat-messages");
-    const backendUrl = "https://portfolio-bach-seven.vercel.app/api/chat";
+    const BACKEND_URL = "https://portfolio-bach.vercel.app/api/chat";
     if (!fabBtn)
         return;
     fabBtn.addEventListener("click", () => chatWindow.classList.toggle("hidden"));
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
             inputField.value = "";
             const loadingId = appendMessage("bot", i18n.thinking, true);
             try {
-                const response = yield fetch(backendUrl, {
+                const response = yield fetch(BACKEND_URL, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ query: userText, lang: currentLang })
@@ -109,21 +109,35 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-    // DOM Helper: Append Message
+    // DOM Helper: Append Message (XSS-safe — kein innerHTML mit externem Content)
     function appendMessage(sender, text, isLoading = false) {
         const msgDiv = document.createElement("div");
         const id = "msg-" + Date.now();
         msgDiv.id = id;
         msgDiv.className = `msg ${sender}-msg ${isLoading ? "loading-blink" : ""}`;
-        // Minimales Markdown-Parsing (für Sterne und Umbrüche der AI)
-        let parsedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-        parsedText = parsedText.replace(/\*/g, '•'); // Listen
-        parsedText = parsedText.replace(/\n/g, '<br>'); // Umbrüche
-        msgDiv.innerHTML = parsedText;
+        renderSafeMarkdown(msgDiv, text);
         messagesContainer.appendChild(msgDiv);
-        // Auto-Scroll nach unten
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
         return id;
+    }
+    // Rendert **bold**, Bullet-Listen und Zeilenumbrüche ohne innerHTML
+    function renderSafeMarkdown(container, text) {
+        const lines = text.split("\n");
+        lines.forEach((line, i) => {
+            if (i > 0) container.appendChild(document.createElement("br"));
+            const segments = line.split(/(\*\*[^*]+\*\*|\*)/g);
+            segments.forEach((seg) => {
+                if (seg.startsWith("**") && seg.endsWith("**")) {
+                    const strong = document.createElement("strong");
+                    strong.textContent = seg.slice(2, -2);
+                    container.appendChild(strong);
+                } else if (seg === "*") {
+                    container.appendChild(document.createTextNode("• "));
+                } else {
+                    container.appendChild(document.createTextNode(seg));
+                }
+            });
+        });
     }
     // DOM Helper: Remove Message
     function removeMessage(id) {

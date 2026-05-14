@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const inputField = document.getElementById("rag-chat-input") as HTMLInputElement;
   const messagesContainer = document.getElementById("rag-chat-messages");
 
-  const backendUrl = "https://portfolio-bach-seven.vercel.app/api/chat";
+  const BACKEND_URL = "https://portfolio-bach.vercel.app/api/chat";
 
   if (!fabBtn) return;
 
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const loadingId = appendMessage("bot", i18n.thinking, true);
 
     try {
-      const response = await fetch(backendUrl, {
+      const response = await fetch(BACKEND_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query: userText, lang: currentLang })
@@ -108,24 +108,39 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // DOM Helper: Append Message
+  // DOM Helper: Append Message (XSS-safe — kein innerHTML mit externem Content)
   function appendMessage(sender: string, text: string, isLoading: boolean = false) {
     const msgDiv = document.createElement("div");
     const id = "msg-" + Date.now();
     msgDiv.id = id;
     msgDiv.className = `msg ${sender}-msg ${isLoading ? "loading-blink" : ""}`;
-    
-    // Minimales Markdown-Parsing (für Sterne und Umbrüche der AI)
-    let parsedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-    parsedText = parsedText.replace(/\*/g, '•'); // Listen
-    parsedText = parsedText.replace(/\n/g, '<br>'); // Umbrüche
 
-    msgDiv.innerHTML = parsedText;
+    renderSafeMarkdown(msgDiv, text);
+
     messagesContainer.appendChild(msgDiv);
-    
-    // Auto-Scroll nach unten
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
     return id;
+  }
+
+  // Rendert **bold**, Bullet-Listen und Zeilenumbrüche ohne innerHTML
+  function renderSafeMarkdown(container: HTMLElement, text: string) {
+    const lines = text.split("\n");
+    lines.forEach((line, i) => {
+      if (i > 0) container.appendChild(document.createElement("br"));
+      // Segmente: **bold** oder normaler Text
+      const segments = line.split(/(\*\*[^*]+\*\*|\*)/g);
+      segments.forEach((seg) => {
+        if (seg.startsWith("**") && seg.endsWith("**")) {
+          const strong = document.createElement("strong");
+          strong.textContent = seg.slice(2, -2);
+          container.appendChild(strong);
+        } else if (seg === "*") {
+          container.appendChild(document.createTextNode("• "));
+        } else {
+          container.appendChild(document.createTextNode(seg));
+        }
+      });
+    });
   }
 
   // DOM Helper: Remove Message

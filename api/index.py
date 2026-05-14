@@ -1,121 +1,111 @@
 import os
-import json
 import httpx
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from slowapi import Limiter, _rate_limit_exceeded_handler
-from slowapi.util import get_remote_address
-from slowapi.errors import RateLimitExceeded
 
-limiter = Limiter(key_func=get_remote_address)
 app = FastAPI(title="Ask Yusef API", version="1.0")
-app.state.limiter = limiter
-app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
-# CORS-Config (Eingeschränkt auf Produktion und Localhost)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://yusefbach.de", "http://localhost", "http://127.0.0.1"], 
+    allow_origins=["https://yusefbach.de", "http://localhost:3000", "http://127.0.0.1:3000"],
     allow_credentials=True,
     allow_methods=["POST", "OPTIONS"],
     allow_headers=["*"],
 )
 
-# Lese yusef_brain.md als System-Prompt ein
-def load_system_prompt():
+
+def load_system_prompt() -> str:
     paths_to_try = [
-        os.path.join(os.path.dirname(os.path.dirname(__file__)), 'yusef_brain.md'),
-        os.path.join(os.getcwd(), 'yusef_brain.md'),
-        os.path.join(os.path.dirname(__file__), 'yusef_brain.md')
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), "yusef_brain.md"),
+        os.path.join(os.getcwd(), "yusef_brain.md"),
+        os.path.join(os.path.dirname(__file__), "yusef_brain.md"),
     ]
-    
     for path in paths_to_try:
         try:
             if os.path.exists(path):
-                with open(path, 'r', encoding='utf-8') as file:
-                    return file.read()
+                with open(path, "r", encoding="utf-8") as f:
+                    return f.read()
         except Exception as e:
             print(f"Error reading {path}: {e}")
-            
-    print("Could not find yusef_brain.md in any of the expected locations.")
-    return "Du bist der virtuelle AI-Assistent von Yusef Bach. Antworte in der Ich-Form."
+    print("WARNING: yusef_brain.md not found — using fallback prompt.")
+    return "Du bist der AI-Twin von Yusef Bach. Antworte in der Ich-Form auf Fragen zu Yusef, seinen Projekten und Skills."
+
 
 class ChatRequest(BaseModel):
     query: str
     lang: str = "de"
 
+
+FALLBACK_CHAIN = [
+    "gemini-2.5-flash",
+    "gemini-2.5-flash-lite",
+    "gemini-2.0-flash",
+    "gemini-2.0-flash-lite",
+]
+
+
 @app.post("/api/chat")
-@limiter.limit("10/minute")
 async def chat_endpoint(request: Request, body: ChatRequest):
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
-         raise HTTPException(status_code=500, detail="Gemini API Key missing in Environment Variables")
+        raise HTTPException(status_code=500, detail="GEMINI_API_KEY not configured")
 
-    try:
-        base_prompt = load_system_prompt()
-        lang_instruction = (
-            "CRITICAL LANGUAGE RULE: The user has their browser set to English. You MUST respond in English only. "
-            "Every single word of your reply must be in English.\n\n"
-            if body.lang == "en"
-            else "CRITICAL LANGUAGE RULE: The user has their browser set to German. You MUST respond in German only. "
-            "Every single word of your reply must be in German.\n\n"
-        )
-        system_instruction = lang_instruction + base_prompt
-        
-        async def call_gemini(model_name):
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
-            payload = {
-                "systemInstruction": {"parts": [{"text": system_instruction}]},
-                "contents": [{"parts": [{"text": body.query}]}]
-            }
-            async with httpx.AsyncClient(timeout=30.0) as client:
-                response = await client.post(url, json=payload)
-                response.raise_for_status()
-                return response.json()
-        
+    lang_prefix = (
+        "CRITICAL LANGUAGE RULE: Respond in English only. Every word must be English.\n\n"
+        if body.lang == "en"
+        else "CRITICAL LANGUAGE RULE: Antworte ausschließlich auf Deutsch. Jedes Wort muss Deutsch sein.\n\n"
+    )
+    system_instruction = lang_prefix + load_system_prompt()
+
+    async def call_gemini(model: str) -> dict:
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
+        payload = {
+            "systemInstruction": {"parts": [{"text": system_instruction}]},
+            "contents": [{"parts": [{"text": body.query}]}],
+        }
+        async with httpx.AsyncClient(timeout=30.0) as client:
+            r = await client.post(url, json=payload)
+            r.raise_for_status()
+            return r.json()
+
+    is_en = body.lang == "en"
+    response_data = None
+    last_status = 500
+
+    for model in FALLBACK_CHAIN:
         try:
-            response_data = await call_gemini('gemini-2.5-flash')
+            response_data = await call_gemini(model)
+            print(f"Responded via {model}")
+            break
         except httpx.HTTPStatusError as e:
-            if e.response.status_code in [503, 404]: 
-                print(f"Model Overloaded ({e.response.status_code}), failing over to gemini-2.5-flash-lite...")
-                try:
-                    response_data = await call_gemini('gemini-2.5-flash-lite')
-                except httpx.HTTPStatusError as e2:
-                    if e2.response.status_code == 429: raise e2
-                    print(f"Model Overloaded again ({e2.response.status_code}), failing over to gemini-2.0-flash...")
-                    try:
-                        response_data = await call_gemini('gemini-2.0-flash')
-                    except httpx.HTTPStatusError as e3:
-                        if e3.response.status_code == 429: raise e3
-                        print(f"Last lifeline ({e3.response.status_code}), falling back to gemini-2.0-flash-lite...")
-                        response_data = await call_gemini('gemini-2.0-flash-lite')
-            else:
-                raise e
+            last_status = e.response.status_code
+            if last_status == 429:
+                break  # quota exhausted — no point retrying other models
+            if last_status not in (503, 404):
+                break  # unexpected error
+            print(f"{model} unavailable ({last_status}), trying next model...")
 
-        text_answer = response_data['candidates'][0]['content']['parts'][0]['text']
-        return {"answer": text_answer}
-
-    except httpx.HTTPStatusError as e:
-        error_info = e.response.text
-        print(f"Gemini Rate Limit / API Error: {e.response.status_code} - {error_info}")
-        is_en = getattr(body, 'lang', 'de') == 'en'
-        if e.response.status_code == 429:
+    if response_data is None:
+        if last_status == 429:
             return {"answer": (
-                "My free Google API quota is exhausted for now. Please reach out to Yusef directly via LinkedIn or the contact form — he usually replies quickly!"
+                "My free Google API quota is exhausted for now. Reach out to Yusef directly via LinkedIn or the contact form!"
                 if is_en else
-                "Puh, meine KI-Leitung glüht heute! Mein kostenloses Google API-Limit ist für diesen Moment ausgeschöpft. Schreib Yusef am besten direkt über LinkedIn oder das Kontaktformular, er antwortet in der Regel sofort!"
+                "Mein kostenloses Google API-Limit ist gerade ausgeschöpft. Schreib Yusef direkt über LinkedIn oder das Kontaktformular!"
             )}
         return {"answer": (
-            "My connection to the Google AI servers hiccuped. Try again in a moment or contact Yusef directly!"
+            "My connection to the AI servers hiccuped. Try again in a moment or contact Yusef directly!"
             if is_en else
-            "Puh, meine Serververbindung zu den Google AI-Servern hat gerade einen Schluckauf. Versuch es einfach gleich nochmal oder kontaktiere Yusef direkt!"
+            "Meine Verbindung zu den AI-Servern hat einen Schluckauf. Versuch es gleich nochmal oder kontaktiere Yusef direkt!"
         )}
-    except Exception as e:
-        print(f"API System Error: {e}")
-        is_en = getattr(body, 'lang', 'de') == 'en'
+
+    try:
+        text_answer = response_data["candidates"][0]["content"]["parts"][0]["text"]
+        return {"answer": text_answer}
+    except (KeyError, IndexError) as e:
+        print(f"Unexpected Gemini response shape: {e} — {response_data}")
         return {"answer": (
-            "There was a problem starting up my systems. Please use the regular contact form for now!"
+            "I received an unexpected response from the AI. Please try again!"
             if is_en else
-            "Es gab ein Problem beim Hochfahren meiner Systeme. Bitte benutze vorerst das reguläre Kontaktformular!"
+            "Ich habe eine unerwartete Antwort vom AI erhalten. Bitte versuch es nochmal!"
         )}

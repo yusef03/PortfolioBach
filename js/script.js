@@ -155,6 +155,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (langBtn) {
         // Status laden (Default: DE)
         let currentLang = localStorage.getItem("language") || "de";
+        // lang-Attribut sofort korrekt setzen (SEO + Screenreader)
+        document.documentElement.lang = currentLang;
         // Core-Funktion: Tauscht DOM-Inhalte
         function applyTranslations(lang) {
             return __awaiter(this, void 0, void 0, function* () {
@@ -225,8 +227,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (semesterStat) {
         const startDate = new Date('2024-09-01');
         const now = new Date();
-        const monthsElapsed = (now.getFullYear() - startDate.getFullYear()) * 12 + now.getMonth() - startDate.getMonth();
-        const semester = Math.ceil(monthsElapsed / 6) || 1;
+        const monthsElapsed = (now.getFullYear() - startDate.getFullYear()) * 12 + (now.getMonth() - startDate.getMonth());
+        const semester = Math.floor(monthsElapsed / 6) + 1;
         semesterStat.textContent = semester.toString() + ".";
     }
     /* ==========================================================================
