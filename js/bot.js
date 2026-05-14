@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const sendBtn = document.getElementById("rag-send-btn");
     const inputField = document.getElementById("rag-chat-input");
     const messagesContainer = document.getElementById("rag-chat-messages");
-    const BACKEND_URL = "https://portfolio-bach.vercel.app/api/chat";
+    const BACKEND_URL = "https://portfolio-bach-seven.vercel.app/api/chat";
     if (!fabBtn)
         return;
     fabBtn.addEventListener("click", () => chatWindow.classList.toggle("hidden"));

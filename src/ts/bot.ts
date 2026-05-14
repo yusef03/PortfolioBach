@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const inputField = document.getElementById("rag-chat-input") as HTMLInputElement;
   const messagesContainer = document.getElementById("rag-chat-messages");
 
-  const BACKEND_URL = "https://portfolio-bach.vercel.app/api/chat";
+  const BACKEND_URL = "https://portfolio-bach-seven.vercel.app/api/chat";
 
   if (!fabBtn) return;
 
