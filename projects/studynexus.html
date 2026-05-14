@@ -1271,32 +1271,17 @@
 <body class="project-deep-dive">
 
   <!-- ── Navigation ─────────────────────────────────────────────── -->
-  <nav class="project-nav sticky-nav">
-    <div class="nav-container">
-      <a href="../index.html" class="back-link">
-        <span>←</span> <span>Portfolio</span>
-      </a>
-
-      <div class="nav-content-wrapper" id="project-nav-links">
-        <div class="internal-links">
-          <a href="#origin" data-i18n="sn_nav_origin">Origin</a>
-          <a href="#architecture" data-i18n="sn_nav_arch">Architektur</a>
-          <a href="#features" data-i18n="sn_nav_features">Features</a>
-          <a href="#bin-po" data-i18n="sn_nav_binpo">BIN PO</a>
-          <a href="#security" data-i18n="sn_nav_security">Security</a>
-          <a href="#admin" data-i18n="sn_nav_admin">Admin</a>
-          <a href="#roadmap" data-i18n="sn_nav_roadmap">Roadmap</a>
-        </div>
-      </div>
-
-      <div class="mobile-header-controls">
-        <button id="lang-switch" class="lang-btn" aria-label="Switch Language"></button>
-        <div class="hamburger" id="project-hamburger">
-          <span></span><span></span><span></span>
-        </div>
-      </div>
+  <app-project-header base-path="..">
+    <div class="internal-links">
+      <a href="#origin" data-i18n="sn_nav_origin">Origin</a>
+      <a href="#architecture" data-i18n="sn_nav_arch">Architektur</a>
+      <a href="#features" data-i18n="sn_nav_features">Features</a>
+      <a href="#bin-po" data-i18n="sn_nav_binpo">BIN PO</a>
+      <a href="#security" data-i18n="sn_nav_security">Security</a>
+      <a href="#admin" data-i18n="sn_nav_admin">Admin</a>
+      <a href="#roadmap" data-i18n="sn_nav_roadmap">Roadmap</a>
     </div>
-  </nav>
+  </app-project-header>
 
   <!-- ── Hero ───────────────────────────────────────────────────── -->
   <header class="project-hero" id="home" style="position: relative; overflow: hidden;">
@@ -2572,6 +2557,7 @@
 
   <app-footer base-path=".."></app-footer>
 
+  <script src="../js/components/AppProjectHeader.js"></script>
   <script src="../js/components/AppFooter.js"></script>
   <script src="../js/bot.js"></script>
   <script src="../js/script.js"></script>

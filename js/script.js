@@ -27,49 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
          1. NAVIGATION CONTROLLER (Mobile / Hamburger Menu)
          Steuert die Interaktion des Menüs auf Projekt-Unterseiten.
          ========================================================================== */
-    const projectHamburger = document.getElementById("project-hamburger");
-    const projectNavLinks = document.getElementById("project-nav-links");
-    // Sicherheits-Check:  Menü auf dieser Seite?
-    if (projectHamburger && projectNavLinks) {
-        projectHamburger.addEventListener("click", (e) => {
-            e.stopPropagation();
-            projectHamburger.classList.toggle("active");
-            projectNavLinks.classList.toggle("active");
-            const spans = projectHamburger.querySelectorAll("span");
-            spans.forEach((span) => span.classList.toggle("active"));
-        });
-        const internalLinks = projectNavLinks.querySelectorAll("a");
-        internalLinks.forEach((link) => {
-            link.addEventListener("click", () => {
-                projectHamburger.classList.remove("active");
-                projectNavLinks.classList.remove("active");
-                projectHamburger
-                    .querySelectorAll("span")
-                    .forEach((s) => s.classList.remove("active"));
-            });
-        });
-        document.addEventListener("click", (e) => {
-            if (projectNavLinks.classList.contains("active") &&
-                !projectNavLinks.contains(e.target) &&
-                !projectHamburger.contains(e.target)) {
-                projectHamburger.classList.remove("active");
-                projectNavLinks.classList.remove("active");
-                projectHamburger
-                    .querySelectorAll("span")
-                    .forEach((s) => s.classList.remove("active"));
-            }
-        });
-        // Tap on the dark overlay background (not a child) closes the menu
-        projectNavLinks.addEventListener("click", (e) => {
-            if (e.target === projectNavLinks) {
-                projectHamburger.classList.remove("active");
-                projectNavLinks.classList.remove("active");
-                projectHamburger
-                    .querySelectorAll("span")
-                    .forEach((s) => s.classList.remove("active"));
-            }
-        });
-    }
+    // Navigation Controller for project-hamburger has been moved to AppProjectHeader.js component
     /* ==========================================================================
        2. SMOOTH SCROLLING ENGINE
        Verarbeitet Anker-Links (#) und berechnet den Scroll-Offset dynamisch.

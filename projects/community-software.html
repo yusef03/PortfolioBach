@@ -8,31 +8,12 @@
     <link rel="stylesheet" href="../css/main.css?v=5" />
   </head>
   <body class="project-deep-dive">
-    <nav class="project-nav sticky-nav">
-      <div class="nav-container">
-        <a href="../index.html" class="back-link">
-          <span>←</span> <span data-i18n="nav_portfolio">Portfolio</span>
-        </a>
-
-        <div class="nav-content-wrapper" id="project-nav-links">
-          <div class="internal-links">
-            <a href="#mission" data-i18n="pd_nav_mission">Mission</a>
-            <a href="#architecture" data-i18n="pd_nav_arch">Architektur</a>
-          </div>
-        </div>
-
-        <div class="mobile-header-controls">
-          <button
-            id="lang-switch"
-            class="lang-btn"
-            aria-label="Switch Language"
-          ></button>
-          <div class="hamburger" id="project-hamburger">
-            <span></span><span></span><span></span>
-          </div>
-        </div>
+    <app-project-header base-path="..">
+      <div class="internal-links">
+        <a href="#mission" data-i18n="pd_nav_mission">Mission</a>
+        <a href="#architecture" data-i18n="pd_nav_arch">Architektur</a>
       </div>
-    </nav>
+    </app-project-header>
 
     <header class="project-hero" id="home">
       <!-- Fallback pattern since we might not have a video for this -->
@@ -216,6 +197,7 @@
         observer.observe(el);
       });
     </script>
+    <script src="../js/components/AppProjectHeader.js"></script>
     <script src="../js/components/AppFooter.js"></script>
     <script src="../js/bot.js"></script>
     <script src="../js/script.js"></script>
