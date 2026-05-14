@@ -24,13 +24,22 @@ app.add_middleware(
 
 # Lese yusef_brain.md als System-Prompt ein
 def load_system_prompt():
-    brain_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'yusef_brain.md')
-    try:
-        with open(brain_path, 'r', encoding='utf-8') as file:
-            return file.read()
-    except Exception as e:
-        print(f"Error loading system prompt: {e}")
-        return "Du bist der virtuelle AI-Assistent von Yusef Bach. Antworte in der Ich-Form."
+    paths_to_try = [
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), 'yusef_brain.md'),
+        os.path.join(os.getcwd(), 'yusef_brain.md'),
+        os.path.join(os.path.dirname(__file__), 'yusef_brain.md')
+    ]
+    
+    for path in paths_to_try:
+        try:
+            if os.path.exists(path):
+                with open(path, 'r', encoding='utf-8') as file:
+                    return file.read()
+        except Exception as e:
+            print(f"Error reading {path}: {e}")
+            
+    print("Could not find yusef_brain.md in any of the expected locations.")
+    return "Du bist der virtuelle AI-Assistent von Yusef Bach. Antworte in der Ich-Form."
 
 class ChatRequest(BaseModel):
     query: str
