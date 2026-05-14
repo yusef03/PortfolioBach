@@ -1656,6 +1656,16 @@ pre {
   .hamburger {
     display: flex;
   }
+  .hamburger span.active:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger span.active:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  .hamburger span.active:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
   .hero-content h1 {
     font-size: 2.2rem;
   }

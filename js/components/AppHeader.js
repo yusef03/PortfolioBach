@@ -75,6 +75,15 @@ class AppHeader extends HTMLElement {
                         .forEach((span) => span.classList.remove("active"));
                 });
             });
+            // Klick außerhalb schließt Menü
+            document.addEventListener("click", (e) => {
+                if (navLinks.classList.contains("active") &&
+                    !navLinks.contains(e.target) &&
+                    !hamburger.contains(e.target)) {
+                    navLinks.classList.remove("active");
+                    hamburger.querySelectorAll("span").forEach((s) => s.classList.remove("active"));
+                }
+            });
         }
         // Language Switch Event weiterleiten an globalen Handler
         if (langBtn) {
