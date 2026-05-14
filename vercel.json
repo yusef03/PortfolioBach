@@ -1,7 +1,17 @@
 {
-  "functions": {
-    "api/index.py": {
-      "includeFiles": "yusef_brain.md"
+  "builds": [
+    {
+      "src": "api/index.py",
+      "use": "@vercel/python",
+      "config": {
+        "includeFiles": ["yusef_brain.md"]
+      }
     }
-  }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "api/index.py"
+    }
+  ]
 }
