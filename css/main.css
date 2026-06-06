@@ -28,6 +28,105 @@
   align-items: center;
 }
 
+/* --- Beta Announcement Badge --- */
+.beta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 18px 8px 14px;
+  margin-bottom: 28px;
+  border-radius: 100px;
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+  background: linear-gradient(
+    180deg,
+    rgba(157, 0, 255, 0.1) 0%,
+    rgba(157, 0, 255, 0.04) 100%
+  );
+  border: 1px solid rgba(157, 0, 255, 0.25);
+  box-shadow: 0 0 0 1px rgba(157, 0, 255, 0.04),
+    0 8px 24px rgba(157, 0, 255, 0.08);
+  backdrop-filter: blur(6px);
+  transition: var(--transition-fast);
+}
+
+.beta-badge:hover {
+  border-color: rgba(157, 0, 255, 0.5);
+  box-shadow: 0 0 0 1px rgba(157, 0, 255, 0.08),
+    0 12px 32px rgba(157, 0, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.beta-dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  box-shadow: 0 0 8px var(--primary-color);
+  flex-shrink: 0;
+}
+
+.beta-dot::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  opacity: 0.5;
+  animation: beta-pulse 2.4s ease-out infinite;
+}
+
+@keyframes beta-pulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.beta-label {
+  font-weight: 700;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary-light);
+}
+
+.beta-text {
+  position: relative;
+  padding-left: 12px;
+  color: var(--text-secondary);
+}
+
+.beta-text::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 600px) {
+  .beta-text {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .beta-dot::after {
+    animation: none;
+  }
+}
+
 .hero-content h1 {
   font-size: 3.5rem;
   font-weight: 800;
