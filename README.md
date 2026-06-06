@@ -3,6 +3,7 @@
 Live: [yusefbach.de](https://yusefbach.de)
 
 ---
+BETA VERSION COMING SOON !!!!!⏳⏳⏳
 
 ### 🚀 Latest: v2.7.0 — PWA, SEO & Performance Update
 
