@@ -431,7 +431,17 @@ document.addEventListener("DOMContentLoaded", () => {
             msg.appendChild(copyBtn);
         }
         messagesEl.appendChild(msg);
-        messagesEl.scrollTop = messagesEl.scrollHeight;
+        // User-Nachrichten: ans Ende scrollen (kurz, Standard-Chat-Verhalten).
+        // Bot-Nachrichten: an den ANFANG der neuen Nachricht scrollen, nicht ans Ende —
+        // sonst landet man bei langen Antworten sofort unten und kann während des
+        // Tippeffekts nicht mehr hochscrollen (siehe typewriterRender: kein Scroll-Zwang
+        // mehr pro Buchstabe).
+        if (sender === "user") {
+            messagesEl.scrollTop = messagesEl.scrollHeight;
+        }
+        else {
+            msg.scrollIntoView({ block: "start", behavior: "smooth" });
+        }
         if (!opts.skipStore) {
             const h = storage.read();
             h.entries.push({ role: sender, text, ts, lang: currentLang });
@@ -526,7 +536,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const tick = () => {
             const shown = text.slice(0, i);
             renderSafeMarkdown(container, shown + (i < text.length ? "▍" : ""));
-            messagesEl.scrollTop = messagesEl.scrollHeight;
+            // Kein Scroll-Zwang mehr pro Buchstabe — sonst kann man während des
+            // Tippeffekts nicht mehr manuell hochscrollen. Initiale Positionierung
+            // übernimmt appendMessage() (scrollt einmalig an den Nachrichten-Anfang).
             if (i < text.length) {
                 i += Math.max(1, Math.ceil(text.length / (TYPEWRITER_TOTAL_MS / perChar)));
                 setTimeout(tick, perChar);
