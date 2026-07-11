@@ -107,7 +107,7 @@ fi
 # 7. Bot-Dateien unberührt
 echo ""
 echo "--- Bot-Dateien unberührt? ---"
-BOT_FILES=("api" "vercel.json" "yusef_brain.md" "requirements.txt")
+BOT_FILES=("api" "vercel.json" "requirements.txt")
 for f in "${BOT_FILES[@]}"; do
   if [ -e "$REPO_ROOT/$f" ]; then
     pass "$f im Root (korrekt)"
@@ -115,6 +115,14 @@ for f in "${BOT_FILES[@]}"; do
     fail "$f FEHLT im Root (wurde versehentlich verschoben?)"
   fi
 done
+
+# yusef_brain.md zog seit V5 (Verkabelungs-Matrix, release-go-live.md) nach api/ um —
+# eigener Check statt im Root erwartet.
+if [ -f "$REPO_ROOT/api/yusef_brain.md" ]; then
+  pass "api/yusef_brain.md vorhanden (korrekt, seit V5 nicht mehr im Root)"
+else
+  fail "api/yusef_brain.md FEHLT"
+fi
 
 # 8. Config-Dateien im Root
 echo ""

@@ -98,7 +98,7 @@ async function fetchChangelog() {
  * → Das Admin-Dropdown filtert genau auf diese Liste.
  */
 function detectRoadmapSlugs() {
-  const PROJECTS_DIR = resolve(__dir, '../projects')
+  const PROJECTS_DIR = resolve(__dir, '../website/projects')
   const slugs = []
   try {
     const files = readdirSync(PROJECTS_DIR).filter(f => f.endsWith('.html') && !f.startsWith('_'))

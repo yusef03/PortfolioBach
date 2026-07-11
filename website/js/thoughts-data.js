@@ -1,8 +1,23 @@
 // AUTO-GENERIERT via scripts/build-thoughts.mjs — NICHT manuell editieren!
-// Letzte Aktualisierung: 2026-06-02T20:30:28.003Z
+// Letzte Aktualisierung: 2026-07-11T16:42:23.484Z
 // Enthält NUR Metadaten (kein Content). Sortierung: published_at desc.
 
 const thoughtsData = [
+  {
+    slug: "v3-managed-relaunch",
+    title_en: `The Managed Relaunch — What v3.0.0 Actually Is`,
+    title_de: `Der große Relaunch — was v3.0.0 wirklich ist`,
+    title_ar: `إعادة الإطلاق الكبرى — ما هو v3.0.0 فعلًا`,
+    excerpt_en: `Three languages with real SEO, a rebuilt AI twin, a security-hardened admin panel, and a homepage that stopped feeling like stacked blocks. What actually changed in v3.0.0 — and why.`,
+    excerpt_de: `Drei Sprachen mit echtem SEO, ein neu gebauter KI-Zwilling, ein sicherheitsgehärtetes Admin Panel, und eine Startseite, die nicht mehr wie aneinandergereihte Blöcke wirkt. Was sich in v3.0.0 wirklich geändert hat — und warum.`,
+    excerpt_ar: `ثلاث لغات بتحسين حقيقي لمحركات البحث، توأم ذكاء اصطناعي أُعيد بناؤه بالكامل، لوحة تحكّم محصّنة أمنيًا، وصفحة رئيسية لم تعد تبدو كأقسام مكدّسة. ما تغيّر فعلًا في v3.0.0 — ولماذا.`,
+    cover_image_url: "https://msfmugoazylvbqvyidlg.supabase.co/storage/v1/object/public/thoughts-media/thoughts/1066de9f-a20e-49f8-97e0-493a3b3ba77b/cover.png",
+    tags: ["Architektur","AI","Security","Engineering"],
+    reading_minutes: 3,
+    published_at: "2026-07-11T13:49:01.007+00:00",
+    has_de: true,
+    has_ar: true
+  },
   {
     slug: "supabase-berechtigungen-grants-rls",
     title_en: `Supabase Permissions: The Two Layers Nobody Explains`,

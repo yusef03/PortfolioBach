@@ -1,5 +1,5 @@
 // AUTO-GENERIERT aus Supabase via scripts/build-roadmap.mjs — NICHT manuell editieren!
-// Letzte Aktualisierung: 2026-07-11T12:01:10.705Z
+// Letzte Aktualisierung: 2026-07-11T16:42:23.098Z
 
 const roadmapData = [
   {
@@ -31,7 +31,7 @@ const roadmapData = [
     phase_label_de: `Phase 2`,
     phase_label_en: `Phase 2`,
     phase_label_ar: `المرحلة 2`,
-    status: "planned",
+    status: "completed",
     sort_order: 10
   },
   {
@@ -47,7 +47,7 @@ const roadmapData = [
     phase_label_de: `Phase 2`,
     phase_label_en: `Phase 2`,
     phase_label_ar: `المرحلة 2`,
-    status: "planned",
+    status: "completed",
     sort_order: 30
   },
   {
@@ -63,7 +63,7 @@ const roadmapData = [
     phase_label_de: `Phase 2`,
     phase_label_en: `Phase 2`,
     phase_label_ar: `المرحلة 2`,
-    status: "planned",
+    status: "completed",
     sort_order: 40
   },
   {
@@ -79,7 +79,7 @@ const roadmapData = [
     phase_label_de: `Phase 2`,
     phase_label_en: `Phase 2`,
     phase_label_ar: `المرحلة 2`,
-    status: "planned",
+    status: "completed",
     sort_order: 50
   },
   {
@@ -95,7 +95,7 @@ const roadmapData = [
     phase_label_de: ``,
     phase_label_en: ``,
     phase_label_ar: ``,
-    status: "planned",
+    status: "completed",
     sort_order: 60
   },
   {
@@ -111,7 +111,7 @@ const roadmapData = [
     phase_label_de: ``,
     phase_label_en: ``,
     phase_label_ar: ``,
-    status: "planned",
+    status: "completed",
     sort_order: 70
   },
   {
@@ -127,7 +127,7 @@ const roadmapData = [
     phase_label_de: `Phase 3`,
     phase_label_en: `Phase 3`,
     phase_label_ar: `المرحلة 3`,
-    status: "planned",
+    status: "completed",
     sort_order: 80
   },
   {
@@ -143,7 +143,7 @@ const roadmapData = [
     phase_label_de: `Phase 3`,
     phase_label_en: `Phase 3`,
     phase_label_ar: `المرحلة 3`,
-    status: "planned",
+    status: "completed",
     sort_order: 90
   },
   {
@@ -159,7 +159,7 @@ const roadmapData = [
     phase_label_de: ``,
     phase_label_en: ``,
     phase_label_ar: ``,
-    status: "planned",
+    status: "completed",
     sort_order: 100
   },
   {

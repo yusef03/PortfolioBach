@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-11T12:58:40.196Z",
+  "generated_at": "2026-07-11T16:43:03.649Z",
   "summary": {
     "count": 43,
     "total_bytes": 20804027,
@@ -551,7 +551,8 @@
         "website/thoughts/_post-template.html",
         "website/thoughts/architektur-vor-syntax.html",
         "website/thoughts/index.html",
-        "website/thoughts/supabase-berechtigungen-grants-rls.html"
+        "website/thoughts/supabase-berechtigungen-grants-rls.html",
+        "website/thoughts/v3-managed-relaunch.html"
       ],
       "is_orphan": false
     },

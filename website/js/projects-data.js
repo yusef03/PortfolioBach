@@ -1,5 +1,5 @@
 // AUTO-GENERIERT aus Supabase via scripts/build-projects.mjs — NICHT manuell editieren!
-// Letzte Aktualisierung: 2026-07-04T18:05:12.133Z
+// Letzte Aktualisierung: 2026-07-11T16:42:22.814Z
 
 const projectsData = [
   {
