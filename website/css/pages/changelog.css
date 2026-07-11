@@ -1,0 +1,452 @@
+/* ============================================================================
+ * changelog.css — Öffentliche Changelog-Seite + geteilte Changelog-Komponente
+ *
+ * Gilt für:  changelog.html         (eigene Changelog-Seite)
+ *            roadmap.html           (Teaser — lädt diese Datei mit)
+ *
+ * RULE: Alle .changelog-* Styles leben NUR hier — nie in roadmap.css.
+ * ========================================================================= */
+
+/* ── 1. PAGE HERO ─────────────────────────────────────────────────────────── */
+
+.changelog-page-hero {
+  padding: 140px 0 56px;
+  text-align: center;
+}
+
+.changelog-page-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+
+.changelog-page-hero p {
+  color: var(--text-2);
+  font-size: 1.05rem;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.changelog-hero-meta {
+  margin-top: 16px;
+  font-size: 0.75rem;
+  color: var(--text-3);
+  letter-spacing: 0.06em;
+}
+
+/* ── 2. FILTER CHIPS ─────────────────────────────────────────────────────── */
+
+.changelog-filter-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 760px;
+  margin: 0 auto 56px;
+}
+
+.changelog-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 14px;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  background: transparent;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  user-select: none;
+}
+
+.changelog-chip:hover {
+  border-color: rgba(157, 0, 255, 0.35);
+  color: var(--accent-bright);
+  background: var(--accent-soft);
+}
+
+.changelog-chip.is-active {
+  background: var(--accent-soft);
+  border-color: var(--accent-border);
+  color: var(--accent-bright);
+}
+
+.changelog-chip-count {
+  font-size: 0.65rem;
+  opacity: 0.55;
+  font-weight: 500;
+}
+
+/* ── 3. JAHRES-GRUPPE ────────────────────────────────────────────────────── */
+
+.changelog-year-group {
+  max-width: 760px;
+  margin: 0 auto 52px;
+}
+
+.changelog-year-group:last-child {
+  margin-bottom: 0;
+}
+
+/* Dezenter Jahr-Trenner — kein Sticky, kein Blur-Background */
+.changelog-year-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.changelog-year-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.75;
+  flex-shrink: 0;
+}
+
+.changelog-year-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── 4. TIMELINE — präzise ausgerichtet ──────────────────────────────────── */
+
+/*
+ * Mathe (einmalig korrekt festgelegt, nie mehr anfassen):
+ *   padding-left: 36px
+ *   timeline-line: left 11px, width 2px  → Mittellinie bei 12px
+ *   timeline-dot:  10×10px, left -29px   → Mittelpunkt bei 36−29+5 = 12px ✓
+ */
+
+.changelog-timeline {
+  position: relative;
+  padding-left: 36px;
+}
+
+.changelog-timeline-line {
+  position: absolute;
+  left: 11px;
+  top: 14px;
+  bottom: 14px;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    rgba(157, 0, 255, 0.3) 0%,
+    rgba(157, 0, 255, 0.08) 80%,
+    transparent 100%
+  );
+  border-radius: 2px;
+}
+
+.changelog-timeline-entry {
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.changelog-timeline-entry:last-child {
+  margin-bottom: 0;
+}
+
+/* Dot: perfekt auf der Linie, auf Höhe der Version-Pill */
+.changelog-timeline-dot {
+  position: absolute;
+  left: -29px;
+  top: 22px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent-border);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.changelog-timeline-entry:hover .changelog-timeline-dot {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+/* ── 5. CHANGELOG KARTEN ─────────────────────────────────────────────────── */
+
+/* Teaser-Liste (flach, auf roadmap.html) */
+.changelog-list {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Karte */
+.changelog-card {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 22px;
+  transition: background 0.18s, border-color 0.18s;
+}
+
+.changelog-card:hover {
+  background: var(--surface-2);
+  border-color: var(--border-strong);
+}
+
+.changelog-card-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.changelog-version {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-1);
+  background: var(--surface-2);
+  border: 1px solid var(--border-strong);
+  padding: 2px 9px;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
+.changelog-date {
+  font-size: 0.76rem;
+  color: var(--text-3);
+}
+
+.changelog-category {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 9px;
+  border-radius: 99px;
+  border: 1px solid transparent;
+}
+
+.changelog-category.feature  { color: #a5b4fc; background: rgba(129,140,248,0.08); border-color: rgba(129,140,248,0.18); }
+.changelog-category.fix      { color: #4ade80; background: rgba(34,197,94,0.08);   border-color: rgba(34,197,94,0.18); }
+.changelog-category.refactor { color: #93c5fd; background: rgba(96,165,250,0.08);  border-color: rgba(96,165,250,0.18); }
+.changelog-category.security { color: #fca5a5; background: rgba(248,113,113,0.08); border-color: rgba(248,113,113,0.18); }
+
+.changelog-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-1);
+  margin: 0 0 6px;
+  line-height: 1.35;
+}
+
+.changelog-desc {
+  font-size: 0.86rem;
+  color: var(--text-2);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Filter: Entry ausblenden */
+.changelog-timeline-entry.is-hidden {
+  display: none;
+}
+
+/* ── 6. EMPTY / NO-MATCH STATE ───────────────────────────────────────────── */
+
+.changelog-empty-state {
+  text-align: center;
+  padding: 56px 20px;
+  color: var(--text-3);
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.changelog-empty-state p {
+  margin: 0;
+  font-size: 0.88rem;
+}
+
+/* ── 7. ROADMAP-TEASER (roadmap.html) ────────────────────────────────────── */
+
+.changelog-teaser-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.changelog-teaser-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid var(--accent-border);
+  padding: 6px 14px;
+  border-radius: 8px;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.changelog-teaser-link:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent-bright);
+}
+
+/* ── 8. RTL (Arabisch) ───────────────────────────────────────────────────── */
+
+[dir="rtl"] .changelog-timeline {
+  padding-left: 0;
+  padding-right: 36px;
+}
+
+[dir="rtl"] .changelog-timeline-line {
+  left: auto;
+  right: 11px;
+}
+
+[dir="rtl"] .changelog-timeline-dot {
+  left: auto;
+  right: -29px;
+}
+
+[dir="rtl"] .changelog-year-header {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .changelog-year-line {
+  background: var(--border);
+}
+
+[dir="rtl"] .changelog-filter-bar {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .changelog-teaser-header {
+  flex-direction: row-reverse;
+}
+
+/* ── 9. RESPONSIVE ───────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .changelog-page-hero   { padding: 100px 0 40px; }
+  .changelog-card        { padding: 14px 16px; }
+  .changelog-filter-bar  { gap: 6px; }
+  .changelog-chip        { padding: 4px 10px; font-size: 0.68rem; }
+
+  /*
+   * Mobile: kleinere Timeline-Zahlen bleiben korrekt ausgerichtet.
+   * padding-left: 30px  |  line: left 9px, w 2px → Mitte 10px
+   * dot: 8×8, left -21px → Mitte: 30−21+4 = 13px (close enough for mobile)
+   */
+  .changelog-timeline        { padding-left: 30px; }
+  .changelog-timeline-line   { left: 9px; }
+  .changelog-timeline-dot    { left: -23px; top: 18px; width: 8px; height: 8px; }
+
+  [dir="rtl"] .changelog-timeline      { padding-left: 0; padding-right: 30px; }
+  [dir="rtl"] .changelog-timeline-line { left: auto; right: 9px; }
+  [dir="rtl"] .changelog-timeline-dot  { left: auto; right: -23px; }
+}
+
+/* ==========================================================================
+   B1 — Klickbare Changelog-Karten + High-End-Detail-Modal
+   ========================================================================== */
+.changelog-full-desc { display: none; }
+
+.changelog-card--clickable {
+  cursor: pointer;
+  transition: transform .25s cubic-bezier(.16,1,.3,1), border-color .25s, box-shadow .25s;
+}
+.changelog-card--clickable:hover,
+.changelog-card--clickable:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 14px 34px -14px rgba(0,0,0,.45);
+  outline: none;
+}
+.changelog-card--clickable:focus-visible { box-shadow: 0 0 0 2px var(--accent); }
+
+.changelog-card-more {
+  display: inline-flex; align-items: center; gap: 2px;
+  margin-top: 12px;
+  font-size: .8rem; font-weight: 600; letter-spacing: .01em;
+  color: var(--accent-bright, #c77dff);
+}
+.changelog-card-arrow { transition: transform .25s; font-size: 1.15em; line-height: 1; }
+.changelog-card--clickable:hover .changelog-card-arrow { transform: translateX(3px); }
+[dir="rtl"] .changelog-card--clickable:hover .changelog-card-arrow { transform: translateX(-3px); }
+
+/* Backdrop */
+.cl-modal-backdrop {
+  position: fixed; inset: 0; z-index: 1000;
+  display: grid; place-items: center; padding: 24px;
+  background: rgba(0,0,0,.55);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  opacity: 0; pointer-events: none; transition: opacity .22s ease;
+}
+.cl-modal-backdrop[hidden] { display: none; }
+.cl-modal-backdrop.is-open { opacity: 1; pointer-events: auto; }
+body.cl-modal-open { overflow: hidden; }
+
+/* Modal-Karte */
+.cl-modal {
+  position: relative;
+  width: min(680px, 100%);
+  max-height: 85vh; overflow-y: auto;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 42px 38px 34px;
+  box-shadow: 0 30px 80px -20px rgba(0,0,0,.6);
+  transform: translateY(14px) scale(.97); opacity: 0;
+  transition: transform .28s cubic-bezier(.16,1,.3,1), opacity .28s;
+}
+.cl-modal-backdrop.is-open .cl-modal { transform: none; opacity: 1; }
+
+.cl-modal-close {
+  position: absolute; top: 16px; inset-inline-end: 16px;
+  width: 36px; height: 36px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--surface-1); border: 1px solid var(--border);
+  color: var(--text-secondary); cursor: pointer;
+  transition: color .2s, transform .25s, background .2s;
+}
+.cl-modal-close:hover { color: var(--text-primary); transform: rotate(90deg); }
+.cl-modal-close:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--accent); }
+
+.cl-modal-meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; padding-inline-end: 40px; }
+.cl-modal-version { font-family: var(--font-mono); font-weight: 700; font-size: 1.05rem; color: var(--accent-bright, #c77dff); }
+.cl-modal-date { color: var(--text-secondary); font-size: .85rem; }
+.cl-modal-title { font-size: clamp(1.4rem, 3.4vw, 1.95rem); line-height: 1.25; margin: 0 0 20px; color: var(--text-primary); }
+.cl-modal-body { color: var(--text-secondary); line-height: 1.8; font-size: 1rem; }
+.cl-modal-body strong { color: var(--text-primary); font-weight: 600; }
+
+@media (max-width: 600px) {
+  .cl-modal-backdrop { padding: 0; place-items: end stretch; }
+  .cl-modal {
+    width: 100%; max-height: 90vh;
+    padding: 34px 20px calc(24px + env(safe-area-inset-bottom));
+    border-radius: 20px 20px 0 0;
+    transform: translateY(100%);
+    -webkit-overflow-scrolling: touch;
+  }
+  .cl-modal-backdrop.is-open .cl-modal { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cl-modal-backdrop, .cl-modal, .changelog-card--clickable, .changelog-card-arrow { transition: none; }
+  .cl-modal { transform: none; }
+}

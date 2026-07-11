@@ -1,0 +1,101 @@
+/* Portfolio Meta — page-specific styles */
+/* =========================================
+   PORTFOLIO META CASE STUDY (Specifics)
+   ========================================= */
+
+/* Code Hero Grid Background */
+.code-hero-bg {
+  background-color: var(--bg);
+  background-image: linear-gradient(
+      rgba(157, 0, 255, 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(157, 0, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.code-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, transparent 0%, var(--bg) 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Scanline Effect */
+.scan-line-hero {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--primary-color),
+    transparent
+  );
+  opacity: 0.5;
+  box-shadow: 0 0 15px var(--primary-color);
+  animation: scanHero 6s linear infinite;
+  z-index: 0;
+}
+@keyframes scanHero {
+  0% {
+    top: -10%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: 110%;
+    opacity: 0;
+  }
+}
+
+/* Hero Text Gradient & Tags */
+.hero-title-gradient {
+  background: linear-gradient(to bottom right, #ffffff 30%, #a0a0a0 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.meta-tag {
+  font-family: var(--font-mono);
+  color: var(--primary-color);
+  background: rgba(157, 0, 255, 0.1);
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  display: inline-block;
+  border: 1px solid rgba(157, 0, 255, 0.2);
+}
+
+/* Final Statement Text */
+.final-statement {
+  font-size: 4rem;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #fff 0%, #888 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

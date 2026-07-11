@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      /* No-Flash: Theme vor dem ersten Paint setzen (Default Dark) */
+      (function () {
+        try {
+          var t = localStorage.getItem("theme");
+          document.documentElement.setAttribute("data-theme", t === "light" ? "light" : "dark");
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      })();
+    </script>
+    <script defer src="js/status.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+    <title>Yusef Bach | Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio von Yusef Bach, Informatik-Student an der HS Hannover. Tech-Enthusiast mit Fokus auf Java, IT-Security und saubere Architektur. Aktuell auf der Suche nach einer Werkstudentenstelle."
+    />
+    <meta
+      name="keywords"
+      content="Yusef Bach, Informatik Student, Werkstudent Hannover, Java, IT-Security, Tech-Enthusiast, Portfolio, Phishing Defender"
+    />
+    <meta name="author" content="Yusef Bach" />
+    <link rel="manifest" href="manifest.json" />
+
+    <link rel="icon" type="image/png" href="images/ui/logo.png" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Yusef Bach",
+      "jobTitle": "AI Developer & Software Engineering Student",
+      "url": "https://yusefbach.de",
+      "image": "https://yusefbach.de/images/ui/hero-profile.jpg",
+      "worksFor": { "@type": "Organization", "name": "HDI Group" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Hannover", "addressCountry": "DE" },
+      "sameAs": [
+        "https://github.com/yusef03",
+        "https://linkedin.com/in/yusef-bach"
+      ]
+    }
+    </script>
+
+    <meta property="og:title" content="Yusef Bach - Portfolio" />
+    <meta
+      property="og:description"
+      content="Informatik-Student & Entwickler. Schau dir meine Projekte und Case Studies an."
+    />
+    <meta property="og:image" content="https://yusefbach.de/images/ui/hero-profile.jpg" />
+    <meta property="og:image:width" content="1000" />
+    <meta property="og:image:height" content="1500" />
+    <meta property="og:image:alt" content="Yusef Bach — AI Developer & B.Sc. Student" />
+    <meta property="og:url" content="https://yusefbach.de/" />
+
+    <meta property="og:type" content="website" />
+
+    <link rel="preload" as="font" type="font/woff2" href="fonts/InterVariable.woff2" crossorigin />
+
+
+    <link rel="stylesheet" href="css/fonts.css" />
+
+
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/pages/thoughts.css" />
+    <link rel="stylesheet" href="css/github-activity.css" />
+    <noscript><style>body { visibility: visible !important; }</style></noscript>
+    <!-- i18n-seo-auto:start -->
+    <link rel="alternate" hreflang="de" href="https://yusefbach.de/" />
+    <link rel="alternate" hreflang="en" href="https://yusefbach.de/en/" />
+    <link rel="alternate" hreflang="ar" href="https://yusefbach.de/ar/" />
+    <link rel="alternate" hreflang="x-default" href="https://yusefbach.de/" />
+    <link rel="canonical" href="https://yusefbach.de/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Yusef Bach - Portfolio" />
+    <meta name="twitter:description" content="Informatik-Student & Entwickler. Schau dir meine Projekte und Case Studies an." />
+    <meta name="twitter:image" content="https://yusefbach.de/images/ui/hero-profile.jpg" />
+    <script>window.__PAGE_LANG__=(function(){var p=location.pathname;if(/(^|\/)en(\/|$)/.test(p))return'en';if(/(^|\/)ar(\/|$)/.test(p))return'ar';return'de';})();</script>
+    <!-- i18n-seo-auto:end -->
+  </head>
+
+  <body>
+    <a href="#main-content" class="skip-link" data-i18n="a11y_skip_link">Zum Hauptinhalt springen</a>
+    <app-header base-path="."></app-header>
+    <main id="main-content">
+
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <span class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>AI · Architecture · Systems</span>
+            <h1>
+              AI Developer & <br />
+              <span class="typing-text"></span><span class="cursor"></span>
+            </h1>
+
+            <p data-i18n="hero_text">
+              Ich verbinde fundierte Softwarearchitektur mit KI-getriebener Produktentwicklung. Bei der HDI Group integriere ich generative KI in Enterprise-Workflows — daneben konzipiere und orchestriere ich eigene Full-Stack-Systeme.
+            </p>
+            <p class="hero-meta" data-i18n="hero_meta">
+              Werkstudent AI @ HDI Group · Digital Workplace  |  B.Sc. Informatik, HS Hannover
+            </p>
+            <div class="hero-buttons">
+              <a
+                href="#projects"
+                class="cta-button"
+                data-i18n="hero_btn_primary"
+                >Mein Hauptprojekt ansehen</a
+              >
+              <a
+                href="#contact"
+                class="cta-button cta-button-outline"
+                data-i18n="hero_btn_contact"
+                >Kontakt aufnehmen</a
+              >
+            </div>
+          </div>
+
+          <div class="hero-image">
+            <img
+              class="hero-photo"
+              src="images/ui/hero-profile.jpg"
+              alt="Yusef Bach"
+              width="450"
+              height="675"
+              loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+      <a href="#skills" class="hero-scroll" aria-label="Nach unten scrollen"><span class="hero-scroll-line"></span></a>
+    </section>
+
+    <section class="services section" id="skills">
+      <div class="container">
+        <h2 class="section-title reveal" data-eyebrow="Toolkit" data-i18n="stack_title">
+          Mein <span>Tech Stack</span>
+        </h2>
+        <p class="section-subtitle" data-i18n="stack_subtitle">
+          Hier sind die Technologien und Werkzeuge, die ich im Studium und in
+          meinen privaten Projekten aktuell nutze und vertiefe.
+        </p>
+
+        <div class="tech-marquee">
+          <div class="marquee-fade"></div>
+
+          <div class="tech-track">
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/java.svg" alt="Java" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>Java</h4>
+            </div>
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/lua.svg" alt="Lua" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>Lua</h4>
+            </div>
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/js.svg" alt="JS" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>JavaScript</h4>
+            </div>
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/html.svg" alt="HTML" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>HTML5</h4>
+            </div>
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/css.svg" alt="CSS" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>CSS3</h4>
+            </div>
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/sql.svg" alt="SQL" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>SQL</h4>
+            </div>
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/linux.svg" alt="Linux" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>Linux</h4>
+            </div>
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/git.svg" alt="Git" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>Git</h4>
+            </div>
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/vscode.svg" alt="VS Code" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>VS Code</h4>
+            </div>
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/python.svg" alt="Python" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>Python</h4>
+            </div>
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/react.svg" alt="React" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>React / Next.js</h4>
+            </div>
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/docker.svg" alt="Docker" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>Docker</h4>
+            </div>
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/postgresql.svg" alt="PostgreSQL" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>PostgreSQL</h4>
+            </div>
+            <div class="tech-card">
+              <div class="tech-icon">
+                <img src="images/techstack/claude.svg" alt="Claude / LLMs" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>Claude / LLMs</h4>
+            </div>
+
+            <!-- Duplikat-Set für nahtloses CSS-Marquee-Loop (aria-hidden: für Screenreader unsichtbar) -->
+            <div class="tech-card" aria-hidden="true">
+              <div class="tech-icon">
+                <img src="images/techstack/java.svg" alt="" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>Java</h4>
+            </div>
+            <div class="tech-card" aria-hidden="true">
+              <div class="tech-icon">
+                <img src="images/techstack/lua.svg" alt="" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>Lua</h4>
+            </div>
+            <div class="tech-card" aria-hidden="true">
+              <div class="tech-icon">
+                <img src="images/techstack/js.svg" alt="" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>JavaScript</h4>
+            </div>
+            <div class="tech-card" aria-hidden="true">
+              <div class="tech-icon">
+                <img src="images/techstack/html.svg" alt="" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>HTML5</h4>
+            </div>
+            <div class="tech-card" aria-hidden="true">
+              <div class="tech-icon">
+                <img src="images/techstack/css.svg" alt="" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>CSS3</h4>
+            </div>
+            <div class="tech-card" aria-hidden="true">
+              <div class="tech-icon">
+                <img src="images/techstack/sql.svg" alt="" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>SQL</h4>
+            </div>
+            <div class="tech-card" aria-hidden="true">
+              <div class="tech-icon">
+                <img src="images/techstack/linux.svg" alt="" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>Linux</h4>
+            </div>
+            <div class="tech-card" aria-hidden="true">
+              <div class="tech-icon">
+                <img src="images/techstack/git.svg" alt="" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>Git</h4>
+            </div>
+            <div class="tech-card" aria-hidden="true">
+              <div class="tech-icon">
+                <img src="images/techstack/vscode.svg" alt="" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>VS Code</h4>
+            </div>
+            <div class="tech-card" aria-hidden="true">
+              <div class="tech-icon">
+                <img src="images/techstack/python.svg" alt="" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>Python</h4>
+            </div>
+            <div class="tech-card" aria-hidden="true">
+              <div class="tech-icon">
+                <img src="images/techstack/react.svg" alt="" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>React / Next.js</h4>
+            </div>
+            <div class="tech-card" aria-hidden="true">
+              <div class="tech-icon">
+                <img src="images/techstack/docker.svg" alt="" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>Docker</h4>
+            </div>
+            <div class="tech-card" aria-hidden="true">
+              <div class="tech-icon">
+                <img src="images/techstack/postgresql.svg" alt="" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>PostgreSQL</h4>
+            </div>
+            <div class="tech-card" aria-hidden="true">
+              <div class="tech-icon">
+                <img src="images/techstack/claude.svg" alt="" width="45" height="45" loading="lazy" />
+              </div>
+              <h4>Claude / LLMs</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="certifications section" id="qualifications">
+        <div class="container">
+          <div class="cert-layout">
+            <div class="cert-text reveal">
+              <h2
+                class="section-title"
+                data-eyebrow="Credentials"
+                data-i18n="cert_title"
+              >
+                Qualifikation & <br /><span>Zertifizierung</span>
+              </h2>
+              <p
+                class="cert-description"
+                data-i18n="cert_text"
+              >
+                Sicherheit ist kein Zufallsprodukt. Durch die Zertifizierung der
+                <strong
+                  >ISC2 (International Information System Security Certification
+                  Consortium)</strong
+                >
+                weise ich fundiertes Wissen in den Bereichen
+                Sicherheitsprinzipien, Netzwerksicherheit und Incident Response
+                nach.
+              </p>
+              <div class="cert-badges-list">
+                <div class="cert-feature">
+                  <span class="check-icon">✓</span>
+                  <span data-i18n="cert_item_1">Security Principles</span>
+                </div>
+                <div class="cert-feature">
+                  <span class="check-icon">✓</span>
+                  <span data-i18n="cert_item_2">Network Security</span>
+                </div>
+                <div class="cert-feature">
+                  <span class="check-icon">✓</span>
+                  <span data-i18n="cert_item_3">Incident Response</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="cert-display reveal">
+              <div class="glass-badge-card">
+                <div
+                  data-iframe-width="150"
+                  data-iframe-height="270"
+                  data-share-badge-id="9999e7af-28e0-4aa7-9017-a6eadfaef0f5"
+                  data-share-badge-host="https://www.credly.com"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="projects section" id="projects">
+      <div class="container">
+        <h2 class="section-title reveal" data-eyebrow="Selected Work" data-i18n="projects_title">
+          Meine <span>Projekte</span>
+        </h2>
+
+        <div id="hero-project-container">
+          <!-- PRERENDER_HERO_START -->
+
+    <div class="project-info reveal active">
+        <div class="hero-project-layout">
+            <div class="hero-image-wrapper">
+                 <picture>
+                     <source srcset="images/projects/studynexus/preview.svg" type="image/webp">
+                     <img src="images/projects/studynexus/preview.svg" alt="StudyNexus" class="hero-project-img" loading="lazy">
+                 </picture>
+            </div>
+            <div class="hero-text-wrapper">
+                <h3>StudyNexus</h3>
+                <div class="tech-stack-row"><span class="tech-badge">Next.js 14</span><span class="tech-badge">FastAPI</span><span class="tech-badge">PostgreSQL</span><span class="tech-badge">Docker</span><span class="tech-badge">Redis</span><span class="tech-badge">TypeScript</span><span class="tech-badge">Python</span></div>
+                <p class="project-description">Eine gamifizierte SaaS-Plattform für HS Hannover Studierende. Vollständiger Full-Stack Monorepo: Next.js 14 App Router, FastAPI, PostgreSQL, Redis & Docker – mit Kanban-Board, 15-Minuten Schedule-Grid, visuellem Studienplan und echtem GPA-Tracking.</p>
+                <ul class="project-features"><li>Full-Stack Monorepo: Next.js 14 + FastAPI + PostgreSQL</li><li>Kanban, Schedule Board & visueller Studienplan</li><li>JWT Auth, CSRF-Schutz, Docker Compose, DE/EN i18n</li></ul>
+                <div class="project-buttons">
+                    <a href="projects/studynexus.html" class="cta-button">Zum Projekt</a>
+                    <a href="https://github.com/yusef03/studynexus" target="_blank" class="cta-button cta-button-outline">Code ansehen</a>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- PRERENDER_HERO_END -->
+        </div>
+
+        <div class="archive-cta reveal">
+          <p data-i18n="archive_cta_text">
+            Weitere Experimente, Tools & Case Studies
+          </p>
+          <a href="projects/archive.html" class="cta-button cta-button-outline">
+            <span data-i18n="archive_cta_btn">Zum Projekt-Archiv</span>
+            <span>&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── GitHub Activity ─────────────────────────────────────────────── -->
+    <section class="github-section section" id="github">
+      <div class="container">
+        <div class="github-head reveal">
+          <h2 class="section-title reveal" data-eyebrow="Open Source" data-i18n="github_section_title">
+            Open <span>Source</span> &amp; Aktivität
+          </h2>
+          <p class="github-sub" data-i18n="github_section_sub">
+            Was ich öffentlich baue — live von GitHub.
+          </p>
+        </div>
+        <div class="github-widget reveal" id="gh-widget"></div>
+      </div>
+    </section>
+
+    <!-- ── Thoughts Teaser ─────────────────────────────────────────────── -->
+    <section class="thoughts-teaser-section section" id="thoughts">
+      <div class="container">
+        <div class="thoughts-teaser-header">
+          <div>
+            <h2 class="thoughts-teaser-heading">
+              <span data-i18n="thoughts_title">Gedanken</span>
+            </h2>
+            <p class="thoughts-teaser-sub" data-i18n="thoughts_subtitle">
+              Technische Einblicke, Architektur-Überlegungen und persönliche Perspektiven.
+            </p>
+          </div>
+          <a href="thoughts/" class="thoughts-all-link">
+            <span data-i18n="thoughts_all">Alle ansehen</span> →
+          </a>
+        </div>
+
+        <div class="thoughts-teaser-grid" id="thoughts-teaser-grid">
+          <!-- PRERENDER_THOUGHTS_TEASER_START -->
+
+    <a href="thoughts/supabase-berechtigungen-grants-rls.html" class="thought-card reveal active">
+      <div class="thought-card-cover"><img src="https://msfmugoazylvbqvyidlg.supabase.co/storage/v1/object/public/thoughts-media/thoughts/723b7955-65c7-42e9-b738-2a0e54cdb838/cover.jpeg" alt="Supabase-Berechtigungen: die zwei Schichten, die niemand erklärt" loading="lazy" /></div>
+      <div class="thought-card-body">
+        <div class="thought-card-meta">
+          <span class="thought-card-tag">Supabase</span>
+          
+          <span class="thought-card-date">02. Juni 2026</span>
+          <span class="thought-card-sep">·</span><span class="thought-card-reading">2 Min. Lesezeit</span>
+        </div>
+        <h3 class="thought-card-title">Supabase-Berechtigungen: die zwei Schichten, die niemand erklärt</h3>
+        <p class="thought-card-excerpt">permission denied for table thoughts — Stunden debuggen, eine Zeile Code. Supabase hat zwei Berechtigungsschichten, über die kaum jemand spricht.</p>
+        <span class="thought-card-read">Weiterlesen →</span>
+      </div>
+    </a>
+    <a href="thoughts/architektur-vor-syntax.html" class="thought-card reveal active">
+      <div class="thought-card-cover"><img src="https://msfmugoazylvbqvyidlg.supabase.co/storage/v1/object/public/thoughts-media/thoughts/d68f3bbe-258a-4d0a-9b4b-9d8721123db4/cover.jpeg" alt="Architektur vor Syntax — warum ich nie zuerst nach dem Framework greife" loading="lazy" /></div>
+      <div class="thought-card-body">
+        <div class="thought-card-meta">
+          <span class="thought-card-tag">Mindset</span>
+          
+          <span class="thought-card-date">30. Mai 2026</span>
+          <span class="thought-card-sep">·</span><span class="thought-card-reading">3 Min. Lesezeit</span>
+        </div>
+        <h3 class="thought-card-title">Architektur vor Syntax — warum ich nie zuerst nach dem Framework greife</h3>
+        <p class="thought-card-excerpt">Die erste Frage bei neuen Projekten ist fast immer: welches Framework? Ich fange lieber mit einer anderen Frage an.</p>
+        <span class="thought-card-read">Weiterlesen →</span>
+      </div>
+    </a>
+        <!-- PRERENDER_THOUGHTS_TEASER_END -->
+        </div>
+
+        <div class="thoughts-teaser-cta">
+          <a href="thoughts/" class="cta-button cta-button-outline">
+            <span data-i18n="thoughts_all_btn">Alle Gedanken ansehen</span> →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="about section" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-content reveal">
+            <h2
+              class="section-title"
+              data-eyebrow="Profile"
+              data-i18n="about_title"
+            >
+              Über <span>Mich</span>
+            </h2>
+
+            <p
+              class="about-quote"
+              data-i18n="about_quote"
+            >
+              „Ich mag Dinge erst dann, wenn sie wirklich sauber funktionieren.“
+            </p>
+
+            <p data-i18n="about_text_1">
+              Ich bin Yusef, B.Sc. Informatik-Student und aktuell bei der HDI Group
+              als AI Developer Werkstudent tätig. Mein Leitsatz ist simpel: Ich möchte Systeme nicht
+              nur anwenden, sondern ihr Fundament begreifen. Es reicht mir nicht, APIs zusammenzukleben –
+              ich entwerfe saubere Use-Cases und Architekturen, die im Enterprise-Umfeld performen.
+            </p>
+
+            <p data-i18n="about_text_2">
+              Egal ob beim Datenbankmodellieren, in der Java-Entwicklung oder bei systemnahen Projekten –
+              Struktur und Patterns wie MVC sind für mich Pflicht, nicht nur Theorie. Aktuell konzentriere
+              ich mich darauf, dieses strukturierte Software Engineering in die Welt der Enterprise AI und
+              RAG-Lösungen zu übertragen.
+            </p>
+
+            <p data-i18n="about_text_3">
+              In meiner Freizeit brauche ich manchmal Abstand vom Bildschirm.
+              Musik hören, Freunde treffen oder einfach kurz abschalten – das
+              bringt mir wieder Ruhe, damit ich mich danach wieder besser
+              konzentrieren kann.
+            </p>
+
+            <div class="about-stats">
+              <div class="stat-item">
+                <h3 id="semester-number">4.</h3>
+                <p data-i18n="stat_semester">Semester</p>
+              </div>
+              <div class="stat-item">
+                <h3>100%</h3>
+                <p data-i18n="stat_passion">Leidenschaft & Fokus</p>
+              </div>
+              <div class="stat-item">
+                <h3>∞</h3>
+                <p data-i18n="stat_learning">Lernbereitschaft</p>
+              </div>
+            </div>
+
+            <div class="about-actions">
+              <a href="#contact" class="cta-button" data-i18n="btn_talk"
+                >Lass uns sprechen</a
+              >
+              <a
+                href="docs/cv.pdf"
+                target="_blank"
+                class="cta-button cta-button-outline"
+                data-i18n="btn_cv"
+              >
+                CV Download (PDF)
+              </a>
+            </div>
+          </div>
+
+          <div class="about-image reveal">
+            <img
+              class="about-photo"
+              src="images/ui/about-profile.jpg"
+              alt="Yusef Bach bei der Arbeit"
+              width="450"
+              height="675"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="contact section" id="contact">
+      <div class="container">
+        <h2 class="section-title reveal" data-eyebrow="Get in touch" data-i18n="contact_title">
+          Kontaktiere <span>mich</span>
+        </h2>
+        <p class="section-subtitle" data-i18n="contact_subtitle">
+          Ich freue mich darauf, von dir zu hören und deine Fragen oder
+          IT-Themen zu besprechen.
+        </p>
+
+        <div class="contact-grid reveal">
+          <div class="contact-info">
+            <h3 data-i18n="contact_header">Lass uns zusammenarbeiten</h3>
+            <p data-i18n="contact_text">
+              Ich stehe dir für Fragen zu meinem Werdegang oder meinen
+              Projekten jederzeit zur Verfügung. Du kannst mich über das
+              Formular oder direkt per E-Mail erreichen.
+            </p>
+            <div class="contact-details">
+              <div class="contact-item">
+                <div class="contact-icon">📞</div>
+                <div class="contact-text">
+                  <h4 data-i18n="contact_label_phone">Telefon</h4>
+                  <p>
+                    <a href="tel:" data-i18n="contact_phone_placeholder"
+                      >Bei Anfrage</a
+                    >
+                  </p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">✉️</div>
+                <div class="contact-text">
+                  <h4 data-i18n="contact_label_email">E-Mail</h4>
+                  <p>
+                    <a href="mailto:kontakt@yusefbach.de"
+                      >kontakt@yusefbach.de</a
+                    >
+                  </p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <div class="contact-text">
+                  <h4 data-i18n="contact_label_location">Standort</h4>
+                  <p data-i18n="contact_location_val">
+                    Region Hannover (Verfügbar vor Ort & Remote)
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form class="contact-form">
+            <div class="form-group">
+              <label for="name" data-i18n="form_name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form-control"
+                placeholder="Dein Name"
+                data-i18n-placeholder="form_name_placeholder"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="email" data-i18n="form_email">E-Mail</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                placeholder="Deine E-Mail-Adresse"
+                data-i18n-placeholder="form_email_placeholder"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="subject" data-i18n="form_subject">Betreff</label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                class="form-control"
+                placeholder="Betreff"
+                data-i18n-placeholder="form_subject_placeholder"
+                required
+              />
+              <input type="text" name="_gotcha" style="display: none" />
+            </div>
+
+            <div class="form-group">
+              <label for="message" data-i18n="form_message">Nachricht</label>
+              <textarea
+                id="message"
+                name="message"
+                class="form-control"
+                placeholder="Deine Nachricht"
+                data-i18n-placeholder="form_message_placeholder"
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" data-i18n="form_btn_send">
+              Nachricht senden
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+
+    </main>
+
+    <app-footer base-path="."></app-footer>
+
+    <script defer src="js/components/AppHeader.js"></script>
+    <script defer src="js/components/AppFooter.js"></script>
+    <script defer src="js/projects-data.js"></script>
+    <script defer src="js/project-renderer.js"></script>
+    <script defer src="js/thoughts-data.js"></script>
+    <script defer src="js/thoughts-renderer.js"></script>
+    <script defer src="js/github-activity-data.js"></script>
+    <script defer src="js/github-activity.js"></script>
+    <script defer src="js/home-fx.js"></script>
+    <script
+      type="text/javascript"
+      async
+      src="//cdn.credly.com/assets/utilities/embed.js"
+    ></script>
+
+    <script defer src="js/bot.js"></script>
+    <script defer src="js/script.js"></script>
+
+    <!-- EmailJS: ans Body-Ende verschoben (war render-blocking im <head>) -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function () { emailjs.init("HfDPynqOsE1GXbLT9"); })();
+    </script>
+
+  </body>
+</html>

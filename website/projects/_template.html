@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <script defer src="../js/status.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CHANGE: page title -->
+    <title>Project Name | Case Study</title>
+    <link rel="icon" type="image/png" href="../images/ui/logo.png" />
+    <script>(function(){try{var t=localStorage.getItem("theme");document.documentElement.setAttribute("data-theme",t==="light"?"light":"dark");}catch(e){document.documentElement.setAttribute("data-theme","dark");}})()</script>
+    <link rel="preload" as="font" type="font/woff2" href="../fonts/InterVariable.woff2" crossorigin />
+
+    <link rel="stylesheet" href="../css/fonts.css" />
+
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/project-base.css" />
+    <!-- CHANGE: rename to match project slug, e.g. pages/my-project.css -->
+    <link rel="stylesheet" href="../css/pages/_template.css" />
+    <link rel="stylesheet" href="../css/pages/roadmap.css" />
+    <noscript>
+      <style>
+        body {
+          visibility: visible !important;
+        }
+      </style>
+    </noscript>
+  </head>
+
+  <body class="project-deep-dive">
+    <a href="#main-content" class="skip-link" data-i18n="a11y_skip_link">Zum Hauptinhalt springen</a>
+
+    <!-- ── Navigation ────────────────────────────────────────────── -->
+    <!-- CHANGE: add/remove internal nav links to match your sections -->
+    <app-project-header base-path="..">
+      <div class="internal-links">
+        <a href="#mission" data-i18n="pd_nav_mission">Mission</a>
+        <a href="#architecture" data-i18n="pd_nav_arch">Architektur</a>
+        <a href="#gallery" data-i18n="pd_nav_gallery">Galerie</a>
+        <!-- Optional: download button — keep margin-left: auto to push it right -->
+        <!-- <a href="#downloads" class="nav-download-btn" data-i18n="pd_nav_download" style="margin-left: auto;">Download</a> -->
+      </div>
+    </app-project-header>
+    <main id="main-content">
+
+    <!-- ── Hero ──────────────────────────────────────────────────── -->
+    <!-- For video hero: replace hero-pattern div with video-container -->
+    <header class="project-hero" id="home">
+      <div class="hero-pattern" style="opacity: 0.5;"></div>
+
+      <!-- Video hero (optional — delete hero-pattern above if using this):
+      <div class="video-container">
+        <video autoplay muted loop playsinline poster="../images/projects/slug/poster.jpg">
+          <source src="../images/projects/slug/demo.mp4" type="video/mp4" />
+        </video>
+      </div>
+      -->
+
+      <div class="hero-content container">
+        <div class="hero-badges fade-in-up">
+          <!-- CHANGE: role badge + date range -->
+          <span class="hero-badge">Lead Developer</span>
+          <span class="hero-badge outline">MM/YYYY – MM/YYYY</span>
+        </div>
+
+        <h1 class="hero-title fade-in-up" style="animation-delay: 0.2s">
+          <!-- CHANGE: project name — wrap accent word in text-stroke -->
+          Project<span class="text-stroke">Name</span>
+        </h1>
+
+        <p
+          class="hero-subtitle fade-in-up"
+          style="animation-delay: 0.4s"
+          data-i18n="SLUG_page_subtitle"
+        >
+          <!-- CHANGE: fallback text for subtitle (also add key to lang/*.json) -->
+          Kurze, prägnante Beschreibung. <span class="highlight-text">Wichtiger Aspekt.</span>
+        </p>
+      </div>
+
+      <div class="scroll-indicator fade-in" style="animation-delay: 1s">
+        <span>Explore Case</span>
+        <div class="mouse">
+          <div class="wheel"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ── Mission / Overview ────────────────────────────────────── -->
+    <section class="project-section dark-bg" id="mission">
+      <div class="container">
+        <div class="mission-grid">
+          <div class="mission-content reveal">
+            <span class="section-tag" data-i18n="SLUG_tag_project">Tag Text</span>
+            <h2 class="section-heading" data-i18n="SLUG_mission_title">
+              Section <br /><span class="highlight-text">Heading</span>
+            </h2>
+            <p class="text-lg" data-i18n="SLUG_mission_text">
+              Haupttext der Mission-Sektion.
+            </p>
+            <p class="text-muted" data-i18n="SLUG_mission_subtext">
+              Ergänzender Subtext.
+            </p>
+
+            <div class="stats-row">
+              <div class="stat-box">
+                <span class="stat-val">–</span>
+                <span class="stat-label">Stat 1</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-val">–</span>
+                <span class="stat-label">Stat 2</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-val">–</span>
+                <span class="stat-label">Stat 3</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CHANGE: replace right side with visual relevant to project -->
+          <div class="feature-visual reveal delay-200">
+            <div class="image-frame-cyber">
+              <img
+                src="../images/projects/SLUG/preview.jpg"
+                alt="Project Preview" width="800" height="450"
+                class="zoomable-img" loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Generic Content Section ───────────────────────────────── -->
+    <!-- CHANGE: id, heading, content; duplicate/remove as needed -->
+    <section class="project-section" id="architecture">
+      <div class="container">
+        <h2 class="section-heading center-text reveal" data-i18n="SLUG_arch_title">
+          Section <br /><span class="highlight-text">Title</span>
+        </h2>
+        <p class="section-subtitle center-text reveal" data-i18n="SLUG_arch_sub">
+          Kurze Einleitung zur Sektion.
+        </p>
+
+        <!-- Example: challenge-grid (3 cards) -->
+        <div class="challenge-grid reveal">
+          <div class="challenge-card">
+            <div class="challenge-header">
+              <div class="icon-box icon-success">⚡</div>
+              <h4 class="challenge-title" data-i18n="SLUG_chal_1_title">Challenge 1</h4>
+            </div>
+            <p class="challenge-desc" data-i18n="SLUG_chal_1_desc">Beschreibung des Problems.</p>
+            <div class="solution-block">
+              <div class="icon-box icon-danger">🛡️</div>
+              <div class="solution-text">
+                <span class="solution-label">Solution</span>
+                <span>Beschreibung der Lösung.</span>
+              </div>
+            </div>
+          </div>
+          <!-- Add more .challenge-card divs as needed -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Gallery (optional — delete if not needed) ─────────────── -->
+    <section class="project-section dark-bg" id="gallery">
+      <div class="container">
+        <h2 class="section-heading center-text reveal" data-i18n="SLUG_gallery_title">
+          Galerie
+        </h2>
+        <div class="gallery-grid reveal">
+          <!-- CHANGE: update src/alt for each image -->
+          <img src="../images/projects/SLUG/screenshot-1.jpg" alt="Screenshot 1" width="1200" height="800" class="zoomable-img" loading="lazy" />
+          <img src="../images/projects/SLUG/screenshot-2.jpg" alt="Screenshot 2" width="1200" height="800" class="zoomable-img" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Lightbox (required when using .zoomable-img) ──────────── -->
+    <div class="lightbox" id="lightbox">
+      <span class="lightbox-close">&times;</span>
+      <img src="" alt="Enlarged Image" class="lightbox-content" id="lightbox-img" />
+    </div>
+
+    <!-- ── Roadmap (dynamic, managed via Admin Panel) ───────────── -->
+    <!-- CHANGE: replace SLUG with the project slug, e.g. "my-project" -->
+    <section class="project-section" id="roadmap">
+      <div class="container">
+        <h2 class="section-heading center-text reveal" data-i18n="SLUG_roadmap_title">
+          What's <span class="highlight-text">Next</span>
+        </h2>
+        <p class="section-subtitle center-text reveal" data-i18n="SLUG_roadmap_sub">
+          Geplante Features und Verbesserungen.
+        </p>
+
+        <!-- PRERENDER_ROADMAP_SLUG_START -->
+        <div id="roadmap-project-slug">
+<div class="roadmap-empty-state reveal active"><p>Noch keine Einträge.</p></div>
+          </div>
+        <!-- PRERENDER_ROADMAP_SLUG_END -->
+
+      </div>
+    </section>
+
+    <!-- ── Project Nav (previous / next) ─────────────────────────── -->
+    <nav class="project-nav">
+      <!-- CHANGE: update href, data-i18n keys, and title text -->
+      <a href="./other-project.html" class="project-nav-link prev reveal">
+        <span class="nav-direction" data-i18n="nav_prev">← Vorheriges Projekt</span>
+        <span class="nav-project-title">Other Project</span>
+      </a>
+      <a href="./another-project.html" class="project-nav-link next reveal">
+        <span class="nav-direction" data-i18n="nav_next">Nächstes Projekt →</span>
+        <span class="nav-project-title">Another Project</span>
+      </a>
+    </nav>
+
+    <!-- ── Footer ────────────────────────────────────────────────── -->
+
+    </main>
+    <app-footer base-path=".."></app-footer>
+
+    <!-- lightbox.js only needed when .zoomable-img is used -->
+    <script defer src="../js/lightbox.js"></script>
+    <script defer src="../js/components/AppProjectHeader.js"></script>
+    <script defer src="../js/components/AppFooter.js"></script>
+    <script defer src="../js/roadmap-data.js"></script>
+    <script defer src="../js/roadmap-renderer.js"></script>
+    <script defer src="../js/bot.js"></script>
+    <script defer src="../js/script.js"></script>
+  </body>
+</html>

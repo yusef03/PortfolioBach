@@ -1,0 +1,59 @@
+name: Publish Projects
+
+# Wird manuell aus dem Admin Panel getriggert (workflow_dispatch)
+# oder lokal testbar mit: gh workflow run publish-projects.yml
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    name: Projekte aus Supabase → website/js/projects-data.js + HTML Pre-Render
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write   # Damit der Job committen und pushen darf
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Node.js einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Abhängigkeiten installieren (cheerio für build:lang)
+        run: npm ci
+
+      - name: Projekte aus Supabase bauen
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: node scripts/build-projects.mjs
+
+      - name: Pre-Rendering (website/index.html + website/projects/archive.html)
+        run: node scripts/prerender.js
+
+      - name: Sprach-Spiegelung /en/ + /ar/ neu bauen
+        run: node scripts/build-lang-pages.mjs
+
+      - name: Prüfen ob Änderungen vorhanden
+        id: check
+        run: |
+          git diff --quiet website/js/projects-data.js website/index.html website/projects/archive.html website/en website/ar \
+            && echo "changed=false" >> $GITHUB_OUTPUT \
+            || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit & Push (nur wenn sich etwas geändert hat)
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          git config user.name "Yusef Bach"
+          git config user.email "kontakt@yusefbach.de"
+          git add website/js/projects-data.js website/index.html website/projects/archive.html website/en website/ar
+          git commit -m "chore: projects aktualisiert via Admin Panel"
+          git push
+
+      - name: Keine Änderungen
+        if: steps.check.outputs.changed == 'false'
+        run: echo "Keine Änderungen in den Projektdaten — nichts zu committen."

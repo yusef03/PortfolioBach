@@ -1,0 +1,59 @@
+name: Publish Roadmap
+
+# Wird manuell aus dem Admin Panel getriggert (workflow_dispatch)
+# oder lokal testbar mit: gh workflow run publish-roadmap.yml
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    name: Roadmap & Changelog aus Supabase → website/js/roadmap-data.js + HTML Pre-Render
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write   # Damit der Job committen und pushen darf
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Node.js einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Abhängigkeiten installieren (cheerio für build:lang)
+        run: npm ci
+
+      - name: Roadmap & Changelog aus Supabase bauen
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: node scripts/build-roadmap.mjs
+
+      - name: Pre-Rendering (website/roadmap.html + website/changelog.html + Projekt-Subseiten)
+        run: node scripts/prerender-roadmap.js
+
+      - name: Sprach-Spiegelung /en/ + /ar/ neu bauen
+        run: node scripts/build-lang-pages.mjs
+
+      - name: Prüfen ob Änderungen vorhanden
+        id: check
+        run: |
+          git diff --quiet website/js/roadmap-data.js website/roadmap.html website/changelog.html website/projects/ website/en website/ar \
+            && echo "changed=false" >> $GITHUB_OUTPUT \
+            || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit & Push (nur wenn sich etwas geändert hat)
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          git config user.name "Yusef Bach"
+          git config user.email "kontakt@yusefbach.de"
+          git add website/js/roadmap-data.js website/roadmap.html website/changelog.html website/projects/ website/en website/ar
+          git commit -m "chore: roadmap & changelog aktualisiert via Admin Panel"
+          git push
+
+      - name: Keine Änderungen
+        if: steps.check.outputs.changed == 'false'
+        run: echo "Keine Änderungen in den Roadmap-Daten — nichts zu committen."

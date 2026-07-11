@@ -44,6 +44,9 @@ class AppFooter extends HTMLElement {
               <li><a href="${basePath}/index.html#projects"><i style="margin-right: 5px">&rsaquo;</i> <span data-i18n="nav_projects">Projekte</span></a></li>
               <li><a href="${basePath}/index.html#skills"><i style="margin-right: 5px">&rsaquo;</i> <span data-i18n="nav_stack">Tech Stack</span></a></li>
               <li><a href="${basePath}/index.html#about"><i style="margin-right: 5px">&rsaquo;</i> <span data-i18n="nav_about">Über mich</span></a></li>
+              <li><a href="${basePath}/thoughts/"><i style="margin-right: 5px">&rsaquo;</i> <span data-i18n="nav_thoughts">Gedanken</span></a></li>
+              <li><a href="${basePath}/roadmap.html"><i style="margin-right: 5px">&rsaquo;</i> <span data-i18n="footer_roadmap">Roadmap</span></a></li>
+              <li><a href="${basePath}/changelog.html"><i style="margin-right: 5px">&rsaquo;</i> <span data-i18n="footer_changelog">Changelog</span></a></li>
             </ul>
           </div>
 

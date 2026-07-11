@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Changelog | Yusef Bach</title>
+    <meta name="description" content="Jede Version, jeder Schritt — der vollständige Release-Verlauf des Portfolio-Systems von Yusef Bach." />
+    <script defer src="js/status.js"></script>
+    <script>(function(){try{var t=localStorage.getItem("theme");document.documentElement.setAttribute("data-theme",t==="light"?"light":"dark");}catch(e){document.documentElement.setAttribute("data-theme","dark");}})()</script>
+    <link rel="preload" as="font" type="font/woff2" href="fonts/InterVariable.woff2" crossorigin />
+
+    <link rel="stylesheet" href="css/fonts.css" />
+
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/pages/changelog.css" />
+    <!-- i18n-seo-auto:start -->
+    <link rel="alternate" hreflang="de" href="https://yusefbach.de/changelog.html" />
+    <link rel="alternate" hreflang="en" href="https://yusefbach.de/en/changelog.html" />
+    <link rel="alternate" hreflang="ar" href="https://yusefbach.de/ar/changelog.html" />
+    <link rel="alternate" hreflang="x-default" href="https://yusefbach.de/changelog.html" />
+    <link rel="canonical" href="https://yusefbach.de/changelog.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>window.__PAGE_LANG__=(function(){var p=location.pathname;if(/(^|\/)en(\/|$)/.test(p))return'en';if(/(^|\/)ar(\/|$)/.test(p))return'ar';return'de';})();</script>
+    <!-- i18n-seo-auto:end -->
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link" data-i18n="a11y_skip_link">Zum Hauptinhalt springen</a>
+    <app-header base-path="."></app-header>
+    <main id="main-content">
+
+    <!-- ── Hero ─────────────────────────────────────────────────────────── -->
+    <section class="changelog-page-hero">
+      <div class="container">
+        <h1>Change<span class="highlight-text">log</span></h1>
+        <p data-i18n="changelog_page_hero_sub">Jede Version, jeder Schritt — offen dokumentiert.</p>
+        <p class="changelog-hero-meta">
+          <span id="changelog-release-count">—</span>
+          <span data-i18n="changelog_release_count_suffix"> Releases</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ── Filter-Chips ──────────────────────────────────────────────────── -->
+    <div class="container">
+      <div class="changelog-filter-bar">
+        <button class="changelog-chip is-active" data-filter="all" data-i18n="changelog_filter_all">
+          Alle <span class="changelog-chip-count"></span>
+        </button>
+        <button class="changelog-chip" data-filter="feature" data-i18n="changelog_filter_feature">
+          Feature <span class="changelog-chip-count"></span>
+        </button>
+        <button class="changelog-chip" data-filter="fix" data-i18n="changelog_filter_fix">
+          Fix <span class="changelog-chip-count"></span>
+        </button>
+        <button class="changelog-chip" data-filter="refactor" data-i18n="changelog_filter_refactor">
+          Refactor <span class="changelog-chip-count"></span>
+        </button>
+        <button class="changelog-chip" data-filter="security" data-i18n="changelog_filter_security">
+          Security <span class="changelog-chip-count"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ── Changelog-Zone ────────────────────────────────────────────────── -->
+    <section class="project-section" style="padding-bottom: 120px;">
+      <div class="container">
+
+        <!-- PRERENDER_CHANGELOG_PAGE_START -->
+        <div id="changelog-page-zone">
+
+      <div class="changelog-year-group" data-year="2026">
+        <div class="changelog-year-header">
+          <span class="changelog-year-label">2026</span>
+          <div class="changelog-year-line"></div>
+        </div>
+        <div class="changelog-timeline">
+          <div class="changelog-timeline-line"></div>
+          
+          <div class="changelog-timeline-entry reveal active" data-category="feature">
+            <div class="changelog-timeline-dot"></div>
+            <div class="changelog-card feature reveal active">
+              <div class="changelog-card-meta">
+                <span class="changelog-version">v3.0.0</span>
+                <span class="changelog-date">07. Juni 2026</span>
+                <span class="changelog-category feature">Feature</span>
+              </div>
+              <h3 class="changelog-title">Der große Relaunch — ein vollständig verwaltbares Portfolio-System</h3>
+              <p class="changelog-desc">Die größte Aktualisierung seit dem Start: Aus einer statischen Seite wird ein kleines, vollständig verwaltbares System — dreisprachig, KI-gestützt und weiterhin ohne ein einziges Frontend-Framework.<br><br>• <strong>Dreisprachigkeit (DE · EN · AR)</strong> mit vollständigem Rechts-nach-links-Layout für Arabisch<br>• <strong>KI-Twin „Ask Yusef"</strong> — beantwortet Besucherfragen in deren Sprache (FastAPI + Gemini, mehrstufiges Failover)<br>• <strong>Admin Panel</strong> — alle Inhalte ohne Code pflegbar (Next.js + Supabase)<br>• <strong>Neue Bereiche</strong> — Blog (Thoughts), öffentlicher Changelog, dynamische Roadmap und ein Live-GitHub-Aktivitäts-Widget<br>• <strong>Eigenes Design-System</strong> — Dark-/Light-Mode, self-hosted Schriften, fluide Typografie, Design-Tokens und View-Transitions<br>• <strong>Barrierefreiheit & PWA</strong> — installierbar, offline-fähig, durchgängig auf Zugänglichkeit ausgelegt<br>• <strong>SEO pro Sprache</strong> — statisches Vorrendern, hreflang und strukturierte Daten für saubere Indexierung</p>
+            </div>
+          </div>
+          <div class="changelog-timeline-entry reveal active" data-category="feature">
+            <div class="changelog-timeline-dot"></div>
+            <div class="changelog-card feature reveal active">
+              <div class="changelog-card-meta">
+                <span class="changelog-version">v1.3.0</span>
+                <span class="changelog-date">29. Mai 2026</span>
+                <span class="changelog-category feature">Feature</span>
+              </div>
+              <h3 class="changelog-title">Roadmap & Changelog System</h3>
+              <p class="changelog-desc">Vollständiges Roadmap-System: Supabase-gesteuert, Scope-Logik (Portfolio + Projekte), Prerender für SEO, Client-Renderer mit DE/EN/AR. Changelog-Komponente mit Kategorie-Badges. Admin: Drag & Drop Sortierung, "→ CL" Button, AR-Felder im Draft-Modal.</p>
+            </div>
+          </div>
+          <div class="changelog-timeline-entry reveal active" data-category="feature">
+            <div class="changelog-timeline-dot"></div>
+            <div class="changelog-card feature reveal active">
+              <div class="changelog-card-meta">
+                <span class="changelog-version">v1.2.0</span>
+                <span class="changelog-date">28. Mai 2026</span>
+                <span class="changelog-category feature">Feature</span>
+              </div>
+              <h3 class="changelog-title">Projects & Media Manager</h3>
+              <p class="changelog-desc">Projects CRUD: Admin UI für alle 5 Projekte, dynamischer Renderer (js/projects-data.js), Prerender für SEO, Build-Pipeline via GitHub Action. Media Manager v2: Repo-first Uploads, Admin-Commit-Flow, CV-Verwaltung, Supabase Storage Integration.</p>
+            </div>
+          </div>
+          <div class="changelog-timeline-entry reveal active" data-category="feature">
+            <div class="changelog-timeline-dot"></div>
+            <div class="changelog-card feature reveal active">
+              <div class="changelog-card-meta">
+                <span class="changelog-version">v1.1.0</span>
+                <span class="changelog-date">26. Mai 2026</span>
+                <span class="changelog-category feature">Feature</span>
+              </div>
+              <h3 class="changelog-title">Admin Panel — Infrastruktur & Kern-Features</h3>
+              <p class="changelog-desc">Admin Panel live auf admin.yusefbach.de (Vercel + Next.js + Supabase). GitHub OAuth Login. Maintenance Mode mit Notfall-Knopf, Multi-Sprache (DE/EN/AR), RTL, 30s-Polling. System Health Dashboard. Bot Memory Editor (yusef_brain.md). Translations Manager (DE/EN/AR, ~491 Keys).</p>
+            </div>
+          </div>
+          <div class="changelog-timeline-entry reveal active" data-category="refactor">
+            <div class="changelog-timeline-dot"></div>
+            <div class="changelog-card refactor reveal active">
+              <div class="changelog-card-meta">
+                <span class="changelog-version">v1.0.0</span>
+                <span class="changelog-date">25. Mai 2026</span>
+                <span class="changelog-category refactor">Refactor</span>
+              </div>
+              <h3 class="changelog-title">Architektur & TypeScript Migration</h3>
+              <p class="changelog-desc">Migration von statischem HTML zur datengetriebenen Engine. CSS in 6 Module aufgeteilt (2338 → 931 Zeilen main.css), project-base.css für alle Projektseiten, Web Components (app-header, app-footer, app-project-header), Inline-CSS eliminiert, lightbox.ts extrahiert. Kein Duplikat-Code mehr.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <!-- PRERENDER_CHANGELOG_PAGE_END -->
+
+      </div>
+    </section>
+
+    </main>
+
+        <app-footer base-path="."></app-footer>
+
+    <script defer src="js/components/AppHeader.js"></script>
+    <script defer src="js/components/AppFooter.js"></script>
+    <script defer src="js/roadmap-data.js"></script>
+    <script defer src="js/roadmap-renderer.js"></script>
+    <script defer src="js/bot.js"></script>
+    <script defer src="js/script.js"></script>
+  </body>
+</html>

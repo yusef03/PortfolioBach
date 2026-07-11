@@ -1,0 +1,342 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer="" src="/js/status.js"></script>
+    <script>(function(){try{var t=localStorage.getItem("theme");document.documentElement.setAttribute("data-theme",t==="light"?"light":"dark");}catch(e){document.documentElement.setAttribute("data-theme","dark");}})()</script>
+    <title>HTML/CSS CV Engine | Case Study</title>
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/InterVariable.woff2" crossorigin="">
+
+    <link rel="stylesheet" href="/css/fonts.css">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/project-base.css">
+    <link rel="stylesheet" href="/css/pages/html-cv.css">
+    <link rel="stylesheet" href="/css/pages/roadmap.css">
+    <!-- i18n-seo-auto:start -->
+    
+    
+    
+    
+    
+    
+    <script>window.__PAGE_LANG__=(function(){var p=location.pathname;if(/(^|\/)en(\/|$)/.test(p))return'en';if(/(^|\/)ar(\/|$)/.test(p))return'ar';return'de';})();</script>
+    <!-- i18n-seo-auto:end -->
+  
+    <link rel="alternate" hreflang="de" href="https://yusefbach.de/projects/html-cv.html">
+    <link rel="alternate" hreflang="en" href="https://yusefbach.de/en/projects/html-cv.html">
+    <link rel="alternate" hreflang="ar" href="https://yusefbach.de/ar/projects/html-cv.html">
+    <link rel="alternate" hreflang="x-default" href="https://yusefbach.de/projects/html-cv.html">
+    <link rel="canonical" href="https://yusefbach.de/en/projects/html-cv.html">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+  <body class="project-deep-dive">
+    <a href="#main-content" class="skip-link" data-i18n="a11y_skip_link">Skip to main content</a>
+    <app-project-header base-path="..">
+      <div class="internal-links">
+        <a href="#mission" onclick="closeProjectMenu()" data-i18n="pd_nav_mission">Mission</a>
+        <a href="#tech" onclick="closeProjectMenu()" data-i18n="nav_stack">Tech Stack</a>
+        <a href="#gallery" onclick="closeProjectMenu()" data-i18n="pd_nav_gallery">Gallery</a>
+        <a href="#downloads" class="nav-download-btn" onclick="closeProjectMenu()" data-i18n="pd_nav_download" style="margin-left: auto;">Download</a>
+      </div>
+    </app-project-header>
+    <main id="main-content">
+
+    <header class="project-hero" id="home">
+      <div class="video-container" style="
+          background: url('/images/projects/cv-engine/cv.png') center/cover
+            no-repeat;
+          filter: brightness(0.3);
+        "></div>
+
+      <div class="hero-content container">
+        <div class="hero-badges fade-in-up">
+          <span class="hero-badge" data-i18n="cv_hero_badge">CSS Print Engine</span>
+          <span class="hero-badge outline">HTML5 / CSS3</span>
+        </div>
+
+        <h1 class="hero-title fade-in-up" style="animation-delay: 0.2s" data-i18n="cv_hero_title">Next Gen <span class="text-stroke">Application</span></h1>
+
+        <p class="hero-subtitle fade-in-up" style="animation-delay: 0.4s" data-i18n="cv_hero_subtitle">No Word. No Canva. <span class="highlight-text">100% Code.</span></p>
+      </div>
+
+      <div class="scroll-indicator fade-in" style="animation-delay: 1s">
+        <span data-i18n="pd_hero_scroll">Explore Case</span>
+        <div class="mouse"><div class="wheel"></div></div>
+      </div>
+    </header>
+
+    <section class="project-section dark-bg" id="mission">
+      <div class="container">
+        <div class="mission-grid">
+          <div class="mission-content reveal">
+            <span class="section-tag" data-i18n="cv_tag_project">The Concept</span>
+            <h2 class="section-heading" data-i18n="cv_mission_title">Application as a <br><span class="highlight-text">Code Experience</span></h2>
+            <p class="text-lg" data-i18n="cv_mission_text">Standard tools like Word are inflexible and generate messy code. My solution: A custom framework based on HTML5 &amp; CSS3 linking design freedom with technical precision.</p>
+            <p class="text-muted" data-i18n="cv_mission_subtext">The Goal: Absolute control over layout, typography, and 'Dark Glass' aesthetics – with perfect PDF export.</p>
+
+            <div class="stats-row">
+              <div class="stat-box">
+                <span class="stat-val">0</span>
+                <span class="stat-label" data-i18n="cv_stat_dependencies">Dependencies</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-val">100</span>
+                <span class="stat-label" data-i18n="cv_stat_performance">Lighthouse Score</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-val">A4</span>
+                <span class="stat-label" data-i18n="cv_stat_format">Format</span>
+              </div>
+            </div>
+          </div>
+          <div class="mission-image reveal delay-200">
+            <div class="image-frame-cyber">
+              <img src="/images/projects/cv-engine/cv.png" alt="CV Preview" width="1653" height="2339" class="zoomable-img" loading="lazy">
+              <div class="scan-line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section" id="tech">
+      <div class="container">
+        <h2 class="section-heading center-text reveal" data-i18n="cv_tech_title">Technical <span class="highlight-text">Deep Dive</span></h2>
+        <p class="section-subtitle center-text reveal" data-i18n="cv_tech_sub">Why HTML beats Word.</p>
+
+        <div class="timeline-steps reveal">
+          <div class="timeline-step">
+            <div class="t-circle">CSS</div>
+            <h4 class="t-title" data-i18n="cv_feat_1_title">Print CSS Optimization</h4>
+            <p class="t-desc" data-i18n="cv_feat_1_desc">Using @page and zoom hacks for pixel-perfect A4 scaling without margins.</p>
+          </div>
+          <div class="timeline-step">
+            <div class="t-circle">UI</div>
+            <h4 class="t-title" data-i18n="cv_feat_2_title">Glassmorphism UI</h4>
+            <p class="t-desc" data-i18n="cv_feat_2_desc">Modern UI design with backdrop-filter and CSS variables for Dark Mode aesthetics.</p>
+          </div>
+          <div class="timeline-step">
+            <div class="t-circle">GIT</div>
+            <h4 class="t-title" data-i18n="cv_feat_3_title">Privacy Workflow</h4>
+            <p class="t-desc" data-i18n="cv_feat_3_desc">Separation of private data and code via .gitignore and placeholder strategy.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section dark-bg">
+      <div class="container">
+        <h2 class="section-heading center-text reveal" data-i18n="cv_code_title">The <span class="highlight-text">Secret Sauce</span></h2>
+        <p class="section-subtitle center-text reveal" data-i18n="cv_code_sub">How to force the browser to print perfect A4.</p>
+
+        <div class="code-showcase reveal">
+          <div class="code-window">
+            <div class="code-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span class="code-title" data-i18n="cv_code_box_title">style.css (Print Logic)</span>
+            </div>
+            <pre><code class="language-css">
+/* Der "Magic Hack" für randlosen Druck */
+@media print {
+    @page {
+        margin: 0; /* Zwingt Browser-Ränder auf 0 */
+        size: A4;
+    }
+
+    html, body {
+        width: 210mm;
+        height: 297mm;
+        /* Verhindert Scaling-Fehler bei unterschiedlichen DPI */
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .page-wrapper {
+        /* Zoom-Fix für überlaufende Inhalte */
+        zoom: 0.95; 
+        background-color: #1a1a1a !important;
+    }
+}
+            </code></pre>
+          </div>
+          <div class="code-description">
+            <h3 data-i18n="cv_code_desc_title">Why does this matter?</h3>
+            <p data-i18n="cv_code_desc_text">Standard websites print poorly. Headers get cut off, backgrounds turn white. <br><br><strong>My Solution:</strong> I use <code>@media print</code> to completely recalculate the CSS Grid. Elements like navigation bars are hidden, while the CV container is forced to the exact physical millimeters of an A4 sheet.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <div class="container">
+        <h2 class="section-heading center-text reveal" data-i18n="cv_chal_title">Challenges &amp; <span class="highlight-text">Solutions</span></h2>
+
+        <div class="challenge-grid reveal">
+          <div class="challenge-card">
+            <div class="challenge-header">
+              <div class="icon-box icon-danger">🖨️</div>
+              <h4 class="challenge-title" data-i18n="cv_chal_1_title">Problem: Browser Rendering</h4>
+            </div>
+            <p class="challenge-desc" data-i18n="cv_chal_1_desc">Browsers render margins differently. A Chrome PDF looked different from Edge.</p>
+            <div class="solution-block">
+              <div class="icon-box icon-success">🛡️</div>
+              <div class="solution-text">
+                <span class="solution-label">Solution</span>
+                <span data-i18n="cv_chal_1_sol">Usage of `webkit-print-color-adjust: exact` and strict CSS reset for print media.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="challenge-card">
+            <div class="challenge-header">
+              <div class="icon-box icon-danger">🔒</div>
+              <h4 class="challenge-title" data-i18n="cv_chal_2_title">Problem: Privacy</h4>
+            </div>
+            <p class="challenge-desc" data-i18n="cv_chal_2_desc">How to show code on GitHub without leaking my phone number?</p>
+            <div class="solution-block">
+              <div class="icon-box icon-success">🛡️</div>
+              <div class="solution-text">
+                <span class="solution-label">Solution</span>
+                <span data-i18n="cv_chal_2_sol">Architecture Split: `index.html` (Dummy Data) vs. `private_data.js` (Local).</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section dark-bg" id="gallery">
+      <div class="container">
+        <h2 class="section-heading center-text reveal" data-i18n="pd_gallery_title">Mission <span class="highlight-text">Gallery</span></h2>
+        <div class="gallery-grid reveal" style="grid-template-columns: 1fr 1fr">
+          <div class="gallery-item">
+            <img src="/images/projects/cv-engine/letter.png" alt="CV Layout" width="594" height="841" class="zoomable-img" loading="lazy">
+            <div class="gallery-overlay"><span>🔍 CV</span></div>
+          </div>
+          <div class="gallery-item">
+            <img src="/images/projects/cv-engine/cv.png" alt="Cover Letter" width="1653" height="2339" class="zoomable-img" loading="lazy">
+            <div class="gallery-overlay"><span>🔍 Letter</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <div class="container">
+        <h2 class="section-heading center-text reveal" data-i18n="cv_comp_title">Word vs. <span class="highlight-text">Code</span></h2>
+
+        <div class="comparison-grid reveal">
+          <div class="comp-card bad">
+            <div class="comp-icon">❌</div>
+            <h3 data-i18n="cv_comp_bad_title">Classic Templates</h3>
+            <ul>
+              <li data-i18n="cv_comp_bad_li_1">Layouts break when text changes</li>
+              <li data-i18n="cv_comp_bad_li_2">No versioning (CV_Final_v2.docx)</li>
+              <li data-i18n="cv_comp_bad_li_3">Boring standard design</li>
+              <li data-i18n="cv_comp_bad_li_4">Poor PDF compression</li>
+            </ul>
+          </div>
+
+          <div class="comp-card good">
+            <div class="comp-icon">✅</div>
+            <h3 data-i18n="cv_comp_good_title">My HTML Engine</h3>
+            <ul>
+              <li data-i18n="cv_comp_good_li_1"><strong>Pixel-Perfect:</strong> Layout is set in stone (CSS Grid)</li>
+              <li data-i18n="cv_comp_good_li_2"><strong>Git Versioning:</strong> Every change is traceable</li>
+              <li data-i18n="cv_comp_good_li_3"><strong>High-End UI:</strong> Glassmorphism &amp; Vector Graphics</li>
+              <li data-i18n="cv_comp_good_li_4"><strong>Privacy:</strong> Data separation via .gitignore</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section dark-bg">
+      <div class="container">
+        <h2 class="section-heading center-text reveal" data-i18n="cv_road_title">What's <span class="highlight-text">Next?</span></h2>
+
+        <!-- PRERENDER_ROADMAP_HTML-CV_START -->
+        <div id="roadmap-project-html-cv">
+
+      <div class="roadmap-wrapper reveal active">
+        <div class="roadmap-line"></div>
+        
+        <div class="roadmap-node">
+          <div class="node-marker done"></div>
+          <div class="roadmap-card">
+            <span class="rm-tag status-done">Fertig ✓</span>
+            <h3 class="rm-title">Core Engine</h3>
+            <p class="rm-desc">HTML Structure &amp; Print CSS</p>
+          </div>
+        </div>
+        <div class="roadmap-node">
+          <div class="node-marker done"></div>
+          <div class="roadmap-card">
+            <span class="rm-tag status-done">Fertig ✓</span>
+            <h3 class="rm-title">Privacy Layer</h3>
+            <p class="rm-desc">Git Hooks &amp; Data Separation</p>
+          </div>
+        </div>
+        <div class="roadmap-node">
+          <div class="node-marker planned"></div>
+          <div class="roadmap-card">
+            <span class="rm-tag status-planned">Geplant</span>
+            <h3 class="rm-title">JSON Import</h3>
+            <p class="rm-desc">Lebenslauf-Daten aus JSON-Datei laden statt Hardcoding.</p>
+          </div>
+        </div>
+        <div class="roadmap-node">
+          <div class="node-marker planned"></div>
+          <div class="roadmap-card">
+            <span class="rm-tag status-planned">Geplant</span>
+            <h3 class="rm-title">PDF-Auto-Gen</h3>
+            <p class="rm-desc">Automatischer PDF-Export via Node.js (Puppeteer) bei jedem Git Push.</p>
+          </div>
+        </div>
+      </div>
+          </div>
+        <!-- PRERENDER_ROADMAP_HTML-CV_END -->
+
+      </div>
+    </section>
+
+    <section class="project-section download-section" id="downloads">
+      <div class="container">
+        <h2 class="section-heading center-text reveal" data-i18n="cv_dl_title">Check the <span class="highlight-text">Results</span></h2>
+        <p class="section-subtitle center-text reveal" data-i18n="cv_dl_sub">View code or check the result.</p>
+
+        <div class="download-grid reveal">
+          <div class="download-card primary-card">
+            <div class="card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" width="50" height="50" fill="#ffffff">
+                <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-115.1-26.3-115.1-117.2 0-25.9 9.2-47.2 24.2-63.7-2.4-6.6-10.6-30.1 2.3-62.9 0 0 19.6-6.3 64.3 24.2 18.6-5.1 38.6-7.8 58.6-7.8 20 0 40 2.7 58.6 7.8 44.7-30.5 64.3-24.2 64.3-24.2 12.9 32.8 4.7 56.3 2.3 62.9 15 16.5 24.2 37.8 24.2 63.7 0 91.1-59.6 110.8-115 117.2 9 7.8 17.1 23.2 17.1 46.8 0 33.8-.3 61.1-.3 69.4 0 6.5 4.6 14.6 17.3 12.1C426.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path>
+              </svg>
+            </div>
+            <h3 data-i18n="cv_dl_github_title">GitHub Repo</h3>
+            <p class="version-info" data-i18n="cv_dl_repo_info">Full Source Code</p>
+            <a href="https://github.com/yusef03/Custom-Modern-Html-CV" target="_blank" class="dl-button" data-i18n="cv_dl_view_code">View Code</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    </main>
+    <app-footer base-path=".."></app-footer>
+
+    <div class="lightbox" id="lightbox">
+      <span class="lightbox-close">×</span>
+      <img src="" alt="Enlarged Image" class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script defer="" src="/js/lightbox.js"></script>
+    <script defer="" src="/js/components/AppProjectHeader.js"></script>
+    <script defer="" src="/js/components/AppFooter.js"></script>
+    <script defer="" src="/js/roadmap-data.js"></script>
+    <script defer="" src="/js/roadmap-renderer.js"></script>
+    <script defer="" src="/js/bot.js"></script>
+    <script defer="" src="/js/script.js"></script>
+  
+
+</body></html>

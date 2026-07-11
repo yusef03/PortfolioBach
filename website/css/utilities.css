@@ -1,0 +1,244 @@
+/* === i18n FOUC PREVENTION ===
+   Body hidden until applyTranslations() completes on first load.
+   Prevents the ~100ms flash of stale HTML fallback text. */
+body {
+  visibility: hidden;
+}
+body.i18n-ready {
+  visibility: visible;
+}
+
+/* Custom elements default to display:inline, causing phantom whitespace
+   below the footer and above the header. Force block context. */
+app-header,
+app-footer {
+  display: block;
+}
+
+/* === GLOBAL MOBILE FIXES === */
+/* Prevents iOS Safari double tap hover-click bug and input zoom */
+a, button, input, textarea, .nav-links a, .cta-button, .cta-button-outline {
+  touch-action: manipulation !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+/* --- Typography Helpers --- */
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.section-title span,
+.highlight-text {
+  color: var(--primary-color);
+}
+
+.section-subtitle {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 60px;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.text-stroke {
+  /* Fallback oder spezifische Styles falls nötig, 
+     wird oft inline oder via Utility genutzt */
+}
+
+/* --- ANIMATIONS --- */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s cubic-bezier(0.2, 1, 0.2, 1) forwards;
+}
+/* @keyframes fadeInUp → definiert unten im Keyframes-Block */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Typing Effect */
+.typing-text {
+  color: var(--primary-color);
+  font-weight: 800;
+}
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: var(--primary-color);
+  animation: blink 1s step-end infinite;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+}
+
+/* =========================================
+   KEYFRAMES — zentrale Definition (alle anderen Dateien importieren von hier)
+   ========================================= */
+
+/* Cursor-Blink: harter Step (Typewriter-Cursor) */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Chat-Loading: sanftes Pulsieren (0.4 → 1 → 0.4) */
+@keyframes blink-fade {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 1; }
+}
+
+/* Roadmap-Status: subtiles Pulsieren (1 → 0.3) */
+@keyframes blink-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+/* Allgemeine Einblend-Animation */
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   ACCESSIBILITY — Globales prefers-reduced-motion
+   Neutralisiert alle Animationen/Transitions für
+   Nutzer die das im OS eingestellt haben.
+   ========================================= */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .fade-in-up {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+/* =========================================
+   VIEW TRANSITIONS API
+   Aktiviert sanfte Seitenwechsel in Browsern
+   die die API unterstützen (progressive enhancement).
+   Ohne Support: normaler harter Wechsel.
+   ========================================= */
+@view-transition {
+  navigation: auto;
+}
+
+/* =========================================
+   SKIP-LINK (Barrierefreiheit — Keyboard-Nav)
+   Versteckt bis fokussiert. Erscheint sofort
+   wenn Tab gedrückt wird, springt zu #main-content.
+   ========================================= */
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 16px;
+  padding: 10px 20px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 700;
+  font-size: var(--text-sm);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  text-decoration: none;
+  z-index: 10000;
+  transition: top 0.2s var(--ease-out);
+  outline: none;
+}
+.skip-link:focus-visible {
+  top: 0;
+}
+
+/* =========================================
+   :FOCUS-VISIBLE — Keyboard-Navigation
+   Sichtbare Fokus-Ringe für alle interaktiven
+   Elemente. Erscheinen NUR bei Tastatur-Nutzung
+   (nicht bei Maus-Klick).
+   ========================================= */
+
+/* Reset: Browser-Standard-Outline unterdrücken */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Globaler Fokus-Ring */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Links und Buttons — etwas mehr Abstand */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+/* Eingabefelder — engerer Offset */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--border-radius);
+}
+
+/* Nav-Links: Unterstrich-Animation bleibt, Outline dazu */
+.nav-links a:focus-visible,
+.internal-links a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 6px;
+  border-radius: 4px;
+}
+
+/* Pill-Buttons (Sprach-Switcher) */
+.lang-pill-seg:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 20px;
+}
+
+/* CTA-Buttons — großzügiger Offset */
+.cta-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 6px;
+  border-radius: 30px;
+}
+
+/* Runde Icon-Buttons (Social) — Bot-Buttons haben ihren eigenen Focus-Style in bot.css */
+.social-icon-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 50%;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <script defer src="js/status.js"></script>
+    <script>(function(){try{var t=localStorage.getItem("theme");document.documentElement.setAttribute("data-theme",t==="light"?"light":"dark");}catch(e){document.documentElement.setAttribute("data-theme","dark");}})()</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Seite nicht gefunden | Yusef Bach</title>
+    <link rel="icon" type="image/png" href="images/ui/logo.png" />
+    <link rel="preload" as="font" type="font/woff2" href="fonts/InterVariable.woff2" crossorigin />
+
+    <link rel="stylesheet" href="css/fonts.css" />
+
+    <link rel="stylesheet" href="css/main.css" />
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        text-align: center;
+      }
+      .error-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+      .glitch-text {
+        font-size: 6rem;
+        font-weight: 900;
+        color: var(--primary-color);
+        text-shadow: 2px 2px #ff0000;
+        position: relative;
+      }
+      .sub-text {
+        font-size: 1.5rem;
+        color: var(--text-secondary);
+        margin-bottom: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link" data-i18n="a11y_skip_link">Zum Hauptinhalt springen</a>
+    <app-header base-path="."></app-header>
+    <main id="main-content">
+
+    <section class="error-container">
+      <h1 class="glitch-text">404</h1>
+      <h2 data-i18n="e404_title">Seite existiert nicht</h2>
+      <p class="sub-text" data-i18n="e404_text">
+        Diese Seite wurde entweder gelöscht, verschoben oder hat nie existiert.
+      </p>
+
+      <a href="index.html" class="cta-button" data-i18n="e404_btn">Zurück zur Sicherheit (Home)</a>
+    </section>
+
+    </main>
+
+        <app-footer base-path="."></app-footer>
+    <script defer src="js/components/AppHeader.js"></script>
+    <script defer src="js/components/AppFooter.js"></script>
+    <script defer src="js/script.js"></script>
+  </body>
+</html>

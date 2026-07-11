@@ -1,0 +1,38 @@
+name: Build GitHub Activity
+
+# Holt echte GitHub-Aktivitätsdaten und committet website/js/github-activity-data.js.
+# Geplant täglich + manuell auslösbar.
+on:
+  schedule:
+    - cron: '0 6 * * *'   # täglich 06:00 UTC
+  workflow_dispatch:
+
+jobs:
+  build-activity:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: GitHub-Activity-Daten bauen
+        env:
+          GH_STATS_TOKEN: ${{ secrets.GH_STATS_TOKEN }}
+        run: node scripts/build-github-activity.mjs
+
+      - name: Commit wenn Änderungen vorhanden
+        run: |
+          git config user.name "Yusef Bach"
+          git config user.email "kontakt@yusefbach.de"
+          git diff --quiet website/js/github-activity-data.js || (
+            git add website/js/github-activity-data.js &&
+            git commit -m "chore: GitHub-Activity-Daten aktualisiert" &&
+            git push
+          )

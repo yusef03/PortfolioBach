@@ -4,19 +4,25 @@ class AppHeader extends HTMLElement {
   }
 
   connectedCallback() {
-    // Ermitteln, ob wir im Root (index.html) oder tiefer sind
-    // Wir steuern das über ein Attribut: <app-header base-path="./"></app-header>
+    // base-path zeigt auf den Repo-Root relativ zur aktuellen Seite
+    // (".": Root-Ebene wie index.html / roadmap.html, "..": projects/<x>.html)
     const basePath = this.getAttribute("base-path") || ".";
-    const isRoot = basePath === "."; // Wenn "." sind wir auf der Startseite
 
-    // Link-Logik: Auf Unterseiten müssen wir "index.html" vor die Anker (#) setzen
-    const homeLink = isRoot ? "#" : `${basePath}/index.html`;
-    const projectLink = isRoot
-      ? "#projects"
-      : `${basePath}/index.html#projects`;
-    const stackLink = isRoot ? "#skills" : `${basePath}/index.html#skills`;
-    const aboutLink = isRoot ? "#about" : `${basePath}/index.html#about`;
-    const contactLink = isRoot ? "#contact" : `${basePath}/index.html#contact`;
+    // WICHTIG: Anker (#projects etc.) existieren NUR auf der Startseite.
+    // onHome ist NUR true, wenn wir auf Root-Ebene (base-path=".") UND auf der
+    // Startseite (index.html oder "") sind. Auf Unterseiten wie thoughts/index.html
+    // (base-path="..") ist seg zwar "index.html", aber basePath !== "." → onHome=false,
+    // damit die Anker korrekt nach ../index.html#… aufgelöst werden.
+    const seg = (window.location.pathname.split("/").pop() || "").toLowerCase();
+    const onHome = basePath === "." && (seg === "" || seg === "index.html");
+
+    // Auf der Startseite: reine Anker. Sonst: index.html voranstellen.
+    const homeLink = onHome ? "#" : `${basePath}/index.html`;
+    const projectLink = onHome ? "#projects" : `${basePath}/index.html#projects`;
+    const stackLink = onHome ? "#skills" : `${basePath}/index.html#skills`;
+    const aboutLink = onHome ? "#about" : `${basePath}/index.html#about`;
+    const thoughtsLink = `${basePath}/thoughts/`;
+    const contactLink = onHome ? "#contact" : `${basePath}/index.html#contact`;
 
     // Das HTML genau wie vorher, aber mit dynamischen Pfaden
     this.innerHTML = `
@@ -25,7 +31,7 @@ class AppHeader extends HTMLElement {
           <nav class="navbar">
             <a href="${homeLink}" class="logo">
               <img
-                src="${basePath}/images/ui/logo.png"
+                src="/images/ui/logo.png"
                 alt="Yusef Bach Logo"
                 style="height: 40px; margin-right: 10px"
               />
@@ -42,13 +48,19 @@ class AppHeader extends HTMLElement {
               <a href="${projectLink}" data-i18n="nav_projects">Projekte</a>
               <a href="${stackLink}" data-i18n="nav_stack">Tech Stack</a>
               <a href="${aboutLink}" data-i18n="nav_about">Über mich</a>
+              <a href="${thoughtsLink}" data-i18n="nav_thoughts">Gedanken</a>
               <a href="${contactLink}" class="cta-button" data-i18n="nav_contact">Kontakt</a>
 
-              <button
-                id="lang-switch"
-                class="lang-btn"
-                aria-label="Switch Language"
-              ></button>
+              <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Theme wechseln" title="Hell / Dunkel">
+                <svg class="ico-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="ico-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+              </button>
+
+              <div class="lang-pill" id="lang-switch" role="group" aria-label="Sprache wählen">
+                <button class="lang-pill-seg" data-lang="de">DE</button>
+                <button class="lang-pill-seg" data-lang="en">EN</button>
+                <button class="lang-pill-seg" data-lang="ar">ع</button>
+              </div>
             </div>
           </nav>
         </div>
@@ -95,16 +107,30 @@ class AppHeader extends HTMLElement {
       });
     }
 
-    // Language Switch Event weiterleiten an globalen Handler
-    if (langBtn) {
-      // Icon Initialisierung (damit es nicht leer ist bevor script.js greift)
-      const currentLang = localStorage.getItem("language") || "de";
-      const label = currentLang === "de" ? "EN" : "DE";
-      langBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg> <span>${label}</span>`;
+    // Pill: aktives Segment sofort visuell setzen (kein Flash bevor script.js greift)
+    const pill = this.querySelector<HTMLElement>("#lang-switch");
+    if (pill) {
+      const currentLang = window.__PAGE_LANG__ || "de";
+      const activeSeg = pill.querySelector<HTMLElement>(`[data-lang="${currentLang}"]`);
+      if (activeSeg) activeSeg.classList.add("active");
+      // Click-Handling übernimmt script.js
+    }
 
-      // Das eigentliche Umschalten macht weiterhin deine script.js / translations.js
-      // Wir müssen hier nichts tun, da das Element die ID #lang-switch hat
-      // und script.js darauf hört.
+    // Theme-Toggle (Dark/Light) — data-theme auf <html>, persistiert in localStorage.
+    // Default ist Dark (kein gespeicherter Wert → dark). Das No-Flash-Inline-Script
+    // im <head> setzt data-theme bereits vor dem ersten Paint.
+    const themeBtn = this.querySelector<HTMLElement>("#theme-toggle");
+    if (themeBtn) {
+      const root = document.documentElement;
+      if (!root.getAttribute("data-theme")) {
+        const stored = localStorage.getItem("theme");
+        root.setAttribute("data-theme", stored === "light" ? "light" : "dark");
+      }
+      themeBtn.addEventListener("click", () => {
+        const next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+        root.setAttribute("data-theme", next);
+        try { localStorage.setItem("theme", next); } catch { /**/ }
+      });
     }
   }
 }

@@ -1,0 +1,154 @@
+/* ============================================================================
+ * variables.css — Design-Token-System (Phase 3, WS1)
+ *
+ * EINE Wahrheit für Farben/Tiefe/Typo/Motion. Themes über [data-theme].
+ * Dark ist Default. Legacy-Namen (--primary-color, --card-bg, …) werden aus
+ * den semantischen Tokens gespeist → bestehendes CSS themed automatisch mit.
+ * ========================================================================= */
+
+:root {
+  /* ── Akzent (Lila — diszipliniert, mit tonaler Tiefe) ───────────────────── */
+  --accent:         #9d00ff;   /* Marke — für gezielte Highlights/Glow */
+  --accent-bright:  #c77dff;   /* weicher, gut lesbar auf Dunkel */
+  --accent-deep:    #7a00cc;
+  --accent-soft:    rgba(157, 0, 255, 0.10);
+  --accent-border:  rgba(157, 0, 255, 0.28);
+  --accent-glow:    rgba(157, 0, 255, 0.35);
+  --on-accent:      #ffffff;   /* Text auf Akzent-Flächen — in beiden Themes weiß */
+
+  /* ── Flächen / Tiefe (Dark default — neutrales Dunkel, kein Farbstich) ───── */
+  --bg:             #0b0b0b;   /* Seiten-Hintergrund (dunkelste Ebene) */
+  --bg-2:           #111111;   /* Sektions-Hintergrund */
+  --surface-1:      #161616;   /* leicht erhabene Fläche / faint */
+  --surface-2:      #1d1d1d;   /* Karten */
+  --border:         rgba(255, 255, 255, 0.07);
+  --border-strong:  rgba(255, 255, 255, 0.12);
+
+  /* ── Text ──────────────────────────────────────────────────────────────── */
+  --text-1:         #f4f4f6;   /* primär */
+  --text-2:         #a6a6b2;   /* sekundär */
+  --text-3:         #6c6c78;   /* tertiär / muted */
+
+  /* ── Schatten / Scrim ──────────────────────────────────────────────────── */
+  --shadow-1:       0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow-2:       0 20px 50px rgba(0, 0, 0, 0.50);
+  --scrim:          rgba(0, 0, 0, 0.6);
+
+  /* ── Header (glassy, theme-aware) ──────────────────────────────────────── */
+  --header-bg:          rgba(11, 11, 11, 0.72);
+  --header-bg-scrolled: rgba(8, 8, 8, 0.94);
+  --header-border:      rgba(255, 255, 255, 0.07);
+
+  /* ── Radius ────────────────────────────────────────────────────────────── */
+  --radius-sm:      8px;
+  --radius-md:      12px;
+  --radius-lg:      16px;
+  --radius-xl:      20px;
+
+  /* ── Motion (durchdachte Easings + Dauern) ─────────────────────────────── */
+  --ease-out:       cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out:    cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast:       0.18s;
+  --dur:            0.30s;
+  --dur-slow:       0.55s;
+
+  /* ── Typografie — Schriftfamilien ──────────────────────────────────────── */
+  --font-main: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", ui-monospace, "Courier New", monospace;
+
+  /* ── Typografie — Fluid Type Scale (clamp: min → fluid → max) ──────────── */
+  /* Basis: 16px = 1rem; Viewport: 375px → 1440px                             */
+  --text-xs:   clamp(0.75rem,  0.68rem + 0.28vw, 0.875rem);  /*  12–14px */
+  --text-sm:   clamp(0.875rem, 0.79rem + 0.35vw, 1rem);      /*  14–16px */
+  --text-base: clamp(1rem,     0.95rem + 0.24vw, 1.125rem);  /*  16–18px */
+  --text-lg:   clamp(1.125rem, 1.04rem + 0.35vw, 1.25rem);   /*  18–20px */
+  --text-xl:   clamp(1.25rem,  1.14rem + 0.47vw, 1.5rem);    /*  20–24px */
+  --text-2xl:  clamp(1.5rem,   1.33rem + 0.71vw, 1.875rem);  /*  24–30px */
+  --text-3xl:  clamp(1.875rem, 1.6rem  + 1.18vw, 2.5rem);    /*  30–40px */
+  --text-4xl:  clamp(2.25rem,  1.86rem + 1.88vw, 3.25rem);   /*  36–52px */
+  --text-5xl:  clamp(2.75rem,  2.13rem + 2.65vw, 4.25rem);   /*  44–68px */
+
+  /* ── Typografie — Zeilenhöhen ────────────────────────────────────────── */
+  --lh-tight:  1.15;   /* Headlines H1/H2 */
+  --lh-snug:   1.3;    /* Subheadings, Cards */
+  --lh-normal: 1.6;    /* Fließtext (Body) */
+  --lh-relaxed:1.75;   /* Dokumententext, Prosa-Blocks */
+
+  /* ── Typografie — Letter-Spacing ────────────────────────────────────────── */
+  --ls-tight:  -0.025em;   /* große Headlines (optisches Optikum) */
+  --ls-normal:  0em;
+  --ls-wide:    0.05em;    /* Badges / Tags / Overlines */
+  --ls-wider:   0.1em;     /* ALLCAPS-Labels */
+
+  /* ── Layout ────────────────────────────────────────────────────────────── */
+  --nav-height:       80px;
+  --border-radius:    12px;     /* etwas weicher als vorher (8px) */
+  --container-width:  1300px;
+
+  /* ── Legacy-Aliasse (bestehendes CSS unverändert lauffähig + theme-aware) ── */
+  --primary-color:    var(--accent);
+  --primary-dark:     var(--accent-deep);
+  --primary-light:    var(--accent-bright);
+  --dark-bg:          var(--bg-2);
+  --darker-bg:        var(--bg);
+  --card-bg:          var(--surface-2);
+  --text-color:       var(--text-1);
+  --text-secondary:   var(--text-2);
+  --transition:       all var(--dur) ease;
+  --transition-fast:  all var(--dur) ease;
+
+  color-scheme: dark;
+}
+
+/* ── LIGHT THEME (eigens gestaltet — nicht invertiert) ─────────────────────── */
+[data-theme="light"] {
+  --accent:         #8400d6;   /* etwas tiefer für Kontrast auf Weiß */
+  --accent-bright:  #9d00ff;
+  --accent-deep:    #6a00ad;
+  --accent-soft:    rgba(132, 0, 214, 0.08);
+  --accent-border:  rgba(132, 0, 214, 0.24);
+  --accent-glow:    rgba(132, 0, 214, 0.16);
+  --on-accent:      #ffffff;
+
+  --bg:             #fbfbfd;
+  --bg-2:           #ffffff;
+  --surface-1:      #f4f4f7;
+  --surface-2:      #ededf2;
+  --border:         rgba(0, 0, 0, 0.08);
+  --border-strong:  rgba(0, 0, 0, 0.14);
+
+  --text-1:         #15151a;
+  --text-2:         #55555f;
+  --text-3:         #86868f;
+
+  --shadow-1:       0 10px 30px rgba(0, 0, 0, 0.08);
+  --shadow-2:       0 20px 50px rgba(0, 0, 0, 0.12);
+  --scrim:          rgba(0, 0, 0, 0.4);
+
+  --header-bg:          rgba(255, 255, 255, 0.72);
+  --header-bg-scrolled: rgba(255, 255, 255, 0.92);
+  --header-border:      rgba(0, 0, 0, 0.08);
+
+  color-scheme: light;
+}
+
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-main);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-1);
+  overflow-x: hidden;
+  line-height: var(--lh-normal);
+  transition: background-color var(--dur) ease, color var(--dur) ease;
+}
+
+/* Prevent body scroll when mobile menu is active */
+body.menu-open {
+  overflow: hidden;
+}

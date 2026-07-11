@@ -1,0 +1,15 @@
+/* themes.css — Dark / Light Mode Tokens
+ * Vorbereitet in Phase 0, aktiviert in Phase 3.
+ * Wird eingebunden sobald der Toggle implementiert ist.
+ */
+
+/*
+[data-theme="light"] {
+  --darker-bg: #f5f5f5;
+  --dark-bg: #ffffff;
+  --card-bg: #eeeeee;
+  --text-primary: #0a0a0a;
+  --text-muted: #555555;
+  --border-color: rgba(0, 0, 0, 0.12);
+}
+*/

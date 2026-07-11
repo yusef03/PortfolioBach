@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Wartungsarbeiten | Yusef Bach</title>
+    <link rel="icon" type="image/png" href="images/ui/logo.png" />
+    <script>(function(){try{var t=localStorage.getItem("theme");document.documentElement.setAttribute("data-theme",t==="light"?"light":"dark");}catch(e){document.documentElement.setAttribute("data-theme","dark");}})()</script>
+    <link rel="preload" as="font" type="font/woff2" href="fonts/InterVariable.woff2" crossorigin />
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <style>
+      /* Diese Seite hat kein script.js – i18n-ready direkt setzen */
+      body { visibility: visible !important; }
+    </style>
+    <style>
+      :root {
+        --emergency-color: #ff3b3b;
+        --emergency-glow: rgba(255, 59, 59, 0.4);
+      }
+      body {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
+        transition: background 0.4s ease;
+      }
+      body.emergency {
+        background: radial-gradient(circle at center, #2a0808 0%, #050505 100%);
+      }
+      .maintenance-card {
+        text-align: center;
+        padding: 40px;
+        border: 1px solid rgba(157, 0, 255, 0.2);
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        max-width: 500px;
+        width: 90%;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+        transition: border-color 0.4s ease, box-shadow 0.4s ease;
+      }
+      body.emergency .maintenance-card {
+        border-color: var(--emergency-color);
+        box-shadow: 0 0 50px var(--emergency-glow);
+      }
+      .icon {
+        font-size: 4rem;
+        margin-bottom: 20px;
+        display: inline-block;
+      }
+      .icon.gear {
+        animation: spin 4s linear infinite;
+      }
+      .icon.warning {
+        animation: pulse 1.5s ease-in-out infinite;
+      }
+      @keyframes spin {
+        100% { transform: rotate(360deg); }
+      }
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.15); }
+      }
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+      body.emergency h1 {
+        color: var(--emergency-color);
+      }
+      p {
+        color: #888;
+        margin-bottom: 30px;
+      }
+      .progress-bar {
+        width: 100%;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 2px;
+        overflow: hidden;
+        position: relative;
+      }
+      .progress-bar::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 30%;
+        background: var(--primary-color);
+        box-shadow: 0 0 10px var(--primary-color);
+        animation: loading 2s ease-in-out infinite;
+      }
+      body.emergency .progress-bar::after {
+        background: var(--emergency-color);
+        box-shadow: 0 0 10px var(--emergency-color);
+      }
+      @keyframes loading {
+        0% { left: -30%; }
+        100% { left: 100%; }
+      }
+      [data-lang] {
+        display: none;
+      }
+      [data-lang].active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="maintenance-card">
+      <div id="icon" class="icon gear">⚙️</div>
+
+      <!-- Headlines pro Sprache, pro Modus -->
+      <h1 id="headline">
+        <span data-mode="normal" data-lang="de" class="active">Wartungsmodus</span>
+        <span data-mode="normal" data-lang="en">Maintenance Mode</span>
+        <span data-mode="normal" data-lang="ar">وضع الصيانة</span>
+        <span data-mode="emergency" data-lang="de">Vorübergehend geschlossen</span>
+        <span data-mode="emergency" data-lang="en">Temporarily closed</span>
+        <span data-mode="emergency" data-lang="ar">مغلق مؤقتًا</span>
+      </h1>
+
+      <!-- Default-Texte pro Sprache, pro Modus (werden überschrieben falls Custom Message) -->
+      <p id="maintenance-default-message">
+        <span data-mode="normal" data-lang="de" class="active">
+          Diese Seite befindet sich kurzzeitig im Wartungsmodus.<br />Wir sind gleich wieder online.
+        </span>
+        <span data-mode="normal" data-lang="en">
+          This site is briefly under maintenance.<br />We'll be back shortly.
+        </span>
+        <span data-mode="normal" data-lang="ar">
+          هذا الموقع قيد الصيانة لفترة قصيرة.<br />سنعود قريبًا.
+        </span>
+        <span data-mode="emergency" data-lang="de">Vorübergehend nicht verfügbar.</span>
+        <span data-mode="emergency" data-lang="en">Temporarily unavailable.</span>
+        <span data-mode="emergency" data-lang="ar">غير متاح مؤقتًا</span>
+      </p>
+
+      <!-- Custom Message vom Admin Panel (falls gesetzt) -->
+      <p
+        id="maintenance-custom-message"
+        style="display: none; white-space: pre-line;"
+      ></p>
+
+      <div class="progress-bar"></div>
+
+      <div style="margin-top: 30px; font-size: 0.8rem; color: #555">
+        &copy; 2026 Yusef Bach
+      </div>
+    </div>
+
+    <script>
+      /**
+       * Wartungsseiten-Monitor
+       *
+       * - Initial: Settings holen + UI nach Sprache & Modus rendern
+       * - Polling alle 30 Sek (pausiert im Hintergrund):
+       *   - falls enabled=false → Auto-Redirect zur Startseite
+       *   - falls emergency wechselt → UI live umschalten
+       *   - falls Message geändert → live aktualisieren
+       * - Sprach-Detection: navigator.language → de | en | ar (fallback: de)
+       *
+       * KONFIGURATION muss mit src/ts/status.ts übereinstimmen.
+       */
+      (function maintenanceMonitor() {
+        // === KONFIGURATION (muss mit status.ts übereinstimmen) ===
+        const SUPABASE_URL = "https://msfmugoazylvbqvyidlg.supabase.co";
+        const SUPABASE_ANON_KEY =
+          "sb_publishable_ehu6DwJKCxcW6FSrmxXs5A_ve9aO-mR";
+        const POLL_INTERVAL_MS = 30000;
+        const FETCH_TIMEOUT_MS = 2000;
+        // === ENDE KONFIGURATION ===
+
+        const SUPPORTED_LANGS = ["de", "en", "ar"];
+        const DEFAULT_LANG = "de";
+
+        const params = new URLSearchParams(window.location.search);
+        const debug = params.get("debug") === "1";
+        const forceCheck = params.get("test") === "1";
+        const isLocal =
+          location.hostname === "127.0.0.1" ||
+          location.hostname === "localhost";
+
+        function log() {
+          if (debug)
+            console.log.apply(
+              console,
+              ["[maintenance.html]"].concat([].slice.call(arguments))
+            );
+        }
+
+        function detectLang() {
+          const raw = (navigator.language || DEFAULT_LANG)
+            .toLowerCase()
+            .split("-")[0];
+          return SUPPORTED_LANGS.indexOf(raw) !== -1 ? raw : DEFAULT_LANG;
+        }
+
+        const lang = detectLang();
+        log("Detected language:", lang);
+
+        // Setze <html lang="..."> und Schreibrichtung für AR
+        document.documentElement.setAttribute("lang", lang);
+        if (lang === "ar") {
+          document.documentElement.setAttribute("dir", "rtl");
+        }
+
+        async function fetchSettings() {
+          try {
+            const controller = new AbortController();
+            const timeout = setTimeout(function () {
+              controller.abort();
+            }, FETCH_TIMEOUT_MS);
+            const res = await fetch(
+              SUPABASE_URL +
+                "/rest/v1/settings?key=eq.maintenance_mode&select=value",
+              {
+                headers: {
+                  apikey: SUPABASE_ANON_KEY,
+                  Authorization: "Bearer " + SUPABASE_ANON_KEY,
+                },
+                signal: controller.signal,
+              }
+            );
+            clearTimeout(timeout);
+            if (!res.ok) {
+              log("HTTP not OK:", res.status);
+              return null;
+            }
+            const data = await res.json();
+            log("Response:", data);
+            return (data && data[0] && data[0].value) || null;
+          } catch (err) {
+            log("Fetch failed (fail-open):", err);
+            return null;
+          }
+        }
+
+        function applyMode(emergency) {
+          // body.emergency Klasse + Icon umschalten
+          document.body.classList.toggle("emergency", !!emergency);
+          const icon = document.getElementById("icon");
+          if (icon) {
+            icon.classList.toggle("gear", !emergency);
+            icon.classList.toggle("warning", !!emergency);
+            icon.textContent = emergency ? "⚠️" : "⚙️";
+          }
+          // Alle [data-mode][data-lang] Elemente: nur passende sind .active
+          const mode = emergency ? "emergency" : "normal";
+          const all = document.querySelectorAll("[data-mode][data-lang]");
+          all.forEach(function (el) {
+            const isMatch =
+              el.getAttribute("data-mode") === mode &&
+              el.getAttribute("data-lang") === lang;
+            el.classList.toggle("active", isMatch);
+          });
+        }
+
+        function applyMessage(message) {
+          const def = document.getElementById("maintenance-default-message");
+          const custom = document.getElementById("maintenance-custom-message");
+          const hasCustom =
+            message && typeof message === "string" && message.trim().length > 0;
+          if (hasCustom) {
+            if (def) def.style.display = "none";
+            if (custom) {
+              custom.textContent = message;
+              custom.style.display = "block";
+            }
+          } else {
+            if (def) def.style.display = "";
+            if (custom) {
+              custom.style.display = "none";
+              custom.textContent = "";
+            }
+          }
+        }
+
+        async function check() {
+          const settings = await fetchSettings();
+          if (!settings) return; // fail-open
+
+          applyMode(!!settings.emergency);
+          applyMessage(settings.message);
+
+          if (settings.enabled === false) {
+            // Maintenance vorbei → zurück zur Startseite (außer auf localhost ohne ?test=1)
+            if (isLocal && !forceCheck) {
+              log("Maintenance OFF, aber localhost ohne ?test=1 → kein Redirect");
+              return;
+            }
+            const preserveTest = forceCheck ? "?test=1" : "";
+            const preserveDebug = debug
+              ? preserveTest
+                ? "&debug=1"
+                : "?debug=1"
+              : "";
+            const target =
+              window.location.origin + "/" + preserveTest + preserveDebug;
+            log("Maintenance OFF → Redirect zu", target);
+            window.location.replace(target);
+          }
+        }
+
+        // Initial render: Default-Mode passend zur Sprache (vor erstem Fetch)
+        applyMode(false);
+
+        // Initial-Check sofort
+        check();
+
+        // Polling mit Visibility API
+        let intervalId = null;
+        function startPolling() {
+          if (intervalId !== null) return;
+          intervalId = setInterval(check, POLL_INTERVAL_MS);
+          log("Polling gestartet — alle", POLL_INTERVAL_MS / 1000, "Sek");
+        }
+        function stopPolling() {
+          if (intervalId !== null) {
+            clearInterval(intervalId);
+            intervalId = null;
+            log("Polling pausiert (Tab im Hintergrund)");
+          }
+        }
+        document.addEventListener("visibilitychange", function () {
+          if (document.hidden) {
+            stopPolling();
+          } else {
+            log("Tab sichtbar — Check + Polling fortsetzen");
+            check();
+            startPolling();
+          }
+        });
+        if (!document.hidden) startPolling();
+      })();
+    </script>
+  </body>
+</html>

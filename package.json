@@ -1,28 +1,30 @@
 {
-  "name": "portfoliobach",
-  "version": "1.0.0",
-  "description": "**New System Feature: Zero-Dependency AI Twin**",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
-  "scripts": {
-    "build": "node_modules/.bin/tsc && node scripts/prerender.js && mv js/sw.js ./sw.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "name": "beta-portfolio-bach",
+  "version": "3.0.0",
+  "description": "Yusefs persönliches Portfolio — Vanilla TS/HTML/CSS, i18n DE/EN/AR, Admin-verwaltbar via Supabase.",
+  "author": "Yusef Bach",
+  "license": "UNLICENSED",
+  "type": "commonjs",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yusef03/PortfolioBach.git"
+    "url": "git+https://github.com/yusef03/BETAPortfolioBach.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/yusef03/PortfolioBach/issues"
+    "url": "https://github.com/yusef03/BETAPortfolioBach/issues"
   },
-  "homepage": "https://github.com/yusef03/PortfolioBach#readme",
+  "homepage": "https://github.com/yusef03/BETAPortfolioBach#readme",
+  "scripts": {
+    "build": "node node_modules/typescript/lib/tsc.js && node scripts/prerender.js && mv website/js/sw.js website/sw.js && node scripts/build-lang-pages.mjs",
+    "build:all": "node node_modules/typescript/lib/tsc.js && node scripts/build-projects.mjs && node scripts/build-roadmap.mjs && node scripts/build-thoughts.mjs && node scripts/build-github-activity.mjs && node scripts/build-media-manifest.mjs && node scripts/prerender.js && mv website/js/sw.js website/sw.js && node scripts/prerender-roadmap.js && node scripts/prerender-thoughts.js && node scripts/build-lang-pages.mjs && node scripts/build-sitemap.mjs",
+    "build:lang": "node scripts/build-lang-pages.mjs",
+    "check-i18n": "node scripts/check-i18n-coverage.mjs",
+    "check-maintenance": "bash scripts/check-maintenance-coverage.sh",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "devDependencies": {
+    "cheerio": "^1.2.0",
+    "marked": "^18.0.4",
+    "sanitize-html": "^2.17.4",
     "typescript": "^6.0.3"
   }
 }

@@ -1,0 +1,906 @@
+/* ============================================================================
+ * bot.css — Ask Yusef · Neural Console (AI-Twin-Chat-Widget)
+ *
+ * Wird via @import in main.css geladen und ist damit auf allen Seiten
+ * verfügbar, die main.css laden (also praktisch überall).
+ *
+ * Struktur:
+ *   1. FAB (Floating Action Button) — AI-Ring
+ *   2. Chat-Panel — Container, Header, Body, Footer
+ *   3. Message-Bubbles (Bot / User / Code-Blocks)
+ *   4. Typing-Indicator + Prompt-Chips
+ *   5. Info-Popover
+ *   6. Backdrop (Mobile-Sheet)
+ *   7. Responsive: Tablet + Mobile-Fullscreen-Sheet
+ *   8. RTL-Overrides
+ *   9. Reduced-Motion-Overrides
+ *  10. Focus-Visible + A11y
+ * ========================================================================= */
+
+/* ── Design-Tokens für den Bot (bauen auf variables.css auf) ─────────────── */
+:root {
+  --bot-panel-w:        380px;
+  --bot-panel-h:        min(560px, calc(100dvh - 120px));
+  --bot-radius:         24px;
+  --bot-radius-msg:     18px;
+  --bot-radius-chip:    999px;
+  --bot-fab-size:       56px;
+  --bot-gap-edge:       24px;
+  --bot-blur:           20px;
+  --bot-shadow:         0 24px 64px rgba(0, 0, 0, 0.42), 0 2px 8px rgba(0, 0, 0, 0.25);
+  --bot-ring-speed:     8s;
+  --bot-ring-speed-hover: 4s;
+  --bot-msg-max:        86%;
+}
+
+[data-theme="light"] {
+  --bot-shadow: 0 24px 64px rgba(15, 15, 30, 0.14), 0 2px 8px rgba(15, 15, 30, 0.08);
+}
+
+/* ==========================================================================
+   1. WRAPPER + FAB
+   ========================================================================= */
+#rag-bot-wrapper {
+  position: fixed;
+  bottom: max(var(--bot-gap-edge), env(safe-area-inset-bottom));
+  /* Content-außen-Formel: sitzt in der leeren Zone NEBEN dem 1300px-Content,
+     nie darauf. Auf Screens ≤ ~1460px greift der Viewport-Rand-Fallback (24px). */
+  right: max(var(--bot-gap-edge),
+             calc((100vw - var(--container-width, 1300px)) / 2 - var(--bot-fab-size) - var(--bot-gap-edge)),
+             env(safe-area-inset-right));
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  /* WICHTIG: Niemals transform/will-change:transform/filter/perspective auf
+     diesem Wrapper setzen! Das würde einen neuen Containing-Block erzeugen und
+     die "position:fixed"-Vollbild-Positionierung des Mobile-Sheets (Kind
+     #rag-chat-window) relativ zu DIESEM Wrapper statt zum Viewport berechnen
+     (CSS-Spec-Verhalten). Der Auto-Hide-Dimm-Effekt sitzt daher auf
+     #rag-fab-btn (Geschwister von #rag-chat-window), nicht hier. */
+  /* Safari Mobile Fix: fixer Flex-Container darf Clicks nicht abfangen */
+  pointer-events: none;
+}
+#rag-bot-wrapper > * {
+  pointer-events: auto;
+}
+
+/* FAB — AI-Ring: conic-gradient-Border, rotiert langsam */
+/* FAB — Bot-Head im Inneren, ruhiger Glow-Ring drumherum
+   Idle: Ring "atmet" (opacity 0.75 ↔ 1, 4.5s ease-in-out) — kein Rotieren
+   Hover: Ring rotiert sanft (6s linear) + Halo intensiviert
+   Ergibt "edel-lebendig" statt "technisch-drehend" */
+#rag-fab-btn {
+  position: relative;
+  width: var(--bot-fab-size);
+  height: var(--bot-fab-size);
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background: var(--bg);
+  color: var(--text-1);
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+  transition:
+    transform var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out),
+    opacity var(--dur-slow) var(--ease-out);
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.38),
+    0 0 22px var(--accent-glow),
+    0 0 0 1px var(--border-strong);
+}
+/* Gradient-Ring — statischer conic-gradient mit weichen Farbstops (kein hartes transparent) */
+#rag-fab-btn::before {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 210deg,
+    var(--accent-bright),
+    var(--accent),
+    var(--accent-deep),
+    var(--accent),
+    var(--accent-bright)
+  );
+  z-index: -1;
+  opacity: 0.82;
+  animation: bot-ring-breath 4.5s ease-in-out infinite;
+  will-change: opacity;
+}
+/* Innerer Ausschnitt (macht den Ring zu einem Border) */
+#rag-fab-btn::after {
+  content: "";
+  position: absolute;
+  inset: 1.5px;
+  border-radius: 50%;
+  background: var(--bg);
+  z-index: -1;
+}
+/* Bot-Head-Icon */
+.rag-fab-icon {
+  width: 26px;
+  height: 26px;
+  color: var(--text-1);
+  filter: drop-shadow(0 0 6px var(--accent-glow));
+  transition: transform var(--dur) var(--ease-out), opacity var(--dur) var(--ease-out);
+}
+.rag-fab-icon .rag-fab-eye {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: bot-eye-blink 5.6s ease-in-out infinite;
+}
+.rag-fab-icon .rag-fab-antenna {
+  animation: bot-antenna-glow 2.6s ease-in-out infinite;
+}
+@keyframes bot-eye-blink {
+  0%, 47%, 51%, 100% { transform: scaleY(1); }
+  48%, 50%           { transform: scaleY(0.15); }
+}
+@keyframes bot-antenna-glow {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 1; }
+}
+
+#rag-fab-btn:hover {
+  transform: scale(1.06);
+  box-shadow:
+    0 14px 36px rgba(0, 0, 0, 0.42),
+    0 0 30px var(--accent-glow),
+    0 0 0 1px var(--accent-border);
+}
+#rag-fab-btn:hover::before {
+  animation: bot-ring-spin 6s linear infinite;
+  opacity: 1;
+}
+#rag-fab-btn:hover .rag-fab-icon {
+  transform: scale(1.05);
+}
+#rag-fab-btn:active {
+  transform: scale(0.96);
+}
+
+/* Erst-Besuch: Attention-Pulse (dreimal, dann Ruhe — via .attention-Klasse) */
+#rag-fab-btn.attention {
+  animation: bot-attention-pulse 1.8s var(--ease-out) 3;
+}
+
+/* Auto-Hide beim Scrollen nach unten: FAB dimmt + schrumpft leicht, wird beim
+   Hover/Focus instant voll (User will klicken). Panel offen → nie gedimmt
+   (JS-Logik). Sitzt bewusst auf #rag-fab-btn statt auf #rag-bot-wrapper,
+   damit der Wrapper NIE ein transform bekommt (siehe Kommentar dort). */
+#rag-fab-btn.rag-dimmed {
+  opacity: 0.28;
+  transform: translateY(6px) scale(0.85);
+  transition-duration: var(--dur-slow);
+}
+#rag-fab-btn.rag-dimmed:hover,
+#rag-fab-btn.rag-dimmed:focus-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1.06);
+  transition-duration: var(--dur-fast);
+}
+
+/* Sonderzustand: geöffnet — Bot-Icon dimmen (Close-Feel via Ring drumherum) */
+#rag-fab-btn.is-open .rag-fab-icon {
+  opacity: 0.55;
+  transform: scale(0.9);
+}
+
+@keyframes bot-ring-breath {
+  0%, 100% { opacity: 0.72; }
+  50%      { opacity: 1; }
+}
+@keyframes bot-ring-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes bot-attention-pulse {
+  0%   { box-shadow: 0 0 0 0 var(--accent-glow), 0 12px 32px rgba(0,0,0,.38), 0 0 22px var(--accent-glow), 0 0 0 1px var(--border-strong); }
+  70%  { box-shadow: 0 0 0 20px transparent,    0 12px 32px rgba(0,0,0,.38), 0 0 22px var(--accent-glow), 0 0 0 1px var(--border-strong); }
+  100% { box-shadow: 0 0 0 0 transparent,       0 12px 32px rgba(0,0,0,.38), 0 0 22px var(--accent-glow), 0 0 0 1px var(--border-strong); }
+}
+
+/* Cmd+K-Hint-Pill neben dem FAB — nur Desktop mit Pointer */
+#rag-kbd-hint {
+  display: none;
+  font: 600 11px/1 var(--font-mono);
+  letter-spacing: var(--ls-wide);
+  padding: 6px 10px;
+  color: var(--text-2);
+  background: var(--surface-2);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  transition: opacity var(--dur) var(--ease-out), transform var(--dur) var(--ease-out);
+  user-select: none;
+  white-space: nowrap;
+}
+#rag-kbd-hint kbd {
+  display: inline-block;
+  font: inherit;
+  color: var(--text-1);
+  padding: 0 3px;
+}
+@media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
+  #rag-kbd-hint { display: inline-flex; align-items: center; gap: 4px; }
+  #rag-kbd-hint.faded { opacity: 0; transform: translateY(4px); pointer-events: none; }
+}
+
+/* First-visit Micro-Tooltip */
+#rag-fab-tooltip {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  right: 0;
+  padding: 8px 14px;
+  background: var(--surface-2);
+  color: var(--text-1);
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity var(--dur) var(--ease-out), transform var(--dur) var(--ease-out);
+  pointer-events: none;
+  box-shadow: var(--shadow-1);
+}
+#rag-fab-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: 22px;
+  width: 10px;
+  height: 10px;
+  background: var(--surface-2);
+  border-right: 1px solid var(--border-strong);
+  border-bottom: 1px solid var(--border-strong);
+  transform: translateY(-5px) rotate(45deg);
+}
+#rag-fab-tooltip.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   2. CHAT-PANEL
+   ========================================================================= */
+#rag-chat-window {
+  width: var(--bot-panel-w);
+  height: var(--bot-panel-h);
+  background: color-mix(in srgb, var(--surface-2) 88%, transparent);
+  backdrop-filter: blur(var(--bot-blur)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--bot-blur)) saturate(140%);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--bot-radius);
+  box-shadow: var(--bot-shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform-origin: bottom right;
+  transition:
+    opacity var(--dur) var(--ease-out),
+    transform var(--dur) var(--ease-out),
+    visibility 0s linear 0s;
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+#rag-chat-window.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.94) translateY(12px);
+  pointer-events: none !important;
+  transition:
+    opacity var(--dur) var(--ease-out),
+    transform var(--dur) var(--ease-out),
+    visibility 0s linear var(--dur);
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+.chat-header {
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--accent) 8%, transparent),
+    transparent);
+}
+.header-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.header-titles {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.chat-header h4 {
+  margin: 0;
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--text-1);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+.chat-header .header-sub {
+  font-size: 11px;
+  color: var(--text-2);
+  font-family: var(--font-mono);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+/* AI-Pulse-Dot statt "online" — semantisch: KI-Präsenz */
+.ai-pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, var(--accent-bright), var(--accent));
+  box-shadow: 0 0 12px var(--accent-glow);
+  animation: bot-ai-pulse 2.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes bot-ai-pulse {
+  0%, 100% { transform: scale(0.85); opacity: 0.75; }
+  50%      { transform: scale(1);    opacity: 1; }
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.chat-icon-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-2);
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+.chat-icon-btn:hover {
+  background: var(--surface-1);
+  color: var(--text-1);
+}
+.chat-icon-btn svg {
+  width: 18px;
+  height: 18px;
+}
+#rag-close-btn { font-size: 22px; line-height: 1; }
+
+/* ── Chat-Body ─────────────────────────────────────────────────────────── */
+.chat-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 18px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+.chat-body::-webkit-scrollbar        { width: 6px; }
+.chat-body::-webkit-scrollbar-thumb  { background: var(--border-strong); border-radius: 10px; }
+.chat-body::-webkit-scrollbar-track  { background: transparent; }
+
+/* ── Chat-Footer ──────────────────────────────────────────────────────── */
+.chat-footer {
+  padding: 12px 14px 14px;
+  border-top: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface-1) 80%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.chat-input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#rag-chat-input {
+  flex: 1;
+  min-width: 0;
+  background: var(--surface-1);
+  border: 1px solid var(--border-strong);
+  padding: 11px 16px;
+  border-radius: 999px;
+  color: var(--text-1);
+  /* iOS-Zoom-Prevention: MUSS >= 16px sein */
+  font-size: 16px;
+  font-family: var(--font-main);
+  outline: none;
+  transition: border-color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+}
+#rag-chat-input:focus {
+  border-color: var(--accent-border);
+  background: var(--surface-2);
+}
+#rag-chat-input::placeholder {
+  color: var(--text-3);
+}
+#rag-send-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+  color: var(--on-accent);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+  box-shadow: 0 6px 14px var(--accent-glow);
+}
+#rag-send-btn svg {
+  width: 18px;
+  height: 18px;
+}
+#rag-send-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px var(--accent-glow);
+}
+#rag-send-btn:disabled {
+  background: var(--surface-2);
+  color: var(--text-3);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.chat-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+  font-size: 11px;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  letter-spacing: var(--ls-wide);
+  min-height: 18px;
+}
+#rag-char-count.warn { color: var(--accent-bright); font-weight: 600; }
+#rag-char-count.over { color: #ff5a72; font-weight: 700; }
+#rag-clear-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-3);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font: inherit;
+  transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+#rag-clear-btn:hover { background: var(--surface-2); color: var(--text-1); }
+#rag-clear-btn svg { width: 12px; height: 12px; }
+
+/* ==========================================================================
+   3. MESSAGE-BUBBLES
+   ========================================================================= */
+.msg {
+  max-width: var(--bot-msg-max);
+  padding: 10px 14px;
+  border-radius: var(--bot-radius-msg);
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  animation: bot-pop-in var(--dur) var(--ease-out) both;
+  position: relative;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+@keyframes bot-pop-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.bot-msg {
+  align-self: flex-start;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  color: var(--text-1);
+}
+.user-msg {
+  align-self: flex-end;
+  background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+  color: var(--on-accent);
+  border: 1px solid transparent;
+  box-shadow: 0 8px 20px var(--accent-glow);
+}
+.user-msg strong { color: inherit; }
+
+/* Timestamp on hover — dezent, mit --font-mono */
+.msg-time {
+  position: absolute;
+  bottom: -16px;
+  font-size: 10px;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  letter-spacing: var(--ls-wide);
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease-out);
+  pointer-events: none;
+  white-space: nowrap;
+}
+.bot-msg  .msg-time { left: 4px; }
+.user-msg .msg-time { right: 4px; }
+.msg:hover .msg-time { opacity: 1; }
+
+/* Copy-Button an Bot-Messages (nur on hover / touch: always) */
+.msg-copy {
+  position: absolute;
+  top: 6px;
+  right: -30px;
+  background: var(--surface-2);
+  border: 1px solid var(--border-strong);
+  color: var(--text-2);
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+}
+.msg-copy svg { width: 12px; height: 12px; }
+.bot-msg:hover .msg-copy,
+.msg-copy:focus-visible { opacity: 1; }
+.msg-copy:hover { color: var(--text-1); background: var(--surface-1); }
+.msg-copy.copied { color: var(--accent-bright); }
+
+/* Code-Blocks (```-Rendering) */
+.bot-msg pre {
+  background: var(--bg);
+  color: var(--text-1);
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  padding: 10px 12px;
+  overflow-x: auto;
+  margin: 6px 0;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.5;
+  position: relative;
+}
+.bot-msg pre code { font-family: inherit; }
+.bot-msg :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: color-mix(in srgb, var(--accent-soft) 60%, transparent);
+  border: 1px solid var(--accent-border);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+/* Loading-Blink für Legacy — überschrieben durch echten Typing-Indicator */
+.loading-blink { animation: blink-fade 1.5s infinite; }
+
+/* ==========================================================================
+   4. TYPING-INDICATOR + PROMPT-CHIPS
+   ========================================================================= */
+.typing {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 16px;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--bot-radius-msg);
+  animation: bot-pop-in var(--dur) var(--ease-out) both;
+}
+.typing span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-2);
+  animation: bot-typing-wave 1.2s ease-in-out infinite;
+}
+.typing span:nth-child(2) { animation-delay: 0.15s; }
+.typing span:nth-child(3) { animation-delay: 0.30s; }
+@keyframes bot-typing-wave {
+  0%, 60%, 100% { transform: translateY(0);   opacity: 0.4; }
+  30%           { transform: translateY(-4px); opacity: 1; }
+}
+
+/* Prompt-Chips */
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 6px 4px 2px;
+}
+.chip {
+  background: var(--surface-1);
+  border: 1px solid var(--border-strong);
+  color: var(--text-1);
+  padding: 6px 12px;
+  border-radius: var(--bot-radius-chip);
+  font: 500 12px/1.2 var(--font-main);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+  max-width: 100%;
+  text-align: left;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.chip::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent-bright);
+  flex-shrink: 0;
+}
+.chip:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent-border);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   5. INFO-POPOVER (im Chat-Body, überlagernd)
+   ========================================================================= */
+.info-sheet {
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--surface-2) 96%, transparent);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: bot-pop-in var(--dur) var(--ease-out) both;
+  overflow-y: auto;
+  z-index: 5;
+}
+.info-sheet.hidden { display: none; }
+.info-sheet h5 {
+  margin: 0;
+  font-size: var(--text-base);
+  color: var(--text-1);
+  font-weight: 600;
+}
+.info-sheet p {
+  margin: 0;
+  color: var(--text-2);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.info-sheet a {
+  color: var(--accent-bright);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.info-sheet .info-close {
+  align-self: flex-end;
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  color: var(--text-2);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font: 500 11px/1 var(--font-mono);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+.info-sheet .info-close:hover { color: var(--text-1); border-color: var(--accent-border); }
+
+/* Chat-Body braucht relative Position damit info-sheet inset:0 funktioniert */
+.chat-body-wrap {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================================================
+   6. BACKDROP (nur auf Mobile aktiv)
+   ========================================================================= */
+#rag-backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--scrim);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur) var(--ease-out), visibility 0s linear var(--dur);
+  z-index: 9999;
+  pointer-events: none;
+}
+#rag-backdrop.visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--dur) var(--ease-out);
+  pointer-events: auto;
+}
+
+/* Body-Scroll-Lock wenn Sheet offen */
+body.bot-open { overflow: hidden; }
+
+/* ==========================================================================
+   7. RESPONSIVE
+   ========================================================================= */
+
+/* Tablet (iPad Portrait) — Panel bleibt, wird nur größer */
+@media (min-width: 768px) and (max-width: 1023.98px), (pointer: coarse) and (min-width: 768px) {
+  :root {
+    --bot-panel-w: 420px;
+    --bot-panel-h: min(620px, calc(100dvh - 140px));
+  }
+}
+
+/* Mobile: Fullscreen-Sheet von unten */
+@media (max-width: 767.98px) {
+  #rag-bot-wrapper {
+    /* FAB bleibt sichtbar, Panel wird full-width */
+    bottom: max(20px, env(safe-area-inset-bottom));
+    right: max(20px, env(safe-area-inset-right));
+  }
+
+  #rag-chat-window {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    width: 100dvw;
+    height: 100vh;
+    height: 100dvh;
+    max-width: none;
+    max-height: none;
+    border-radius: 20px 20px 0 0;
+    margin: 0;
+    transform-origin: bottom center;
+    background: color-mix(in srgb, var(--surface-2) 96%, transparent);
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  #rag-chat-window.hidden {
+    transform: translateY(100%);
+  }
+  #rag-chat-window:not(.hidden) {
+    transform: translateY(0);
+  }
+
+  /* Drag-Handle nur auf Mobile sichtbar */
+  .sheet-handle {
+    display: block;
+    width: 44px;
+    height: 4px;
+    background: var(--border-strong);
+    border-radius: 999px;
+    margin: 10px auto 4px;
+    flex-shrink: 0;
+    cursor: grab;
+    touch-action: none;
+  }
+  .sheet-handle:active { cursor: grabbing; }
+
+  .chat-header {
+    padding: 8px 18px 14px;
+  }
+
+  /* Cmd+K-Hint auf Mobile ausblenden */
+  #rag-kbd-hint { display: none !important; }
+
+  /* Bubble etwas größer für bessere Tap-Targets */
+  .msg { font-size: var(--text-base); }
+
+  /* FAB ausblenden wenn Panel offen (Sheet deckt Screen ab) */
+  #rag-chat-window:not(.hidden) ~ #rag-fab-btn {
+    opacity: 0;
+    transform: scale(0.6);
+    pointer-events: none;
+  }
+}
+
+/* Desktop-Only: Sheet-Handle ausblenden */
+@media (min-width: 768px) {
+  .sheet-handle { display: none; }
+}
+
+/* Ganz kleine Phones (iPhone SE) */
+@media (max-width: 374px) {
+  .chip { font-size: 11px; padding: 5px 10px; }
+  .chat-header h4 { font-size: var(--text-sm); }
+}
+
+/* ==========================================================================
+   8. RTL-OVERRIDES (AR)
+   ========================================================================= */
+#rag-chat-window[dir="rtl"] {
+  transform-origin: bottom left;
+}
+[dir="rtl"] #rag-bot-wrapper,
+html[lang="ar"] #rag-bot-wrapper {
+  right: auto;
+  /* Content-außen-Formel (spiegelverkehrt): sitzt in leerer Zone links vom Content */
+  left: max(var(--bot-gap-edge),
+            calc((100vw - var(--container-width, 1300px)) / 2 - var(--bot-fab-size) - var(--bot-gap-edge)),
+            env(safe-area-inset-left));
+  /* align-items bleibt bei flex-end — in direction:rtl bedeutet das automatisch "links" */
+}
+[dir="rtl"] .bot-msg  { align-self: flex-end; }
+[dir="rtl"] .user-msg { align-self: flex-start; }
+[dir="rtl"] .bot-msg  .msg-time { left: auto; right: 4px; }
+[dir="rtl"] .user-msg .msg-time { right: auto; left: 4px; }
+[dir="rtl"] .msg-copy { right: auto; left: -30px; }
+[dir="rtl"] #rag-send-btn svg { transform: scaleX(-1); }
+[dir="rtl"] #rag-fab-tooltip { right: auto; left: 0; }
+[dir="rtl"] #rag-fab-tooltip::after { right: auto; left: 22px; }
+
+@media (max-width: 767.98px) {
+  [dir="rtl"] #rag-chat-window,
+  html[lang="ar"] #rag-chat-window {
+    right: 0;
+    left: 0;
+  }
+}
+
+/* ==========================================================================
+   9. REDUCED-MOTION
+   ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  #rag-fab-btn.rag-dimmed { opacity: 0.55; transform: none; transition: opacity 0.01s linear; }
+  #rag-fab-btn::before,
+  #rag-fab-btn:hover::before { animation: none; opacity: 0.9; }
+  #rag-fab-btn.attention { animation: none; }
+  .rag-fab-icon .rag-fab-eye,
+  .rag-fab-icon .rag-fab-antenna { animation: none; }
+  .ai-pulse-dot { animation: none; opacity: 0.9; }
+  .msg { animation: none; }
+  .typing span { animation: none; opacity: 0.7; }
+  #rag-chat-window,
+  #rag-chat-window.hidden {
+    transition: opacity 0.01s linear, visibility 0s linear;
+    transform: none !important;
+  }
+  #rag-backdrop { transition: opacity 0.01s linear; }
+}
+
+/* ==========================================================================
+   10. FOCUS-VISIBLE + A11y
+   ========================================================================= */
+#rag-fab-btn:focus-visible,
+#rag-close-btn:focus-visible,
+.chat-icon-btn:focus-visible,
+#rag-send-btn:focus-visible,
+.msg-copy:focus-visible,
+.chip:focus-visible,
+.info-close:focus-visible,
+#rag-clear-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+#rag-chat-input:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+/* High-Contrast Fallback: falls color-mix nicht supported (uralter Browser) */
+@supports not (background: color-mix(in srgb, red, blue)) {
+  #rag-chat-window { background: var(--surface-2); }
+  .info-sheet     { background: var(--surface-2); }
+  .chat-footer    { background: var(--surface-1); }
+}

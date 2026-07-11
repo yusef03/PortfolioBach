@@ -2,8 +2,9 @@
   "compilerOptions": {
     "target": "ES6",
     "module": "ESNext",
+    "lib": ["ES2020", "DOM"],
     "rootDir": "./src/ts",
-    "outDir": "./js",
+    "outDir": "./website/js",
     "strict": false,
     "esModuleInterop": true,
     "skipLibCheck": true,

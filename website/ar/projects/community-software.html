@@ -1,0 +1,186 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head>
+    <meta charset="UTF-8">
+    <script defer="" src="/js/status.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Software | Case Study</title>
+    <script>(function(){try{var t=localStorage.getItem("theme");document.documentElement.setAttribute("data-theme",t==="light"?"light":"dark");}catch(e){document.documentElement.setAttribute("data-theme","dark");}})()</script>
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/InterVariable.woff2" crossorigin="">
+
+    <link rel="stylesheet" href="/css/fonts.css">
+
+    <link rel="stylesheet" href="/css/main.css?v=5">
+    <link rel="stylesheet" href="/css/project-base.css">
+    <!-- i18n-seo-auto:start -->
+    
+    
+    
+    
+    
+    
+    <script>window.__PAGE_LANG__=(function(){var p=location.pathname;if(/(^|\/)en(\/|$)/.test(p))return'en';if(/(^|\/)ar(\/|$)/.test(p))return'ar';return'de';})();</script>
+    <!-- i18n-seo-auto:end -->
+  
+    <link rel="alternate" hreflang="de" href="https://yusefbach.de/projects/community-software.html">
+    <link rel="alternate" hreflang="en" href="https://yusefbach.de/en/projects/community-software.html">
+    <link rel="alternate" hreflang="ar" href="https://yusefbach.de/ar/projects/community-software.html">
+    <link rel="alternate" hreflang="x-default" href="https://yusefbach.de/projects/community-software.html">
+    <link rel="canonical" href="https://yusefbach.de/ar/projects/community-software.html">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+  <body class="project-deep-dive">
+    <a href="#main-content" class="skip-link" data-i18n="a11y_skip_link">انتقل إلى المحتوى الرئيسي</a>
+    <app-project-header base-path="..">
+      <div class="internal-links">
+        <a href="#mission" data-i18n="pd_nav_mission">المهمة</a>
+        <a href="#architecture" data-i18n="pd_nav_arch">المعمارية</a>
+      </div>
+    </app-project-header>
+    <main id="main-content">
+
+    <header class="project-hero" id="home">
+      <!-- Fallback pattern since we might not have a video for this -->
+      <div class="hero-pattern" style="opacity: 0.5;"></div>
+      
+      <div class="hero-content container">
+        <div class="hero-badges fade-in-up">
+          <span class="hero-badge" data-i18n="cs_hero_badge">Lead Developer</span>
+          <span class="hero-badge outline">01/2021 - 09/2023</span>
+        </div>
+
+        <h1 class="hero-title fade-in-up" style="animation-delay: 0.2s">
+          Community<span class="text-stroke">Engine</span>
+        </h1>
+
+        <p class="hero-subtitle fade-in-up" style="animation-delay: 0.4s" data-i18n="cs_page_subtitle">بنية backend وfrontend غير متزامنة لمجتمع كبير. <span class="highlight-text">Lua, JS &amp; SQL Optimization.</span></p>
+      </div>
+
+      <div class="scroll-indicator fade-in" style="animation-delay: 1s">
+        <span data-i18n="cs_hero_scroll">استكشاف الحالة</span>
+        <div class="mouse">
+          <div class="wheel"></div>
+        </div>
+      </div>
+    </header>
+
+    <section class="project-section dark-bg" id="mission">
+      <div class="container">
+        <div class="mission-grid">
+          <div class="mission-content reveal">
+            <span class="section-tag" data-i18n="cs_tag_project">نظام حي</span>
+            <h2 class="section-heading" data-i18n="cs_mission_title">المسؤولية عن <br><span class="highlight-text">الأنظمة الحية</span> خلال الدراسة</h2>
+            <p class="text-lg" data-i18n="cs_mission_text">مشروع ضخم امتد على مدى سنتين ونصف (01/2021 – 09/2023)، تعلمت فيه ما يعنيه بناء معمارية يجب أن تؤدي أداءها تحت ضغط مستخدمين حقيقيين يولّدون بيانات ضخمة باستمرار.</p>
+            <p class="text-muted" data-i18n="cs_mission_subtext">كان التركيز على بناء هياكل Server-Client وصيانة البيانات بشكل سلس أثناء التشغيل المباشر. الأخطاء لا يجوز أن تُدمر اقتصاداً قائماً أو مخزوناً من البيانات.</p>
+
+            <div class="stats-row">
+              <div class="stat-box">
+                <span class="stat-val">Lua/JS</span>
+                <span class="stat-label">Core Logic</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-val">SQL</span>
+                <span class="stat-label">Database</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-val">2.5</span>
+                <span class="stat-label" data-i18n="cs_stat_years_label">سنوات تشغيل</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="feature-visual reveal delay-200">
+             <div class="code-window">
+               <div class="cw-header">
+                 <div class="cw-dot red"></div>
+                 <div class="cw-dot yellow"></div>
+                 <div class="cw-dot green"></div>
+                 <div class="cw-title">server_core.lua</div>
+               </div>
+               <div class="cw-body">
+<span class="cw-line"><span class="cw-num">1</span><span class="cmt">-- Handling event-driven SQL queries for High-Traffic</span></span>
+<span class="cw-line"><span class="cw-num">2</span><span class="var">RegisterNetEvent</span>(<span class="str">'core:updatePlayerState'</span>, <span class="kwd">function</span>(source, payload)</span>
+<span class="cw-line"><span class="cw-num">3</span>  <span class="kwd">local</span> _src = source</span>
+<span class="cw-line"><span class="cw-num">4</span>  <span class="kwd">local</span> queryId = <span class="fn">OptimizeQuery</span>(payload)</span>
+<span class="cw-line"><span class="cw-num">5</span>  </span>
+<span class="cw-line"><span class="cw-num">6</span>  <span class="cmt">-- Ensuring Data Integrity via transactions</span></span>
+<span class="cw-line"><span class="cw-num">7</span>  <span class="var">MySQL.Async.execute</span>(<span class="str">'UPDATE users SET state=@state WHERE id=@id'</span>, {</span>
+<span class="cw-line"><span class="cw-num">8</span>    [<span class="str">'@state'</span>] = payload.current_state,</span>
+<span class="cw-line"><span class="cw-num">9</span>    [<span class="str">'@id'</span>] = payload.user_identifier</span>
+<span class="cw-line"><span class="cw-num">10</span>  }, <span class="kwd">function</span>(rowsChanged)</span>
+<span class="cw-line"><span class="cw-num">11</span>    <span class="kwd">if</span> rowsChanged &gt; 0 <span class="kwd">then</span></span>
+<span class="cw-line"><span class="cw-num">12</span>       <span class="fn">LogData</span>(<span class="str">"Success"</span>, _src)</span>
+<span class="cw-line"><span class="cw-num">13</span>    <span class="kwd">end</span></span>
+<span class="cw-line"><span class="cw-num">14</span>  <span class="kwd">end</span>)</span>
+<span class="cw-line"><span class="cw-num">15</span><span class="kwd">end</span>)</span>
+               </div>
+             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section" id="architecture">
+      <div class="container">
+        <h2 class="section-heading center-text reveal" data-i18n="cs_arch_title">High-Traffic <br><span class="highlight-text">Architecture</span></h2>
+        <p class="section-subtitle center-text reveal" data-i18n="cs_arch_sub">تجهيز مصادر المعرفة الداخلية والحفاظ على event listeners نظيفة.</p>
+
+        <div class="challenge-grid reveal">
+          <div class="challenge-card">
+            <div class="challenge-header">
+              <div class="icon-box icon-success">⚡</div>
+              <h4 class="challenge-title" data-i18n="cs_chal_1_title">حِمل استعلامات SQL</h4>
+            </div>
+            <p class="challenge-desc" data-i18n="cs_chal_1_desc">آلاف الاستعلامات على قاعدة البيانات العلائقية استوجبت تحسيناً حقيقياً (SQL Optimization).</p>
+            <div class="solution-block">
+              <div class="icon-box icon-danger">🛡️</div>
+              <div class="solution-text">
+                <span class="solution-label">Strategy</span>
+                <span data-i18n="cs_chal_1_sol_text">طبقات التخزين المؤقت غير المتزامن والمؤشرات المصممة بعناية منعت الاختناقات في بيئة الإنتاج.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="challenge-card">
+            <div class="challenge-header">
+              <div class="icon-box icon-success">📦</div>
+              <h4 class="challenge-title" data-i18n="cs_chal_2_title">إدارة الإصدارات</h4>
+            </div>
+            <p class="challenge-desc" data-i18n="cs_chal_2_desc">إدارة الإصدارات الصارمة عبر Git ضمنت سلاسة عملية التحديث دون انقطاع.</p>
+            <div class="solution-block">
+              <div class="icon-box icon-danger">🛡️</div>
+              <div class="solution-text">
+                <span class="solution-label">Workflow</span>
+                <span data-i18n="cs_chal_2_sol_text">الفصل بين بيئات التطوير والاختبار والإنتاج. توثيق التحديثات لفريق الإشراف.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="challenge-card">
+            <div class="challenge-header">
+              <div class="icon-box icon-success">🤝</div>
+              <h4 class="challenge-title" data-i18n="cs_chal_3_title">دعم الأنظمة</h4>
+            </div>
+            <p class="challenge-desc" data-i18n="cs_chal_3_desc">دعم تقني منهجي ومعالجة أعطال (المستوى الثاني) للمشكلات التي أبلغ عنها المجتمع.</p>
+            <div class="solution-block">
+              <div class="icon-box icon-danger">🛡️</div>
+              <div class="solution-text">
+                <span class="solution-label">Operations</span>
+                <span data-i18n="cs_chal_3_sol_text">نظام تذاكر نشط وسجلات المراقبة ساعدت في تحديد أخطاء حالات الاستخدام وإعادة إنتاجها.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+
+    </main>
+    <app-footer base-path=".."></app-footer>
+
+    <script defer="" src="/js/components/AppProjectHeader.js"></script>
+    <script defer="" src="/js/components/AppFooter.js"></script>
+    <script defer="" src="/js/bot.js"></script>
+    <script defer="" src="/js/script.js"></script>
+  
+
+</body></html>

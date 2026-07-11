@@ -1,0 +1,577 @@
+{
+  "generated_at": "2026-07-11T12:58:40.196Z",
+  "summary": {
+    "count": 43,
+    "total_bytes": 20804027,
+    "total_mb": 19.84,
+    "orphans": 5,
+    "categories": [
+      "docs",
+      "projects-community",
+      "projects-cv-engine",
+      "projects-phishing",
+      "projects-portfolio-meta",
+      "projects-studynexus",
+      "techstack",
+      "ui"
+    ],
+    "skipped_webp": 21
+  },
+  "assets": [
+    {
+      "path": "docs/cv.pdf",
+      "category": "docs",
+      "type": "document",
+      "size_bytes": 1098395,
+      "used_in": [
+        "website/ar/index.html",
+        "website/en/index.html",
+        "website/index.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "docs/Phishing_Defender_UseCases_YusefBachK.pdf",
+      "category": "docs",
+      "type": "document",
+      "size_bytes": 1397698,
+      "used_in": [
+        "website/ar/projects/phishing-defender.html",
+        "website/en/projects/phishing-defender.html",
+        "website/projects/phishing-defender.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "docs/Zeitplanung_Phishing_Defender.pdf",
+      "category": "docs",
+      "type": "document",
+      "size_bytes": 138855,
+      "used_in": [
+        "website/ar/projects/phishing-defender.html",
+        "website/en/projects/phishing-defender.html",
+        "website/projects/phishing-defender.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/projects/community/com.png",
+      "category": "projects-community",
+      "type": "image",
+      "size_bytes": 5291,
+      "has_webp": true,
+      "used_in": [
+        "website/ar/projects/archive.html",
+        "website/en/projects/archive.html",
+        "website/js/projects-data.js",
+        "website/projects/archive.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/projects/cv-engine/cv.png",
+      "category": "projects-cv-engine",
+      "type": "image",
+      "size_bytes": 287276,
+      "has_webp": true,
+      "used_in": [
+        "website/ar/projects/archive.html",
+        "website/ar/projects/html-cv.html",
+        "website/en/projects/archive.html",
+        "website/en/projects/html-cv.html",
+        "website/js/projects-data.js",
+        "website/projects/archive.html",
+        "website/projects/html-cv.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/projects/cv-engine/letter.png",
+      "category": "projects-cv-engine",
+      "type": "image",
+      "size_bytes": 71088,
+      "has_webp": true,
+      "used_in": [
+        "website/ar/projects/html-cv.html",
+        "website/en/projects/html-cv.html",
+        "website/projects/html-cv.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/projects/phishing/diagram-class.png",
+      "category": "projects-phishing",
+      "type": "image",
+      "size_bytes": 193578,
+      "has_webp": true,
+      "used_in": [
+        "website/ar/projects/phishing-defender.html",
+        "website/en/projects/phishing-defender.html",
+        "website/projects/phishing-defender.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/projects/phishing/diagram-seq.png",
+      "category": "projects-phishing",
+      "type": "image",
+      "size_bytes": 127012,
+      "has_webp": true,
+      "used_in": [
+        "website/ar/projects/phishing-defender.html",
+        "website/en/projects/phishing-defender.html",
+        "website/projects/phishing-defender.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/projects/phishing/gallery1.png",
+      "category": "projects-phishing",
+      "type": "image",
+      "size_bytes": 100503,
+      "has_webp": true,
+      "used_in": [
+        "website/ar/projects/phishing-defender.html",
+        "website/en/projects/phishing-defender.html",
+        "website/projects/phishing-defender.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/projects/phishing/gallery2.png",
+      "category": "projects-phishing",
+      "type": "image",
+      "size_bytes": 88776,
+      "has_webp": true,
+      "used_in": [
+        "website/ar/projects/phishing-defender.html",
+        "website/en/projects/phishing-defender.html",
+        "website/projects/phishing-defender.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/projects/phishing/gallery3.png",
+      "category": "projects-phishing",
+      "type": "image",
+      "size_bytes": 67615,
+      "has_webp": true,
+      "used_in": [
+        "website/ar/projects/phishing-defender.html",
+        "website/en/projects/phishing-defender.html",
+        "website/projects/phishing-defender.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/projects/phishing/gallery4.png",
+      "category": "projects-phishing",
+      "type": "image",
+      "size_bytes": 124942,
+      "has_webp": true,
+      "used_in": [
+        "website/ar/projects/phishing-defender.html",
+        "website/en/projects/phishing-defender.html",
+        "website/projects/phishing-defender.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/projects/phishing/gallery5.png",
+      "category": "projects-phishing",
+      "type": "image",
+      "size_bytes": 114461,
+      "has_webp": true,
+      "used_in": [],
+      "is_orphan": true
+    },
+    {
+      "path": "images/projects/phishing/gallery6.png",
+      "category": "projects-phishing",
+      "type": "image",
+      "size_bytes": 57898,
+      "has_webp": true,
+      "used_in": [],
+      "is_orphan": true
+    },
+    {
+      "path": "images/projects/phishing/game_logo.png",
+      "category": "projects-phishing",
+      "type": "image",
+      "size_bytes": 115175,
+      "has_webp": true,
+      "used_in": [],
+      "is_orphan": true
+    },
+    {
+      "path": "images/projects/phishing/game_menu.png",
+      "category": "projects-phishing",
+      "type": "image",
+      "size_bytes": 90802,
+      "has_webp": true,
+      "used_in": [
+        "website/ar/projects/phishing-defender.html",
+        "website/en/projects/phishing-defender.html",
+        "website/projects/phishing-defender.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/projects/phishing/gameplay_scan.png",
+      "category": "projects-phishing",
+      "type": "image",
+      "size_bytes": 96283,
+      "has_webp": true,
+      "used_in": [
+        "website/ar/projects/phishing-defender.html",
+        "website/en/projects/phishing-defender.html",
+        "website/projects/phishing-defender.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/projects/phishing/gameplay.mp4",
+      "category": "projects-phishing",
+      "type": "video",
+      "size_bytes": 4018964,
+      "used_in": [
+        "website/ar/projects/phishing-defender.html",
+        "website/en/projects/phishing-defender.html",
+        "website/projects/phishing-defender.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/projects/phishing/hero.png",
+      "category": "projects-phishing",
+      "type": "image",
+      "size_bytes": 867275,
+      "has_webp": true,
+      "used_in": [
+        "website/ar/projects/archive.html",
+        "website/ar/projects/phishing-defender.html",
+        "website/en/projects/archive.html",
+        "website/en/projects/phishing-defender.html",
+        "website/js/projects-data.js",
+        "website/projects/archive.html",
+        "website/projects/phishing-defender.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/projects/phishing/prototype_sketch.png",
+      "category": "projects-phishing",
+      "type": "image",
+      "size_bytes": 392865,
+      "has_webp": true,
+      "used_in": [
+        "website/ar/projects/phishing-defender.html",
+        "website/en/projects/phishing-defender.html",
+        "website/projects/phishing-defender.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/projects/portfolio-meta/logopf.png",
+      "category": "projects-portfolio-meta",
+      "type": "image",
+      "size_bytes": 642447,
+      "has_webp": true,
+      "used_in": [
+        "website/ar/projects/archive.html",
+        "website/ar/projects/portfolio-meta.html",
+        "website/en/projects/archive.html",
+        "website/en/projects/portfolio-meta.html",
+        "website/js/projects-data.js",
+        "website/projects/archive.html",
+        "website/projects/portfolio-meta.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/projects/studynexus/demo.mp4",
+      "category": "projects-studynexus",
+      "type": "video",
+      "size_bytes": 3559009,
+      "used_in": [
+        "website/ar/projects/studynexus.html",
+        "website/en/projects/studynexus.html",
+        "website/projects/studynexus.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/projects/studynexus/demo.webm",
+      "category": "projects-studynexus",
+      "type": "video",
+      "size_bytes": 5690803,
+      "used_in": [
+        "website/ar/projects/studynexus.html",
+        "website/en/projects/studynexus.html",
+        "website/projects/studynexus.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/projects/studynexus/preview.svg",
+      "category": "projects-studynexus",
+      "type": "vector",
+      "size_bytes": 2424,
+      "used_in": [
+        "website/ar/index.html",
+        "website/en/index.html",
+        "website/index.html",
+        "website/js/projects-data.js"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/techstack/claude.svg",
+      "category": "techstack",
+      "type": "vector",
+      "size_bytes": 281,
+      "used_in": [
+        "website/ar/index.html",
+        "website/en/index.html",
+        "website/index.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/techstack/css.svg",
+      "category": "techstack",
+      "type": "vector",
+      "size_bytes": 2605,
+      "used_in": [
+        "website/ar/index.html",
+        "website/en/index.html",
+        "website/index.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/techstack/docker.svg",
+      "category": "techstack",
+      "type": "vector",
+      "size_bytes": 1765,
+      "used_in": [
+        "website/ar/index.html",
+        "website/en/index.html",
+        "website/index.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/techstack/git.svg",
+      "category": "techstack",
+      "type": "vector",
+      "size_bytes": 1334,
+      "used_in": [
+        "website/ar/index.html",
+        "website/en/index.html",
+        "website/index.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/techstack/html.svg",
+      "category": "techstack",
+      "type": "vector",
+      "size_bytes": 479,
+      "used_in": [
+        "website/ar/index.html",
+        "website/en/index.html",
+        "website/index.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/techstack/java.svg",
+      "category": "techstack",
+      "type": "vector",
+      "size_bytes": 2374,
+      "used_in": [
+        "website/ar/index.html",
+        "website/en/index.html",
+        "website/index.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/techstack/js.svg",
+      "category": "techstack",
+      "type": "vector",
+      "size_bytes": 1005,
+      "used_in": [
+        "website/ar/index.html",
+        "website/en/index.html",
+        "website/index.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/techstack/linux.svg",
+      "category": "techstack",
+      "type": "vector",
+      "size_bytes": 18684,
+      "used_in": [
+        "website/ar/index.html",
+        "website/en/index.html",
+        "website/index.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/techstack/lua.svg",
+      "category": "techstack",
+      "type": "vector",
+      "size_bytes": 4194,
+      "used_in": [
+        "website/ar/index.html",
+        "website/en/index.html",
+        "website/index.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/techstack/postgresql.svg",
+      "category": "techstack",
+      "type": "vector",
+      "size_bytes": 5205,
+      "used_in": [
+        "website/ar/index.html",
+        "website/en/index.html",
+        "website/index.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/techstack/python.svg",
+      "category": "techstack",
+      "type": "vector",
+      "size_bytes": 1518,
+      "used_in": [
+        "website/ar/index.html",
+        "website/en/index.html",
+        "website/index.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/techstack/react.svg",
+      "category": "techstack",
+      "type": "vector",
+      "size_bytes": 2926,
+      "used_in": [
+        "website/ar/index.html",
+        "website/en/index.html",
+        "website/index.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/techstack/sql.svg",
+      "category": "techstack",
+      "type": "vector",
+      "size_bytes": 1238,
+      "used_in": [
+        "website/ar/index.html",
+        "website/en/index.html",
+        "website/index.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/techstack/vscode.svg",
+      "category": "techstack",
+      "type": "vector",
+      "size_bytes": 1014,
+      "used_in": [
+        "website/ar/index.html",
+        "website/en/index.html",
+        "website/index.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/ui/about-profile.jpg",
+      "category": "ui",
+      "type": "image",
+      "size_bytes": 492973,
+      "has_webp": true,
+      "used_in": [
+        "website/ar/index.html",
+        "website/en/index.html",
+        "website/index.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/ui/hero-profile.jpg",
+      "category": "ui",
+      "type": "image",
+      "size_bytes": 503847,
+      "has_webp": true,
+      "used_in": [
+        "website/ar/index.html",
+        "website/en/index.html",
+        "website/index.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/ui/logo.png",
+      "category": "ui",
+      "type": "image",
+      "size_bytes": 127114,
+      "has_webp": true,
+      "used_in": [
+        "scripts/build-thoughts.mjs",
+        "scripts/verify/parity.mjs",
+        "src/ts/components/AppHeader.ts",
+        "website/404.html",
+        "website/ar/index.html",
+        "website/ar/projects/studynexus.html",
+        "website/ar/thoughts/architektur-vor-syntax.html",
+        "website/ar/thoughts/index.html",
+        "website/ar/thoughts/supabase-berechtigungen-grants-rls.html",
+        "website/datenschutz.html",
+        "website/en/index.html",
+        "website/en/projects/studynexus.html",
+        "website/en/thoughts/architektur-vor-syntax.html",
+        "website/en/thoughts/index.html",
+        "website/en/thoughts/supabase-berechtigungen-grants-rls.html",
+        "website/index.html",
+        "website/js/components/AppHeader.js",
+        "website/maintenance.html",
+        "website/manifest.json",
+        "website/projects/_template.html",
+        "website/projects/studynexus.html",
+        "website/thanks.html",
+        "website/thoughts/_post-template.html",
+        "website/thoughts/architektur-vor-syntax.html",
+        "website/thoughts/index.html",
+        "website/thoughts/supabase-berechtigungen-grants-rls.html"
+      ],
+      "is_orphan": false
+    },
+    {
+      "path": "images/ui/preview.png",
+      "category": "ui",
+      "type": "image",
+      "size_bytes": 117092,
+      "has_webp": false,
+      "used_in": [],
+      "is_orphan": true
+    },
+    {
+      "path": "images/ui/profile.jpg",
+      "category": "ui",
+      "type": "image",
+      "size_bytes": 168944,
+      "has_webp": true,
+      "used_in": [],
+      "is_orphan": true
+    }
+  ]
+}

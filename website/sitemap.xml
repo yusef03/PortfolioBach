@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://yusefbach.de/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://yusefbach.de/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yusefbach.de/en/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://yusefbach.de/ar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yusefbach.de/"/>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://yusefbach.de/roadmap.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://yusefbach.de/roadmap.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yusefbach.de/en/roadmap.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://yusefbach.de/ar/roadmap.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yusefbach.de/roadmap.html"/>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yusefbach.de/changelog.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://yusefbach.de/changelog.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yusefbach.de/en/changelog.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://yusefbach.de/ar/changelog.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yusefbach.de/changelog.html"/>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://yusefbach.de/thoughts/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://yusefbach.de/thoughts/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yusefbach.de/en/thoughts/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://yusefbach.de/ar/thoughts/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yusefbach.de/thoughts/"/>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://yusefbach.de/impressum.html</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://yusefbach.de/datenschutz.html</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://yusefbach.de/projects/archive.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://yusefbach.de/projects/archive.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yusefbach.de/en/projects/archive.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://yusefbach.de/ar/projects/archive.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yusefbach.de/projects/archive.html"/>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yusefbach.de/projects/community-software.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://yusefbach.de/projects/community-software.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yusefbach.de/en/projects/community-software.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://yusefbach.de/ar/projects/community-software.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yusefbach.de/projects/community-software.html"/>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yusefbach.de/projects/html-cv.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://yusefbach.de/projects/html-cv.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yusefbach.de/en/projects/html-cv.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://yusefbach.de/ar/projects/html-cv.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yusefbach.de/projects/html-cv.html"/>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yusefbach.de/projects/phishing-defender.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://yusefbach.de/projects/phishing-defender.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yusefbach.de/en/projects/phishing-defender.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://yusefbach.de/ar/projects/phishing-defender.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yusefbach.de/projects/phishing-defender.html"/>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yusefbach.de/projects/portfolio-meta.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://yusefbach.de/projects/portfolio-meta.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yusefbach.de/en/projects/portfolio-meta.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://yusefbach.de/ar/projects/portfolio-meta.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yusefbach.de/projects/portfolio-meta.html"/>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yusefbach.de/projects/studynexus.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://yusefbach.de/projects/studynexus.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yusefbach.de/en/projects/studynexus.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://yusefbach.de/ar/projects/studynexus.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yusefbach.de/projects/studynexus.html"/>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yusefbach.de/thoughts/supabase-berechtigungen-grants-rls.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://yusefbach.de/thoughts/supabase-berechtigungen-grants-rls.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yusefbach.de/en/thoughts/supabase-berechtigungen-grants-rls.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://yusefbach.de/ar/thoughts/supabase-berechtigungen-grants-rls.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yusefbach.de/thoughts/supabase-berechtigungen-grants-rls.html"/>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yusefbach.de/thoughts/architektur-vor-syntax.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://yusefbach.de/thoughts/architektur-vor-syntax.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yusefbach.de/en/thoughts/architektur-vor-syntax.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://yusefbach.de/ar/thoughts/architektur-vor-syntax.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yusefbach.de/thoughts/architektur-vor-syntax.html"/>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

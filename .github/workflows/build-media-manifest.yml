@@ -1,0 +1,42 @@
+name: Build Media Manifest
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'website/images/**'
+      - 'website/docs/**'
+      - 'website/*.html'
+      - 'website/projects/*.html'
+      - 'website/css/**'
+      - 'src/ts/**'
+      - 'website/manifest.json'
+  workflow_dispatch:
+
+jobs:
+  build-manifest:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Manifest generieren
+        run: node scripts/build-media-manifest.mjs
+
+      - name: Commit wenn Änderungen vorhanden
+        run: |
+          git config user.name "Yusef Bach"
+          git config user.email "kontakt@yusefbach.de"
+          git diff --quiet website/media-manifest.json || (
+            git add website/media-manifest.json &&
+            git commit -m "chore: media-manifest.json aktualisiert" &&
+            git push
+          )

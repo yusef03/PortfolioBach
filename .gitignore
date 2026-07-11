@@ -15,8 +15,8 @@ __pycache__/
 Thumbs.db
 
 # Private / Internal — niemals auf GitHub pushen
-ANTIGRAVITY.md
 CLAUDE.md
+ANTIGRAVITY.md
 internal-docs/
 
 # IDE

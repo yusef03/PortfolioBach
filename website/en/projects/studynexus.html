@@ -1,0 +1,1203 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <script defer="" src="/js/status.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>StudyNexus | Case Study</title>
+  <link rel="icon" type="image/png" href="/images/ui/logo.png">
+  <script>(function(){try{var t=localStorage.getItem("theme");document.documentElement.setAttribute("data-theme",t==="light"?"light":"dark");}catch(e){document.documentElement.setAttribute("data-theme","dark");}})()</script>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/InterVariable.woff2" crossorigin="">
+
+  <link rel="stylesheet" href="/css/fonts.css">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <noscript>
+    <style>
+      body {
+        visibility: visible !important;
+      }
+    </style>
+  </noscript>
+
+  <link rel="stylesheet" href="/css/project-base.css">
+  <link rel="stylesheet" href="/css/pages/studynexus.css">
+  <link rel="stylesheet" href="/css/pages/roadmap.css">
+    <!-- i18n-seo-auto:start -->
+    
+    
+    
+    
+    
+    
+    <script>window.__PAGE_LANG__=(function(){var p=location.pathname;if(/(^|\/)en(\/|$)/.test(p))return'en';if(/(^|\/)ar(\/|$)/.test(p))return'ar';return'de';})();</script>
+    <!-- i18n-seo-auto:end -->
+
+    <link rel="alternate" hreflang="de" href="https://yusefbach.de/projects/studynexus.html">
+    <link rel="alternate" hreflang="en" href="https://yusefbach.de/en/projects/studynexus.html">
+    <link rel="alternate" hreflang="ar" href="https://yusefbach.de/ar/projects/studynexus.html">
+    <link rel="alternate" hreflang="x-default" href="https://yusefbach.de/projects/studynexus.html">
+    <link rel="canonical" href="https://yusefbach.de/en/projects/studynexus.html">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="project-deep-dive">
+    <a href="#main-content" class="skip-link" data-i18n="a11y_skip_link">Skip to main content</a>
+
+  <!-- ── Navigation ─────────────────────────────────────────────── -->
+  <app-project-header base-path="..">
+    <div class="internal-links">
+      <a href="#origin" data-i18n="sn_nav_origin">Origin</a>
+      <a href="#architecture" data-i18n="sn_nav_arch">Architecture</a>
+      <a href="#features" data-i18n="sn_nav_features">Features</a>
+      <a href="#bin-po" data-i18n="sn_nav_binpo">BIN PO</a>
+      <a href="#security" data-i18n="sn_nav_security">Security</a>
+      <a href="#admin" data-i18n="sn_nav_admin">Admin</a>
+      <a href="#roadmap" data-i18n="sn_nav_roadmap">Roadmap</a>
+    </div>
+  </app-project-header>
+    <main id="main-content">
+
+  <!-- ── Hero ───────────────────────────────────────────────────── -->
+  <header class="project-hero" id="home" style="position: relative; overflow: hidden;">
+
+    <video autoplay="" loop="" muted="" playsinline="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.4; pointer-events: none;">
+      <source src="/images/projects/studynexus/demo.webm" type="video/webm">
+      <source src="/images/projects/studynexus/demo.mp4" type="video/mp4">
+    </video>
+
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(10,10,10,0.65) 0%, rgba(10,10,10,0.88) 45%, #0a0a0a 80%); z-index: 1;">
+    </div>
+
+    <div class="scan-line-hero" style="z-index: 1; pointer-events: none;"></div>
+
+    <div class="hero-content container" style="position:relative; z-index: 2;">
+      <div class="hero-badges fade-in-up">
+        <span class="meta-tag" style="font-family:monospace;border-color:#333;color:#888;display:flex;align-items:center;gap:8px;">
+          <span class="pulse-dot" style="width:8px;height:8px;border-radius:50%;background:#9d00ff;animation:pulse-glow 1.8s infinite;display:inline-block;"></span>
+          <span data-i18n="sn_hero_badge_1">Sprint 5 complete · v0.5.0</span>
+        </span>
+        <span class="hero-badge outline" data-i18n="sn_hero_badge_2">Full-Stack SaaS</span>
+      </div>
+
+      <h1 class="hero-title fade-in-up hero-title-gradient" style="animation-delay:0.2s;">
+        STUDY<span class="text-stroke" style="-webkit-text-fill-color:initial;">NEXUS</span>
+      </h1>
+
+      <p class="hero-subtitle fade-in-up" style="animation-delay:0.4s;" data-i18n="sn_hero_subtitle">A platform no HsH student had.<br>Built by one who needed it.</p>
+    </div>
+
+    <div class="scroll-indicator fade-in" style="animation-delay:1s; z-index: 2; position: relative;">
+      <span data-i18n="sn_hero_scroll">Deep Dive</span>
+      <div class="mouse">
+        <div class="wheel"></div>
+      </div>
+    </div>
+  </header>
+  <!-- ════════════════════════════════════════════════════════════
+         CHAPTER I — ORIGIN
+    ════════════════════════════════════════════════════════════════ -->
+  <section class="project-section dark-bg" id="origin">
+    <div class="container">
+
+      <h2 class="section-heading center-text reveal" data-i18n="sn_c1_title">Chapter I: The Origin</h2>
+      <p class="section-subtitle center-text reveal" data-i18n="sn_c1_sub">Real frustration becomes a real product.</p>
+
+      <!-- Active Dev Banner -->
+      <div class="sn-dev-banner reveal">
+        <div class="pulse-dot"></div>
+        <span data-i18n="sn_c1_banner">Sprint 5 fully complete — 9 sprints, 17 migrations, 122/122 tests passing, 0 TypeScript errors. Case study reflects current state.</span>
+      </div>
+
+      <!-- Problem vs. Vision -->
+      <div class="mission-grid reveal" style="margin-top:60px;">
+        <div class="mission-content">
+          <span class="section-tag" data-i18n="sn_c1_prob_tag">The Problem</span>
+          <h3 data-i18n="sn_c1_prob_title">Managing your studies is a mess</h3>
+          <p class="text-lg" data-i18n="sn_c1_prob_text">Every HS Hannover student knows it: QIS for grades, Moodle for materials, Excel for ECTS tracking, a notebook for exam dates — and you still lose track. No tool speaks the language of a student. None knows the exam regulations. None calculates GPA automatically.</p>
+          <p class="text-muted" data-i18n="sn_c1_prob_sub">This isn't a comfort problem — it's a system failure. System failures deserve systemic solutions.</p>
+
+          <ul class="pain-list" style="margin-top:20px;">
+            <li data-i18n="sn_c1_pain_1">No central hub for study progress</li>
+            <li data-i18n="sn_c1_pain_2">Manual ECTS tracking in Excel</li>
+            <li data-i18n="sn_c1_pain_3">Exam dates spread across multiple systems</li>
+            <li data-i18n="sn_c1_pain_4">Calculating GPA manually with a calculator</li>
+            <li data-i18n="sn_c1_pain_5">Schedule conflicts only discovered in the lecture hall</li>
+          </ul>
+        </div>
+
+        <div class="terminal-wrapper reveal" style="margin:0;width:100%;align-self:center;">
+          <div class="terminal-header-bar">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <span class="term-title">student_tools.sh</span>
+          </div>
+          <div class="terminal-body">
+            <p class="comment"># Aktuelle Realität an der HsH</p>
+            <div class="code-line" style="opacity:0.5;text-decoration:line-through;color:#ff5757;">
+              <span class="prompt">$</span> open QIS.exe &amp;&amp; open moodle.hs-hannover.de
+            </div>
+            <div class="code-line" style="opacity:0.5;text-decoration:line-through;color:#ff5757;">
+              <span class="prompt">$</span> open "ECTS_Tracking_v3_FINAL.xlsx"
+            </div>
+            <div class="code-line" style="opacity:0.5;text-decoration:line-through;color:#ff5757;">
+              <span class="prompt">$</span> grep -r "Prüfungstermin" ~/Desktop/notizen/
+            </div>
+            <br>
+            <p class="comment"># Die StudyNexus Lösung</p>
+            <div class="code-line">
+              <span class="prompt">yusef@studynexus:~$</span> docker compose up --build
+            </div>
+            <div class="code-output">
+              [✓] frontend started on :3000<br>
+              [✓] backend started on :8000<br>
+              [✓] postgres ready — migrations applied<br>
+              [READY] StudyNexus is running.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vision Box -->
+      <div class="mission-grid reveal" style="margin-top:100px;">
+        <div class="mission-image" style="display:flex;justify-content:center;align-items:center;">
+          <div class="stats-card" style="width:100%;padding:30px;">
+            <h4 style="margin-bottom:24px;font-size:0.9rem;color:#666;font-family:var(--font-mono);">Platform Scope</h4>
+            <div style="display:flex;flex-direction:column;gap:14px;">
+              <div style="display:flex;align-items:center;gap:14px;">
+                <span style="font-size:1.4rem;">📋</span>
+                <div>
+                  <div style="color:#fff;font-weight:500;font-size:0.9rem;" data-i18n="sn_scope_gpa_title">Study Plan &amp; GPA</div>
+                  <div style="color:#555;font-size:0.78rem;" data-i18n="sn_scope_gpa_sub">Exam regulations built-in · ECTS-weighted</div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:14px;">
+                <span style="font-size:1.4rem;">📅</span>
+                <div>
+                  <div style="color:#fff;font-weight:500;font-size:0.9rem;">Schedule Board</div>
+                  <div style="color:#555;font-size:0.78rem;" data-i18n="sn_scope_sched_sub">15-min CSS Grid · Collision detection</div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:14px;">
+                <span style="font-size:1.4rem;">📌</span>
+                <div>
+                  <div style="color:#fff;font-weight:500;font-size:0.9rem;">Kanban Board</div>
+                  <div style="color:#555;font-size:0.78rem;" data-i18n="sn_scope_kanban_sub">Drag &amp; Drop · Persisted in DB</div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:14px;">
+                <span style="font-size:1.4rem;">🔐</span>
+                <div>
+                  <div style="color:#fff;font-weight:500;font-size:0.9rem;" data-i18n="sn_scope_access_title">HsH-Only Access</div>
+                  <div style="color:#555;font-size:0.78rem;" data-i18n="sn_scope_access_sub">@stud.hs-hannover.de · Email-verified</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mission-content">
+          <span class="section-tag" data-i18n="sn_c1_vision_tag">The Vision</span>
+          <h3 data-i18n="sn_c1_vision_title">An Operating System for your Studies.</h3>
+          <p data-i18n="sn_c1_vision_text">StudyNexus is not another to-do app. It's a complete study operating system — built specifically for HS Hannover. The platform knows the real exam regulations, calculates weighted GPA by ECTS, and automatically detects schedule conflicts.</p>
+          <p class="text-muted" data-i18n="sn_c1_vision_sub">Access is intentionally exclusive: only @stud.hs-hannover.de email addresses are accepted. No noise, no bot accounts — a real student community.</p>
+
+          <div style="margin-top:30px;padding:20px;background:#0e0e0e;border:1px solid #1e1e1e;border-radius:10px;">
+            <span class="section-tag" data-i18n="sn_c1_scope_tag" style="margin-bottom:10px;display:block;">Current State</span>
+            <p style="color:#aaa;font-size:0.88rem;line-height:1.65;" data-i18n="sn_c1_scope_text">Although the project is still in active development, a complete full-stack MVP is already running: authentication with email verification, study plan with automatic GPA calculation, Kanban board with drag &amp; drop, schedule board with collision detection, and visual study plan.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="sn-stats-grid reveal">
+        <div class="sn-stat-box">
+          <h3>200+</h3>
+          <p data-i18n="sn_stat_source_files">Source Files<br>(Frontend + Backend)</p>
+        </div>
+        <div class="sn-stat-box">
+          <h3>17</h3>
+          <p data-i18n="sn_stat_alembic">Alembic<br>Migrations</p>
+        </div>
+        <div class="sn-stat-box">
+          <h3>22+</h3>
+          <p data-i18n="sn_stat_adr">Architecture Decision<br>Records (ADRs)</p>
+        </div>
+        <div class="sn-stat-box">
+          <h3 style="color:#27c93f;">122</h3>
+          <p data-i18n="sn_stat_tests">Backend Tests<br>all green</p>
+        </div>
+        <div class="sn-stat-box">
+          <h3>37</h3>
+          <p data-i18n="sn_stat_bin_modules">BIN Modules<br>fully seeded</p>
+        </div>
+        <div class="sn-stat-box">
+          <h3>5</h3>
+          <p data-i18n="sn_stat_docker">Docker Services<br>(Compose Stack)</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+         CHAPTER II — SYSTEM ARCHITECTURE
+    ════════════════════════════════════════════════════════════════ -->
+  <section class="project-section" id="architecture">
+    <div class="container">
+
+      <h2 class="section-heading center-text reveal" data-i18n="sn_c2_title">Chapter II: System Architecture</h2>
+      <p class="section-subtitle center-text reveal" data-i18n="sn_c2_sub">Five containers. One coherent platform.</p>
+
+      <!-- Monorepo -->
+      <div class="mission-grid reveal" style="margin-top:60px;align-items:center;">
+        <div class="mission-content">
+          <span class="section-tag" data-i18n="sn_c2_mono_tag">Monorepo</span>
+          <h3 data-i18n="sn_c2_mono_title">Frontend &amp; Backend. One Repository.</h3>
+          <p data-i18n="sn_c2_mono_text">StudyNexus is built as a monorepo — frontend (Next.js) and backend (FastAPI) live in the same repository, share commit history, and are deployed together. This eliminates context switches and keeps API contracts consistent.</p>
+          <p class="text-muted" data-i18n="sn_c2_mono_sub">Every change to the API contract is immediately visible in the frontend. No desync between two repos.</p>
+        </div>
+
+        <div class="mission-image">
+          <div class="folder-card">
+            <div class="folder-tree">
+              <span style="color:#fff;font-weight:600;">📁 studynexus/</span>
+              <span>├── 📁 <span class="folder-hl">frontend/</span> <span class="folder-comment">// Next.js
+                  14</span></span>
+              <span>│ ├── 📁 src/app/[locale]/</span>
+              <span>│ ├── 📁 src/components/</span>
+              <span>│ └── 📄 package.json</span>
+              <span>├── 📁 <span class="folder-hl">backend/</span> <span class="folder-comment">// FastAPI</span></span>
+              <span>│ ├── 📁 app/routers/</span>
+              <span>│ ├── 📁 app/models/</span>
+              <span>│ └── 📄 requirements.txt</span>
+              <span>├── 📄 docker-compose.yml</span>
+              <span>└── 📄 .env</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data Flow -->
+      <div class="reveal" style="margin-top:100px;">
+        <span class="section-tag center-text" style="display:block;text-align:center;margin-bottom:20px;" data-i18n="sn_c2_flow_tag">Data Flow</span>
+        <h3 class="center-text" style="margin-bottom:10px;" data-i18n="sn_c2_flow_title">The path of a request</h3>
+        <p class="center-text text-muted" style="max-width:600px;margin:0 auto 40px;" data-i18n="sn_c2_flow_text">Every mutation in the frontend goes through a secure pipeline: Next.js API Routes proxy all requests to the FastAPI backend. This eliminates browser CORS issues and keeps the backend URL completely hidden. The backend validates with Pydantic, checks the JWT, and writes to PostgreSQL.</p>
+
+        <div class="request-flow" style="justify-content:center;">
+          <div class="flow-step">
+            <div class="fs-label">Browser</div>
+            <div class="fs-name">React UI</div>
+            <div class="fs-sub">TanStack Query</div>
+          </div>
+          <div class="flow-arrow-sm">→</div>
+          <div class="flow-step hl">
+            <div class="fs-label">Next.js</div>
+            <div class="fs-name">API Route</div>
+            <div class="fs-sub">Proxy + CSRF</div>
+          </div>
+          <div class="flow-arrow-sm">→</div>
+          <div class="flow-step hl">
+            <div class="fs-label">FastAPI</div>
+            <div class="fs-name">Backend</div>
+            <div class="fs-sub">JWT + Pydantic</div>
+          </div>
+          <div class="flow-arrow-sm">→</div>
+          <div class="flow-step">
+            <div class="fs-label">PostgreSQL</div>
+            <div class="fs-name">Database</div>
+            <div class="fs-sub">SQLAlchemy ORM</div>
+          </div>
+          <div class="flow-arrow-sm" style="color:#555;">↕</div>
+          <div class="flow-step">
+            <div class="fs-label">Redis</div>
+            <div class="fs-name">Cache</div>
+            <div class="fs-sub">Sessions</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Docker Stack -->
+      <div class="mission-grid reveal" style="margin-top:100px;align-items:start;">
+        <div class="mission-content">
+          <span class="section-tag" data-i18n="sn_c2_docker_tag">Infrastructure</span>
+          <h3 data-i18n="sn_c2_docker_title">Docker Compose: Five Services</h3>
+          <p data-i18n="sn_c2_docker_text">The entire infrastructure starts with a single command. In production, the same containers are deployed — no 'works on my machine'.</p>
+          <p class="text-muted" data-i18n="sn_c2_docker_sub">PostgreSQL and Redis have health checks. The backend only starts when the database is ready.</p>
+
+          <div class="terminal-wrapper" style="margin-top:30px;">
+            <div class="terminal-header-bar">
+              <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+              <span class="term-title">bash</span>
+            </div>
+            <div class="terminal-body">
+              <div class="code-line">
+                <span class="prompt">$</span> docker compose up --build
+              </div>
+              <div class="code-output" style="color:#27c93f;">
+                ✓ db healthy (postgres:16)<br>
+                ✓ redis healthy (redis:7-alpine)<br>
+                ✓ backend started → :8000<br>
+                ✓ frontend started → :3000<br>
+                ✓ adminer started → :8080
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mission-image">
+          <div class="docker-stack">
+            <div class="docker-service">
+              <span class="svc-name">frontend</span>
+              <span class="svc-port">:3000</span>
+              <span class="svc-desc">Next.js 14 · App Router</span>
+              <span class="svc-tag">Node</span>
+            </div>
+            <div class="docker-service">
+              <span class="svc-name">backend</span>
+              <span class="svc-port">:8000</span>
+              <span class="svc-desc">FastAPI · Uvicorn · ASGI</span>
+              <span class="svc-tag">Python</span>
+            </div>
+            <div class="docker-service">
+              <span class="svc-name">db</span>
+              <span class="svc-port">:5432</span>
+              <span class="svc-desc">PostgreSQL 16-alpine</span>
+              <span class="svc-tag">Health ✓</span>
+            </div>
+            <div class="docker-service">
+              <span class="svc-name">redis</span>
+              <span class="svc-port">:6379</span>
+              <span class="svc-desc">Redis 7-alpine · Sessions</span>
+              <span class="svc-tag">Health ✓</span>
+            </div>
+            <div class="docker-service">
+              <span class="svc-name">adminer</span>
+              <span class="svc-port">:8080</span>
+              <span class="svc-desc">DB Admin UI · Dev only</span>
+              <span class="svc-tag">Tool</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+         CHAPTER III — ENGINEERING DECISIONS
+    ════════════════════════════════════════════════════════════════ -->
+  <section class="project-section dark-bg" id="decisions">
+    <div class="container">
+
+      <h2 class="section-heading center-text reveal" data-i18n="sn_c3_title">Chapter III: Engineering Decisions</h2>
+      <p class="section-subtitle center-text reveal" data-i18n="sn_c3_sub">14 Architecture Decision Records. Here are the most impactful ones.</p>
+
+      <p class="center-text text-muted reveal" style="max-width:650px;margin:0 auto 20px;" data-i18n="sn_c3_intro">Architecture decisions should be documented — not just what was decided, but why and which alternatives were rejected. StudyNexus has 14 ADRs. Here are the ones that shaped the system most.</p>
+
+      <div class="adr-grid reveal">
+
+        <div class="adr-card">
+          <span class="adr-num" data-i18n="sn_c3_adr1_tag">ADR-01</span>
+          <h4 data-i18n="sn_c3_adr1_title">FastAPI instead of Django</h4>
+          <p data-i18n="sn_c3_adr1_text">Django is the 'safe' Python framework. FastAPI is the right one for this use case: native async support, Pydantic v2 directly in the schema, automatic OpenAPI docs at /api/docs — and an architecture ready for AI extensions.</p>
+          <div class="event-types" style="margin-top:16px;">
+            <span>async-native</span><span>Pydantic v2</span><span>OpenAPI /docs</span><span>KI-ready</span>
+          </div>
+        </div>
+
+        <div class="adr-card">
+          <span class="adr-num" data-i18n="sn_c3_adr2_tag">ADR-03</span>
+          <h4 data-i18n="sn_c3_adr2_title">httpOnly Cookies over localStorage</h4>
+          <p data-i18n="sn_c3_adr2_text">Storing JWT tokens in localStorage is a classic XSS vulnerability: any injected script can read localStorage. httpOnly cookies are fundamentally invisible to JavaScript. The browser sends them automatically — no script can steal them.</p>
+          <div class="event-types" style="margin-top:16px;">
+            <span>XSS-sicher</span><span>httpOnly</span><span>SameSite=Lax</span><span>Secure</span>
+          </div>
+        </div>
+
+        <div class="adr-card">
+          <span class="adr-num" data-i18n="sn_c3_adr3_tag">ADR-02</span>
+          <h4 data-i18n="sn_c3_adr3_title">bcrypt directly — no passlib</h4>
+          <p data-i18n="sn_c3_adr3_text">passlib is de facto unmaintained. Last version 2022, known compatibility issues with Python 3.13+. Using bcrypt 4.1.3 directly is safer, leaner and more future-proof — no abstraction layer that breaks tomorrow.</p>
+          <div class="event-types" style="margin-top:16px;">
+            <span>bcrypt 4.1.3</span><span data-i18n="sn_adr_no_passlib">no passlib</span><span>Python 3.13+ safe</span>
+          </div>
+        </div>
+
+        <div class="adr-card">
+          <span class="adr-num" data-i18n="sn_c3_adr4_tag">ADR-12</span>
+          <h4 data-i18n="sn_c3_adr4_title">CSRF via Custom Header</h4>
+          <p data-i18n="sn_c3_adr4_text">Classic CSRF token management requires server state. Instead, every mutating request carries the header <code>x-studynexus-client: true</code>. Browsers don't allow cross-origin requests to set custom headers without a CORS preflight — that's the protection. Stateless, simple, effective.</p>
+          <div class="event-types" style="margin-top:16px;">
+            <span>stateless</span><span>CORS-Preflight</span><span>Origin-Check</span>
+          </div>
+        </div>
+
+        <div class="adr-card adr-card--full">
+          <span class="adr-num" data-i18n="sn_c3_adr5_tag">ADR-07</span>
+          <h4 data-i18n="sn_c3_adr5_title">HsH-Only Strategy</h4>
+          <p data-i18n="sn_c3_adr5_text">Restricting access to @stud.hs-hannover.de is not a limitation — it's a design decision. Instead of a generic platform for all universities: a deeply integrated system for one. The exam regulations are built in. The module structure is real.</p>
+          <div class="event-types" style="margin-top:16px;">
+            <span>@stud.hs-hannover.de</span><span data-i18n="sn_adr_real_po">real exam regulations</span><span data-i18n="sn_adr_verified_com">verified community</span><span data-i18n="sn_adr_no_fake">no fake data</span>
+          </div>
+        </div>
+
+        <div class="adr-card">
+          <span class="adr-num">ADR-019</span>
+          <h4 data-i18n="sn_c3_adr6_title">Redis for Admin Session Tokens</h4>
+          <p data-i18n="sn_c3_adr6_text">JWT cannot be invalidated server-side. For admin actions (Delete, Archive, Reset) we need a token we can revoke instantly. Redis with 15-minute TTL — the sudo concept for the web.</p>
+          <div class="event-types" style="margin-top:16px;">
+            <span>server-side invalidierbar</span><span>15min TTL</span><span>Redis.get/setex/delete</span>
+          </div>
+        </div>
+
+        <div class="adr-card">
+          <span class="adr-num">ADR-021</span>
+          <h4 data-i18n="sn_c3_adr7_title">is_admin in JWT Payload</h4>
+          <p data-i18n="sn_c3_adr7_text">Next.js Middleware runs in the Edge Runtime — no database access possible. is_admin: true directly in the JWT enables admin route guards without DB query and without latency.</p>
+          <div class="event-types" style="margin-top:16px;">
+            <span>Edge Runtime</span><span>zero DB-latency</span><span>atob() + Base64url</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+         CHAPTER IV — FEATURE DEEP-DIVE
+    ════════════════════════════════════════════════════════════════ -->
+  <section class="project-section" id="features">
+    <div class="container">
+
+      <h2 class="section-heading center-text reveal" data-i18n="sn_c4_title">Chapter IV: Feature Deep-Dive</h2>
+      <p class="section-subtitle center-text reveal" data-i18n="sn_c4_sub">What the platform can do today.</p>
+
+      <div class="feature-deep-grid reveal">
+
+        <!-- Dashboard -->
+        <div class="feature-deep-card">
+          <span class="fd-tag" data-i18n="sn_c4_dash_tag">Mission Control</span>
+          <h3 data-i18n="sn_c4_dash_title">The Core: Mission Control Dashboard</h3>
+          <p data-i18n="sn_c4_dash_text">The first view after login. The dashboard aggregates everything relevant in real-time: GPA status, ECTS progress, upcoming exams and today's events — calculated directly from the database, no caching.</p>
+          <p class="text-muted" style="font-size:0.82rem;" data-i18n="sn_c4_dash_sub">Every widget is functional. The Exam Countdown pulses red when an exam is less than 14 days away. The Daily Focus view automatically switches to 'tomorrow' after 8 PM.</p>
+          <ul>
+            <li data-i18n="sn_c4_dash_feat_1">GPA tracker with ECTS-weighted real-time calculation</li>
+            <li data-i18n="sn_c4_dash_feat_2">Exam countdown with pulse animation (&lt; 14 days = red)</li>
+            <li data-i18n="sn_c4_dash_feat_3">Daily Focus: today's events, automatic switch after 8 PM</li>
+            <li data-i18n="sn_c4_dash_feat_4">Smart Timeline: task-intelligent sorting by due date</li>
+          </ul>
+        </div>
+
+        <!-- Kanban -->
+        <div class="feature-deep-card">
+          <span class="fd-tag" data-i18n="sn_c4_kanban_tag">Task Management</span>
+          <h3 data-i18n="sn_c4_kanban_title">Kanban Board with Real Drag &amp; Drop</h3>
+          <p data-i18n="sn_c4_kanban_text">Not localStorage, not useState tricks — @dnd-kit v6 as the foundation. Four columns: To Do, In Progress, Exam Ready, Done. Tasks have priorities, can be linked to modules and carry a submission flag.</p>
+          <p class="text-muted" style="font-size:0.82rem;" data-i18n="sn_c4_kanban_sub">Position-based sorting: every drag-drop action writes immediately to the database. Page reload changes nothing — the board is fully persistent.</p>
+          <div class="event-types" style="margin-top:16px;">
+            <span>To Do</span><span>In Progress</span><span>Exam Ready</span><span>Done</span>
+            <span>LOW · MED · HIGH</span><span data-i18n="sn_badge_deadline_flag">Deadline Flag 📄</span><span>@dnd-kit v6</span>
+          </div>
+        </div>
+
+        <!-- Schedule -->
+        <div class="feature-deep-card">
+          <span class="fd-tag" data-i18n="sn_c4_schedule_tag">Schedule Board</span>
+          <h3 data-i18n="sn_c4_schedule_title">15-Minute CSS Grid Engine</h3>
+          <p data-i18n="sn_c4_schedule_text">The schedule is not a table — it's a real CSS Grid with 15-minute resolution from 8 AM to 8 PM. Events are placed pixel-perfectly. A red line shows the current time in real-time. Collisions are detected and reported with HTTP 409.</p>
+          <p class="text-muted" style="font-size:0.82rem;" data-i18n="sn_c4_schedule_sub">10 event types: LECTURE, EXERCISE, TUTORIAL, SEMINAR, PRACTICUM, CUSTOM_STUDY, FOCUS, EXAM, WORK, LIFE. Semester binding prevents data loss on semester change. Ghosting mode temporarily hides events without deleting them.</p>
+          <div class="event-types" style="margin-top:16px;">
+            <span>LECTURE</span><span>EXERCISE</span><span>TUTORIAL</span><span>SEMINAR</span>
+            <span>EXAM</span><span>FOCUS</span><span>WORK</span><span>LIFE</span>
+            <span>+2 mehr</span>
+          </div>
+        </div>
+
+        <!-- Study Plan -->
+        <div class="feature-deep-card">
+          <span class="fd-tag" data-i18n="sn_c4_studyplan_tag">Study Plan</span>
+          <h3 data-i18n="sn_c4_studyplan_title">Visual Study Plan</h3>
+          <p data-i18n="sn_c4_studyplan_text">Modules in semester-based columns. Drag &amp; drop between semesters, automatic ECTS calculation per column, color coding by module type. Data comes from the real HsH exam regulations — no placeholder data.</p>
+          <ul>
+            <li data-i18n="sn_c4_studyplan_li_1">Mandatory modules loaded automatically</li>
+            <li data-i18n="sn_c4_studyplan_li_2">Elective &amp; supplementary modules addable manually</li>
+            <li data-i18n="sn_c4_studyplan_li_3">Drag &amp; Drop between semesters via @dnd-kit</li>
+            <li data-i18n="sn_c4_studyplan_li_4">ECTS sum per column calculated live</li>
+          </ul>
+        </div>
+
+        <!-- MilestoneWidget -->
+        <div class="feature-deep-card">
+          <span class="fd-tag">Milestone Tracker (Sprint 4)</span>
+          <h3 data-i18n="sn_c4_milestone_title">MilestoneWidget — §6 exam regulation monitored live</h3>
+          <p data-i18n="sn_c4_milestone_text">The dashboard has a new sidebar widget that evaluates the BIN exam regulation §6 in real time: Which semesters are complete? Is the preliminary exam passed?</p>
+          <ul>
+            <li>Sem 1 complete: alle 6 Module BIN-100..116</li>
+            <li data-i18n="sn_c4_milestone_li_2">Preliminary exam: all 17 modules from Sem 1–3 passed</li>
+            <li data-i18n="sn_c4_milestone_li_3">BA admission: preliminary exam + ≥ 134 ECTS</li>
+            <li data-i18n="sn_c4_milestone_li_4">Live progress bar per milestone</li>
+          </ul>
+        </div>
+
+        <!-- Admin Panel Preview -->
+        <div class="feature-deep-card">
+          <span class="fd-tag">Admin Panel (Sprint 5)</span>
+          <h3 data-i18n="sn_c4_admin_title">Enterprise Admin — 14 pages, 35+ endpoints</h3>
+          <p data-i18n="sn_c4_admin_text">A complete admin control center: user management, exam regulation management, analytics dashboard, audit log and JSON import — delivered in full in 2 days.</p>
+          <div class="event-types" style="margin-top:16px;">
+            <span>Two-Layer Auth</span><span>Audit-Log</span><span>Recharts</span>
+            <span>AdminDataTable&lt;T&gt;</span><span>Soft Delete</span><span>JSON-Import</span>
+          </div>
+        </div>
+
+        <!-- PO-Übersicht -->
+        <div class="feature-deep-card">
+          <span class="fd-tag">PO-Übersicht (Sprint 4)</span>
+          <h3 data-i18n="sn_c4_po_title">Study Regulations at a Glance</h3>
+          <p data-i18n="sn_c4_po_text">A dedicated dashboard page displaying all relevant exam regulation rules: admission rules §6, grading scale §10, repeat rules §11 — with live status badges directly from the database.</p>
+          <ul>
+            <li>Programm-aware: erkennt BIN via API-Response</li>
+            <li data-i18n="sn_c4_po_li_2">Exam types PX / EA / R / BAA+Ko color-coded</li>
+            <li data-i18n="sn_c4_po_li_3">BA admission: live ECTS progress bar</li>
+            <li data-i18n="sn_c4_po_li_4">No hardcode — Sprint 7 adds more exam regulations</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+         CHAPTER V — BIN PRÜFUNGSORDNUNG
+    ════════════════════════════════════════════════════════════════ -->
+  <section class="project-section dark-bg" id="bin-po">
+    <div class="container">
+
+      <h2 class="section-heading center-text reveal" data-i18n="sn_c5b_title">Chapter V: BIN Exam Regulations</h2>
+      <p class="section-subtitle center-text reveal" data-i18n="sn_c5b_sub">3 PDFs. 37 Modules. All §6 rules mapped automatically.</p>
+
+      <!-- PDF Sources -->
+      <div class="reveal" style="margin-top:60px;">
+        <span class="section-tag" style="display:block;text-align:center;margin-bottom:20px;" data-i18n="sn_c5b_datenbasis">Data Sources</span>
+        <h3 class="center-text" style="margin-bottom:10px;" data-i18n="sn_c5b_docs_title">Built from real documents</h3>
+        <p class="center-text text-muted" style="max-width:600px;margin:0 auto 30px;font-size:0.9rem;">
+          <span data-i18n="sn_c5b_docs_text">No placeholder data. All 37 BIN modules were extracted directly from three official HsH documents and transferred into the database.</span>
+        </p>
+
+        <div class="pdf-grid">
+          <div class="pdf-card">
+            <div class="pc-title">PO BIN 2019</div>
+            <span class="pc-pages" data-i18n="sn_c5b_pages_9">9 pages</span>
+            <ul class="pc-items">
+              <li>§5 — Modulstruktur Abschnitt 1 + 2</li>
+              <li data-i18n="sn_c5b_po_li_2">§6 — Admission &amp; prerequisite rules</li>
+              <li data-i18n="sn_c5b_po_li_3">Annex B1/B2 — complete module lists</li>
+            </ul>
+          </div>
+          <div class="pdf-card">
+            <div class="pc-title">ATPO-FIV 2025</div>
+            <span class="pc-pages" data-i18n="sn_c5b_pages_20">20 pages</span>
+            <ul class="pc-items">
+              <li>§7 — Prüfungsarten (PX, EA, R, BAA+Ko)</li>
+              <li data-i18n="sn_c5b_atpo_li_2">§10 — 11 official HsH grades</li>
+              <li data-i18n="sn_c5b_atpo_li_3">§11 — Repeat rules (max. 3 attempts)</li>
+            </ul>
+          </div>
+          <div class="pdf-card">
+            <div class="pc-title">Modulhandbuch BIN 19WS</div>
+            <span class="pc-pages" data-i18n="sn_c5b_pages_76">76 pages</span>
+            <ul class="pc-items">
+              <li data-i18n="sn_c5b_mhb_li_1">SWS per module (semester weekly hours)</li>
+              <li data-i18n="sn_c5b_mhb_li_2">Exam type per module</li>
+              <li data-i18n="sn_c5b_mhb_li_3">37 complete module descriptions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pruefungsart System -->
+      <div class="mission-grid reveal" style="margin-top:100px;align-items:start;">
+        <div class="mission-content">
+          <span class="section-tag" data-i18n="sn_c5b_pa_tag">Exam Type System</span>
+          <h3 data-i18n="sn_c5b_pa_title">Four types. Directly from ATPO-FIV §7.</h3>
+          <p data-i18n="sn_c5b_pa_text">Each of the 37 BIN modules carries the official exam type from the module handbook — persisted in the database, color-coded in the UI.</p>
+          <p class="text-muted" data-i18n="sn_c5b_pa_sub">A Pydantic validation ensures that only the 11 official HsH grades can be entered. HTTP 422 for invalid grades.</p>
+          <div class="pa-legend">
+            <div class="pa-badge px">PX <span class="pa-count" data-i18n="sn_c5b_pa_px_count">· 26 modules</span></div>
+            <div class="pa-badge ea">EA <span class="pa-count">· 3 Module</span></div>
+            <div class="pa-badge r">R <span class="pa-count">· 1 Modul</span></div>
+            <div class="pa-badge baa">BAA+Ko <span class="pa-count">· 1 Modul</span></div>
+          </div>
+        </div>
+
+        <div class="mission-image">
+          <div class="stats-card" style="padding:28px;">
+            <h4 style="margin-bottom:20px;font-size:0.82rem;color:#555;font-family:var(--font-mono);" data-i18n="sn_c5b_rules_title">§6 ADMISSION RULES — FULLY IMPLEMENTED</h4>
+            <div class="po-rules">
+              <div class="po-rule-row header">
+                <span>Module</span>
+                <span data-i18n="sn_c5b_col_cond">Prerequisite</span>
+                <span>Typ</span>
+              </div>
+              <div class="po-rule-row">
+                <span class="prr-module">BIN-200..204</span>
+                <span class="prr-condition" data-i18n="sn_c5b_rule_1_cond">Semester 1 completed</span>
+                <span class="prr-type">SEM_COMPLETE</span>
+              </div>
+              <div class="po-rule-row">
+                <span class="prr-module">BIN-206, BIN-208</span>
+                <span class="prr-condition" data-i18n="sn_c5b_rule_2_cond">Preliminary exam passed (Sem 1–3)</span>
+                <span class="prr-type">SEM_COMPLETE</span>
+              </div>
+              <div class="po-rule-row">
+                <span class="prr-module">BIN-211..219 (WP)</span>
+                <span class="prr-condition" data-i18n="sn_c5b_rule_3_cond">Semesters 1+2 completed</span>
+                <span class="prr-type">SEM_COMPLETE</span>
+              </div>
+              <div class="po-rule-row">
+                <span class="prr-module">BIN-210</span>
+                <span class="prr-condition" data-i18n="sn_c5b_rule_4_cond">Preliminary exam + ≥ 134 ECTS</span>
+                <span class="prr-type">ECTS_THRESHOLD</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MilestoneWidget -->
+      <div class="reveal" style="margin-top:100px;">
+        <span class="section-tag center-text" style="display:block;text-align:center;margin-bottom:20px;">MilestoneWidget</span>
+        <h3 class="center-text" style="margin-bottom:10px;" data-i18n="sn_c5b_progress_title">Study progress per §6 — live</h3>
+        <p class="center-text text-muted" style="max-width:580px;margin:0 auto 30px;">
+          <code>GET /me/stats</code> <span data-i18n="sn_c5b_progress_text">delivers 8 new fields. The dashboard widget evaluates them in real time. No polling — status is calculated on page load.</span>
+        </p>
+        <div class="milestone-row" style="justify-content:center;">
+          <div class="milestone-item done">
+            <div class="mi-title">Semester 1 complete</div>
+            <div class="mi-cond">sem1_complete: true</div>
+          </div>
+          <div class="milestone-item done">
+            <div class="mi-title">Semester 2 complete</div>
+            <div class="mi-cond">sem2_complete: true</div>
+          </div>
+          <div class="milestone-item done">
+            <div class="mi-title" data-i18n="sn_c5b_ms_vorpruefung">Preliminary exam passed</div>
+            <div class="mi-cond">vorpruefung_bestanden: true</div>
+          </div>
+          <div class="milestone-item">
+            <div class="mi-title" style="color:#888;" data-i18n="sn_c5b_ms_bazulassung">BA Admission</div>
+            <div class="mi-cond">ba_zulassung_eligible: false</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+         CHAPTER VI — SECURITY
+    ════════════════════════════════════════════════════════════════ -->
+  <section class="project-section dark-bg" id="security">
+    <div class="container">
+
+      <h2 class="section-heading center-text reveal" data-i18n="sn_c5_title">Chapter VI: Security by Design</h2>
+      <p class="section-subtitle center-text reveal" data-i18n="sn_c5_sub">Security is not an afterthought. Security is architecture.</p>
+
+      <div class="security-grid reveal">
+
+        <!-- CSRF -->
+        <div class="security-card">
+          <span class="sec-tag" data-i18n="sn_c5_csrf_tag">CSRF Protection</span>
+          <h3 data-i18n="sn_c5_csrf_title">Stateless CSRF via Custom Header</h3>
+          <p data-i18n="sn_c5_csrf_text">Every mutating request (POST, PUT, DELETE, PATCH) carries the custom header <code>x-studynexus-client: true</code>. Cross-origin requests cannot set custom headers without a CORS preflight. Combined with Origin header validation, this creates complete CSRF protection — without any token storage.</p>
+          <div class="csrf-flow" style="margin-top:20px;">
+            <div class="csrf-step">Request</div>
+            <div class="csrf-arrow">→</div>
+            <div class="csrf-step">Check Header</div>
+            <div class="csrf-arrow">→</div>
+            <div class="csrf-step">Check Origin</div>
+            <div class="csrf-arrow">→</div>
+            <div class="csrf-step ok">✓ Allow</div>
+          </div>
+        </div>
+
+        <!-- JWT -->
+        <div class="security-card">
+          <span class="sec-tag" data-i18n="sn_c5_jwt_tag">Authentication</span>
+          <h3 data-i18n="sn_c5_jwt_title">JWT in httpOnly Cookies</h3>
+          <p data-i18n="sn_c5_jwt_text">The JWT token lives exclusively in an httpOnly cookie with Secure and SameSite=Lax flags. JavaScript cannot read this cookie. The browser sends it automatically — no manual token management in the frontend needed.</p>
+          <div style="margin-top:20px;padding:14px;background:#0a0a0a;border-radius:8px;font-family:var(--font-mono);font-size:0.78rem;color:#555;line-height:2;">
+            <span style="color:#27c93f;">Set-Cookie:</span> token=eyJ...<br>
+            <span style="color:#27c93f;">HttpOnly</span>; <span style="color:#27c93f;">Secure</span>; SameSite=<span style="color:#27c93f;">Lax</span><br>
+            Path=/; Max-Age=<span style="color:#9d00ff;">604800</span> (7d)
+          </div>
+        </div>
+
+        <!-- Email Verification -->
+        <div class="security-card">
+          <span class="sec-tag" data-i18n="sn_c5_email_tag">Verification</span>
+          <h3 data-i18n="sn_c5_email_title">6-Digit Email Verification</h3>
+          <p data-i18n="sn_c5_email_text">After registration, the student receives an email with a 6-digit code via Resend API. The code expires after 15 minutes. The account is only active after verification — and only @stud.hs-hannover.de addresses are accepted.</p>
+          <div style="margin-top:16px;display:flex;gap:10px;align-items:center;font-family:var(--font-mono);font-size:0.8rem;flex-wrap:wrap;">
+            <div style="background:#0a0a0a;border:1px solid #1e1e1e;border-radius:6px;padding:8px 12px;color:#ccc;">
+              Register</div>
+            <span style="color:#333;">→</span>
+            <div style="background:#0a0a0a;border:1px solid #1e1e1e;border-radius:6px;padding:8px 12px;color:#9d00ff;">
+              6-digit Email</div>
+            <span style="color:#333;">→</span>
+            <div style="background:#0a0a0a;border:1px solid #1e1e1e;border-radius:6px;padding:8px 12px;color:#ccc;">
+              Verify (15min)</div>
+            <span style="color:#333;">→</span>
+            <div style="background:rgba(39,201,63,0.08);border:1px solid rgba(39,201,63,0.3);border-radius:6px;padding:8px 12px;color:#27c93f;">
+              Active</div>
+          </div>
+        </div>
+
+        <!-- Row-Level Isolation -->
+        <div class="security-card">
+          <span class="sec-tag" data-i18n="sn_c5_isolation_tag">Data Isolation</span>
+          <h3 data-i18n="sn_c5_isolation_title">Row-Level User Isolation</h3>
+          <p data-i18n="sn_c5_isolation_text">Every database query filters by user_id. No student can see another student's data, even if they know the UUID. No separate permissions system — the ORM model enforces isolation structurally.</p>
+          <div class="terminal-wrapper" style="margin-top:16px;">
+            <div class="terminal-header-bar" style="padding:8px 12px;">
+              <span class="term-title" style="font-size:0.75rem;">tasks.py</span>
+            </div>
+            <div class="terminal-body" style="padding:12px 16px;font-size:0.78rem;">
+              <span style="color:#555;">db.query(Task)</span><br>
+              <span style="color:#555;">&nbsp;&nbsp;.filter(Task.user_id ==</span> <span style="color:#9d00ff;">current_user.id</span><span style="color:#555;">)</span><br>
+              <span style="color:#555;">&nbsp;&nbsp;.all()</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Two-Layer Admin Auth -->
+        <div class="security-card" style="grid-column: 1 / -1;">
+          <span class="sec-tag">Admin Two-Layer Auth (ADR-019)</span>
+          <h3 data-i18n="sn_c5_sudo_title">Sudo Concept: Read vs. Destroy</h3>
+          <p data-i18n="sn_c5_sudo_text">A stolen admin JWT alone cannot cause damage. Destructive operations require a second factor — a short-lived Redis token issued through password re-verification.</p>
+          <div class="two-layer-grid" style="margin-top:20px;">
+            <div class="two-layer-card layer1">
+              <span class="tl-layer">Layer 1 — get_admin_user</span>
+              <h4 data-i18n="sn_c5_layer1_title">JWT-based admin check</h4>
+              <p style="color:#666;font-size:0.82rem;line-height:1.6;margin-bottom:0;">
+                <code>is_admin: true</code> <span data-i18n="sn_c5_layer1_text">in the JWT payload (ADR-021). Edge-Runtime compatible — no DB lookup, zero latency. Sufficient for all read-only admin operations.</span>
+              </p>
+              <div class="tl-ops">
+                <span>GET /admin/users</span>
+                <span>GET /admin/analytics</span>
+                <span>GET /admin/audit-log</span>
+              </div>
+            </div>
+            <div class="two-layer-card layer2">
+              <span class="tl-layer">Layer 2 — get_verified_admin</span>
+              <h4 data-i18n="sn_c5_layer2_title">Redis Session Token (Sudo)</h4>
+              <p style="color:#666;font-size:0.82rem;line-height:1.6;margin-bottom:0;">
+                <span data-i18n="sn_c5_layer2_text">Admin re-enters password → Redis token with 15-min TTL. Only this token unlocks destructive ops. Immediately revocable — no waiting for JWT expiry.</span>
+              </p>
+              <div class="tl-ops">
+                <span>DELETE user</span>
+                <span>ARCHIVE module</span>
+                <span>RESET password</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+         CHAPTER VII — ADMIN PANEL
+    ════════════════════════════════════════════════════════════════ -->
+  <section class="project-section" id="admin">
+    <div class="container">
+
+      <h2 class="section-heading center-text reveal" data-i18n="sn_c7b_title">Chapter VII: Admin Panel</h2>
+      <p class="section-subtitle center-text reveal" data-i18n="sn_c7b_sub">Enterprise Control Center. Planned for one week. Delivered in two days.</p>
+
+      <!-- Sprint Delivery Banner -->
+      <div class="sn-sprint-delivery reveal">
+        <span class="ssd-label">Sprint 5 — Delivery Metrics (2026-05-09 bis 2026-05-10)</span>
+        <div class="snd-metrics">
+          <div class="snd-metric">
+            <span class="snd-val">2</span>
+            <span class="snd-key" data-i18n="sn_c7b_metric_days">Days</span>
+          </div>
+          <div class="snd-metric">
+            <span class="snd-val">14</span>
+            <span class="snd-key" data-i18n="sn_c7b_metric_pages">Admin pages</span>
+          </div>
+          <div class="snd-metric">
+            <span class="snd-val">35+</span>
+            <span class="snd-key" data-i18n="sn_c7b_metric_endpoints">Endpoints</span>
+          </div>
+          <div class="snd-metric">
+            <span class="snd-val" style="color:#27c93f;">122</span>
+            <span class="snd-key" data-i18n="sn_c7b_metric_tests">Tests green</span>
+          </div>
+          <div class="snd-metric">
+            <span class="snd-val" style="color:#27c93f;">0</span>
+            <span class="snd-key" data-i18n="sn_c7b_metric_errors">TS errors</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Admin Features Grid -->
+      <div class="reveal" style="margin-top:20px;">
+        <span class="section-tag center-text" style="display:block;text-align:center;margin-bottom:20px;">Feature
+          Scope</span>
+        <h3 class="center-text" style="margin-bottom:30px;" data-i18n="sn_c7b_features_title">What the admin panel can do</h3>
+
+        <div class="admin-features-grid">
+          <div class="admin-feature-card">
+            <span class="afc-num">01 — Analytics</span>
+            <h4 data-i18n="sn_c7b_feat1_title">Dashboard &amp; KPI</h4>
+            <p data-i18n="sn_c7b_feat1_text">13-field KPI response, growth chart (Recharts LineChart, 7d/30d/90d/1y), user segmentation, DB size via pg_database_size().</p>
+            <div class="afc-tags"><span>Recharts</span><span>ResponsiveContainer</span><span>PostgreSQL</span></div>
+          </div>
+          <div class="admin-feature-card">
+            <span class="afc-num">02 — User Management</span>
+            <h4 data-i18n="sn_c7b_feat2_title">Full user access</h4>
+            <p data-i18n="sn_c7b_feat2_text">Paginated list (25/page), 5 filter tabs, search by email+name, PATCH all fields, password reset, hard delete with mandatory reason.</p>
+            <div class="afc-tags"><span>AdminDataTable&lt;T&gt;</span><span>debounced Search</span><span>350ms</span>
+            </div>
+          </div>
+          <div class="admin-feature-card">
+            <span class="afc-num">03 — PO-Verwaltung</span>
+            <h4 data-i18n="sn_c7b_feat3_title">University → Module → Prerequisite</h4>
+            <p data-i18n="sn_c7b_feat3_text">6 router files, ~30 endpoints. Soft delete on exam regulations/modules (protection of existing data), hard delete on universities/faculties.</p>
+            <div class="afc-tags"><span>Soft Delete</span><span>JSON-Import (500
+                Module)</span><span>Duplikat-Skip</span></div>
+          </div>
+          <div class="admin-feature-card">
+            <span class="afc-num">04 — Audit-Log</span>
+            <h4 data-i18n="sn_c7b_feat4_title">Complete since phase 2</h4>
+            <p data-i18n="sn_c7b_feat4_text">Every admin mutation logged since day one. Timeline layout, ActionBadge with 8 color variants, DiffBlock (old→new diff, strikethrough for removed values).</p>
+            <div class="afc-tags"><span>DiffBlock</span><span>ActionBadge</span><span>filter: entity/action/date</span>
+            </div>
+          </div>
+          <div class="admin-feature-card">
+            <span class="afc-num">05 — Import-System</span>
+            <h4 data-i18n="sn_c7b_feat5_title">JSON bulk import up to 500 modules</h4>
+            <p data-i18n="sn_c7b_feat5_text">Validate → Preview (first 10) → POST → Result. Idempotent via abbreviation lookup within the same exam regulation. PDF placeholder for Sprint 7 (ML/NLP).</p>
+            <div class="afc-tags"><span>idempotent</span><span>Preview-Step</span><span>Admin-Session-Guard</span></div>
+          </div>
+          <div class="admin-feature-card">
+            <span class="afc-num">06 — System &amp; Health</span>
+            <h4 data-i18n="sn_c7b_feat6_title">Real-time system status</h4>
+            <p data-i18n="sn_c7b_feat6_text">Overall badge (ok/degraded/down), ServiceBadge per service (DB ping + Redis.ping), DB version + size, auto-refresh every 60 seconds.</p>
+            <div class="afc-tags"><span>health check</span><span>Redis.ping</span><span>auto-refresh 60s</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Generic AdminDataTable note + Test Coverage Terminal -->
+      <div class="mission-grid reveal" style="margin-top:100px;align-items:start;">
+        <div class="mission-content">
+          <span class="section-tag">TypeScript-Architektur</span>
+          <h3 data-i18n="sn_c7b_adt_title">AdminDataTable<t> — one component for all lists</t></h3>
+          <p data-i18n="sn_c7b_adt_text">Instead of 6 separate table implementations: one generic TypeScript component. Column sort, debounced search (350ms), server-side pagination, hideOnMobile per column — all configurable via props.</p>
+          <p class="text-muted" data-i18n="sn_c7b_adt_sub">22 new TypeScript interfaces, 11 new TanStack Query hooks, adminFetch.ts as a thin wrapper: no direct fetch(), centralized header logic, 204-handling.</p>
+          <div class="event-types" style="margin-top:20px;">
+            <span>strict: true</span><span>0 TS-Fehler</span><span>22 Interfaces</span><span>11 Hooks</span><span>~400
+              i18n-Keys</span>
+          </div>
+        </div>
+
+        <div class="mission-image">
+          <div class="terminal-wrapper">
+            <div class="terminal-header-bar">
+              <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+              <span class="term-title">pytest tests/ -q</span>
+            </div>
+            <div class="terminal-body" style="font-size:0.78rem;line-height:1.9;">
+              <div style="display:grid;grid-template-columns:auto 1fr auto;gap:0 12px;">
+                <span style="color:#555;">test_admin_auth.py</span><span style="color:#333;">·······</span><span style="color:#27c93f;">7 ✓</span>
+                <span style="color:#555;">test_admin_users.py</span><span style="color:#333;">··········</span><span style="color:#27c93f;">10 ✓</span>
+                <span style="color:#555;">test_admin_po.py</span><span style="color:#333;">················</span><span style="color:#27c93f;">16 ✓</span>
+                <span style="color:#555;">test_admin_analytics.py</span><span style="color:#333;">············</span><span style="color:#27c93f;">12 ✓</span>
+                <span style="color:#555;">test_admin_audit_log.py</span><span style="color:#333;">···········</span><span style="color:#27c93f;">11 ✓</span>
+                <span style="color:#555;">test_auth.py</span><span style="color:#333;">········</span><span style="color:#27c93f;">8 ✓</span>
+                <span style="color:#555;">test_gpa.py</span><span style="color:#333;">··············</span><span style="color:#27c93f;">14 ✓</span>
+                <span style="color:#555;">test_grades.py</span><span style="color:#333;">············</span><span style="color:#27c93f;">12 ✓</span>
+                <span style="color:#555;">test_health.py</span><span style="color:#333;">··</span><span style="color:#27c93f;">2 ✓</span>
+                <span style="color:#555;">test_stats.py</span><span style="color:#333;">·····</span><span style="color:#27c93f;">5 ✓</span>
+                <span style="color:#555;">test_study_plan.py</span><span style="color:#333;">···············</span><span style="color:#27c93f;">15 ✓</span>
+                <span style="color:#555;">test_universities.py</span><span style="color:#333;">··········</span><span style="color:#27c93f;">10 ✓</span>
+              </div>
+              <div style="border-top:1px solid #222;margin-top:10px;padding-top:10px;color:#27c93f;font-weight:600;">
+                122 passed in 2.34s
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+         CHAPTER VIII — DATABASE
+    ════════════════════════════════════════════════════════════════ -->
+  <section class="project-section" id="database">
+    <div class="container">
+
+      <h2 class="section-heading center-text reveal" data-i18n="sn_c6_title">Chapter VIII: Database Architecture</h2>
+      <p class="section-subtitle center-text reveal" data-i18n="sn_c6_sub">12+ tables. 17 Alembic migrations. Complete university hierarchy.</p>
+
+      <div class="mission-grid reveal" style="margin-top:60px;align-items:start;">
+        <div class="mission-content">
+          <span class="section-tag" data-i18n="sn_c6_schema_tag">Data Model</span>
+          <h3 data-i18n="sn_c6_schema_title">From University to Single Module</h3>
+          <p data-i18n="sn_c6_schema_text">The data model reflects the real university hierarchy. A student selects an exam regulation — the system automatically loads all mandatory modules into their personal study plan.</p>
+          <p class="text-muted" data-i18n="sn_c6_schema_sub">9 SQLAlchemy models with complete foreign key constraints and UUID primary keys. PostgreSQL-native ENUMs for status, priority and event_type.</p>
+        </div>
+
+        <div class="mission-image">
+          <div class="db-hierarchy">
+            <div class="db-node">
+              <span class="dn-name" style="color:var(--primary-color);">University</span>
+              <span class="dn-fields">name, kuerzel, stadt</span>
+            </div>
+            <div class="db-connector">└── FK ──</div>
+            <div class="db-node">
+              <span class="dn-name">Faculty</span>
+              <span class="dn-fields">name, kuerzel</span>
+            </div>
+            <div class="db-connector">└── FK ──</div>
+            <div class="db-node">
+              <span class="dn-name">Program</span>
+              <span class="dn-fields">abschluss, gesamt_ects</span>
+            </div>
+            <div class="db-connector">└── FK ──</div>
+            <div class="db-node">
+              <span class="dn-name">ExamRegulation</span>
+              <span class="dn-fields">version, gueltig_ab</span>
+            </div>
+            <div class="db-connector">└── FK ──</div>
+            <div class="db-node">
+              <span class="dn-name">Module</span>
+              <span class="dn-fields">ects, modul_typ, gewichtung</span>
+            </div>
+            <div class="db-connector">└── FK (user) ──</div>
+            <div class="db-node" style="border-color:rgba(157,0,255,0.3);background:rgba(157,0,255,0.05);">
+              <span class="dn-name" style="color:var(--primary-light);">StudentModule</span>
+              <span class="dn-fields">status, note, semester</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GPA Formula -->
+      <div class="reveal" style="margin-top:100px;">
+        <span class="section-tag center-text" style="display:block;text-align:center;margin-bottom:20px;" data-i18n="sn_c6_gpa_tag">GPA Algorithm</span>
+        <h3 class="center-text" style="margin-bottom:10px;" data-i18n="sn_c6_gpa_title">Weighted Grade — like at real universities</h3>
+        <p class="center-text text-muted" style="max-width:560px;margin:0 auto;" data-i18n="sn_c6_gpa_text">GPA is not simply averaged. Each module has an ECTS-based weighting. Only passed, graded modules are included. The result: a GPA that actually reflects the curriculum.</p>
+
+        <div class="gpa-formula">
+          <div class="gf-label">GPA_ALGORITHM · gpa_service.py</div>
+          <div class="gf-eq">
+            <div>GPA &nbsp;=&nbsp;</div>
+            <div style="display:inline-block;vertical-align:middle;text-align:center;">
+              <div class="num">Σ ( Note × ECTS × Gewichtung )</div>
+              <div class="denom">Σ ( ECTS × Gewichtung )</div>
+            </div>
+          </div>
+          <div class="gf-note">Nur bestandene (status=PASSED), benotete (ist_benotet=true) Module fließen ein.</div>
+        </div>
+      </div>
+
+      <!-- Migration Timeline -->
+      <div class="mission-grid reveal" style="margin-top:100px;align-items:start;">
+        <div class="mission-content">
+          <span class="section-tag" data-i18n="sn_c6_migration_tag">Migrations</span>
+          <h3 data-i18n="sn_c6_migration_title">17 Alembic Migrations — Every step versioned</h3>
+          <p data-i18n="sn_c6_migration_text">No manual SQL changes — every schema change is versioned, reversible, and reproducible. Sprint 4 (0012–0014) added BIN exam regulation data. Sprint 5 (0015–0017) delivered admin infrastructure.</p>
+          <p class="text-muted" style="margin-top:12px;" data-i18n="sn_c6_migration_sub">Sprints 1–3 laid the foundation (0001–0011). Sprint 4 added the BIN exam regulation data (0012–0014). Sprint 5 delivered the admin infrastructure (0015–0017).</p>
+        </div>
+
+        <div class="mission-image">
+          <div class="migration-timeline">
+            <div class="mt-item">
+              <div class="mt-dot done"></div>
+              <div class="mt-content">
+                <div class="mt-title">001 · Create users table</div>
+                <div class="mt-desc">UUID PK, email, hashed_password, is_verified</div>
+              </div>
+            </div>
+            <div class="mt-item">
+              <div class="mt-dot done"></div>
+              <div class="mt-content">
+                <div class="mt-title">002 · Study plan tables</div>
+                <div class="mt-desc">University → Faculty → Program → ExamReg → Module</div>
+              </div>
+            </div>
+            <div class="mt-item">
+              <div class="mt-dot done"></div>
+              <div class="mt-content">
+                <div class="mt-title">003–005 · Module data, email verification, Tasks+Events</div>
+                <div class="mt-desc">Kanban &amp; Schedule Board foundation</div>
+              </div>
+            </div>
+            <div class="mt-item">
+              <div class="mt-dot done"></div>
+              <div class="mt-content">
+                <div class="mt-title">006–009 · Profil-Felder, Semester-Binding</div>
+                <div class="mt-desc">matrikelnummer, FOCUS-Typ, birth_date, hochschule</div>
+              </div>
+            </div>
+            <div class="mt-item">
+              <div class="mt-dot done"></div>
+              <div class="mt-content">
+                <div class="mt-title">010–011 · Studienplan + BIN-Full-Seed</div>
+                <div class="mt-desc">parent_student_module, 37 BIN-Module komplett</div>
+              </div>
+            </div>
+            <div class="mt-item">
+              <div class="mt-dot done"></div>
+              <div class="mt-content">
+                <div class="mt-title" style="color:var(--primary-light);">012 · pruefungsart + sws</div>
+                <div class="mt-desc">Sprint 4 — alle BIN-Module mit Prüfungsart aus ATPO-FIV §7</div>
+              </div>
+            </div>
+            <div class="mt-item">
+              <div class="mt-dot done"></div>
+              <div class="mt-content">
+                <div class="mt-title" style="color:var(--primary-light);">013 · module_prerequisites</div>
+                <div class="mt-desc">Sprint 4 — §6-Voraussetzungen: SEM_COMPLETE, ECTS_THRESHOLD</div>
+              </div>
+            </div>
+            <div class="mt-item">
+              <div class="mt-dot done"></div>
+              <div class="mt-content">
+                <div class="mt-title" style="color:var(--primary-light);">014 · BIN-209 gewichtung fix</div>
+                <div class="mt-desc">Sprint 4 — Datenfehler: 1.0 → 1.5 (Anlage B2 PO BIN)</div>
+              </div>
+            </div>
+            <div class="mt-item">
+              <div class="mt-dot done"></div>
+              <div class="mt-content">
+                <div class="mt-title" style="color:#ffa502;">015 · Admin-Felder auf users</div>
+                <div class="mt-desc">Sprint 5 — is_admin, last_login_at, admin_notes</div>
+              </div>
+            </div>
+            <div class="mt-item">
+              <div class="mt-dot done"></div>
+              <div class="mt-content">
+                <div class="mt-title" style="color:#ffa502;">016 · admin_audit_logs Tabelle</div>
+                <div class="mt-desc">Sprint 5 — entity_type, action, admin_id, diff_snapshot (3 Indizes)</div>
+              </div>
+            </div>
+            <div class="mt-item">
+              <div class="mt-dot done"></div>
+              <div class="mt-content">
+                <div class="mt-title" style="color:#ffa502;">017 · Soft-Delete-Felder</div>
+                <div class="mt-desc">Sprint 5 — is_archived, archive_reason auf Module/Programs/ExamRegs</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+         CHAPTER IX — ROADMAP (dynamisch aus Supabase)
+    ════════════════════════════════════════════════════════════════ -->
+  <section class="project-section dark-bg" id="roadmap">
+    <div class="container">
+
+      <h2 class="section-heading center-text reveal" data-i18n="sn_c7_title">Chapter IX: Sprint Roadmap</h2>
+      <p class="section-subtitle center-text reveal" data-i18n="sn_c7_sub">Where the project stands. Where it's going.</p>
+
+      <!-- PRERENDER_ROADMAP_STUDYNEXUS_START -->
+        <div id="roadmap-project-studynexus">
+
+      <div class="roadmap-wrapper reveal active">
+        <div class="roadmap-line"></div>
+        
+        <div class="roadmap-node">
+          <div class="node-marker done"></div>
+          <div class="roadmap-card">
+            <span class="rm-tag status-done">Sprint 1-2 ✓</span>
+            <h3 class="rm-title">Foundation: Auth, DB &amp; Docker</h3>
+            <p class="rm-desc">JWT Authentication, PostgreSQL-Schema mit Alembic, Docker Compose Stack mit 5 Services, Email-Verifikation via Resend API, vollständige Studienplan-CRUD mit GPA-Berechnung.</p>
+          </div>
+        </div>
+        <div class="roadmap-node">
+          <div class="node-marker done"></div>
+          <div class="roadmap-card">
+            <span class="rm-tag status-done">Sprint 3.x ✓</span>
+            <h3 class="rm-title">Mission Control &amp; Mobile</h3>
+            <p class="rm-desc">Kanban Board (@dnd-kit), Schedule Board (15-Min CSS Grid), Dashboard Widgets, Mobile FAB, Agenda View für kleine Screens, TanStack Query Migration, vollständige i18n (DE/EN).</p>
+          </div>
+        </div>
+        <div class="roadmap-node">
+          <div class="node-marker done"></div>
+          <div class="roadmap-card">
+            <span class="rm-tag status-done">Sprint 4 ✓</span>
+            <h3 class="rm-title">BIN Prüfungsordnung Integration</h3>
+            <p class="rm-desc">37 BIN-Module aus 3 PDFs, Prüfungsart-System (PX/EA/R/BAA+Ko), §6-Voraussetzungen als DB-Constraints, MilestoneWidget, PO-Übersicht-Seite, GPA-Fix BIN-209.</p>
+          </div>
+        </div>
+        <div class="roadmap-node">
+          <div class="node-marker done"></div>
+          <div class="roadmap-card">
+            <span class="rm-tag status-done">Sprint 5 ✓</span>
+            <h3 class="rm-title">Admin Panel — Enterprise Control Center</h3>
+            <p class="rm-desc">14 Admin-Seiten, 35+ Endpunkte, Two-Layer Auth (JWT + Redis Sudo), Audit-Log, Analytics (Recharts), JSON-Bulk-Import, 122/122 Tests grün.</p>
+          </div>
+        </div>
+        <div class="roadmap-node">
+          <div class="node-marker planned"></div>
+          <div class="roadmap-card">
+            <span class="rm-tag status-planned">Sprint 6</span>
+            <h3 class="rm-title">Security Audit &amp; Email-Templates</h3>
+            <p class="rm-desc">Admin-API-Rate-Limiting, Toast-Notifications bei API-Errors, E-Mail-Templates für Passwort-Reset, UI-Polishing und Dropdown-Auswahl für UUID-Felder.</p>
+          </div>
+        </div>
+        <div class="roadmap-node">
+          <div class="node-marker planned"></div>
+          <div class="roadmap-card">
+            <span class="rm-tag status-planned">v1.0 — Ziel</span>
+            <h3 class="rm-title">Production Launch für die HsH</h3>
+            <p class="rm-desc">Öffentlicher Launch für alle HS Hannover Studierenden. Onboarding-Flow mit vorausgefüllten Prüfungsordnungen. Gamification: XP, Badges, Streaks.</p>
+          </div>
+        </div>
+      </div>
+          </div>
+        <!-- PRERENDER_ROADMAP_STUDYNEXUS_END -->
+
+    </div>
+  </section>
+
+  <!-- ── Outro ───────────────────────────────────────────────────── -->
+  <section class="project-section" style="padding:150px 0;text-align:center;">
+    <div class="container reveal">
+      <h2 class="final-statement" data-i18n="sn_outro_title">A Project<br>in Motion.</h2>
+      <p style="font-size:1.2rem;color:#888;max-width:600px;margin:0 auto 40px;" data-i18n="sn_outro_text">StudyNexus is not finished — and that's exactly the point. Real software lives. It grows with its requirements. Every week a sprint. Every sprint a new feature.</p>
+
+      <div class="sn-outro-btns" style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;">
+        <a href="https://github.com/yusef03/studynexus" target="_blank" rel="noopener" class="cta-button" data-i18n="sn_outro_btn">GitHub Repository</a>
+        <a href="/en/index.html" class="cta-button cta-button-outline" data-i18n="sn_outro_home">Back to Portfolio</a>
+      </div>
+    </div>
+  </section>
+
+
+    </main>
+  <app-footer base-path=".."></app-footer>
+
+  <script defer="" src="/js/components/AppProjectHeader.js"></script>
+  <script defer="" src="/js/components/AppFooter.js"></script>
+  <script defer="" src="/js/roadmap-data.js"></script>
+  <script defer="" src="/js/roadmap-renderer.js"></script>
+  <script defer="" src="/js/bot.js"></script>
+  <script defer="" src="/js/script.js"></script>
+
+
+
+</body></html>

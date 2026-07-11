@@ -1,0 +1,840 @@
+/* ============================================================================
+ * thoughts.css — Blog/Thoughts Komponente
+ *
+ * Gilt für:
+ *   - #thoughts Teaser-Sektion (index.html)
+ *   - /thoughts/ Übersichtsseite (thoughts/index.html)
+ *   - /thoughts/<slug>.html Beitragsseiten (generiert)
+ * ============================================================================ */
+
+/* ── 1. SHARED: Thought-Karte ─────────────────────────────────────────────── */
+
+.thought-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--card-bg);
+  border: 1px solid var(--border-strong);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.thought-card:hover {
+  border-color: rgba(157, 0, 255, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(157, 0, 255, 0.12);
+}
+
+/* Cover 16:9 */
+.thought-card-cover {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1e0040 0%, #0d001a 50%, #1a0035 100%);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.thought-card-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.thought-card:hover .thought-card-cover img {
+  transform: scale(1.04);
+}
+
+/* Gradient Fallback — lila Brand */
+.thought-card-cover--gradient {
+  background: linear-gradient(135deg,
+    rgba(157, 0, 255, 0.35) 0%,
+    rgba(98, 0, 163, 0.2) 50%,
+    rgba(20, 0, 50, 0.8) 100%);
+}
+
+.thought-card-cover--gradient::after {
+  content: '✦';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: rgba(157, 0, 255, 0.3);
+}
+
+/* Card Body */
+.thought-card-body {
+  padding: 18px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.thought-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.thought-card-tag {
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary-light);
+  background: rgba(157, 0, 255, 0.12);
+  border: 1px solid rgba(157, 0, 255, 0.25);
+  border-radius: 20px;
+  padding: 2px 9px;
+}
+
+.thought-card-date {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+
+.thought-card-reading {
+  font-size: 0.72rem;
+  color: var(--text-3);
+}
+
+.thought-card-sep {
+  color: var(--text-3);
+  font-size: 0.7rem;
+}
+
+/* Sprach-Badge auf Karten (wenn Post nicht in UI-Sprache) — alt */
+.thought-card-lang {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-3);
+  background: var(--surface-1);
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+
+/* Fallback-Badge auf Karten (neues Multi-Sprachen-System) */
+.thought-card-lang-badge {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-3);
+  background: var(--surface-1);
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  padding: 1px 5px;
+  text-transform: uppercase;
+  cursor: help;
+}
+
+/* Fallback-Banner auf Post-Seiten */
+.thought-lang-fallback-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(157, 0, 255, 0.06);
+  border: 1px solid rgba(157, 0, 255, 0.2);
+  border-radius: 8px;
+  padding: 8px 14px;
+  margin-bottom: 20px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.thought-lang-fallback-badge strong {
+  color: var(--primary-light);
+  font-weight: 700;
+}
+
+/* Sprach-Blöcke (data-lang) — transition beim Umschalten */
+.thought-lang-block {
+  animation: thoughtFadeIn 0.2s ease;
+}
+
+@keyframes thoughtFadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.thought-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0 0 8px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.thought-card-excerpt {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0 0 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+}
+
+.thought-card-read {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--primary-light);
+  text-decoration: none;
+  margin-top: auto;
+  transition: gap 0.2s ease;
+}
+
+.thought-card:hover .thought-card-read {
+  gap: 8px;
+}
+
+
+/* Teaser auf index.html: kein Cover-Bild — nur Text-Karte */
+.thoughts-teaser-grid .thought-card-cover {
+  display: none;
+}
+
+/* ── 2. INDEX-TEASER: #thoughts Sektion ──────────────────────────────────── */
+
+.thoughts-teaser-section {
+  padding: 100px 0;
+  border-top: 1px solid var(--border);
+}
+
+.thoughts-teaser-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 48px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.thoughts-teaser-heading {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 800;
+  color: var(--text-color);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.thoughts-teaser-sub {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin: 8px 0 0;
+  line-height: 1.5;
+}
+
+.thoughts-all-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary-light);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: gap 0.2s ease;
+}
+
+.thoughts-all-link:hover { gap: 10px; }
+
+.thoughts-teaser-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.thoughts-teaser-cta {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.thoughts-empty-teaser {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 0;
+  color: var(--text-3);
+  font-size: 0.9rem;
+}
+
+
+/* ── 3. ÜBERSICHTSSEITE: thoughts/index.html ─────────────────────────────── */
+
+.thoughts-overview-hero {
+  padding: 80px 0 60px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.thoughts-overview-hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 900;
+  margin: 0 0 16px;
+  background: linear-gradient(135deg, var(--text-1) 30%, var(--accent-bright) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.thoughts-overview-hero p {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* Tag Filter */
+.thoughts-tag-filter {
+  padding: 36px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  /* Skalierungs-Schutz: bei sehr vielen Tags wuerde die Chip-Leiste sonst
+     die halbe Seite fuellen. max-height + Scroll greift erst, wenn es wirklich
+     viele werden (~4 Zeilen Chips). Bei wenigen Tags voellig unsichtbar. */
+  max-height: 168px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+.thoughts-tag-filter::-webkit-scrollbar {
+  width: 6px;
+}
+
+.thoughts-tag-filter::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 3px;
+}
+
+.thoughts-filter-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border-strong);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), background-color var(--dur-fast) var(--ease-out);
+  font-family: inherit;
+}
+
+.thoughts-filter-chip:hover {
+  border-color: rgba(157, 0, 255, 0.4);
+  color: var(--text-color);
+}
+
+/* Sprach-Chips leicht anders gefärbt */
+.thoughts-filter-lang {
+  border-color: var(--border-strong);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* Trennstrich zwischen Sprach- und Tag-Chips */
+.thoughts-filter-sep {
+  color: var(--border-strong);
+  font-size: 1rem;
+  padding: 0 2px;
+  user-select: none;
+}
+
+.thoughts-filter-chip.active {
+  background: rgba(157, 0, 255, 0.15);
+  border-color: rgba(157, 0, 255, 0.5);
+  color: var(--primary-light);
+}
+
+.thoughts-overview-content {
+  padding: 40px 0 100px;
+}
+
+/* Grid — 2 Spalten auf der Übersichtsseite für breitere, lesbarere Karten */
+.thoughts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.thoughts-empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 80px 0;
+  color: var(--text-3);
+  border: 1px dashed var(--border);
+  border-radius: 14px;
+}
+
+.thoughts-empty-state p {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+
+/* ── 4. BEITRAGSSEITE: thoughts/<slug>.html ──────────────────────────────── */
+
+/* Hero */
+.thought-post-hero {
+  padding-top: var(--nav-height);
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+.thought-post-cover {
+  width: 100%;
+  max-height: 420px;
+  overflow: hidden;
+  border-radius: 0 0 24px 24px;
+  margin-bottom: 40px;
+  background: linear-gradient(135deg, #1e0040 0%, #0d001a 60%, #1a0035 100%);
+}
+
+.thought-post-cover--gradient {
+  height: 180px;
+  background: linear-gradient(135deg,
+    rgba(157, 0, 255, 0.25) 0%,
+    rgba(10, 0, 30, 0.8) 100%);
+}
+
+.thought-cover-img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+.thought-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--text-3);
+  text-decoration: none;
+  margin-bottom: 20px;
+  transition: color 0.2s;
+}
+
+.thought-back-link:hover { color: var(--primary-light); }
+
+.thought-post-title {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 900;
+  color: var(--text-color);
+  line-height: 1.2;
+  margin: 0 0 20px;
+  max-width: 800px;
+}
+
+.thought-post-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.thought-meta-date {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.thought-meta-sep {
+  color: var(--text-3);
+}
+
+.thought-meta-reading {
+  font-size: 0.82rem;
+  color: var(--text-3);
+}
+
+.thought-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--primary-light);
+  background: rgba(157, 0, 255, 0.1);
+  border: 1px solid rgba(157, 0, 255, 0.22);
+  border-radius: 20px;
+  padding: 2px 9px;
+}
+
+/* Artikel-Body */
+.thought-post-body {
+  padding: 60px 0 80px;
+}
+
+.thought-post-content {
+  max-width: 720px;
+  margin: 0 auto;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+/* Typografie im Artikel */
+.thought-post-content h1,
+.thought-post-content h2,
+.thought-post-content h3,
+.thought-post-content h4 {
+  color: var(--text-color);
+  font-weight: 700;
+  margin: 2em 0 0.6em;
+  line-height: 1.3;
+}
+
+.thought-post-content h1 { font-size: 1.9rem; }
+.thought-post-content h2 { font-size: 1.5rem; }
+.thought-post-content h3 { font-size: 1.2rem; }
+
+.thought-post-content p {
+  margin: 0 0 1.4em;
+}
+
+.thought-post-content a {
+  color: var(--primary-light);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.thought-post-content strong { color: var(--text-color); font-weight: 700; }
+
+.thought-post-content ul,
+.thought-post-content ol {
+  padding-left: 1.6em;
+  margin: 0 0 1.4em;
+}
+
+.thought-post-content li { margin-bottom: 0.4em; }
+
+.thought-post-content blockquote {
+  border-left: 3px solid var(--primary-color);
+  padding: 4px 0 4px 20px;
+  margin: 1.4em 0;
+  color: var(--text-2);
+  font-style: italic;
+}
+
+.thought-post-content code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: rgba(157, 0, 255, 0.08);
+  color: var(--primary-light);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.thought-post-content pre {
+  background: var(--surface-1);
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  padding: 20px;
+  overflow-x: auto;
+  margin: 1.4em 0;
+}
+
+.thought-post-content pre code {
+  background: none;
+  padding: 0;
+  color: var(--text-1);
+  font-size: 0.88em;
+}
+
+.thought-post-content hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2em 0;
+}
+
+.thought-post-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.4em 0;
+  font-size: 0.9rem;
+}
+
+.thought-post-content th,
+.thought-post-content td {
+  padding: 10px 14px;
+  border: 1px solid var(--border-strong);
+  text-align: left;
+}
+
+.thought-post-content th {
+  background: var(--surface-2);
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+/* Bilder → figure */
+.thought-figure {
+  margin: 2em 0;
+  text-align: center;
+}
+
+.thought-figure img,
+.thought-figure .zoomable-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  cursor: zoom-in;
+  transition: box-shadow 0.25s ease;
+}
+
+.thought-figure img:hover,
+.thought-figure .zoomable-img:hover {
+  box-shadow: 0 8px 40px rgba(157, 0, 255, 0.2);
+}
+
+.thought-figure figcaption {
+  margin-top: 10px;
+  font-size: 0.78rem;
+  color: var(--text-3);
+  font-style: italic;
+}
+
+/* Share Buttons */
+.thought-post-share {
+  max-width: 720px;
+  margin: 48px auto 0;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--border-strong);
+  background: transparent;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-family: inherit;
+  transition: border-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), background-color var(--dur-fast) var(--ease-out);
+}
+
+.share-btn:hover {
+  border-color: rgba(157, 0, 255, 0.4);
+  color: var(--text-color);
+  background: rgba(157, 0, 255, 0.08);
+}
+
+.share-icon { font-style: normal; }
+
+.share-copied-label { display: none; }
+
+.share-copy.copied {
+  border-color: #22c55e;
+  color: #22c55e;
+  background: rgba(34, 197, 94, 0.08);
+}
+
+.share-copy.copied .share-copied-label { display: inline; }
+.share-copy.copied [data-i18n="thoughts_share_copy"] { display: none; }
+
+/* Back Navigation */
+.thought-post-footer-nav {
+  max-width: 720px;
+  margin: 40px auto 0;
+}
+
+.thought-back-link-bottom {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--text-3);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.thought-back-link-bottom:hover { color: var(--primary-light); }
+
+
+/* ── 5. RESPONSIVE ────────────────────────────────────────────────────────── */
+
+/* ── 768px: Tablet ───────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* Teaser-Sektion: 2 Spalten statt 3 */
+  .thoughts-teaser-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  /* Übersicht: 1 Spalte */
+  .thoughts-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Post-Seite: Padding reduzieren */
+  .thought-post-body {
+    padding: 40px 0 60px;
+  }
+
+  .thought-post-content {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  /* Post Cover: flacher auf Tablet */
+  .thought-post-cover {
+    max-height: 300px;
+  }
+
+  .thought-cover-img {
+    max-height: 300px;
+  }
+
+  /* Tabellen scrollen statt überquellen */
+  .thought-post-content table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ── 480px: Mobil ────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  /* Teaser + Übersicht: 1 Spalte */
+  .thoughts-teaser-grid,
+  .thoughts-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  /* Teaser-Header: stapeln */
+  .thoughts-teaser-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  /* Karte: Padding anpassen */
+  .thought-card-body {
+    padding: 16px 18px 20px;
+  }
+
+  /* Übersichts-Hero */
+  .thoughts-overview-hero {
+    padding: 60px 0 40px;
+  }
+
+  .thoughts-overview-hero h1 {
+    font-size: 2rem;
+  }
+
+  /* Tag-Filter-Chips kleiner */
+  .thoughts-filter-chip {
+    font-size: 0.73rem;
+    padding: 5px 12px;
+  }
+
+  /* Post-Seite Hero */
+  .thought-post-hero {
+    padding-bottom: 32px;
+  }
+
+  .thought-post-cover {
+    max-height: 220px;
+    border-radius: 0 0 16px 16px;
+    margin-bottom: 28px;
+  }
+
+  .thought-cover-img {
+    max-height: 220px;
+  }
+
+  .thought-post-cover--gradient {
+    height: 140px;
+  }
+
+  /* Post-Titel */
+  .thought-post-title {
+    font-size: 1.5rem;
+    line-height: 1.25;
+  }
+
+  /* Post-Content */
+  .thought-post-body {
+    padding: 28px 0 48px;
+  }
+
+  .thought-post-content {
+    font-size: 0.96rem;
+    line-height: 1.72;
+  }
+
+  /* Überschriften im Artikel */
+  .thought-post-content h2 { font-size: 1.25rem; }
+  .thought-post-content h3 { font-size: 1.05rem; }
+
+  /* Code-Blöcke scrollen horizontal */
+  .thought-post-content pre {
+    padding: 14px;
+    font-size: 0.8em;
+    border-radius: 8px;
+  }
+
+  /* Bilder: volle Breite, kein seitlicher Überlauf */
+  .thought-figure {
+    margin: 1.4em -4px;
+  }
+
+  .thought-figure img,
+  .thought-figure .zoomable-img {
+    border-radius: 8px;
+  }
+
+  /* Share-Buttons stapeln */
+  .thought-post-share {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .share-btn {
+    justify-content: center;
+  }
+
+  /* Fallback-Badge */
+  .thought-lang-fallback-badge {
+    font-size: 0.75rem;
+    padding: 8px 14px;
+  }
+}

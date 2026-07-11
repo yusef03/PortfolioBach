@@ -1,0 +1,454 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <script defer="" src="/js/status.js"></script>
+    <script>(function(){try{var t=localStorage.getItem("theme");document.documentElement.setAttribute("data-theme",t==="light"?"light":"dark");}catch(e){document.documentElement.setAttribute("data-theme","dark");}})()</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Defender | Case Study</title>
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/InterVariable.woff2" crossorigin="">
+
+    <link rel="stylesheet" href="/css/fonts.css">
+
+    <link rel="stylesheet" href="/css/main.css?v=4">
+    <link rel="stylesheet" href="/css/project-base.css">
+    <!-- i18n-seo-auto:start -->
+    
+    
+    
+    
+    
+    
+    <script>window.__PAGE_LANG__=(function(){var p=location.pathname;if(/(^|\/)en(\/|$)/.test(p))return'en';if(/(^|\/)ar(\/|$)/.test(p))return'ar';return'de';})();</script>
+    <!-- i18n-seo-auto:end -->
+  
+    <link rel="alternate" hreflang="de" href="https://yusefbach.de/projects/phishing-defender.html">
+    <link rel="alternate" hreflang="en" href="https://yusefbach.de/en/projects/phishing-defender.html">
+    <link rel="alternate" hreflang="ar" href="https://yusefbach.de/ar/projects/phishing-defender.html">
+    <link rel="alternate" hreflang="x-default" href="https://yusefbach.de/projects/phishing-defender.html">
+    <link rel="canonical" href="https://yusefbach.de/en/projects/phishing-defender.html">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+  <body class="project-deep-dive">
+    <a href="#main-content" class="skip-link" data-i18n="a11y_skip_link">Skip to main content</a>
+    <app-project-header base-path="..">
+      <div class="internal-links">
+        <a href="#mission" data-i18n="pd_nav_mission">Mission</a>
+        <a href="#process" data-i18n="pd_nav_process">Process</a>
+        <a href="#architecture" data-i18n="pd_nav_arch">Architecture</a>
+        <a href="#gallery" data-i18n="pd_nav_gallery">Gallery</a>
+        <a href="#downloads" class="nav-download-btn" data-i18n="pd_nav_download" style="margin-left: auto;">Download</a>
+      </div>
+    </app-project-header>
+    <main id="main-content">
+    <header class="project-hero" id="home">
+      <div class="video-container">
+        <video autoplay="" muted="" loop="" playsinline="" poster="../images/projects/phishing/hero.png">
+          <source src="/images/projects/phishing/gameplay.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+      </div>
+
+      <div class="hero-content container">
+        <div class="hero-badges fade-in-up">
+          <span class="hero-badge" data-i18n="pd_hero_badge">Semester Project (1.0)</span>
+          <span class="hero-badge outline">Java Swing</span>
+        </div>
+
+        <h1 class="hero-title fade-in-up" style="animation-delay: 0.2s">
+          Phishing<span class="text-stroke">Defender</span>
+        </h1>
+
+        <p class="hero-subtitle fade-in-up" style="animation-delay: 0.4s" data-i18n="pd_page_subtitle">A Serious Game for Cyber Security.<br> No Engine. <span class="highlight-text">100% Pure Java.</span></p>
+      </div>
+
+      <div class="scroll-indicator fade-in" style="animation-delay: 1s">
+        <span data-i18n="pd_hero_scroll">Explore Case</span>
+        <div class="mouse">
+          <div class="wheel"></div>
+        </div>
+      </div>
+    </header>
+
+    <section class="project-section dark-bg" id="mission">
+      <div class="container">
+        <div class="mission-grid">
+          <div class="mission-content reveal">
+            <span class="section-tag" data-i18n="pd_tag_project">The Project</span>
+            <h2 class="section-heading" data-i18n="pd_mission_title">Become a <br><span class="highlight-text">Cyber Detective</span></h2>
+            <p class="text-lg" data-i18n="pd_mission_text">"Phishing Defender" is more than just a game. It is a mission. In a world full of digital dangers, children and teenagers (6–14 years) learn to see through hackers' tricks.</p>
+            <p class="text-muted" data-i18n="pd_mission_subtext">Developed as a semester project at the University of Applied Sciences Hannover. <br> The goal: Turn dry theory into adrenaline-pumping gameplay.</p>
+
+            <div class="stats-row">
+              <div class="stat-box">
+                <span class="stat-val">3</span>
+                <span class="stat-label" data-i18n="pd_stat_levels">Levels</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-val">100%</span>
+                <span class="stat-label">Java Swing</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-val">12</span>
+                <span class="stat-label" data-i18n="pd_stat_weeks">Weeks Dev</span>
+              </div>
+            </div>
+          </div>
+          <div class="mission-image reveal delay-200">
+            <div class="image-frame-cyber">
+              <img src="/images/projects/phishing/game_menu.png" alt="Main Menu" width="1925" height="1078" class="zoomable-img" loading="lazy">
+              <div class="scan-line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section" id="process">
+      <div class="container">
+        <h2 class="section-heading center-text reveal" data-i18n="pd_planning_title">Strategic <span class="highlight-text">Planning</span></h2>
+        <p class="section-subtitle center-text reveal" data-i18n="pd_planning_sub">A game is not created by chance. It is created by planning.</p>
+
+        <div class="timeline-steps reveal">
+          <div class="timeline-step">
+            <div class="t-circle">01</div>
+            <h4 class="t-title" data-i18n="pd_step_1_title">Analysis</h4>
+            <p class="t-desc" data-i18n="pd_step_1_desc">Target audience (6-14y) &amp; learning goals defined.</p>
+          </div>
+          <div class="timeline-step">
+            <div class="t-circle">02</div>
+            <h4 class="t-title" data-i18n="pd_step_2_title">Design</h4>
+            <p class="t-desc" data-i18n="pd_step_2_desc">UML, Use-Cases &amp; Paper Prototypes.</p>
+          </div>
+          <div class="timeline-step">
+            <div class="t-circle">03</div>
+            <h4 class="t-title" data-i18n="pd_step_3_title">Core Impl.</h4>
+            <p class="t-desc" data-i18n="pd_step_3_desc">Game Loop, Swing UI &amp; Logic.</p>
+          </div>
+          <div class="timeline-step">
+            <div class="t-circle">04</div>
+            <h4 class="t-title" data-i18n="pd_step_4_title">Features</h4>
+            <p class="t-desc" data-i18n="pd_step_4_desc">Highscores, Save-System &amp; Audio.</p>
+          </div>
+          <div class="timeline-step">
+            <div class="t-circle">05</div>
+            <h4 class="t-title" data-i18n="pd_step_5_title">Polish</h4>
+            <p class="t-desc" data-i18n="pd_step_5_desc">Animations, Testing &amp; Release.</p>
+          </div>
+        </div>
+
+        <div class="feature-row reveal" style="margin-top: 80px; align-items: start">
+          <div class="feature-text">
+            <h3 data-i18n="pd_feat_main_title">Use-Case Driven Development</h3>
+            <p data-i18n="pd_feat_main_desc">Every feature was based on clearly defined use-cases. From "Start Game" to "Activate Firewall Bonus". This guaranteed a clear focus and prevented feature creep.</p>
+
+            <div class="use-case-grid">
+              <div class="uc-card">
+                <span class="uc-id">UC 04</span>
+                <div class="uc-content">
+                  <h4 data-i18n="pd_uc_core_title">Core Loop</h4>
+                  <p data-i18n="pd_uc_core_desc">Play levels &amp; analyze emails</p>
+                </div>
+              </div>
+              <div class="uc-card">
+                <span class="uc-id">UC 08</span>
+                <div class="uc-content">
+                  <h4 data-i18n="pd_uc_game_title">Gamification</h4>
+                  <p data-i18n="pd_uc_game_desc">Activate Firewall Bonus System</p>
+                </div>
+              </div>
+              <div class="uc-card">
+                <span class="uc-id">UC 09</span>
+                <div class="uc-content">
+                  <h4 data-i18n="pd_uc_pers_title">Persistence</h4>
+                  <p data-i18n="pd_uc_pers_desc">Highscore &amp; Data Storage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-visual">
+            <div class="blueprint-frame">
+              <div class="blueprint-header">
+                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                <span class="blueprint-title">System_Architecture_v1.0.png</span>
+              </div>
+              <div class="blueprint-body">
+                <img src="/images/projects/phishing/diagram-seq.png" alt="Sequence Diagram" width="2424" height="2631" class="zoomable-img" loading="lazy">
+                <div class="grid-overlay"></div>
+              </div>
+              <div class="blueprint-footer">
+                <span>STATUS: APPROVED</span>
+                <span>DOC-ID: 8842-X</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section dark-bg">
+      <div class="container">
+        <h2 class="section-heading center-text reveal" data-i18n="pd_evo_title">The <span class="highlight-text">Evolution</span></h2>
+
+        <div class="evolution-grid">
+          <div class="evo-step reveal">
+            <div class="evo-header">
+              <span class="step-num">01</span>
+              <h4 data-i18n="pd_evo_1_title">Paper Prototype</h4>
+            </div>
+            <div class="evo-visual">
+              <img src="/images/projects/phishing/prototype_sketch.png" alt="Sketch" width="646" height="485" class="zoomable-img" loading="lazy">
+            </div>
+            <p class="evo-desc" data-i18n="pd_evo_1_desc">First idea validation on paper. Focus on layout and user flow.</p>
+          </div>
+
+          <div class="evo-arrow reveal">→</div>
+
+          <div class="evo-step reveal delay-200">
+            <div class="evo-header">
+              <span class="step-num">02</span>
+              <h4 data-i18n="pd_evo_2_title">Final Release</h4>
+            </div>
+            <div class="evo-visual">
+              <img src="/images/projects/phishing/gameplay_scan.png" alt="Final UI" width="1925" height="1078" class="zoomable-img" loading="lazy">
+            </div>
+            <p class="evo-desc" data-i18n="pd_evo_2_desc">Implementation in Java Swing with custom rendering and animations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <div class="container">
+        <h2 class="section-heading center-text reveal" data-i18n="pd_challenges_title">Challenges &amp; <span class="highlight-text">Solutions</span></h2>
+        <p class="section-subtitle center-text reveal" data-i18n="pd_challenges_sub">Real projects never run perfectly. Here is how I managed risks.</p>
+
+        <div class="challenge-grid reveal">
+          <div class="challenge-card">
+            <div class="challenge-header">
+              <div class="icon-box icon-danger">⚠️</div>
+              <h4 class="challenge-title" data-i18n="pd_chal_risk_1">Risk: Time Overrun</h4>
+            </div>
+            <p class="challenge-desc" data-i18n="pd_chal_desc_1">12 weeks are short. There was a danger of getting lost in details ("Feature Creep") and missing the deadline.</p>
+            <div class="solution-block">
+              <div class="icon-box icon-success">🛡️</div>
+              <div class="solution-text">
+                <span class="solution-label" data-i18n="pd_chal_label_1">Countermeasure</span>
+                <span data-i18n="pd_chal_sol_1">Applying the <strong>MVP Principle</strong> (Minimum Viable Product). Core features (Gameplay) had absolute priority over "Nice-to-Have" features.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="challenge-card">
+            <div class="challenge-header">
+              <div class="icon-box icon-danger">⚡</div>
+              <h4 class="challenge-title" data-i18n="pd_chal_risk_2">Risk: Swing Limitations</h4>
+            </div>
+            <p class="challenge-desc" data-i18n="pd_chal_desc_2">Java Swing is old. HTML rendering and layout managers often behaved unpredictably (e.g., wrong scrollbars).</p>
+            <div class="solution-block">
+              <div class="icon-box icon-success">🛡️</div>
+              <div class="solution-text">
+                <span class="solution-label" data-i18n="pd_chal_label_2">Solution</span>
+                <span data-i18n="pd_chal_sol_2">Implementation of own <strong>Custom Panels</strong> (Scrollable Interface) and use of "Buffering" for smooth animations.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="challenge-card">
+            <div class="challenge-header">
+              <div class="icon-box icon-danger">💾</div>
+              <h4 class="challenge-title" data-i18n="pd_chal_risk_3">Risk: Data Loss</h4>
+            </div>
+            <p class="challenge-desc" data-i18n="pd_chal_desc_3">Danger of code loss or broken builds during the hot development phase.</p>
+            <div class="solution-block">
+              <div class="icon-box icon-success">🛡️</div>
+              <div class="solution-text">
+                <span class="solution-label" data-i18n="pd_chal_label_3">Strategy</span>
+                <span data-i18n="pd_chal_sol_3">Strict <strong>Git Strategy</strong> with regular commits and backups on GitHub. OS-independent storage paths.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section dark-bg">
+      <div class="container">
+        <h2 class="section-heading center-text reveal" data-i18n="pd_files_title">Project <span class="highlight-text">Files</span></h2>
+        <p class="section-subtitle center-text reveal">
+          <span data-i18n="pd_files_sub">Transparency is everything. See my planning.</span><br>
+          <span style="font-size: 0.95rem; color: #888" data-i18n="pd_files_note">(Documentation created with <strong style="color: var(--primary-color)">LaTeX</strong>)</span>
+        </p>
+
+        <div class="docs-grid reveal">
+          <a href="/docs/Phishing_Defender_UseCases_YusefBachK.pdf" target="_blank" class="doc-card">
+            <div class="doc-info">
+              <h4 data-i18n="pd_file_1_title">Use-Case Specification</h4>
+              <p data-i18n="pd_file_1_desc">PDF • 20 Pages • Architecture &amp; GUI Sketches</p>
+            </div>
+            <div class="doc-icon">⬇</div>
+          </a>
+          <a href="/docs/Zeitplanung_Phishing_Defender.pdf" target="_blank" class="doc-card">
+            <div class="doc-info">
+              <h4 data-i18n="pd_file_2_title">Project Timeline</h4>
+              <p data-i18n="pd_file_2_desc">PDF • 12 Pages • Milestones &amp; Risk Analysis</p>
+            </div>
+            <div class="doc-icon">⬇</div>
+          </a>
+          <a href="https://github.com/yusef03/PhishingDefender" target="_blank" class="doc-card">
+            <div class="doc-info">
+              <h4 data-i18n="pd_file_3_title">GitHub Repository</h4>
+              <p data-i18n="pd_file_3_desc">Source Code • Assets • Releases</p>
+            </div>
+            <div class="doc-icon">🔗</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section" id="architecture">
+      <div class="container">
+        <h2 class="section-heading center-text reveal" data-i18n="pd_arch_title">Under the <span class="highlight-text">Hood</span></h2>
+        <p class="section-subtitle center-text reveal" data-i18n="pd_arch_sub">Clean software architecture instead of spaghetti code.</p>
+
+        <div class="architecture-grid">
+          <div class="arch-text reveal">
+            <h3 data-i18n="pd_arch_mvc_title">MVC &amp; Manager Pattern</h3>
+            <p data-i18n="pd_arch_mvc_desc">The game is based on a strict separation of data (Model), logic (Controller), and display (View). Central Manager classes control the sub-systems.</p>
+            <ul class="tech-list">
+              <li data-i18n="pd_arch_li_1"><strong>PhishingDefender (Main):</strong> The central controller.</li>
+              <li data-i18n="pd_arch_li_2"><strong>SettingsManager:</strong> Encapsulates settings &amp; JSON storage.</li>
+              <li data-i18n="pd_arch_li_3"><strong>AudioEngine:</strong> RAM buffering for latency-free sound.</li>
+              <li data-i18n="pd_arch_li_4"><strong>IntegrityShield:</strong> Visual feedback system for lives.</li>
+            </ul>
+            <div class="arch-badges">
+              <span class="tech-badge">UML</span><span class="tech-badge">OOP</span><span class="tech-badge">JSON</span><span class="tech-badge">SwingWorker</span>
+            </div>
+          </div>
+          <div class="arch-image reveal delay-200">
+            <div class="image-frame-cyber">
+              <img src="/images/projects/phishing/diagram-class.png" alt="Class Diagram" width="2712" height="1038" class="zoomable-img" loading="lazy">
+              <span class="img-caption" data-i18n="pd_arch_caption">Class Diagram (Excerpt of Architecture)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section dark-bg" id="gallery">
+      <div class="container">
+        <h2 class="section-heading center-text reveal" data-i18n="pd_gallery_title">Mission <span class="highlight-text">Gallery</span></h2>
+        <p class="section-subtitle center-text reveal" data-i18n="pd_gallery_sub">Insights into the gameplay.</p>
+        <div class="gallery-grid reveal">
+          <div class="gallery-item">
+            <img src="/images/projects/phishing/gallery1.png" alt="Gameplay" width="1922" height="1087" class="zoomable-img" loading="lazy">
+            <div class="gallery-overlay"><span>🔍</span></div>
+          </div>
+          <div class="gallery-item">
+            <img src="/images/projects/phishing/gallery2.png" alt="Settings" width="1922" height="1087" class="zoomable-img" loading="lazy">
+            <div class="gallery-overlay"><span>🔍</span></div>
+          </div>
+          <div class="gallery-item">
+            <img src="/images/projects/phishing/gallery3.png" alt="Game Over" width="1922" height="1087" class="zoomable-img" loading="lazy">
+            <div class="gallery-overlay"><span>🔍</span></div>
+          </div>
+          <div class="gallery-item">
+            <img src="/images/projects/phishing/gallery4.png" alt="Levels" width="1922" height="1087" class="zoomable-img" loading="lazy">
+            <div class="gallery-overlay"><span>🔍</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section download-section" id="downloads">
+      <div class="container">
+        <h2 class="section-heading center-text reveal" data-i18n="pd_download_title">Get the <span class="highlight-text">Defender</span></h2>
+        <p class="section-subtitle center-text reveal" data-i18n="pd_download_sub">Choose your version and start the mission.</p>
+
+        <div class="download-grid reveal">
+          <div class="download-card primary-card">
+            <div class="card-badge" data-i18n="pd_dl_rec">Recommended</div>
+            <div class="card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="50" height="50" fill="#f89820">
+                <path d="M277.7 337.1c-6.2-22.4-44.4-23.4-44.4-23.4s2.5-12.2 4.1-16.2c9.8-25.1 4.7-60.9-15.6-76.6-11.2-8.8-27.5-8.4-27.5-8.4s11.6 10.6 8.1 36.2c-2.5 17.5-14.7 39.1-34.7 54.1-3.4 2.5-1.2 5.9 3.1 5.9 8.1-.6 21.6-1.6 28.1 5.3 12.8 13.1-7.2 35-7.2 35 .9-2.5 3.4-4.7 6.6-4.7 13.8 0 16.9 23.4 16.9 23.4 16.6 6.9 12.8 30.6 4.7 45.3-7.2 13.1-27.5 24.1-55.9 23.8-37.5-.3-67.8-19.4-67.8-19.4s15.9 4.1 36.2 3.1c32.8-1.9 59.4-20 62.5-22.5 5.9-5.3-2.5-12.2-8.8-10.9-35.9 7.8-77.8-3.1-100-26.2 1.6 2.8 3.8 5.6 6.2 8.1 27.2 27.2 75 35.6 113.8 27.2 47.8-10.6 71.9-46.6 71.9-46.6 22.8-16.2 13.4-39.7 13.4-39.7zM167.2 237.5c-5.9 19.4-25.9 20.6-25.9 20.6s12.5-26.2 11.2-46.2c-1.2-12.8-8.1-23.8-8.1-23.8s20.6 8.8 25.9 22.8c3.8 10.6 2.8 26.8-3.1 26.6zm70.6-59.4c-9.1 10.3-27.5 7.5-27.5 7.5s15.3-17.8 13.1-36.9c-1.6-14.1-10.9-24.1-10.9-24.1s25.3 7.8 32.5 24.1c5.3 12.5 2.2 29.7-7.2 29.4zM227.5 69.4s-15.6-15.3-15.6-35.3c0-10.6 5.6-20 5.6-20s22.8 12.5 23.4 34.4c.3 10.3-6.6 20.9-13.4 20.9z"></path>
+              </svg>
+            </div>
+            <h3 data-i18n="pd_dl_jar_title">Java Edition</h3>
+            <p class="version-info">v2.1.0 • Universal .jar</p>
+            <ul class="card-specs">
+              <li data-i18n="pd_dl_jar_info">Windows, Mac &amp; Linux</li>
+              <li data-i18n="pd_dl_jar_req">Requires Java 17+</li>
+            </ul>
+            <a href="https://github.com/yusef03/PortfolioBach/releases/download/v2.1.0/PhishingDefender.jar" class="dl-button" data-i18n="pd_dl_jar_btn">Download .jar</a>
+            <div class="checksum">Size: 33.5 MB • Build: Stable</div>
+          </div>
+
+          <div class="download-card">
+            <div class="card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="50" height="50" fill="#00a4ef">
+                <path d="M0 93.7l183.6-25.3v177.4H0V93.7zm0 324.6l183.6 25.3V268.4H0v149.9zm203.8 28L448 480V268.4H203.8v177.9zm0-380.6v180.1H448V32L203.8 65.7z"></path>
+              </svg>
+            </div>
+            <h3 data-i18n="pd_dl_win_title">Windows Edition</h3>
+            <p class="version-info">Native .exe</p>
+            <ul class="card-specs">
+              <li data-i18n="pd_dl_win_info">No installation needed</li>
+              <li data-i18n="pd_dl_win_req">Starts without Java setup</li>
+            </ul>
+            <a href="https://github.com/yusef03/PortfolioBach/releases/download/v2.1.0/PhishingDefender.exe" class="dl-button" data-i18n="pd_dl_win_btn">Download .exe</a>
+            <div class="checksum">Size: 32.2 MB • Portable</div>
+          </div>
+
+          <div class="download-card">
+            <div class="card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" width="50" height="50" fill="#ffffff">
+                <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-115.1-26.3-115.1-117.2 0-25.9 9.2-47.2 24.2-63.7-2.4-6.6-10.6-30.1 2.3-62.9 0 0 19.6-6.3 64.3 24.2 18.6-5.1 38.6-7.8 58.6-7.8 20 0 40 2.7 58.6 7.8 44.7-30.5 64.3-24.2 64.3-24.2 12.9 32.8 4.7 56.3 2.3 62.9 15 16.5 24.2 37.8 24.2 63.7 0 91.1-59.6 110.8-115 117.2 9 7.8 17.1 23.2 17.1 46.8 0 33.8-.3 61.1-.3 69.4 0 6.5 4.6 14.6 17.3 12.1C426.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path>
+              </svg>
+            </div>
+            <h3 data-i18n="pd_dl_src_title">Source Code</h3>
+            <p class="version-info" data-i18n="pd_dl_github_subtitle">GitHub Repository</p>
+            <ul class="card-specs">
+              <li data-i18n="pd_dl_src_info">Full Access</li>
+              <li data-i18n="pd_dl_src_req">Assets &amp; Documentation</li>
+            </ul>
+            <a href="https://github.com/yusef03/PhishingDefender" target="_blank" class="dl-button outline" data-i18n="pd_dl_view_repo">View Repository</a>
+            <div class="checksum">License: MIT • Open Source</div>
+          </div>
+        </div>
+
+        <div class="terminal-wrapper reveal fade-in-up">
+          <div class="terminal-header-bar">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <span class="term-title" data-i18n="pd_term_title">Terminal - How to run</span>
+          </div>
+          <div class="terminal-body">
+            <p class="comment" data-i18n="pd_term_opt_a"># Option A: Double click on the .jar file</p>
+            <p class="comment" data-i18n="pd_term_opt_b"># Option B: Start via Terminal (for debugging)</p>
+            <div class="code-line">
+              <span class="prompt">yusef@home:~$</span> java -jar
+              PhishingDefender.jar
+            </div>
+            <div class="code-output">
+              [INFO] GameEngine initialized...<br>[INFO] Loading Assets...<br>[SUCCESS]
+              Phishing Defender v1.0.2 started.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    </main>
+    <app-footer base-path=".."></app-footer>
+
+    <div class="lightbox" id="lightbox">
+      <span class="lightbox-close">×</span>
+      <img src="" alt="Enlarged Image" class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script defer="" src="/js/lightbox.js"></script>
+    <script defer="" src="/js/components/AppProjectHeader.js"></script>
+    <script defer="" src="/js/components/AppFooter.js"></script>
+    <script defer="" src="/js/bot.js"></script>
+    <script defer="" src="/js/script.js"></script>
+  
+
+</body></html>

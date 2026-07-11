@@ -1,0 +1,265 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head>
+    <meta charset="UTF-8">
+    <script>(function(){try{var t=localStorage.getItem("theme");document.documentElement.setAttribute("data-theme",t==="light"?"light":"dark");}catch(e){document.documentElement.setAttribute("data-theme","dark");}})()</script>
+    <script defer="" src="/js/status.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO (EN/DE-Titel als Standard, EN immer vorhanden) -->
+    <title>Architektur vor Syntax — warum ich nie zuerst nach dem Framework greife | Yusef Bach</title>
+    <meta name="description" content="Die erste Frage bei neuen Projekten ist fast immer: welches Framework? Ich fange lieber mit einer anderen Frage an.">
+    <meta name="author" content="Yusef Bach">
+    <link rel="icon" type="image/png" href="/images/ui/logo.png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Architektur vor Syntax — warum ich nie zuerst nach dem Framework greife">
+    <meta property="og:description" content="Die erste Frage bei neuen Projekten ist fast immer: welches Framework? Ich fange lieber mit einer anderen Frage an.">
+    <meta property="og:image" content="https://msfmugoazylvbqvyidlg.supabase.co/storage/v1/object/public/thoughts-media/thoughts/d68f3bbe-258a-4d0a-9b4b-9d8721123db4/cover.jpeg">
+    <meta property="og:url" content="https://yusefbach.de/thoughts/architektur-vor-syntax.html">
+    <meta property="article:published_time" content="2026-05-30T20:13:31.058115+00:00">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Architektur vor Syntax — warum ich nie zuerst nach dem Framework greife",
+      "datePublished": "2026-05-30T20:13:31.058115+00:00",
+      "author": { "@type": "Person", "name": "Yusef Bach", "url": "https://yusefbach.de" },
+      "image": "https://msfmugoazylvbqvyidlg.supabase.co/storage/v1/object/public/thoughts-media/thoughts/d68f3bbe-258a-4d0a-9b4b-9d8721123db4/cover.jpeg",
+      "url": "https://yusefbach.de/thoughts/architektur-vor-syntax.html"
+    }
+    </script>
+
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/InterVariable.woff2" crossorigin="">
+
+
+    <link rel="stylesheet" href="/css/fonts.css">
+
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/pages/thoughts.css">
+    <noscript><style>body { visibility: visible !important; }</style></noscript>
+    <!-- i18n-seo-auto:start -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script>window.__PAGE_LANG__=(function(){var p=location.pathname;if(/(^|\/)en(\/|$)/.test(p))return'en';if(/(^|\/)ar(\/|$)/.test(p))return'ar';return'de';})();</script>
+    <!-- i18n-seo-auto:end -->
+  
+    <link rel="alternate" hreflang="de" href="https://yusefbach.de/thoughts/architektur-vor-syntax.html">
+    <link rel="alternate" hreflang="en" href="https://yusefbach.de/en/thoughts/architektur-vor-syntax.html">
+    <link rel="alternate" hreflang="ar" href="https://yusefbach.de/ar/thoughts/architektur-vor-syntax.html">
+    <link rel="alternate" hreflang="x-default" href="https://yusefbach.de/thoughts/architektur-vor-syntax.html">
+    <link rel="canonical" href="https://yusefbach.de/ar/thoughts/architektur-vor-syntax.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Architektur vor Syntax — warum ich nie zuerst nach dem Framework greife">
+    <meta name="twitter:description" content="Die erste Frage bei neuen Projekten ist fast immer: welches Framework? Ich fange lieber mit einer anderen Frage an.">
+    <meta name="twitter:image" content="https://msfmugoazylvbqvyidlg.supabase.co/storage/v1/object/public/thoughts-media/thoughts/d68f3bbe-258a-4d0a-9b4b-9d8721123db4/cover.jpeg">
+</head>
+
+  <body>
+    <a href="#main-content" class="skip-link" data-i18n="a11y_skip_link">انتقل إلى المحتوى الرئيسي</a>
+    <app-header base-path=".."></app-header>
+    <main id="main-content">
+
+    <!-- ── Post Hero (sprachneutral) ────────────────────────────────────────── -->
+    <header class="thought-post-hero">
+      <div class="thought-post-cover"><img src="https://msfmugoazylvbqvyidlg.supabase.co/storage/v1/object/public/thoughts-media/thoughts/d68f3bbe-258a-4d0a-9b4b-9d8721123db4/cover.jpeg" alt="Architektur vor Syntax — warum ich nie zuerst nach dem Framework greife" width="800" height="450" class="thought-cover-img" loading="eager"></div>
+      <div class="container">
+        <a href="/ar/thoughts/index.html" class="thought-back-link" data-i18n="thoughts_back">→ العودة إلى الأفكار</a>
+        <span class="thought-tag">Mindset</span><span class="thought-tag">Architektur</span><span class="thought-tag">Engineering</span>
+      </div>
+    </header>
+
+    <!-- ── Post Body ─────────────────────────────────────────────────────────── -->
+    <article class="thought-post-body">
+      <div class="container">
+
+        <!-- Fallback-Badge: wird per Inline-Script ein-/ausgeblendet -->
+        <div class="thought-lang-fallback-badge" id="lang-fallback-badge" hidden="">
+          <span data-i18n="thoughts_fallback_prefix">متاح فقط بالـ</span>
+          <strong id="lang-fallback-code">EN</strong>
+        </div>
+
+        <!-- Alle Sprachversionen (Titel + Datum + Content) -->
+        <div class="thought-lang-block" data-lang="en" hidden="">
+      <h1 class="thought-post-title">Architecture Before Syntax — Why I Never Reach for the Framework First</h1>
+      <div class="thought-post-meta">
+        <time datetime="2026-05-30T20:13:31.058115+00:00" class="thought-meta-date">30 May 2026</time>
+        <span class="thought-meta-sep">·</span>
+          <span class="thought-meta-reading">
+            3 <span data-i18n="thoughts_reading_min">د. قراءة</span>
+          </span>
+      </div>
+      <div class="thought-post-content reveal active">
+        <p>When someone starts a new project, the first question is usually: <em>"Which framework should we use?"</em> React? Next.js? Vue? The framework gets declared as the architecture before any problem has even been understood.</p>
+<p>My approach is different. I start with questions, not tools.</p>
+<h2>What's the actual problem?</h2>
+<p>When I built this portfolio, I could have used React. It would have been faster — components, state management, everything ready-made. Instead, I chose Vanilla TypeScript. Not out of principle, but as a deliberate decision: I wanted to understand how things work, not just how to use them.</p>
+<p>The result? I now know exactly how an IntersectionObserver works, how Web Components are structured, how to build an i18n engine from scratch. No framework magic. Just code I fully understand.</p>
+<h2>The foundation decides everything</h2>
+<p>With StudyNexus, my SaaS platform for students, the first question wasn't "React or Vue" either. It was: What data do we need? How does it relate? What happens when a user changes their schedule — which other parts of the system need to react?</p>
+<p>Only once those questions are answered does the technology choice make sense. FastAPI for the async API, PostgreSQL for the relational structure, Docker Compose so development and production are identical. Every decision follows from the problem, not from the trend.</p>
+<h2>When do I reach for a framework?</h2>
+<p>Whenever the problem demands it. The admin panel for this portfolio is built with Next.js — because Server Components, auth middleware, and API routes make sense there. That wasn't a default choice, it was a reasoned one.</p>
+<p>The difference: I choose tools deliberately, not reflexively.</p>
+<h2>The paradox</h2>
+<p>Those who choose the framework first only learn the framework. Those who understand the problem first learn computer science.</p>
+<p>And in the end, a framework is just a tool. Tools change. Understanding stays.
+  </p>
+
+      </div>
+    </div>
+<div class="thought-lang-block" data-lang="de" hidden="">
+      <h1 class="thought-post-title">Architektur vor Syntax — warum ich nie zuerst nach dem Framework greife</h1>
+      <div class="thought-post-meta">
+        <time datetime="2026-05-30T20:13:31.058115+00:00" class="thought-meta-date">30. Mai 2026</time>
+        <span class="thought-meta-sep">·</span>
+          <span class="thought-meta-reading">
+            3 <span data-i18n="thoughts_reading_min">د. قراءة</span>
+          </span>
+      </div>
+      <div class="thought-post-content reveal active">
+        <p>Wenn jemand ein neues Projekt startet, ist die erste Frage meistens: <em>„Welches Framework nehmen wir?"</em> React? Next.js? Vue? Das Framework wird zur Architektur erklärt, bevor irgendein Problem überhaupt verstanden wurde.</p>
+<p>Mein Ansatz ist anders. Ich fange mit Fragen an, nicht mit Tools.</p>
+<h2>Was ist das eigentliche Problem?</h2>
+<p>Als ich dieses Portfolio gebaut habe, hätte ich React nehmen können. Es wäre schneller gegangen — Komponenten, State Management, alles fertig. Stattdessen habe ich Vanilla TypeScript gewählt. Nicht aus Prinzip, sondern aus einer bewussten Entscheidung: Ich wollte verstehen, wie Dinge funktionieren, nicht nur wie man sie benutzt.</p>
+<p>Das Ergebnis? Ich weiß heute genau, wie ein IntersectionObserver funktioniert, wie Web Components aufgebaut sind, wie eine i18n-Engine von Grund auf gebaut wird. Kein Framework-Magic. Nur Code, den ich vollständig verstehe.</p>
+<h2>Das Fundament entscheidet alles</h2>
+<p>Bei StudyNexus, meiner SaaS-Plattform für Studierende, war die erste Frage auch nicht „React oder Vue". Sondern: Welche Daten brauchen wir? Wie hängen sie zusammen? Was passiert, wenn ein Nutzer seinen Stundenplan ändert — welche anderen Teile des Systems müssen reagieren?</p>
+<p>Erst wenn diese Fragen beantwortet sind, ergibt die Technologiewahl Sinn. FastAPI für die async API, PostgreSQL für die relationale Struktur, Docker Compose damit Entwicklung und Produktion identisch sind. Jede Entscheidung folgt aus dem Problem, nicht aus dem Trend.</p>
+<h2>Wann greife ich dann zum Framework?</h2>
+<p>Immer dann, wenn das Problem es verlangt. Das Admin Panel für dieses Portfolio ist in Next.js gebaut — weil Server Components, Auth Middleware und API Routes dort Sinn ergeben. Das war keine Standardwahl, das war eine begründete Wahl.</p>
+<p>Der Unterschied: Ich wähle Tools bewusst, nicht reflexartig.</p>
+<h2>Das Paradoxe</h2>
+<p>Wer zuerst das Framework wählt, lernt nur das Framework. Wer zuerst das Problem versteht, lernt Informatik.</p>
+<p>Und am Ende ist ein Framework nur ein Werkzeug. Werkzeuge wechseln. Verständnis bleibt.</p>
+
+      </div>
+    </div>
+<div class="thought-lang-block" data-lang="ar" dir="rtl" hidden="">
+      <h1 class="thought-post-title">البنية قبل البناء — لماذا لا أبدأ بالإطار البرمجي أولاً</h1>
+      <div class="thought-post-meta">
+        <time datetime="2026-05-30T20:13:31.058115+00:00" class="thought-meta-date">٣٠ مايو ٢٠٢٦</time>
+        <span class="thought-meta-sep">·</span>
+          <span class="thought-meta-reading">
+            3 <span data-i18n="thoughts_reading_min">د. قراءة</span>
+          </span>
+      </div>
+      <div class="thought-post-content reveal active">
+        <p>عندما يبدأ أحدهم مشروعاً جديداً، يكون السؤال الأول عادةً: <em>«أيّ إطار برمجي سنستخدم؟»</em> React؟ Next.js؟ Vue؟ يُعلَن الإطار معماريةً للمشروع قبل أن تُفهم أي مشكلة أصلاً.</p>
+<p>نهجي مختلف. أبدأ بالأسئلة، لا بالأدوات.</p>
+<h2>ما هي المشكلة الحقيقية؟</h2>
+<p>حين بنيتُ هذه المحفظة، كان بإمكاني استخدام React. كان سيكون أسرع — مكونات جاهزة، إدارة حالة، كل شيء مُهيَّأ. بدلاً من ذلك، اخترت Vanilla TypeScript. ليس من باب المبدأ، بل كقرار واعٍ: أردتُ أن أفهم كيف تعمل الأشياء، لا كيف أستخدمها فحسب.</p>
+<p>النتيجة؟ أعرف اليوم تماماً كيف يعمل IntersectionObserver، وكيف تُبنى Web Components، وكيف يُنشأ محرك i18n من الصفر. لا سحر للأطر. فقط كود أفهمه بالكامل.</p>
+<h2>الأساس يحدد كل شيء</h2>
+<p>في StudyNexus، منصتي كخدمة للطلاب، لم يكن السؤال الأول «React أم Vue» هنا أيضاً. بل كان: ما البيانات التي نحتاجها؟ كيف ترتبط ببعضها؟ ما الذي يحدث حين يُغيِّر مستخدم جدوله الدراسي — أيّ أجزاء من النظام يجب أن تستجيب؟</p>
+<p>فقط حين تُجاب هذه الأسئلة يصبح اختيار التقنية منطقياً. FastAPI للـ API غير المتزامن، PostgreSQL للبنية العلائقية، Docker Compose لضمان تطابق بيئتَي التطوير والإنتاج. كل قرار ينبثق من المشكلة، لا من الصيحة السائدة.</p>
+<h2>متى أتناول إطاراً برمجياً إذن؟</h2>
+<p>في كل مرة يستدعيها المشكلة. لوحة الإدارة لهذه المحفظة مبنية بـ Next.js — لأن Server Components ومتوسط المصادقة ومسارات API منطقية هناك. لم يكن ذلك اختياراً افتراضياً، بل كان اختياراً مُسبَّباً.</p>
+<p>الفارق: أختار الأدوات بوعي، لا بشكل انعكاسي.</p>
+<h2>المفارقة</h2>
+<p>من يختار الإطار أولاً لا يتعلم سوى الإطار. من يفهم المشكلة أولاً يتعلم علم الحاسوب.</p>
+<p>وفي النهاية، الإطار البرمجي مجرد أداة. الأدوات تتغير. الفهم يبقى.</p>
+
+      </div>
+    </div>
+
+        <!-- ── Share ──────────────────────────────────────────────────────── -->
+        <div class="thought-post-share">
+          <button class="share-btn share-copy" onclick="navigator.clipboard.writeText(window.location.href).then(function(){var b=event.target.closest('button');b.classList.add('copied');setTimeout(function(){b.classList.remove('copied')},2000)})">
+            <span class="share-icon">🔗</span>
+            <span data-i18n="thoughts_share_copy">نسخ الرابط</span>
+            <span class="share-copied-label" data-i18n="thoughts_share_copied">تم النسخ!</span>
+          </button>
+          <a class="share-btn share-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fyusefbach.de%2Fthoughts%2Farchitektur-vor-syntax.html" target="_blank" rel="noopener noreferrer">
+            <span class="share-icon">in</span>
+            <span data-i18n="thoughts_share_linkedin">المشاركة على لينكدإن</span>
+          </a>
+        </div>
+
+        <!-- ── Back ───────────────────────────────────────────────────────── -->
+        <div class="thought-post-footer-nav">
+          <a href="/ar/thoughts/index.html" class="thought-back-link-bottom" data-i18n="thoughts_back">→ العودة إلى الأفكار</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── Lightbox ──────────────────────────────────────────────────────────── -->
+    <div id="lightbox-overlay" class="lightbox-overlay" style="display:none;" aria-modal="true" role="dialog" aria-label="Bild-Lightbox">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Schließen">✕</button>
+      <img id="lightbox-img" class="lightbox-img" src="" alt="">
+    </div>
+
+    </main>
+
+        <app-footer base-path=".."></app-footer>
+
+    <!-- ── Sprach-Switch (inline, kein externes JS nötig) ────────────────────── -->
+    <script>
+    (function() {
+      var AVAILABLE = ["en","de","ar"];
+
+      function activate() {
+        var preferred = '';
+        try { preferred = window.__PAGE_LANG__ || 'de'; } catch(e) { preferred = 'de'; }
+
+        var blocks = document.querySelectorAll('.thought-lang-block');
+        var found = null;
+
+        blocks.forEach(function(b) {
+          b.hidden = true;
+          if (b.dataset.lang === preferred) found = b;
+        });
+
+        var badge     = document.getElementById('lang-fallback-badge');
+        var badgeCode = document.getElementById('lang-fallback-code');
+
+        if (found) {
+          found.hidden = false;
+          if (badge) badge.hidden = true;
+          // RTL für Arabisch
+          if (preferred === 'ar') {
+            document.documentElement.setAttribute('dir', 'rtl');
+            document.documentElement.lang = 'ar';
+          } else {
+            document.documentElement.removeAttribute('dir');
+            document.documentElement.lang = preferred;
+          }
+        } else {
+          // Fallback: EN anzeigen
+          var enBlock = document.querySelector('.thought-lang-block[data-lang="en"]');
+          if (enBlock) enBlock.hidden = false;
+          document.documentElement.removeAttribute('dir');
+          document.documentElement.lang = 'en';
+          if (badge && badgeCode) {
+            badge.hidden = false;
+            badgeCode.textContent = 'EN';
+          }
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', activate);
+      window.addEventListener('languagechange', activate);
+
+      // Sicherstellen dass AVAILABLE_LANGS nicht unused ist
+      void AVAILABLE;
+    })();
+    </script>
+
+    <!-- Scripts -->
+    <script defer="" src="/js/components/AppHeader.js"></script>
+    <script defer="" src="/js/components/AppFooter.js"></script>
+    <script defer="" src="/js/lightbox.js"></script>
+    <script defer="" src="/js/bot.js"></script>
+    <script defer="" src="/js/script.js"></script>
+  
+
+</body></html>

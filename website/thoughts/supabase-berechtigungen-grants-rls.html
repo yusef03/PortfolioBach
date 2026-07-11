@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <script>(function(){try{var t=localStorage.getItem("theme");document.documentElement.setAttribute("data-theme",t==="light"?"light":"dark");}catch(e){document.documentElement.setAttribute("data-theme","dark");}})()</script>
+    <script defer src="../js/status.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO (EN/DE-Titel als Standard, EN immer vorhanden) -->
+    <title>Supabase-Berechtigungen: die zwei Schichten, die niemand erklärt | Yusef Bach</title>
+    <meta name="description" content="permission denied for table thoughts — Stunden debuggen, eine Zeile Code. Supabase hat zwei Berechtigungsschichten, über die kaum jemand spricht." />
+    <meta name="author" content="Yusef Bach" />
+    <link rel="icon" type="image/png" href="../images/ui/logo.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Supabase-Berechtigungen: die zwei Schichten, die niemand erklärt" />
+    <meta property="og:description" content="permission denied for table thoughts — Stunden debuggen, eine Zeile Code. Supabase hat zwei Berechtigungsschichten, über die kaum jemand spricht." />
+    <meta property="og:image" content="https://msfmugoazylvbqvyidlg.supabase.co/storage/v1/object/public/thoughts-media/thoughts/723b7955-65c7-42e9-b738-2a0e54cdb838/cover.jpeg" />
+    <meta property="og:url" content="https://yusefbach.de/thoughts/supabase-berechtigungen-grants-rls.html" />
+    <meta property="article:published_time" content="2026-06-02T20:13:31.058115+00:00" />
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Supabase-Berechtigungen: die zwei Schichten, die niemand erklärt",
+      "datePublished": "2026-06-02T20:13:31.058115+00:00",
+      "author": { "@type": "Person", "name": "Yusef Bach", "url": "https://yusefbach.de" },
+      "image": "https://msfmugoazylvbqvyidlg.supabase.co/storage/v1/object/public/thoughts-media/thoughts/723b7955-65c7-42e9-b738-2a0e54cdb838/cover.jpeg",
+      "url": "https://yusefbach.de/thoughts/supabase-berechtigungen-grants-rls.html"
+    }
+    </script>
+
+    <link rel="preload" as="font" type="font/woff2" href="../fonts/InterVariable.woff2" crossorigin />
+
+
+    <link rel="stylesheet" href="../css/fonts.css" />
+
+
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/pages/thoughts.css" />
+    <noscript><style>body { visibility: visible !important; }</style></noscript>
+    <!-- i18n-seo-auto:start -->
+    <link rel="alternate" hreflang="de" href="https://yusefbach.de/thoughts/supabase-berechtigungen-grants-rls.html" />
+    <link rel="alternate" hreflang="en" href="https://yusefbach.de/en/thoughts/supabase-berechtigungen-grants-rls.html" />
+    <link rel="alternate" hreflang="ar" href="https://yusefbach.de/ar/thoughts/supabase-berechtigungen-grants-rls.html" />
+    <link rel="alternate" hreflang="x-default" href="https://yusefbach.de/thoughts/supabase-berechtigungen-grants-rls.html" />
+    <link rel="canonical" href="https://yusefbach.de/thoughts/supabase-berechtigungen-grants-rls.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Supabase-Berechtigungen: die zwei Schichten, die niemand erklärt" />
+    <meta name="twitter:description" content="permission denied for table thoughts — Stunden debuggen, eine Zeile Code. Supabase hat zwei Berechtigungsschichten, über die kaum jemand spricht." />
+    <meta name="twitter:image" content="https://msfmugoazylvbqvyidlg.supabase.co/storage/v1/object/public/thoughts-media/thoughts/723b7955-65c7-42e9-b738-2a0e54cdb838/cover.jpeg" />
+    <script>window.__PAGE_LANG__=(function(){var p=location.pathname;if(/(^|\/)en(\/|$)/.test(p))return'en';if(/(^|\/)ar(\/|$)/.test(p))return'ar';return'de';})();</script>
+    <!-- i18n-seo-auto:end -->
+  </head>
+
+  <body>
+    <a href="#main-content" class="skip-link" data-i18n="a11y_skip_link">Zum Hauptinhalt springen</a>
+    <app-header base-path=".."></app-header>
+    <main id="main-content">
+
+    <!-- ── Post Hero (sprachneutral) ────────────────────────────────────────── -->
+    <header class="thought-post-hero">
+      <div class="thought-post-cover"><img src="https://msfmugoazylvbqvyidlg.supabase.co/storage/v1/object/public/thoughts-media/thoughts/723b7955-65c7-42e9-b738-2a0e54cdb838/cover.jpeg" alt="Supabase-Berechtigungen: die zwei Schichten, die niemand erklärt" width="800" height="450" class="thought-cover-img" loading="eager" /></div>
+      <div class="container">
+        <a href="index.html" class="thought-back-link" data-i18n="thoughts_back">← Zurück zu Gedanken</a>
+        <span class="thought-tag">Supabase</span><span class="thought-tag">Backend</span><span class="thought-tag">PostgreSQL</span>
+      </div>
+    </header>
+
+    <!-- ── Post Body ─────────────────────────────────────────────────────────── -->
+    <article class="thought-post-body">
+      <div class="container">
+
+        <!-- Fallback-Badge: wird per Inline-Script ein-/ausgeblendet -->
+        <div class="thought-lang-fallback-badge" id="lang-fallback-badge" hidden>
+          <span data-i18n="thoughts_fallback_prefix">Nur verfügbar auf</span>
+          <strong id="lang-fallback-code">EN</strong>
+        </div>
+
+        <!-- Alle Sprachversionen (Titel + Datum + Content) -->
+        <div class="thought-lang-block" data-lang="en" hidden>
+      <h1 class="thought-post-title">Supabase Permissions: The Two Layers Nobody Explains</h1>
+      <div class="thought-post-meta">
+        <time datetime="2026-06-02T20:13:31.058115+00:00" class="thought-meta-date">02 June 2026</time>
+        <span class="thought-meta-sep">·</span>
+          <span class="thought-meta-reading">
+            2 <span data-i18n="thoughts_reading_min">min read</span>
+          </span>
+      </div>
+      <div class="thought-post-content reveal active">
+        <p>I spent hours debugging a single error: <code>permission denied for table thoughts</code>. The error message was clear. The cause was not.</p>
+<p>The problem: Supabase doesn't have one, but <strong>two</strong> independent permission layers — and both need to be correct.</p>
+<h2>Layer 1: Row Level Security (RLS)</h2>
+<p>RLS is what everyone talks about. You enable it on a table, define policies — who can read or write which rows. This is the visible, documented layer.</p>
+<pre><code class="language-sql">CREATE POLICY "thoughts_public_read"
+  ON thoughts FOR SELECT
+  TO anon, authenticated
+  USING (status = 'published');
+</code></pre>
+<p>Looks good. Still doesn't work. Why?</p>
+<h2>Layer 2: Table-Level GRANTs</h2>
+<p>Nobody talks about this — but beneath RLS lies a second layer: classic PostgreSQL GRANTs. These decide whether a role can <em>see</em> the table at all. Without a GRANT, even the best RLS policy is useless.</p>
+<p>What caught me off guard: Supabase has <strong>three different roles</strong>, each requiring separate GRANTs:</p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Used for</th>
+<th>GRANT</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>anon</code></td>
+<td>Portfolio reads published posts</td>
+<td><code>SELECT</code></td>
+</tr>
+<tr>
+<td><code>authenticated</code></td>
+<td>Admin panel reads and writes</td>
+<td><code>SELECT, INSERT, UPDATE, DELETE</code></td>
+</tr>
+<tr>
+<td><code>service_role</code></td>
+<td>Build script reads all posts</td>
+<td><code>ALL</code></td>
+</tr>
+</tbody></table>
+<p>The critical mistake was <code>service_role</code>. The build script that generates my blog posts uses the service role key — and it had no GRANT. Admin panel? Worked. Portfolio? Worked. But <code>node scripts/build-thoughts.mjs</code> failed.</p>
+<h2>The complete fix</h2>
+<pre><code class="language-sql">GRANT USAGE ON SCHEMA public TO anon, authenticated, service_role;
+GRANT SELECT                         ON thoughts TO anon;
+GRANT SELECT, INSERT, UPDATE, DELETE ON thoughts TO authenticated;
+GRANT ALL                            ON thoughts TO service_role;
+</code></pre>
+<p>Plus the RLS policies on top. Always both together.</p>
+<h2>The rule</h2>
+<p>With any <code>permission denied</code> error in Supabase: check GRANTs first, then RLS. Both layers, all roles. This isn't stated clearly anywhere in the official documentation — so now it's stated here.
+  </p>
+
+      </div>
+    </div>
+<div class="thought-lang-block" data-lang="de" hidden>
+      <h1 class="thought-post-title">Supabase-Berechtigungen: die zwei Schichten, die niemand erklärt</h1>
+      <div class="thought-post-meta">
+        <time datetime="2026-06-02T20:13:31.058115+00:00" class="thought-meta-date">02. Juni 2026</time>
+        <span class="thought-meta-sep">·</span>
+          <span class="thought-meta-reading">
+            2 <span data-i18n="thoughts_reading_min">Min. Lesezeit</span>
+          </span>
+      </div>
+      <div class="thought-post-content reveal active">
+        <p>Ich habe Stunden damit verbracht, einen einzigen Fehler zu debuggen: <code>permission denied for table thoughts</code>. Die Fehlermeldung war klar. Die Ursache war es nicht.</p>
+<p>Das Problem: Supabase hat nicht eine, sondern <strong>zwei</strong> unabhängige Berechtigungsschichten — und beide müssen stimmen.</p>
+<h2>Schicht 1: Row Level Security (RLS)</h2>
+<p>RLS ist das, worüber alle reden. Du aktivierst es auf einer Tabelle, definierst Policies — wer darf welche Zeilen lesen oder schreiben. Das ist die sichtbare, dokumentierte Schicht.</p>
+<pre><code class="language-sql">CREATE POLICY "thoughts_public_read"
+  ON thoughts FOR SELECT
+  TO anon, authenticated
+  USING (status = 'published');
+</code></pre>
+<p>Sieht gut aus. Funktioniert trotzdem nicht. Warum?</p>
+<h2>Schicht 2: Table-Level GRANTs</h2>
+<p>Darüber spricht niemand — aber unter RLS liegt eine zweite Schicht: die klassischen PostgreSQL-GRANTs. Diese entscheiden, ob eine Rolle die Tabelle überhaupt <em>sehen</em> darf. Ohne GRANT hilft die beste RLS-Policy nichts.</p>
+<p>Was mich kalt erwischt hat: Supabase hat <strong>drei verschiedene Rollen</strong>, die alle separate GRANTs brauchen:</p>
+<table>
+<thead>
+<tr>
+<th>Rolle</th>
+<th>Wofür</th>
+<th>GRANT</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>anon</code></td>
+<td>Portfolio liest veröffentlichte Posts</td>
+<td><code>SELECT</code></td>
+</tr>
+<tr>
+<td><code>authenticated</code></td>
+<td>Admin Panel liest und schreibt</td>
+<td><code>SELECT, INSERT, UPDATE, DELETE</code></td>
+</tr>
+<tr>
+<td><code>service_role</code></td>
+<td>Build-Script liest alle Posts</td>
+<td><code>ALL</code></td>
+</tr>
+</tbody></table>
+<p>Der entscheidende Fehler war <code>service_role</code>. Das Build-Script, das meine Blog-Posts generiert, nutzt den Service-Role-Key — und der hatte keinen GRANT. Admin Panel? Hat funktioniert. Portfolio? Hat funktioniert. Aber <code>node scripts/build-thoughts.mjs</code> schlug fehl.</p>
+<h2>Die vollständige Lösung</h2>
+<pre><code class="language-sql">GRANT USAGE ON SCHEMA public TO anon, authenticated, service_role;
+GRANT SELECT                         ON thoughts TO anon;
+GRANT SELECT, INSERT, UPDATE, DELETE ON thoughts TO authenticated;
+GRANT ALL                            ON thoughts TO service_role;
+</code></pre>
+<p>Plus die RLS-Policies obendrauf. Immer beides zusammen.</p>
+<h2>Die Regel</h2>
+<p>Bei jedem <code>permission denied</code>-Fehler in Supabase: erst GRANTs prüfen, dann RLS. Beide Schichten, alle Rollen. Das steht so nirgends in der offiziellen Dokumentation — deshalb steht es jetzt hier.</p>
+
+      </div>
+    </div>
+<div class="thought-lang-block" data-lang="ar" dir="rtl" hidden>
+      <h1 class="thought-post-title">صلاحيات Supabase: الطبقتان اللتان لا يشرحهما أحد</h1>
+      <div class="thought-post-meta">
+        <time datetime="2026-06-02T20:13:31.058115+00:00" class="thought-meta-date">٠٢ يونيو ٢٠٢٦</time>
+        <span class="thought-meta-sep">·</span>
+          <span class="thought-meta-reading">
+            2 <span data-i18n="thoughts_reading_min">د. قراءة</span>
+          </span>
+      </div>
+      <div class="thought-post-content reveal active">
+        <p>أمضيتُ ساعات في تتبع خطأ واحد: <code>permission denied for table thoughts</code>. الرسالة كانت واضحة. السبب لم يكن كذلك.</p>
+<p>المشكلة: لا تملك Supabase طبقة صلاحيات واحدة، بل <strong>طبقتين</strong> مستقلتين — وكلتاهما يجب أن تكونا صحيحتين.</p>
+<h2>الطبقة الأولى: أمان مستوى الصف (RLS)</h2>
+<p>RLS هو ما يتحدث عنه الجميع. تُفعِّله على جدول وتُعرِّف سياسات — من يستطيع قراءة أو كتابة أيّ صفوف. هذه هي الطبقة المرئية والموثقة.</p>
+<pre><code class="language-sql">CREATE POLICY "thoughts_public_read"
+  ON thoughts FOR SELECT
+  TO anon, authenticated
+  USING (status = 'published');
+</code></pre>
+<p>يبدو جيداً. لا يعمل رغم ذلك. لماذا؟</p>
+<h2>الطبقة الثانية: صلاحيات مستوى الجدول (GRANTs)</h2>
+<p>لا أحد يتحدث عن هذا — لكن تحت RLS توجد طبقة ثانية: صلاحيات PostgreSQL الكلاسيكية. هي التي تحدد ما إذا كان دور ما يستطيع <em>رؤية</em> الجدول أصلاً. بدون GRANT لا تُجدي أفضل سياسة RLS نفعاً.</p>
+<p>ما فاجأني: تملك Supabase <strong>ثلاثة أدوار مختلفة</strong>، كل منها يحتاج GRANTs منفصلة:</p>
+<table>
+<thead>
+<tr>
+<th>الدور</th>
+<th>الاستخدام</th>
+<th>الصلاحية</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>anon</code></td>
+<td>المحفظة تقرأ المنشورات المنشورة</td>
+<td><code>SELECT</code></td>
+</tr>
+<tr>
+<td><code>authenticated</code></td>
+<td>لوحة الإدارة تقرأ وتكتب</td>
+<td><code>SELECT, INSERT, UPDATE, DELETE</code></td>
+</tr>
+<tr>
+<td><code>service_role</code></td>
+<td>سكريبت البناء يقرأ جميع المنشورات</td>
+<td><code>ALL</code></td>
+</tr>
+</tbody></table>
+<p>الخطأ الحاسم كان في <code>service_role</code>. السكريبت الذي يُولِّد منشورات مدونتي يستخدم مفتاح service role — ولم يكن يملك GRANT. لوحة الإدارة؟ عملت. المحفظة؟ عملت. لكن <code>node scripts/build-thoughts.mjs</code> فشل.</p>
+<h2>الحل الكامل</h2>
+<pre><code class="language-sql">GRANT USAGE ON SCHEMA public TO anon, authenticated, service_role;
+GRANT SELECT                         ON thoughts TO anon;
+GRANT SELECT, INSERT, UPDATE, DELETE ON thoughts TO authenticated;
+GRANT ALL                            ON thoughts TO service_role;
+</code></pre>
+<p>مع إضافة سياسات RLS فوقها. دائماً كلاهما معاً.</p>
+<h2>القاعدة</h2>
+<p>مع أي خطأ <code>permission denied</code> في Supabase: تحقق من GRANTs أولاً، ثم RLS. كلتا الطبقتين، جميع الأدوار. هذا غير مُوضَّح بوضوح كافٍ في التوثيق الرسمي — لذا أوضحته هنا.</p>
+
+      </div>
+    </div>
+
+        <!-- ── Share ──────────────────────────────────────────────────────── -->
+        <div class="thought-post-share">
+          <button
+            class="share-btn share-copy"
+            onclick="navigator.clipboard.writeText(window.location.href).then(function(){var b=event.target.closest('button');b.classList.add('copied');setTimeout(function(){b.classList.remove('copied')},2000)})"
+          >
+            <span class="share-icon">🔗</span>
+            <span data-i18n="thoughts_share_copy">Link kopieren</span>
+            <span class="share-copied-label" data-i18n="thoughts_share_copied">Kopiert!</span>
+          </button>
+          <a
+            class="share-btn share-linkedin"
+            href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fyusefbach.de%2Fthoughts%2Fsupabase-berechtigungen-grants-rls.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="share-icon">in</span>
+            <span data-i18n="thoughts_share_linkedin">Teilen</span>
+          </a>
+        </div>
+
+        <!-- ── Back ───────────────────────────────────────────────────────── -->
+        <div class="thought-post-footer-nav">
+          <a href="index.html" class="thought-back-link-bottom" data-i18n="thoughts_back">← Zurück zu Gedanken</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── Lightbox ──────────────────────────────────────────────────────────── -->
+    <div id="lightbox-overlay" class="lightbox-overlay" style="display:none;" aria-modal="true" role="dialog" aria-label="Bild-Lightbox">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Schließen">✕</button>
+      <img id="lightbox-img" class="lightbox-img" src="" alt="" />
+    </div>
+
+    </main>
+
+        <app-footer base-path=".."></app-footer>
+
+    <!-- ── Sprach-Switch (inline, kein externes JS nötig) ────────────────────── -->
+    <script>
+    (function() {
+      var AVAILABLE = ["en","de","ar"];
+
+      function activate() {
+        var preferred = '';
+        try { preferred = window.__PAGE_LANG__ || 'de'; } catch(e) { preferred = 'de'; }
+
+        var blocks = document.querySelectorAll('.thought-lang-block');
+        var found = null;
+
+        blocks.forEach(function(b) {
+          b.hidden = true;
+          if (b.dataset.lang === preferred) found = b;
+        });
+
+        var badge     = document.getElementById('lang-fallback-badge');
+        var badgeCode = document.getElementById('lang-fallback-code');
+
+        if (found) {
+          found.hidden = false;
+          if (badge) badge.hidden = true;
+          // RTL für Arabisch
+          if (preferred === 'ar') {
+            document.documentElement.setAttribute('dir', 'rtl');
+            document.documentElement.lang = 'ar';
+          } else {
+            document.documentElement.removeAttribute('dir');
+            document.documentElement.lang = preferred;
+          }
+        } else {
+          // Fallback: EN anzeigen
+          var enBlock = document.querySelector('.thought-lang-block[data-lang="en"]');
+          if (enBlock) enBlock.hidden = false;
+          document.documentElement.removeAttribute('dir');
+          document.documentElement.lang = 'en';
+          if (badge && badgeCode) {
+            badge.hidden = false;
+            badgeCode.textContent = 'EN';
+          }
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', activate);
+      window.addEventListener('languagechange', activate);
+
+      // Sicherstellen dass AVAILABLE_LANGS nicht unused ist
+      void AVAILABLE;
+    })();
+    </script>
+
+    <!-- Scripts -->
+    <script defer src="../js/components/AppHeader.js"></script>
+    <script defer src="../js/components/AppFooter.js"></script>
+    <script defer src="../js/lightbox.js"></script>
+    <script defer src="../js/bot.js"></script>
+    <script defer src="../js/script.js"></script>
+  </body>
+</html>

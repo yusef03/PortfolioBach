@@ -1,0 +1,74 @@
+name: Publish Thoughts
+
+# Wird manuell aus dem Admin Panel getriggert (workflow_dispatch)
+# oder lokal testbar mit: gh workflow run publish-thoughts.yml
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    name: Thoughts aus Supabase → website/js/thoughts-data.js + HTML-Seiten + Sitemap
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write   # Damit der Job committen und pushen darf
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Node.js einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Abhängigkeiten installieren (marked, sanitize-html)
+        run: npm ci
+
+      - name: Thoughts aus Supabase bauen
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: node scripts/build-thoughts.mjs
+
+      - name: Pre-Rendering (website/index.html Teaser + website/thoughts/index.html Liste)
+        run: node scripts/prerender-thoughts.js
+
+      - name: Sprach-Spiegelung /en/ + /ar/ neu bauen
+        run: node scripts/build-lang-pages.mjs
+
+      - name: Sitemap + robots.txt aktualisieren
+        run: node scripts/build-sitemap.mjs
+
+      - name: Prüfen ob Änderungen vorhanden
+        id: check
+        run: |
+          git diff --quiet \
+            website/js/thoughts-data.js \
+            website/thoughts/ \
+            website/index.html \
+            website/sitemap.xml \
+            website/robots.txt \
+            website/en website/ar \
+            && echo "changed=false" >> $GITHUB_OUTPUT \
+            || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit & Push (nur wenn sich etwas geändert hat)
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          git config user.name "Yusef Bach"
+          git config user.email "kontakt@yusefbach.de"
+          git add \
+            website/js/thoughts-data.js \
+            website/thoughts/ \
+            website/index.html \
+            website/sitemap.xml \
+            website/robots.txt \
+            website/en website/ar
+          git commit -m "chore: thoughts aktualisiert via Admin Panel"
+          git push
+
+      - name: Keine Änderungen
+        if: steps.check.outputs.changed == 'false'
+        run: echo "Keine Änderungen in den Thoughts-Daten — nichts zu committen."
