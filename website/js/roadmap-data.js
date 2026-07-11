@@ -1,5 +1,5 @@
 // AUTO-GENERIERT aus Supabase via scripts/build-roadmap.mjs — NICHT manuell editieren!
-// Letzte Aktualisierung: 2026-07-11T16:42:23.098Z
+// Letzte Aktualisierung: 2026-07-11T19:43:08.211Z
 
 const roadmapData = [
   {
@@ -328,7 +328,7 @@ const changelogData = [
   {
     id: "8a71f4ce-b3ff-4ff1-9e20-138c9d604ab2",
     version: "v3.0.0",
-    date: "2026-06-07",
+    date: "2026-07-11",
     category: "feature",
     title_de: `Der große Relaunch — ein vollständig verwaltbares Portfolio-System`,
     title_en: `The Big Relaunch — A Fully Self-Managed Portfolio System`,
