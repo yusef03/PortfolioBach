@@ -1,49 +1,12 @@
 // AUTO-GENERIERT via scripts/build-github-activity.mjs — NICHT manuell editieren!
-// Letzte Aktualisierung: 2026-07-11T07:54:02.296Z
+// Letzte Aktualisierung: 2026-07-12T08:08:50.324Z
 
 const githubActivity = {
-  "generatedAt": "2026-07-11T07:54:02.296Z",
+  "generatedAt": "2026-07-12T08:08:50.324Z",
   "user": "yusef03",
-  "totalContributions": 850,
+  "totalContributions": 878,
   "calendar": {
     "weeks": [
-      [
-        {
-          "date": "2025-07-06",
-          "count": 0,
-          "level": 0
-        },
-        {
-          "date": "2025-07-07",
-          "count": 0,
-          "level": 0
-        },
-        {
-          "date": "2025-07-08",
-          "count": 0,
-          "level": 0
-        },
-        {
-          "date": "2025-07-09",
-          "count": 0,
-          "level": 0
-        },
-        {
-          "date": "2025-07-10",
-          "count": 0,
-          "level": 0
-        },
-        {
-          "date": "2025-07-11",
-          "count": 0,
-          "level": 0
-        },
-        {
-          "date": "2025-07-12",
-          "count": 0,
-          "level": 0
-        }
-      ],
       [
         {
           "date": "2025-07-13",
@@ -517,7 +480,7 @@ const githubActivity = {
         {
           "date": "2025-10-10",
           "count": 11,
-          "level": 4
+          "level": 3
         },
         {
           "date": "2025-10-11",
@@ -1922,25 +1885,25 @@ const githubActivity = {
         },
         {
           "date": "2026-07-03",
-          "count": 1,
-          "level": 1
+          "count": 2,
+          "level": 2
         },
         {
           "date": "2026-07-04",
-          "count": 1,
-          "level": 1
+          "count": 2,
+          "level": 2
         }
       ],
       [
         {
           "date": "2026-07-05",
-          "count": 1,
-          "level": 1
+          "count": 2,
+          "level": 2
         },
         {
           "date": "2026-07-06",
-          "count": 1,
-          "level": 1
+          "count": 2,
+          "level": 2
         },
         {
           "date": "2026-07-07",
@@ -1964,6 +1927,43 @@ const githubActivity = {
         },
         {
           "date": "2026-07-11",
+          "count": 24,
+          "level": 4
+        }
+      ],
+      [
+        {
+          "date": "2026-07-12",
+          "count": 0,
+          "level": 0
+        },
+        {
+          "date": null,
+          "count": 0,
+          "level": 0
+        },
+        {
+          "date": null,
+          "count": 0,
+          "level": 0
+        },
+        {
+          "date": null,
+          "count": 0,
+          "level": 0
+        },
+        {
+          "date": null,
+          "count": 0,
+          "level": 0
+        },
+        {
+          "date": null,
+          "count": 0,
+          "level": 0
+        },
+        {
+          "date": null,
           "count": 0,
           "level": 0
         }
@@ -1972,68 +1972,68 @@ const githubActivity = {
     "monthLabels": [
       {
         "label": "6",
-        "date": "2025-07-06",
+        "date": "2025-07-13",
         "weekIndex": 0
       },
       {
         "label": "7",
         "date": "2025-08-03",
-        "weekIndex": 4
+        "weekIndex": 3
       },
       {
         "label": "8",
         "date": "2025-09-07",
-        "weekIndex": 9
+        "weekIndex": 8
       },
       {
         "label": "9",
         "date": "2025-10-05",
-        "weekIndex": 13
+        "weekIndex": 12
       },
       {
         "label": "10",
         "date": "2025-11-02",
-        "weekIndex": 17
+        "weekIndex": 16
       },
       {
         "label": "11",
         "date": "2025-12-07",
-        "weekIndex": 22
+        "weekIndex": 21
       },
       {
         "label": "0",
         "date": "2026-01-04",
-        "weekIndex": 26
+        "weekIndex": 25
       },
       {
         "label": "1",
         "date": "2026-02-01",
-        "weekIndex": 30
+        "weekIndex": 29
       },
       {
         "label": "2",
         "date": "2026-03-01",
-        "weekIndex": 34
+        "weekIndex": 33
       },
       {
         "label": "3",
         "date": "2026-04-05",
-        "weekIndex": 39
+        "weekIndex": 38
       },
       {
         "label": "4",
         "date": "2026-05-03",
-        "weekIndex": 43
+        "weekIndex": 42
       },
       {
         "label": "5",
         "date": "2026-06-07",
-        "weekIndex": 48
+        "weekIndex": 47
       },
       {
         "label": "6",
         "date": "2026-07-05",
-        "weekIndex": 52
+        "weekIndex": 51
       }
     ]
   },
@@ -2046,27 +2046,27 @@ const githubActivity = {
   "languages": [
     {
       "name": "HTML",
-      "percent": 43.1
+      "percent": 46.7
     },
     {
       "name": "TypeScript",
-      "percent": 32.4
-    },
-    {
-      "name": "Python",
-      "percent": 10.4
-    },
-    {
-      "name": "Java",
-      "percent": 6.7
+      "percent": 25.1
     },
     {
       "name": "JavaScript",
-      "percent": 3.7
+      "percent": 10.6
+    },
+    {
+      "name": "Python",
+      "percent": 7.4
+    },
+    {
+      "name": "CSS",
+      "percent": 5.3
     },
     {
       "name": "Other",
-      "percent": 3.7
+      "percent": 5
     }
   ]
 };
