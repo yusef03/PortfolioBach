@@ -150,9 +150,14 @@ document.addEventListener("DOMContentLoaded", () => {
          3. INTERSECTION OBSERVER (Scroll Animations)
          Überwacht Elemente und triggert CSS-Klassen für Reveal-Effekte beim Scrollen.
          ========================================================================== */
+    // threshold niedrig + großzügiger rootMargin oben: bei schnellem (mobilem)
+    // Scrollen kann ein Element sonst den kompletten Sichtbereich in einem
+    // einzigen Schritt durchqueren, ohne dass der Observer "isIntersecting"
+    // je meldet — bleibt dann dauerhaft bei opacity:0 hängen. Mit 200px
+    // Vorlauf oben + threshold 0 reicht 1px Überlappung zum Auslösen.
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
+        threshold: 0,
+        rootMargin: "200px 0px -10% 0px",
     };
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {

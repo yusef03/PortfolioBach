@@ -60,10 +60,13 @@
   left: 0;
   width: 100%;
   height: 100%;
+  /* War 0.3 oben — zu schwach, Video-/Screenshot-Inhalt (z.B. eigener
+     Spiel-Titelbildschirm bei phishing-defender) blieb lesbar und
+     kollidierte optisch mit dem echten Hero-Titel darüber. */
   background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0.3) 0%,
-    rgba(0, 0, 0, 0.8) 100%
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.92) 100%
   );
 }
 
@@ -87,6 +90,12 @@
   text-transform: uppercase;
   margin-bottom: 30px;
   text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  /* Manche Titel sind aus zwei Teilen ohne Leerzeichen zusammengesetzt
+     (z.B. "Community"+<span>Engine</span> = ein nicht umbrechbares Wort).
+     Auf schmalen Screens reicht die Font-Size-Reduktion allein nicht immer
+     aus — als Absicherung notfalls innerhalb des Worts umbrechen statt
+     über den Viewport hinauslaufen zu lassen. */
+  overflow-wrap: break-word;
 }
 
 .hero-subtitle {
@@ -1187,4 +1196,63 @@ pre {
   }
 }
 
+/* ── Hero-Title auf kleinen Screens (≤480px) ──
+   .hero-title steht bei 6rem fest ohne responsive Anpassung — auf Handys
+   läuft der Text seitlich aus dem Viewport. studynexus.css hatte dafür
+   schon einen eigenen Fix (2.8rem), der aber nur dort galt, nicht in
+   diesem geteilten Base-File — betraf dadurch alle anderen Projektseiten
+   (community-software, html-cv, phishing-defender, portfolio-meta). */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.8rem;
+  }
+}
+
+/* ── Mehrspaltige Layouts stapeln (≤768px) ──
+   .mission-grid / .architecture-grid / .comparison-grid: feste
+   2-Spalten-Grids ohne jede Mobile-Anpassung — auf schmalen Screens
+   quetschten sich beide Spalten nebeneinander bzw. überlappten sich.
+   .timeline-steps: feste width:20%-Kinder in einer Flex-Reihe (bis zu
+   5 Items nebeneinander) — Text lief dadurch in eine 1-Wort-pro-Zeile-
+   Spalte. Betraf alle Seiten, die project-base.css nutzen (community-
+   software, html-cv, phishing-defender, portfolio-meta). */
+@media (max-width: 768px) {
+  .mission-grid,
+  .architecture-grid,
+  .comparison-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  /* Grid-Kinder haben per Default min-width:auto — dadurch schrumpft eine
+     1fr-Spalte NICHT unter die Content-Mindestbreite ihrer Kinder (z.B.
+     ein langer Fließtext-Absatz). Ohne das hier blieb die Spalte trotz
+     "1fr" ~560px breit auf einem 335px verfügbaren Platz → Überlauf. */
+  .mission-grid > *,
+  .architecture-grid > *,
+  .comparison-grid > * {
+    min-width: 0;
+  }
+
+  .timeline-steps {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .timeline-step {
+    width: 100%;
+  }
+  .timeline-steps::before {
+    display: none;
+  }
+
+  /* .hero-content ist das einzige Flex-Kind in .project-hero (display:flex)
+     und erbt denselben min-width:auto-Fallstrick wie die Grid-Spalten oben.
+     Bei einem einwortigen, nicht umbrechbaren Projekttitel (z.B.
+     "CommunityEngine") verhindert das den Schrumpf unter dessen
+     Content-Breite → der Container läuft unsichtbar (von .project-hero's
+     overflow:hidden geschluckt) links/rechts über den Viewport hinaus. */
+  .hero-content {
+    min-width: 0;
+  }
+}
 

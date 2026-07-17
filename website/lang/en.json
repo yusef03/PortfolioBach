@@ -1,4 +1,70 @@
 {
+  "meta_title_home": "Yusef Bach | Portfolio",
+  "meta_desc_home": "Portfolio of Yusef Bach — AI Developer at HDI Group and Computer Science student at Hochschule Hannover. Focused on AI integration, software architecture, and IT security.",
+  "meta_keywords_home": "Yusef Bach, AI Developer, Computer Science Student, Working Student Hannover, Software Architecture, IT Security, Portfolio",
+  "meta_ogtitle_home": "Yusef Bach - Portfolio",
+  "meta_ogdesc_home": "Computer science student & developer. Check out my projects and case studies.",
+
+  "meta_title_roadmap": "Roadmap & Changelog | Yusef Bach",
+  "meta_desc_roadmap": "What's coming next and what's already been shipped — roadmap and changelog by Yusef Bach.",
+  "meta_ogtitle_roadmap": "Roadmap & Changelog | Yusef Bach",
+  "meta_ogdesc_roadmap": "What's coming next and what's already been shipped.",
+
+  "meta_title_changelog": "Changelog | Yusef Bach",
+  "meta_desc_changelog": "Every version, every step — the complete release history of Yusef Bach's portfolio system.",
+  "meta_ogtitle_changelog": "Changelog | Yusef Bach",
+  "meta_ogdesc_changelog": "Every version, every step — the complete release history of the portfolio system.",
+
+  "meta_title_proj_community": "Community Software | Case Study",
+  "meta_desc_proj_community": "Asynchronous backend and frontend architecture for a large community platform — Lua, JavaScript, and SQL optimization. Case study by Yusef Bach.",
+  "meta_ogtitle_proj_community": "Community Software | Case Study",
+  "meta_ogdesc_proj_community": "Asynchronous backend and frontend architecture for a large community platform.",
+
+  "meta_title_proj_htmlcv": "HTML/CSS CV Engine | Case Study",
+  "meta_desc_proj_htmlcv": "A resume built entirely from code — no Word, no Canva. HTML/CSS CV engine with a print-optimized layout. Case study by Yusef Bach.",
+  "meta_ogtitle_proj_htmlcv": "HTML/CSS CV Engine | Case Study",
+  "meta_ogdesc_proj_htmlcv": "A resume built entirely from code — no Word, no Canva.",
+
+  "meta_title_proj_phishing": "Phishing Defender | Case Study",
+  "meta_desc_proj_phishing": "Phishing Defender — a serious game about cybersecurity, built in pure Java without a game engine. Case study by Yusef Bach.",
+  "meta_ogtitle_proj_phishing": "Phishing Defender | Case Study",
+  "meta_ogdesc_proj_phishing": "A serious game about cybersecurity, built in pure Java without a game engine.",
+
+  "meta_title_proj_portfoliometa": "Portfolio Architecture | Case Study",
+  "meta_desc_proj_portfoliometa": "The architecture of this portfolio itself — no website builder, no template, fully custom-built. Case study by Yusef Bach.",
+  "meta_ogtitle_proj_portfoliometa": "Portfolio Architecture | Case Study",
+  "meta_ogdesc_proj_portfoliometa": "The architecture of this portfolio itself — no website builder, no template, fully custom-built.",
+
+  "meta_title_proj_studynexus": "StudyNexus | Case Study",
+  "meta_desc_proj_studynexus": "StudyNexus — a study operating system for Hochschule Hannover: study plan, GPA calculation, examination regulations, and timetable in one full-stack system. Case study by Yusef Bach.",
+  "meta_ogtitle_proj_studynexus": "StudyNexus | Case Study",
+  "meta_ogdesc_proj_studynexus": "A study operating system for Hochschule Hannover — built by someone who needed it himself.",
+
+  "meta_title_proj_archive": "Project Archive | Yusef Bach",
+  "meta_desc_proj_archive": "More projects and experiments by Yusef Bach — all case studies at a glance.",
+  "meta_ogtitle_proj_archive": "Project Archive | Yusef Bach",
+  "meta_ogdesc_proj_archive": "More projects and experiments by Yusef Bach — all case studies at a glance.",
+
+  "meta_title_thoughts_index": "Thoughts | Yusef Bach",
+  "meta_desc_thoughts_index": "Technical insights, architecture considerations, and personal perspectives by Yusef Bach.",
+  "meta_ogtitle_thoughts_index": "Thoughts | Yusef Bach",
+  "meta_ogdesc_thoughts_index": "Technical insights and personal perspectives by Yusef Bach.",
+
+  "meta_title_thoughts_architektur": "Architecture Before Syntax — Why I Never Reach for the Framework First | Yusef Bach",
+  "meta_desc_thoughts_architektur": "The first question in new projects is almost always: which framework? I prefer to start with a different question.",
+  "meta_ogtitle_thoughts_architektur": "Architecture Before Syntax — Why I Never Reach for the Framework First",
+  "meta_ogdesc_thoughts_architektur": "The first question in new projects is almost always: which framework? I prefer to start with a different question.",
+
+  "meta_title_thoughts_supabase": "Supabase Permissions: The Two Layers Nobody Explains | Yusef Bach",
+  "meta_desc_thoughts_supabase": "permission denied for table thoughts — hours of debugging, one line of code. Supabase has two permission layers that almost nobody talks about.",
+  "meta_ogtitle_thoughts_supabase": "Supabase Permissions: The Two Layers Nobody Explains",
+  "meta_ogdesc_thoughts_supabase": "permission denied for table thoughts — hours of debugging, one line of code. Supabase has two permission layers that almost nobody talks about.",
+
+  "meta_title_thoughts_v3relaunch": "The Big Relaunch — What v3.0.0 Really Is | Yusef Bach",
+  "meta_desc_thoughts_v3relaunch": "Three languages with real SEO, a newly built AI twin, a hardened admin panel, and a homepage that no longer feels like stacked blocks. What actually changed in v3.0.0 — and why.",
+  "meta_ogtitle_thoughts_v3relaunch": "The Big Relaunch — What v3.0.0 Really Is",
+  "meta_ogdesc_thoughts_v3relaunch": "Three languages with real SEO, a newly built AI twin, a hardened admin panel, and a homepage that no longer feels like stacked blocks. What actually changed in v3.0.0 — and why.",
+
   "a11y_skip_link": "Skip to main content",
   "about_quote": "“I only like things when they really work cleanly.”",
   "about_text_1": "I'm Yusef, a B.Sc. Computer Science student, and currently working as an AI Developer student trainee at the HDI Group. My principle is simple: I don't just want to use systems; I want to grasp their foundation. Simply gluing APIs together isn't enough for me – I design clean architectures and use-cases that perform in an enterprise environment.",

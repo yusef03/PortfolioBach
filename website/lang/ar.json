@@ -1,4 +1,70 @@
 {
+  "meta_title_home": "يوسف الباش (Yusef Bach) | بورتفوليو",
+  "meta_desc_home": "بورتفوليو يوسف الباش (Yusef Bach) — مطوّر ذكاء اصطناعي في مجموعة HDI وطالب علوم حاسب في جامعة هانوفر التطبيقية. التركيز على تكامل الذكاء الاصطناعي، هندسة البرمجيات، وأمن المعلومات.",
+  "meta_keywords_home": "يوسف الباش, Yusef Bach, مطور ذكاء اصطناعي, طالب علوم حاسب, هانوفر, هندسة برمجيات, أمن المعلومات, بورتفوليو",
+  "meta_ogtitle_home": "يوسف الباش (Yusef Bach) - بورتفوليو",
+  "meta_ogdesc_home": "طالب علوم حاسب ومطور برمجيات. اطّلع على مشاريعي ودراسات الحالة الخاصة بي.",
+
+  "meta_title_roadmap": "خارطة الطريق والتغييرات | يوسف الباش (Yusef Bach)",
+  "meta_desc_roadmap": "ما هو قادم وما تم إنجازه بالفعل — خارطة الطريق وسجل التغييرات الخاص بـ يوسف الباش (Yusef Bach).",
+  "meta_ogtitle_roadmap": "خارطة الطريق والتغييرات | يوسف الباش (Yusef Bach)",
+  "meta_ogdesc_roadmap": "ما هو قادم وما تم إنجازه بالفعل.",
+
+  "meta_title_changelog": "سجل التغييرات | يوسف الباش (Yusef Bach)",
+  "meta_desc_changelog": "كل إصدار، كل خطوة — السجل الكامل لإصدارات نظام البورتفوليو الخاص بـ يوسف الباش (Yusef Bach).",
+  "meta_ogtitle_changelog": "سجل التغييرات | يوسف الباش (Yusef Bach)",
+  "meta_ogdesc_changelog": "كل إصدار، كل خطوة — السجل الكامل لإصدارات نظام البورتفوليو.",
+
+  "meta_title_proj_community": "Community Software | دراسة حالة",
+  "meta_desc_proj_community": "معمارية خلفية وواجهة أمامية غير متزامنة لمنصة مجتمعية كبيرة — تحسين Lua وJavaScript وSQL. دراسة حالة بقلم يوسف الباش (Yusef Bach).",
+  "meta_ogtitle_proj_community": "Community Software | دراسة حالة",
+  "meta_ogdesc_proj_community": "معمارية خلفية وواجهة أمامية غير متزامنة لمنصة مجتمعية كبيرة.",
+
+  "meta_title_proj_htmlcv": "HTML/CSS CV Engine | دراسة حالة",
+  "meta_desc_proj_htmlcv": "سيرة ذاتية مبنية بالكامل من الكود — بدون Word وبدون Canva. محرك سيرة ذاتية بـ HTML/CSS بتصميم مُحسّن للطباعة. دراسة حالة بقلم يوسف الباش (Yusef Bach).",
+  "meta_ogtitle_proj_htmlcv": "HTML/CSS CV Engine | دراسة حالة",
+  "meta_ogdesc_proj_htmlcv": "سيرة ذاتية مبنية بالكامل من الكود — بدون Word وبدون Canva.",
+
+  "meta_title_proj_phishing": "Phishing Defender | دراسة حالة",
+  "meta_desc_proj_phishing": "Phishing Defender — لعبة تعليمية جادة حول الأمن السيبراني، مبنية بلغة Java النقية بدون محرك ألعاب. دراسة حالة بقلم يوسف الباش (Yusef Bach).",
+  "meta_ogtitle_proj_phishing": "Phishing Defender | دراسة حالة",
+  "meta_ogdesc_proj_phishing": "لعبة تعليمية جادة حول الأمن السيبراني، مبنية بلغة Java النقية بدون محرك ألعاب.",
+
+  "meta_title_proj_portfoliometa": "Portfolio Architecture | دراسة حالة",
+  "meta_desc_proj_portfoliometa": "معمارية هذا البورتفوليو نفسه — بدون أدوات بناء جاهزة وبدون قوالب، مبني بالكامل من الصفر. دراسة حالة بقلم يوسف الباش (Yusef Bach).",
+  "meta_ogtitle_proj_portfoliometa": "Portfolio Architecture | دراسة حالة",
+  "meta_ogdesc_proj_portfoliometa": "معمارية هذا البورتفوليو نفسه — بدون أدوات بناء جاهزة وبدون قوالب، مبني بالكامل من الصفر.",
+
+  "meta_title_proj_studynexus": "StudyNexus | دراسة حالة",
+  "meta_desc_proj_studynexus": "StudyNexus — نظام تشغيل دراسي لجامعة هانوفر التطبيقية: خطة الدراسة، حساب المعدل التراكمي، لائحة الامتحانات والجدول الدراسي في نظام متكامل واحد. دراسة حالة بقلم يوسف الباش (Yusef Bach).",
+  "meta_ogtitle_proj_studynexus": "StudyNexus | دراسة حالة",
+  "meta_ogdesc_proj_studynexus": "نظام تشغيل دراسي لجامعة هانوفر التطبيقية — بناه شخص احتاجه بنفسه.",
+
+  "meta_title_proj_archive": "أرشيف المشاريع | يوسف الباش (Yusef Bach)",
+  "meta_desc_proj_archive": "مشاريع وتجارب إضافية لـ يوسف الباش (Yusef Bach) — جميع دراسات الحالة في نظرة واحدة.",
+  "meta_ogtitle_proj_archive": "أرشيف المشاريع | يوسف الباش (Yusef Bach)",
+  "meta_ogdesc_proj_archive": "مشاريع وتجارب إضافية لـ يوسف الباش (Yusef Bach) — جميع دراسات الحالة في نظرة واحدة.",
+
+  "meta_title_thoughts_index": "أفكار | يوسف الباش (Yusef Bach)",
+  "meta_desc_thoughts_index": "رؤى تقنية، تأملات في الهندسة المعمارية للبرمجيات، ووجهات نظر شخصية من يوسف الباش (Yusef Bach).",
+  "meta_ogtitle_thoughts_index": "أفكار | يوسف الباش (Yusef Bach)",
+  "meta_ogdesc_thoughts_index": "رؤى تقنية ووجهات نظر شخصية من يوسف الباش (Yusef Bach).",
+
+  "meta_title_thoughts_architektur": "الهندسة المعمارية قبل الصياغة — لماذا لا ألجأ إلى الإطار البرمجي أولًا | يوسف الباش (Yusef Bach)",
+  "meta_desc_thoughts_architektur": "السؤال الأول في المشاريع الجديدة يكون غالبًا: أي إطار عمل؟ أنا أفضّل البدء بسؤال مختلف.",
+  "meta_ogtitle_thoughts_architektur": "الهندسة المعمارية قبل الصياغة — لماذا لا ألجأ إلى الإطار البرمجي أولًا",
+  "meta_ogdesc_thoughts_architektur": "السؤال الأول في المشاريع الجديدة يكون غالبًا: أي إطار عمل؟ أنا أفضّل البدء بسؤال مختلف.",
+
+  "meta_title_thoughts_supabase": "صلاحيات Supabase: الطبقتان اللتان لا يشرحهما أحد | يوسف الباش (Yusef Bach)",
+  "meta_desc_thoughts_supabase": "permission denied for table thoughts — ساعات من تصحيح الأخطاء من أجل سطر كود واحد. لدى Supabase طبقتا صلاحيات لا يتحدث عنهما أحد تقريبًا.",
+  "meta_ogtitle_thoughts_supabase": "صلاحيات Supabase: الطبقتان اللتان لا يشرحهما أحد",
+  "meta_ogdesc_thoughts_supabase": "permission denied for table thoughts — ساعات من تصحيح الأخطاء من أجل سطر كود واحد. لدى Supabase طبقتا صلاحيات لا يتحدث عنهما أحد تقريبًا.",
+
+  "meta_title_thoughts_v3relaunch": "الإطلاق الكبير — ما هو v3.0.0 فعليًا | يوسف الباش (Yusef Bach)",
+  "meta_desc_thoughts_v3relaunch": "ثلاث لغات بـ SEO حقيقي، توأم ذكاء اصطناعي مبني من جديد، لوحة تحكم إدارية محصّنة أمنيًا، وصفحة رئيسية لم تعد تبدو كأقسام مرصوفة فوق بعضها. ما الذي تغيّر فعليًا في v3.0.0 — ولماذا.",
+  "meta_ogtitle_thoughts_v3relaunch": "الإطلاق الكبير — ما هو v3.0.0 فعليًا",
+  "meta_ogdesc_thoughts_v3relaunch": "ثلاث لغات بـ SEO حقيقي، توأم ذكاء اصطناعي مبني من جديد، لوحة تحكم إدارية محصّنة أمنيًا، وصفحة رئيسية لم تعد تبدو كأقسام مرصوفة فوق بعضها. ما الذي تغيّر فعليًا في v3.0.0 — ولماذا.",
+
   "a11y_skip_link": "انتقل إلى المحتوى الرئيسي",
   "about_quote": "«البرمجيات الجيدة تبدأ بالمعمارية الصحيحة، لا بأول سطر كود.»",
   "about_text_1": "أنا يوسف، طالب بكالوريوس في علوم الحاسب بجامعة هانوفر التطبيقية، وأعمل مطوراً للذكاء الاصطناعي بدوام جزئي في مجموعة HDI. مبدئي واضح: لا أريد مجرد استخدام الأنظمة، بل فهم أساسها. ربط الـ APIs ببعضها لا يكفيني — أصمم معماريات نظيفة وحالات استخدام قابلة للتطوير في بيئات المؤسسات.",

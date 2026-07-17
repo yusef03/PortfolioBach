@@ -3,10 +3,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer="" src="/js/status.js"></script>
     <script>(function(){try{var t=localStorage.getItem("theme");document.documentElement.setAttribute("data-theme",t==="light"?"light":"dark");}catch(e){document.documentElement.setAttribute("data-theme","dark");}})()</script>
-    <title>HTML/CSS CV Engine | Case Study</title>
-    <meta name="description" content="Ein Lebenslauf, komplett aus Code gebaut — kein Word, kein Canva. HTML/CSS-CV-Engine mit Print-optimiertem Layout. Case Study von Yusef Bach.">
-    <meta property="og:title" content="HTML/CSS CV Engine | Case Study">
-    <meta property="og:description" content="Ein Lebenslauf, komplett aus Code gebaut — kein Word, kein Canva.">
+    <title data-i18n="meta_title_proj_htmlcv">HTML/CSS CV Engine | دراسة حالة</title>
+    <meta name="description" data-i18n-content="meta_desc_proj_htmlcv" content="سيرة ذاتية مبنية بالكامل من الكود — بدون Word وبدون Canva. محرك سيرة ذاتية بـ HTML/CSS بتصميم مُحسّن للطباعة. دراسة حالة بقلم يوسف الباش (Yusef Bach).">
+    <meta property="og:title" data-i18n-content="meta_ogtitle_proj_htmlcv" content="HTML/CSS CV Engine | دراسة حالة">
+    <meta property="og:description" data-i18n-content="meta_ogdesc_proj_htmlcv" content="سيرة ذاتية مبنية بالكامل من الكود — بدون Word وبدون Canva.">
     <meta property="og:image" content="https://yusefbach.de/images/ui/preview.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -39,8 +39,8 @@
     <link rel="alternate" hreflang="x-default" href="https://yusefbach.de/projects/html-cv.html">
     <link rel="canonical" href="https://yusefbach.de/ar/projects/html-cv.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="HTML/CSS CV Engine | Case Study">
-    <meta name="twitter:description" content="Ein Lebenslauf, komplett aus Code gebaut — kein Word, kein Canva.">
+    <meta name="twitter:title" content="HTML/CSS CV Engine | دراسة حالة">
+    <meta name="twitter:description" content="سيرة ذاتية مبنية بالكامل من الكود — بدون Word وبدون Canva.">
     <meta name="twitter:image" content="https://yusefbach.de/images/ui/preview.png">
 </head>
   <body class="project-deep-dive">
@@ -59,8 +59,12 @@
       <div class="video-container" style="
           background: url('/images/projects/cv-engine/cv.png') center/cover
             no-repeat;
-          filter: brightness(0.3);
+          filter: brightness(0.2);
         "></div>
+      <!-- brightness() allein reichte nicht — der CV-Screenshot hat einen
+           hellen Hintergrund und blieb trotz 0.3 gut lesbar. Zusätzlich
+           dasselbe .video-overlay wie bei den anderen Projektseiten. -->
+      <div class="video-overlay"></div>
 
       <div class="hero-content container">
         <div class="hero-badges fade-in-up">

@@ -95,6 +95,7 @@ function buildUrlEntry({ loc, lastmod, priority, changefreq }) {
   if (lastmod)    parts.push(`    <lastmod>${lastmod}</lastmod>`)
   if (changefreq) parts.push(`    <changefreq>${changefreq}</changefreq>`)
   if (priority)   parts.push(`    <priority>${priority}</priority>`)
+  parts.push(...imageLines(loc))
   return `  <url>\n${parts.join('\n')}\n  </url>`
 }
 
@@ -107,9 +108,33 @@ const allPages = [
   ...thoughtPages,
 ]
 
+// ── 4b. Image-Sitemap-Eintrag für die Startseite ──────────────────────────
+// Google Images gewichtet ein explizit deklariertes <image:image> stärker
+// als ein beliebiges <img> im HTML — auf der Startseite konkurrieren die
+// beiden Profilfotos sonst mit 28 generischen Tech-Stack-Icons um Sichtbarkeit.
+const HOME_IMAGES = [
+  { loc: '/images/ui/hero-profile.jpg', caption: 'Yusef Bach — AI Developer & B.Sc. Student' },
+  { loc: '/images/ui/about-profile.jpg', caption: 'Yusef Bach bei der Arbeit' },
+]
+
+function xmlEscape(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+}
+
+function imageLines(loc) {
+  if (loc !== '/') return []
+  return HOME_IMAGES.flatMap(img => [
+    `    <image:image>`,
+    `      <image:loc>${BASE_URL}${img.loc}</image:loc>`,
+    `      <image:caption>${xmlEscape(img.caption)}</image:caption>`,
+    `    </image:image>`,
+  ])
+}
+
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${allPages.map(buildUrlEntry).join('\n')}
 </urlset>
 `
