@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-11T18:02:46.409Z",
+  "generated_at": "2026-07-17T13:18:49.035Z",
   "summary": {
     "count": 43,
     "total_bytes": 20804027,
@@ -500,6 +500,7 @@
       "size_bytes": 492973,
       "has_webp": true,
       "used_in": [
+        "scripts/build-sitemap.mjs",
         "website/ar/index.html",
         "website/en/index.html",
         "website/index.html"
@@ -513,6 +514,7 @@
       "size_bytes": 503847,
       "has_webp": true,
       "used_in": [
+        "scripts/build-sitemap.mjs",
         "website/ar/index.html",
         "website/en/index.html",
         "website/index.html"
