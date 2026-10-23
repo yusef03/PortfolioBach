@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-07-17T13:18:49.035Z",
+  "generated_at": "2026-10-23T09:04:17.644Z",
   "summary": {
     "count": 43,
-    "total_bytes": 20804027,
-    "total_mb": 19.84,
+    "total_bytes": 20724286,
+    "total_mb": 19.76,
     "orphans": 4,
     "categories": [
       "docs",
@@ -22,7 +22,7 @@
       "path": "docs/cv.pdf",
       "category": "docs",
       "type": "document",
-      "size_bytes": 1098395,
+      "size_bytes": 1018654,
       "used_in": [
         "website/ar/index.html",
         "website/en/index.html",
