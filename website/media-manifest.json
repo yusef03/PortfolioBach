@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-23T09:14:06.470Z",
+  "generated_at": "2026-10-23T09:14:34.352Z",
   "summary": {
-    "count": 44,
-    "total_bytes": 21740344,
-    "total_mb": 20.73,
-    "orphans": 5,
+    "count": 43,
+    "total_bytes": 20721690,
+    "total_mb": 19.76,
+    "orphans": 4,
     "categories": [
       "docs",
       "projects-community",
@@ -29,14 +29,6 @@
         "website/index.html"
       ],
       "is_orphan": false
-    },
-    {
-      "path": "docs/cvold.pdf",
-      "category": "docs",
-      "type": "document",
-      "size_bytes": 1018654,
-      "used_in": [],
-      "is_orphan": true
     },
     {
       "path": "docs/Phishing_Defender_UseCases_YusefBachK.pdf",
