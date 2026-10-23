@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-23T09:12:47.215Z",
+  "generated_at": "2026-10-23T09:14:06.470Z",
   "summary": {
-    "count": 43,
-    "total_bytes": 20724286,
-    "total_mb": 19.76,
+    "count": 44,
+    "total_bytes": 21740344,
+    "total_mb": 20.73,
     "orphans": 5,
     "categories": [
       "docs",
@@ -18,6 +18,18 @@
     "skipped_webp": 21
   },
   "assets": [
+    {
+      "path": "docs/cv.pdf",
+      "category": "docs",
+      "type": "document",
+      "size_bytes": 1016058,
+      "used_in": [
+        "website/ar/index.html",
+        "website/en/index.html",
+        "website/index.html"
+      ],
+      "is_orphan": false
+    },
     {
       "path": "docs/cvold.pdf",
       "category": "docs",
